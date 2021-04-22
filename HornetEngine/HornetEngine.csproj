@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Silk.NET.Core" Version="2.3.0" />
+    <PackageReference Include="Silk.NET.GLFW" Version="2.3.0" />
+    <PackageReference Include="Silk.NET.Input" Version="2.3.0" />
+    <PackageReference Include="Silk.NET.OpenAL" Version="2.3.0" />
+    <PackageReference Include="Silk.NET.OpenGL" Version="2.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Graphics\" />
+    <Folder Include="Input\" />
+    <Folder Include="Sound\" />
+  </ItemGroup>
+
+</Project>
