@@ -9,8 +9,6 @@ namespace HornetEngine.Graphics
 {
     public class Window : NativeWindow
     {
-        
-        
         public String Title { get; set; }
         public Vector2 Position { get; set; }
         public Vector2 Size { get; set; }

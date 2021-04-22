@@ -10,10 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="OpenTK.OpenAL" Version="4.6.3" />
     <PackageReference Include="Silk.NET.Core" Version="2.3.0" />
     <PackageReference Include="Silk.NET.GLFW" Version="2.3.0" />
     <PackageReference Include="Silk.NET.Input" Version="2.3.0" />
-    <PackageReference Include="Silk.NET.OpenAL" Version="2.3.0" />
     <PackageReference Include="Silk.NET.OpenGL" Version="2.3.0" />
   </ItemGroup>
 
