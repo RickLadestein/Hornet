@@ -13,16 +13,19 @@ namespace HornetEngine
     {
         private Uri sampleUri;
         private float sampleVolume;
+        private float samplePitch;
 
         /// <summary>
         /// The constructor of the Sound Sample
         /// </summary>
         /// <param name="givenUri">An URI which points to the sample file.</param>
         /// <param name="givenVolume">The volume which should be used to play the sample.</param>
-        public Sample(Uri givenUri, float givenVolume) 
+        /// <param name="givenPitch">The pitch which should be used to play the sample.</param>
+        public Sample(Uri givenUri, float givenVolume, float givenPitch) 
         {
             this.sampleUri = givenUri;
             this.sampleVolume = givenVolume;
+            this.samplePitch = givenPitch;
         }
 
         /// <summary>
@@ -54,6 +57,7 @@ namespace HornetEngine
             // Initialize the sound
             AL.Source(source, ALSourcei.Buffer, buffer);
             AL.Source(source, ALSourcef.Gain, sampleVolume);
+            AL.Source(source, ALSourcef.Pitch, samplePitch);
 
             // Play the sound
             AL.SourcePlay(source);

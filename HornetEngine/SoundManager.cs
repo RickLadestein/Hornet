@@ -30,11 +30,12 @@ namespace HornetEngine
         /// <param name="id">The ID of the new sample.</param>
         /// <param name="filename">The name of the file for the new sample, for ex. cheers.ogg</param>
         /// <param name="volume">The volume which should be used to play the sample.</param>
-        public void addSample(int id, string filename, float volume)
+        /// <param name="pitch">The pitch which should be used to play the sample.</param>
+        public void addSample(int id, string filename, float volume, float pitch)
         {
             // Initialize the new sample, based on the given values
             Uri sampleUri = new Uri($"resources/{filename}", UriKind.Relative);
-            Sample newSample = new Sample(sampleUri, volume);
+            Sample newSample = new Sample(sampleUri, volume, pitch);
 
             try
             {
