@@ -11,19 +11,19 @@ namespace HornetEngine
     /// </summary>
     public class Sample
     {
-        private Uri sampleUri;
+        private string givenFileLocation;
         private float sampleVolume;
         private float samplePitch;
 
         /// <summary>
         /// The constructor of the Sound Sample
         /// </summary>
-        /// <param name="givenUri">An URI which points to the sample file.</param>
+        /// <param name="givenFileLocation">A string which contains the path to the file which should be played.</param>
         /// <param name="givenVolume">The volume which should be used to play the sample.</param>
         /// <param name="givenPitch">The pitch which should be used to play the sample.</param>
-        public Sample(Uri givenUri, float givenVolume, float givenPitch) 
+        public Sample(string givenFileLocation, float givenVolume, float givenPitch) 
         {
-            this.sampleUri = givenUri;
+            this.givenFileLocation = givenFileLocation;
             this.sampleVolume = givenVolume;
             this.samplePitch = givenPitch;
         }
@@ -38,11 +38,11 @@ namespace HornetEngine
             int source = AL.GenSource();
             int state;
 
-            // Print the initialized Sample to the console
-            Console.WriteLine(sampleUri.ToString());
+            // Prints the file location to the console
+            Console.WriteLine(givenFileLocation);
 
             int channels, bits_per_sample, sample_rate;
-            byte[] sound_data = loadWave(File.Open(sampleUri.ToString(), FileMode.Open), out channels, out bits_per_sample, out sample_rate);
+            byte[] sound_data = loadWave(File.Open(givenFileLocation, FileMode.Open), out channels, out bits_per_sample, out sample_rate);
 
             // Create an IntPtr which points towards the sound_data
             GCHandle pinnedArray = GCHandle.Alloc(sound_data, GCHandleType.Pinned);

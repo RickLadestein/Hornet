@@ -34,8 +34,7 @@ namespace HornetEngine
         public void addSample(int id, string filename, float volume, float pitch)
         {
             // Initialize the new sample, based on the given values
-            Uri sampleUri = new Uri($"resources/{filename}", UriKind.Relative);
-            Sample newSample = new Sample(sampleUri, volume, pitch);
+            Sample newSample = new Sample(filename, volume, pitch);
 
             try
             {
