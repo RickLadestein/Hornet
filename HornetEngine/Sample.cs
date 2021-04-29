@@ -12,34 +12,31 @@ namespace HornetEngine
     public class Sample
     {
         private string givenFileLocation;
-        private float sampleVolume;
-        private float samplePitch;
+        private int buffer;
 
         /// <summary>
         /// The constructor of the Sound Sample
         /// </summary>
         /// <param name="givenFileLocation">A string which contains the path to the file which should be played.</param>
-        /// <param name="givenVolume">The volume which should be used to play the sample.</param>
-        /// <param name="givenPitch">The pitch which should be used to play the sample.</param>
-        public Sample(string givenFileLocation, float givenVolume, float givenPitch) 
+        public Sample(string givenFileLocation) 
         {
             this.givenFileLocation = givenFileLocation;
-            this.sampleVolume = givenVolume;
-            this.samplePitch = givenPitch;
+
+            initBuffer();
         }
 
         /// <summary>
-        /// A function which will play a sample's sound.
+        /// A function which will be called when creating a Sample
+        /// 
+        /// This function will initialize the buffers for the specific sample.
         /// </summary>
-        public void playSound()
+        public void initBuffer()
         {
-            // Initialize the buffers, source and state
-            int buffer = AL.GenBuffer();
-            int source = AL.GenSource();
-            int state;
+            // Initialize the buffer
+            buffer = AL.GenBuffer();
 
             // Prints the file location to the console
-            Console.WriteLine(givenFileLocation);
+            Console.WriteLine("Sample {0} initialized", givenFileLocation);
 
             int channels, bits_per_sample, sample_rate;
             byte[] sound_data = loadWave(File.Open(givenFileLocation, FileMode.Open), out channels, out bits_per_sample, out sample_rate);
@@ -53,13 +50,20 @@ namespace HornetEngine
 
             // Free the array to prevent memory leaks
             pinnedArray.Free();
+        }
 
-            // Initialize the sound
+        /// <summary>
+        /// A function which will play a sample's sound.
+        /// </summary>
+        /// <param name="src">The SoundSource on which the sound should be played.</param>
+        public void playSound(SoundSource src)
+        {
+            // Initialize the source and the state
+            int source = src.getSource();
+            int state;
+
+            // Initialize and play the sound
             AL.Source(source, ALSourcei.Buffer, buffer);
-            AL.Source(source, ALSourcef.Gain, sampleVolume);
-            AL.Source(source, ALSourcef.Pitch, samplePitch);
-
-            // Play the sound
             AL.SourcePlay(source);
 
             // Check when the sound ends
@@ -72,8 +76,6 @@ namespace HornetEngine
 
             // Stop the sound and delete the source / buffer
             AL.SourceStop(source);
-            AL.DeleteSource(source);
-            AL.DeleteBuffer(buffer);
         }
 
         /// <summary>

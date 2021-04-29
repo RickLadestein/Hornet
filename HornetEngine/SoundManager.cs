@@ -29,12 +29,10 @@ namespace HornetEngine
         /// </summary>
         /// <param name="id">The ID of the new sample.</param>
         /// <param name="filename">The name of the file for the new sample, for ex. cheers.ogg</param>
-        /// <param name="volume">The volume which should be used to play the sample.</param>
-        /// <param name="pitch">The pitch which should be used to play the sample.</param>
-        public void addSample(int id, string filename, float volume, float pitch)
+        public void addSample(int id, string filename)
         {
             // Initialize the new sample, based on the given values
-            Sample newSample = new Sample(filename, volume, pitch);
+            Sample newSample = new Sample(filename);
 
             try
             {
@@ -66,13 +64,14 @@ namespace HornetEngine
         /// A function which will play the sound of a sample within the SoundManager using an ID.
         /// </summary>
         /// <param name="givenId"></param>
-        public void playSound(int givenId)
+        /// <param name="src">The SoundSource on which the sample should be played.</param>
+        public void playSound(int givenId, SoundSource src)
         {
             // Try to play the sound of the sample, if it exists
             try
             {
                 Sample tempSample = samples[givenId];
-                tempSample.playSound();
+                tempSample.playSound(src);
 
             } catch (Exception)
             {
