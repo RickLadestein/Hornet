@@ -4,10 +4,11 @@ using System.Text;
 using Silk.NET.OpenGL;
 using System.Numerics;
 using Silk.NET.GLFW;
+using HornetEngine.Util.Drivers;
 
 namespace HornetEngine.Graphics
 {
-    public class Window : NativeWindow
+    public class Window : NativeWindow, ITouchEventListener
     {
         public delegate void WindowRefreshFunc(float timestep);
         public delegate void WindowMoveFunc(Vector2 newpos);
@@ -34,6 +35,7 @@ namespace HornetEngine.Graphics
         {
             bool result = this.CreateWindowHandle(width, height, title, WindowMode.WINDOWED);
             NativeWindow.gcontext.ClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+            touch_driver.SetEventListener(this);
             return result;
         }
 
@@ -52,8 +54,6 @@ namespace HornetEngine.Graphics
                 last_frame_time = (float) (end_time - start_time);
             }
         }
-
-
 
         protected override void OnWindowSizeChanged(int width, int height)
         {
@@ -83,6 +83,11 @@ namespace HornetEngine.Graphics
         protected override void OnWindowMaximize(bool maximized)
         {
             return;
+        }
+
+        public void OnTouchEvent(Vector2 position, Vector2 size, uint id, uint flags)
+        {
+            Console.WriteLine($"Touch Event [{id}]");
         }
     }
 }

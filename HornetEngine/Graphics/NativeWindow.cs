@@ -8,6 +8,7 @@ using Silk.NET.Core.Contexts;
 using HornetEngine.Util.Exceptions;
 using System.Numerics;
 using HornetEngine.Input;
+using HornetEngine.Util.Drivers;
 
 namespace HornetEngine.Graphics
 {
@@ -15,6 +16,7 @@ namespace HornetEngine.Graphics
     {
         protected unsafe WindowHandle* w_handle;
         protected unsafe GlfwNativeWindow n_window;
+        protected TouchDriver touch_driver;
         public static GL gcontext;
         public static Glfw fwcontext;
 
@@ -22,7 +24,6 @@ namespace HornetEngine.Graphics
         private Vector2 _size;
         private Vector2 _pos;
 
-        private TouchPanel tp;
         public String Title
         {
             get
@@ -136,7 +137,6 @@ namespace HornetEngine.Graphics
         protected abstract void OnWindowFocusChanged(bool isfocus);
         protected abstract void OnWindowCloseRequested();
         protected abstract void OnWindowIconify(bool iconified);
-
         protected abstract void OnWindowMaximize(bool maximized);
 
         private unsafe void EnsureContextAndWindow()
@@ -223,7 +223,7 @@ namespace HornetEngine.Graphics
             fwcontext.SwapInterval(0);
 
             n_window = new GlfwNativeWindow(fwcontext, w_handle);
-            tp = new TouchPanel(fwcontext, ref n_window);
+            touch_driver = TouchDriver.GetInstance(ref n_window);
             return true;
         }
 
