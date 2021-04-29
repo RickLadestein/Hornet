@@ -25,12 +25,24 @@ namespace HornetEngine.Graphics
         private double start_time;
         private double end_time;
         private float last_frame_time;
+
+        /// <summary>
+        /// Instantiates a new window object with base parameters
+        /// </summary>
         public Window(): base() {
             start_time = 0.0d;
             end_time = 0.0d;
             last_frame_time = 0.0f;
         }
 
+        /// <summary>
+        /// Opens a new application window on the current thread with specified title and size parameters
+        /// </summary>
+        /// <param name="title">The title of the application window</param>
+        /// <param name="width">The width of the application window in pixels</param>
+        /// <param name="height">The height of the application window in pixels</param>
+        /// <param name="fullscreen">Fullscreen specifier, false: undecorated window, true: decorated window</param>
+        /// <returns>Window creation succes status, false: window creation failed, true: window creation succesfull</returns>
         public bool Open(String title, int width, int height, bool fullscreen)
         {
             bool result = this.CreateWindowHandle(width, height, title, WindowMode.WINDOWED);
@@ -39,6 +51,9 @@ namespace HornetEngine.Graphics
             return result;
         }
 
+        /// <summary>
+        /// Start the application window refresh loop and processes
+        /// </summary>
         public void Run()
         {
             while (!this.ShouldClose())
@@ -87,7 +102,11 @@ namespace HornetEngine.Graphics
 
         public void OnTouchEvent(Vector2 position, Vector2 size, uint id, uint flags)
         {
-            Console.WriteLine($"Touch Event [{id}]");
+            //uint downres = flags & ((uint)TouchEventFlags.TOUCHEVENTF_DOWN);
+            //if(downres > 0) {
+            //    Console.WriteLine($"Touch Down [{id}]");    
+            //}
+            Console.WriteLine($"Touch event Id: {id} Pos:{position}  Size:{size}");
         }
     }
 }

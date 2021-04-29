@@ -114,6 +114,13 @@ namespace HornetEngine.Graphics
             return fwcontext.GetTime();
         }
 
+        public unsafe void SetDrawArea(uint x, uint y, uint width, uint height)
+        {
+            EnsureContextAndWindow();
+
+            gcontext.Viewport((int)x, (int)y, width, height);
+        }
+
         protected unsafe void SwapBuffers()
         {
             EnsureContextAndWindow();
