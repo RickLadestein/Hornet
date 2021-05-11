@@ -1,5 +1,6 @@
 ﻿using System;
 using HornetEngine.Graphics;
+
 namespace Sandbox
 {
     class Program
@@ -7,7 +8,7 @@ namespace Sandbox
         static Window w = new Window();
         static void Main(string[] args)
         {
-            
+
             w.Open("Test", 1080, 720, false);
             w.Title = "Helloworld";
             w.Redraw += W_Redraw;

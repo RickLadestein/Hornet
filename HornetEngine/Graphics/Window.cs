@@ -46,7 +46,7 @@ namespace HornetEngine.Graphics
         public bool Open(String title, int width, int height, bool fullscreen)
         {
             bool result = this.CreateWindowHandle(width, height, title, WindowMode.WINDOWED);
-            NativeWindow.gcontext.ClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+            GL.ClearColor(1.0f, 0.0f, 0.0f, 1.0f);
             touch_driver.SetEventListener(this);
             return result;
         }

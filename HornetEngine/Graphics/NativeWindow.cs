@@ -32,7 +32,21 @@ namespace HornetEngine.Graphics
                 }
             } 
         }
-        public static Glfw fwcontext;
+
+        private static Glfw fwcontext;
+        public static Glfw GLFW
+        {
+            get
+            {
+                if(fwcontext == null)
+                {
+                    throw new Exception("GLFW context needs to be initialised first");
+                } else
+                {
+                    return fwcontext;
+                }
+            }
+        }
 
         private String _title;
         private Vector2 _size;
