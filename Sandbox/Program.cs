@@ -1,5 +1,6 @@
 ﻿using HornetEngine;
 using System;
+using System.Numerics;
 
 namespace Sandbox
 {
@@ -8,18 +9,14 @@ namespace Sandbox
         static void Main(string[] args)
         {
             SoundManager manager = SoundManager.Instance;
-            Entity e = new Entity();
+            Entity e = new Entity(false);
 
-            manager.addSample(1, "C:\\Users\\cools\\Documents\\resources\\menu.wav");
-            manager.addSample(2, "C:\\Users\\cools\\Documents\\resources\\cheer.ogg");
+            manager.addSample(1, "C:\\Users\\cools\\Documents\\resources\\tone.wav");
 
-
+            e.setVolume(0.1f);
             manager.playSound(1, e);
 
-            e.setPitch(22.0f);
-            manager.playSound(1, e);
-
-            e.setVolume(0.3f);
+            manager.setPos(new Vector3(20.0f, 0.0f, 0.0f));
             manager.playSound(1, e);
         }
     }

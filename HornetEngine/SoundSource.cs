@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 using OpenTK.Audio.OpenAL;
 
@@ -19,12 +20,16 @@ namespace HornetEngine
         /// <summary>
         /// The constructor of the Sound Source
         /// </summary>
-        public SoundSource()
+        /// <param name="looping">A value containing true/false depending on whether the sound should loop.</param>
+        public SoundSource(bool looping)
         {
             // Initialize the default values
             source = AL.GenSource();
             AL.Source(source, ALSourcef.Gain, this.volume);
             AL.Source(source, ALSourcef.Pitch, this.pitch);
+            AL.Source(source, ALSourceb.Looping, looping);
+            AL.Source(source, ALSource3f.Position, 0.0f, 0.0f, 0.0f);
+            AL.Source(source, ALSource3f.Velocity, 0.0f, 0.0f, 0.0f);
         }
 
         /// <summary>

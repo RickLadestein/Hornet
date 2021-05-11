@@ -7,7 +7,7 @@ namespace Sandbox
 {
     public class Entity : SoundSource
     {
-        public Entity() : base()
+        public Entity(bool looping) : base(looping)
         {
 
         }
