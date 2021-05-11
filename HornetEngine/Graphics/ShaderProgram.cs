@@ -7,11 +7,28 @@ using System.Numerics;
 
 namespace HornetEngine.Graphics
 {
+    /// <summary>
+    /// Enum indicating the status of a ShaderProgram
+    /// </summary>
     public enum ShaderProgramStatus
     {
+        /// <summary>
+        /// ShaderProgram is unitialised and cannot be used
+        /// </summary>
         UNINITIALISED,
+        /// <summary>
+        /// ShaderProgram is aquiring GPU ShaderProgram handle
+        /// </summary>
         AQUIRING_HANDLE,
+
+        /// <summary>
+        /// ShaderProgram is linking Shaders
+        /// </summary>
         LINKING,
+
+        /// <summary>
+        /// ShaderProgram is ready to use
+        /// </summary>
         READY
     }
 
@@ -147,6 +164,11 @@ namespace HornetEngine.Graphics
 
         #region Uniforms
 
+        /// <summary>
+        /// Sets a shader specific global variable in the GPU
+        /// </summary>
+        /// <param name="location">The uniform name in the shader program</param>
+        /// <param name="value">Boolean value</param>
         public void SetUniform(string location, bool value)
         {
             int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
@@ -157,6 +179,11 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// Sets a shader specific global variable in the GPU
+        /// </summary>
+        /// <param name="location">The uniform name in the shader program</param>
+        /// <param name="value">Integer value</param>
         public void SetUniform(string location, int value)
         {
             int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
@@ -166,6 +193,11 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// Sets a shader specific global variable in the GPU
+        /// </summary>
+        /// <param name="location">The uniform name in the shader program</param>
+        /// <param name="value">Unsigned Integer value</param>
         public void SetUniform(string location, uint value)
         {
             int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
@@ -175,6 +207,11 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// Sets a shader specific global variable in the GPU
+        /// </summary>
+        /// <param name="location">The uniform name in the shader program</param>
+        /// <param name="value">Float value</param>
         public void SetUniform(string location, float value)
         {
             int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
@@ -184,6 +221,11 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// Sets a shader specific global variable in the GPU
+        /// </summary>
+        /// <param name="location">The uniform name in the shader program</param>
+        /// <param name="value">Double value</param>
         public void SetUniform(string location, double value)
         {
             int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
@@ -193,33 +235,53 @@ namespace HornetEngine.Graphics
             }
         }
 
-        public void SetUniform(string location, Vector2 value)
+        /// <summary>
+        /// Sets a shader specific global variable in the GPU
+        /// </summary>
+        /// <param name="location">The uniform name in the shader program</param>
+        /// <param name="vec">Vector2 value</param>
+        public void SetUniform(string location, Vector2 vec)
         {
             int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
             if (loc != -1)
             {
-                NativeWindow.GL.Uniform2(loc, value);
+                NativeWindow.GL.Uniform2(loc, vec);
             }
         }
 
-        public void SetUniform(string location, Vector3 value)
+        /// <summary>
+        /// Sets a shader specific global variable in the GPU
+        /// </summary>
+        /// <param name="location">The uniform name in the shader program</param>
+        /// <param name="vec">Vector3 value</param>
+        public void SetUniform(string location, Vector3 vec)
         {
             int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
             if (loc != -1)
             {
-                NativeWindow.GL.Uniform3(loc, value);
+                NativeWindow.GL.Uniform3(loc, vec);
             }
         }
 
-        public void SetUniform(string location, Vector4 value)
+        /// <summary>
+        /// Sets a shader specific global variable in the GPU
+        /// </summary>
+        /// <param name="location">The uniform name in the shader program</param>
+        /// <param name="vec">Vector4 value</param>
+        public void SetUniform(string location, Vector4 vec)
         {
             int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
             if (loc != -1)
             {
-                NativeWindow.GL.Uniform4(loc, value);
+                NativeWindow.GL.Uniform4(loc, vec);
             }
         }
 
+        /// <summary>
+        /// Sets a shader specific global variable in the GPU
+        /// </summary>
+        /// <param name="location">The uniform name in the shader program</param>
+        /// <param name="matrix">Matrix4 value</param>
         public unsafe void SetUniform(string location, Matrix4x4 matrix)
         {
             int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
@@ -228,8 +290,6 @@ namespace HornetEngine.Graphics
                 NativeWindow.GL.UniformMatrix4(loc, 1, false, (float*) &matrix);
             }
         }
-
-
         #endregion
 
         /// <summary>
@@ -244,12 +304,34 @@ namespace HornetEngine.Graphics
         }
     }
 
+    /// <summary>
+    /// Enum representing the status of a Shader
+    /// </summary>
     public enum ShaderStatus
     {
+        /// <summary>
+        /// Shader is uninitialised an cannot be used
+        /// </summary>
         UNINITIALISED,
+
+        /// <summary>
+        /// Shader is aquiring a GPU program handle
+        /// </summary>
         AQUIRING_HANDLE,
+
+        /// <summary>
+        /// Shader is importing source code from file
+        /// </summary>
         IMPORTING_SOURCE_CODE,
+
+        /// <summary>
+        /// Shader is compiling the source code
+        /// </summary>
         COMPILING,
+
+        /// <summary>
+        /// Shader is ready to use
+        /// </summary>
         READY
     }
 
@@ -397,16 +479,25 @@ namespace HornetEngine.Graphics
         }
     }
 
+    /// <summary>
+    /// Class representing a Vertex Shader
+    /// </summary>
     public class VertexShader : Shader
     {
         public VertexShader(string file) : base(ShaderType.VertexShader, file) {}
     }
 
+    /// <summary>
+    /// Class representing a Geometry Shader
+    /// </summary>
     public class GeometryShader : Shader
     {
         public GeometryShader(string file) : base(ShaderType.GeometryShader, file) { }
     }
 
+    /// <summary>
+    /// Class representing a Fragment Shader
+    /// </summary>
     public class FragmentShader : Shader
     {
         public FragmentShader(string file) : base(ShaderType.FragmentShader, file) { }
