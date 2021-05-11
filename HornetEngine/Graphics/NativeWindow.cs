@@ -17,7 +17,21 @@ namespace HornetEngine.Graphics
         protected unsafe WindowHandle* w_handle;
         protected unsafe GlfwNativeWindow n_window;
         protected TouchDriver touch_driver;
-        public static GL gcontext;
+        
+        private static GL gcontext;
+        public static GL GL {
+            get
+            {
+                if (gcontext == null)
+                {
+                    throw new Exception("OpenGL context needs to be initialised first");
+                }
+                else
+                {
+                    return gcontext;
+                }
+            } 
+        }
         public static Glfw fwcontext;
 
         private String _title;
