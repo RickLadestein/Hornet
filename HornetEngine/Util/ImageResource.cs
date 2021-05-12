@@ -12,8 +12,8 @@ namespace HornetEngine.Util
 {
     public class ImageResource : IDisposable
     {
-        Image<Rgba32> image;
-        uint width, height;
+        public Image<Rgba32> image;
+        public uint width, height;
 
         public ImageResource(SixLabors.ImageSharp.Image<Rgba32> im)
         {
@@ -25,16 +25,6 @@ namespace HornetEngine.Util
             this.image = im;
             width = (uint)im.Width;
             height = (uint)im.Height;
-        }
-
-        public unsafe bool LoadToTexture(HornetEngine.Graphics.Texture tex)
-        {
-            tex.Bind();
-            fixed (void* data = &MemoryMarshal.GetReference(image.GetPixelRowSpan(0)))
-            {
-                NativeWindow.GL.TexImage2D(TextureTarget.Texture2D, 0, (int)InternalFormat.Rgba, width, height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, data);
-                return true;
-            }
         }
 
         public static ImageResource Load(string path, bool flip)
