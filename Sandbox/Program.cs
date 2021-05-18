@@ -14,12 +14,12 @@ namespace Sandbox
             manager.addSample(1, "C:\\Users\\cools\\Documents\\resources\\tone.wav");
 
             e.setVolume(0.1f);
-            manager.playSound(1, e);
+            manager.getSample(1).playSound(e);
 
             manager.getListener().setPosition(new Vector3(20.0f, 0.0f, 0.0f));
-            manager.playSound(1, e);
+            manager.getSample(1).playSound(e);
             manager.getListener().setPosition(new Vector3(0.0f, 0.0f, 20.0f));
-            manager.playSound(1, e);
+            manager.getSample(1).playSound(e);
         }
     }
 }

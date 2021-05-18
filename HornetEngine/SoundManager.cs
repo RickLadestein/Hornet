@@ -66,24 +66,29 @@ namespace HornetEngine
         }
 
         /// <summary>
-        /// A function which will play the sound of a sample within the SoundManager using an ID.
+        ///  A function which will obtain a Sample.
         /// </summary>
-        /// <param name="givenId"></param>
-        /// <param name="src">The SoundSource on which the sample should be played.</param>
-        public void playSound(int givenId, SoundSource src)
+        /// <param name="givenId">The id of the sample which should be returned.</param>
+        /// <returns>The sample which contains the given ID.</returns>
+        public Sample getSample(int givenId)
         {
-            // Try to play the sound of the sample, if it exists
             try
             {
-                Sample tempSample = samples[givenId];
-                tempSample.playSound(src);
-
+                // Attempt to get the sample within the SoundManager and return it
+                Sample toReturn = samples[givenId];
+                return toReturn;
             } catch (Exception)
             {
+                // Return null if the sample does not exist
                 Console.WriteLine("This sample does not exist.");
+                return null;
             }
         }
 
+        /// <summary>
+        /// A function which will return the user's Listener
+        /// </summary>
+        /// <returns>The user's Listener.</returns>
         public Listener getListener()
         {
             return this.listener;
