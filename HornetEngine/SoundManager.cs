@@ -12,7 +12,9 @@ namespace HornetEngine
     {
         private static SoundManager instance = null;
         private static readonly object padlock = new object();
+
         private Dictionary<int, Sample> samples;
+        private Listener listener;
 
         /// <summary>
         /// The constructor of the SoundManager
@@ -22,16 +24,9 @@ namespace HornetEngine
             var device = ALC.OpenDevice(null);
             var context = ALC.CreateContext(device, (int*)null);
             ALC.MakeContextCurrent(context);
-            samples = new Dictionary<int, Sample>();
-        }
 
-        /// <summary>
-        /// A function which will allow the user to change their own position
-        /// </summary>
-        /// <param name="vec3">A vector with 3 elements, containing the X, Y and Z coords of the user.</param>
-        public void setPos(Vector3 vec3)
-        {
-            AL.Listener(ALListener3f.Position, vec3.X, vec3.Y, vec3.Z);
+            samples = new Dictionary<int, Sample>();
+            listener = Listener.Instance;
         }
 
         /// <summary>
@@ -87,6 +82,11 @@ namespace HornetEngine
             {
                 Console.WriteLine("This sample does not exist.");
             }
+        }
+
+        public Listener getListener()
+        {
+            return this.listener;
         }
 
         /// <summary>

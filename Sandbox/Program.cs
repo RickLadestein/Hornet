@@ -16,7 +16,9 @@ namespace Sandbox
             e.setVolume(0.1f);
             manager.playSound(1, e);
 
-            manager.setPos(new Vector3(20.0f, 0.0f, 0.0f));
+            manager.getListener().setPosition(new Vector3(20.0f, 0.0f, 0.0f));
+            manager.playSound(1, e);
+            manager.getListener().setPosition(new Vector3(0.0f, 0.0f, 20.0f));
             manager.playSound(1, e);
         }
     }
