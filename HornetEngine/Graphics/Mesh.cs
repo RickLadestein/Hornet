@@ -16,40 +16,85 @@ namespace HornetEngine.Graphics
 
         public VertexBuffer VertexBuffer { get; private set; }
 
-        private AttributeStorage attributes;
-        public Mesh()
+        public AttributeStorage Attributes { get; private set; }
+
+        public String Name { get; private set; }
+
+        public String Error { get; private set; }
+        public Mesh(String name)
         {
             this.Status = MeshStatus.INVALID;
-            attributes = new AttributeStorage();
+            Attributes = new AttributeStorage();
+            this.Name = name;
+        }
+
+        public void BuildVertexBuffer()
+        {
 
         }
 
-        public void ImportFromFile(String folder_id, String file)
+        public static Mesh ImportMesh(String name, String folder_id, String file)
         {
-            this.Status = MeshStatus.IMPORTING_DATA;
+            Mesh output = new Mesh(name);
+
+            output.Status = MeshStatus.IMPORTING_DATA;
+            output.Error = Mesh.ImportFromFile(folder_id, file, out Scene s);
+            if(output.Error != String.Empty)
+            {
+
+            }
+
+            output.Status = MeshStatus.PARSING_DATA;
+            ParseMeshData(output, s.Meshes[0]);
+            return output;
+        }
+
+        private static String ImportFromFile(String folder_id, String file, out Scene scene)
+        {
             string dir = DirectoryManager.GetResourceDir(folder_id);
             if(dir == String.Empty)
             {
-                throw new Exception($"Directory with id [{folder_id}] was not found in DirectoryManager");
+                scene = null;
+                return $"Directory with id [{folder_id}] was not found in DirectoryManager";
             }
             string path = DirectoryManager.ConcatDirFile(dir, file);
 
-            Assimp.AssimpContext ac = new AssimpContext();
-            ac.SetConfig(new NormalSmoothingAngleConfig(66.0f));
-            Scene s = ac.ImportFile(path, PostProcessSteps.Triangulate);
-            
-            if(s.MeshCount == 0)
+            try
             {
-                throw new Exception("No meshes were found in the scene");
-            }
+                Assimp.AssimpContext ac = new AssimpContext();
+                ac.SetConfig(new NormalSmoothingAngleConfig(66.0f));
+                Scene s = ac.ImportFile(path, PostProcessSteps.Triangulate | PostProcessSteps.GenerateNormals);
 
-            this.Status = MeshStatus.PARSING_DATA;
-            Assimp.Mesh mesh = s.Meshes[0];
+                if (s.MeshCount == 0)
+                {
+                    scene = null;
+                    return "No meshes were found in the file";
+                }
+
+                if(s.MeshCount > 1)
+                {
+                    scene = null;
+                    return "Scene detected: please only load single mesh files";
+                }
+                scene = s;
+                return String.Empty;
+            } catch(Exception ex)
+            {
+                scene = null;
+                return ex.Message;
+            }
+        }
+
+        private static void ParseMeshData(HornetEngine.Graphics.Mesh obj, Assimp.Mesh mesh)
+        {
+            obj.Attributes.ClearAttributes();
             List<Vector3> vertex_data = new List<Vector3>();
             List<Vector3> normal_data = new List<Vector3>();
-            List<Vector3> texture_data = new List<Vector3>();
+            List<Vector2> texture_data = new List<Vector2>();
 
-            for(int i = 0; i < mesh.VertexCount; i++)
+            bool hastex = mesh.HasTextureCoords(0);
+
+            for (int i = 0; i < mesh.VertexCount; i++)
             {
                 Vector3 v;
                 v.X = mesh.Vertices[i].X;
@@ -61,15 +106,23 @@ namespace HornetEngine.Graphics
                 n.Y = mesh.Normals[i].Y;
                 n.Z = mesh.Normals[i].Z;
 
-                Vector3 t;
-                t.X = mesh.TextureCoordinateChannels[0][i].X;
-                t.Y = mesh.TextureCoordinateChannels[0][i].Y;
-                t.Z = mesh.TextureCoordinateChannels[0][i].Z;
+                Vector2 t;
+                if (hastex)
+                {
+                    t.X = mesh.TextureCoordinateChannels[0][i].X;
+                    t.Y = mesh.TextureCoordinateChannels[0][i].Y;
+                }
+                else
+                {
+                    t.X = 0.0f;
+                    t.Y = 0.0f;
+                }
 
                 vertex_data.Add(v);
                 normal_data.Add(n);
                 texture_data.Add(t);
             }
+
             FloatAttribute vertex_attrib = new FloatAttribute("Vertices", 3);
             vertex_attrib.AddData(vertex_data.ToArray());
 
@@ -79,14 +132,14 @@ namespace HornetEngine.Graphics
             FloatAttribute texture_attrib = new FloatAttribute("TexCoords", 3);
             texture_attrib.AddData(texture_data.ToArray());
 
-            this.attributes.AddAttribute(vertex_attrib);
-            this.attributes.AddAttribute(normal_attrib);
-            this.attributes.AddAttribute(texture_attrib);
+            obj.Attributes.AddAttribute(vertex_attrib);
+            obj.Attributes.AddAttribute(normal_attrib);
+            obj.Attributes.AddAttribute(texture_attrib);
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            this.Attributes.ClearAttributes();
         }
     }
 
