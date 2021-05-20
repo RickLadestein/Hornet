@@ -15,7 +15,6 @@ namespace HornetEngine.Graphics
             this.Base_type = AttributeType.DOUBLE;
             this.Components = comps;
             this.Base_type_size = sizeof(double);
-            this.Datapoints = 0;
             this.Name = name;
         }
 
@@ -23,7 +22,6 @@ namespace HornetEngine.Graphics
         {
             byte[] bts = BitConverter.GetBytes(data);
             this.byte_data.AddRange(bts);
-            this.Datapoints += 1;
         }
 
         public void AddData(Vector2d data)
@@ -33,7 +31,6 @@ namespace HornetEngine.Graphics
             {
                 bts = BitConverter.GetBytes(data[i]);
                 this.byte_data.AddRange(bts);
-                this.Datapoints += 1;
             }
         }
 
@@ -44,7 +41,6 @@ namespace HornetEngine.Graphics
             {
                 bts = BitConverter.GetBytes(data[i]);
                 this.byte_data.AddRange(bts);
-                this.Datapoints += 1;
             }
         }
 
@@ -55,7 +51,6 @@ namespace HornetEngine.Graphics
             {
                 bts = BitConverter.GetBytes(data[i]);
                 this.byte_data.AddRange(bts);
-                this.Datapoints += 1;
             }
         }
 
@@ -68,7 +63,6 @@ namespace HornetEngine.Graphics
                 byte[] ba = new byte[data.Length * buffersize];
                 Buffer.BlockCopy(data, 0, ba, 0, buffersize);
                 this.byte_data.AddRange(ba);
-                this.Datapoints += (uint)data.Length;
             }
         }
 

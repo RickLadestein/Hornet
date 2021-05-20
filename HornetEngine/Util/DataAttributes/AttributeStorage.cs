@@ -51,6 +51,78 @@ namespace HornetEngine.Graphics
         }
 
         /// <summary>
+        /// Gets the total byte size of all the data that is stored in all attributes
+        /// </summary>
+        /// <returns>Total byte size of all data in attributes</returns>
+        public int GetTotalByteCount()
+        {
+            int counter = 0;
+            try
+            {
+                att_mutex.WaitOne();
+                foreach(Attribute at in attribs)
+                {
+                    counter += at.byte_data.Count;
+                }
+                
+            } catch(Exception)
+            {
+            
+            } finally
+            {
+                att_mutex.ReleaseMutex();
+            }
+            return counter;
+        }
+
+        /// <summary>
+        /// Checks if the data stored in each attribute has the same amount of datapoints
+        /// </summary>
+        /// <returns>True if the data is aligned, False if not</returns>
+        public bool ValidateDataAlignment()
+        {
+            int prev_count = 0;
+            int count = 0;
+            try
+            {
+                att_mutex.WaitOne();
+                if(attribs.Count == 0)
+                {
+                    return true;
+                }
+                Attribute at;
+                for (int i = 0; i < attribs.Count; i++)
+                {
+                    at = attribs[i];
+                    bool valid = at.ValidateDataIntegrity();
+                    if (!valid)
+                    {
+                        throw new Exception("Attribute data in Attribute storage was not complete");
+                    }
+
+                    if(i != 0)
+                    {
+                        count = at.GetDatapointCount();
+                        if (prev_count != count)
+                        {
+                            return false;
+                        }
+                    }
+                    prev_count = count;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                att_mutex.ReleaseMutex();
+            }
+            return true;
+        }
+
+        /// <summary>
         /// Gets an attribute with specified name from the storage
         /// </summary>
         /// <param name="name">The name of the attribute that needs to be retrieved</param>

@@ -24,14 +24,17 @@ namespace HornetEngine.Graphics
         public Mesh(String name)
         {
             this.Status = MeshStatus.INVALID;
+            this.VertexBuffer = new VertexBuffer();
             Attributes = new AttributeStorage();
             this.Name = name;
         }
 
         public void BuildVertexBuffer()
         {
-
+            VertexBuffer.InitialiseBuffers();
+            VertexBuffer.BufferData(Attributes, ElementType.TRIANGLES);
         }
+
 
         public static Mesh ImportMesh(String name, String folder_id, String file)
         {
@@ -41,11 +44,19 @@ namespace HornetEngine.Graphics
             output.Error = Mesh.ImportFromFile(folder_id, file, out Scene s);
             if(output.Error != String.Empty)
             {
-
+                return output;
             }
 
             output.Status = MeshStatus.PARSING_DATA;
             ParseMeshData(output, s.Meshes[0]);
+            if(output.Attributes.Count == 0)
+            {
+                return output;
+            }
+
+            output.Status = MeshStatus.CREATING_BUFFER;
+            output.BuildVertexBuffer();
+
             return output;
         }
 
@@ -136,6 +147,8 @@ namespace HornetEngine.Graphics
             obj.Attributes.AddAttribute(normal_attrib);
             obj.Attributes.AddAttribute(texture_attrib);
         }
+
+        
 
         public void Dispose()
         {
