@@ -5,11 +5,15 @@ using Silk.NET.OpenGL;
 using System.Numerics;
 using Silk.NET.GLFW;
 using HornetEngine.Util.Drivers;
+using HornetEngine.Input;
 
 namespace HornetEngine.Graphics
 {
     public class Window : NativeWindow, ITouchEventListener
     {
+        public Mouse mouse { get; private set; }
+
+
         public delegate void WindowRefreshFunc(float timestep);
         public delegate void WindowMoveFunc(Vector2 newpos);
         public delegate void WindowResizeFunc(Vector2 newsize);
@@ -48,6 +52,10 @@ namespace HornetEngine.Graphics
             bool result = this.CreateWindowHandle(width, height, title, WindowMode.WINDOWED);
             GL.ClearColor(1.0f, 0.0f, 0.0f, 1.0f);
             touch_driver.SetEventListener(this);
+            unsafe
+            {
+                this.mouse = new Mouse(this.w_handle);
+            }
             return result;
         }
 
