@@ -2,23 +2,26 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AssimpNet" Version="4.1.0" />
+    <PackageReference Include="OpenTK.OpenAL" Version="4.6.3" />
     <PackageReference Include="Silk.NET.Core" Version="2.3.0" />
     <PackageReference Include="Silk.NET.GLFW" Version="2.3.0" />
     <PackageReference Include="Silk.NET.Input" Version="2.3.0" />
-    <PackageReference Include="Silk.NET.OpenAL" Version="2.3.0" />
     <PackageReference Include="Silk.NET.OpenGL" Version="2.3.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.1" />
+    <PackageReference Include="System.Security.Permissions" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Graphics\" />
-    <Folder Include="Input\" />
     <Folder Include="Sound\" />
   </ItemGroup>
 
