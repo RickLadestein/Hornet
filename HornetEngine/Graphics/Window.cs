@@ -6,11 +6,15 @@ using System.Numerics;
 using Silk.NET.GLFW;
 using HornetEngine.Util.Drivers;
 using System.Threading;
+using HornetEngine.Input;
 
 namespace HornetEngine.Graphics
 {
     public class Window : NativeWindow, ITouchEventListener
     {
+        public Mouse mouse { get; private set; }
+
+
         public delegate void WindowRefreshFunc(float timestep);
         public delegate void WindowMoveFunc(Vector2 newpos);
         public delegate void WindowResizeFunc(Vector2 newsize);
@@ -60,6 +64,10 @@ namespace HornetEngine.Graphics
             //Todo: replace with seperate callable buffer
             NativeWindow.GL.Enable(EnableCap.DepthTest);
             NativeWindow.GL.DepthFunc(DepthFunction.Less);
+            unsafe
+            {
+                this.mouse = new Mouse(this.w_handle);
+            }
             return result;
         }
 
