@@ -5,6 +5,8 @@ using HornetEngine.Graphics.Buffers;
 using HornetEngine.Util;
 using Silk.NET.OpenGL;
 using System.Numerics;
+using HornetEngine;
+using System.Threading.Tasks;
 
 namespace Sandbox
 {
@@ -13,6 +15,7 @@ namespace Sandbox
         public static Window w = new Window();
         public static Entity e;
         public static Camera cam;
+        public static SoundEntity en;
 
         private static int ctr = 0;
 
@@ -86,7 +89,7 @@ namespace Sandbox
             //Ensure that touch points are printed at least once a second
             if(ctr > 60)
             {
-                w.PrintTouchPoints();
+                //w.PrintTouchPoints();
                 ctr = 0;
             }
             ctr += 1;
@@ -111,6 +114,17 @@ namespace Sandbox
             FragmentShader fsh = new FragmentShader("shaders", "toon.frag");
             ShaderProgram prog = new ShaderProgram(vsh, fsh);
             ShaderResourceManager.GetInstance().AddResource("default", prog);
+
+
+            SoundManager manager = SoundManager.Instance;
+            en = new SoundEntity();
+            manager.addSample(1, "resources\\samples\\menu.wav");
+            en.setVolume(1.0f);
+
+            Task t = new Task(() => {
+                manager.getSample(1).playSound(en);
+            });
+            t.Start();
         }
         #endregion
     }
