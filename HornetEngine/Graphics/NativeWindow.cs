@@ -255,7 +255,7 @@ namespace HornetEngine.Graphics
             fwcontext.SetWindowCloseCallback(w_handle, NativeWindowCloseRequested);
             fwcontext.SetWindowIconifyCallback(w_handle, NativeWindowIconify);
             fwcontext.SetWindowMaximizeCallback(w_handle, NativeWindowMaximize);
-            fwcontext.SwapInterval(0);
+            //fwcontext.SwapInterval(0);
 
             n_window = new GlfwNativeWindow(fwcontext, w_handle);
             touch_driver = new TouchDriver(ref n_window);

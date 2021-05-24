@@ -14,38 +14,25 @@ namespace Sandbox
         public static Entity e;
         public static Camera cam;
 
+        private static int ctr = 0;
+
         static void Main()
         {
             DirectoryManager.RegisterResourceDir("textures", "resources\\textures");
             DirectoryManager.RegisterResourceDir("shaders", "resources\\shaders");
             DirectoryManager.RegisterResourceDir("models", "resources\\models");
+            
 
             w.Open("Test", 1080, 720, false);
             w.Title = "Helloworld";
             w.Redraw += W_Redraw;
-
-            NativeWindow.GL.Enable(EnableCap.DepthTest);
-            NativeWindow.GL.DepthFunc(DepthFunction.Less);
-
-
+            DoManualResourceAquisition();
 
             e = new Entity("monkeh");
             MeshComponent meshcomp = new MeshComponent();
-            Mesh m = Mesh.ImportMesh("monkey", "models", "ape.obj");
-            if(m != null)
-            {
-                MeshResourceManager.GetInstance().AddResource("monkey", m);
-            } else
-            {
-                throw new Exception("Mesh loading failed");
-            }
             meshcomp.SetTargetMesh("monkey");
 
             MaterialComponent matcomp = new MaterialComponent();
-            VertexShader vsh = new VertexShader("shaders", "toon.vert");
-            FragmentShader fsh = new FragmentShader("shaders", "toon.frag");
-            ShaderProgram prog = new ShaderProgram(vsh, fsh);
-            ShaderResourceManager.GetInstance().AddResource("default", prog);
             matcomp.SetShaderFromId("default");
 
             e.AddComponent(meshcomp);
@@ -96,8 +83,35 @@ namespace Sandbox
             Vector3 rot_movement = new Vector3(0.0f, 10.0f, 0.0f) * timestep;
             e.Transform.Rotation = e.Transform.Rotation + rot_movement;
 
+            //Ensure that touch points are printed at least once a second
+            if(ctr > 60)
+            {
+                w.PrintTouchPoints();
+                ctr = 0;
+            }
+            ctr += 1;
             return;
             
         }
+
+        #region MANUAL_RESOURCE
+        private static void DoManualResourceAquisition()
+        {
+            Mesh m = Mesh.ImportMesh("monkey", "models", "ape.obj");
+            if (m != null)
+            {
+                MeshResourceManager.GetInstance().AddResource("monkey", m);
+            }
+            else
+            {
+                throw new Exception("Mesh loading failed");
+            }
+
+            VertexShader vsh = new VertexShader("shaders", "toon.vert");
+            FragmentShader fsh = new FragmentShader("shaders", "toon.frag");
+            ShaderProgram prog = new ShaderProgram(vsh, fsh);
+            ShaderResourceManager.GetInstance().AddResource("default", prog);
+        }
+        #endregion
     }
 }

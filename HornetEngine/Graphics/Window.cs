@@ -5,6 +5,7 @@ using Silk.NET.OpenGL;
 using System.Numerics;
 using Silk.NET.GLFW;
 using HornetEngine.Util.Drivers;
+using System.Threading;
 
 namespace HornetEngine.Graphics
 {
@@ -26,6 +27,10 @@ namespace HornetEngine.Graphics
         private double end_time;
         private float last_frame_time;
 
+
+        private Mutex tp_mutex;
+        private Dictionary<uint, Vector2> touch_points;
+
         /// <summary>
         /// Instantiates a new window object with base parameters
         /// </summary>
@@ -33,6 +38,9 @@ namespace HornetEngine.Graphics
             start_time = 0.0d;
             end_time = 0.0d;
             last_frame_time = 0.0f;
+
+            touch_points = new Dictionary<uint, Vector2>();
+            tp_mutex = new Mutex();
         }
 
         /// <summary>
@@ -48,6 +56,10 @@ namespace HornetEngine.Graphics
             bool result = this.CreateWindowHandle(width, height, title, WindowMode.WINDOWED);
             GL.ClearColor(0.35f, 0.35f, 0.35f, 1.0f);
             touch_driver.SetEventListener(this);
+
+            //Todo: replace with seperate callable buffer
+            NativeWindow.GL.Enable(EnableCap.DepthTest);
+            NativeWindow.GL.DepthFunc(DepthFunction.Less);
             return result;
         }
 
@@ -106,7 +118,71 @@ namespace HornetEngine.Graphics
             //if(downres > 0) {
             //    Console.WriteLine($"Touch Down [{id}]");    
             //}
-            Console.WriteLine($"Touch event Id: {id} Pos:{position}  Size:{size}");
+            try
+            {
+                tp_mutex.WaitOne();
+                uint downres = flags & ((uint)TouchEventFlags.TOUCHEVENTF_DOWN);
+                uint mvres = flags & ((uint)TouchEventFlags.TOUCHEVENTF_MOVE);
+                uint upres = flags & ((uint)TouchEventFlags.TOUCHEVENTF_UP);
+                if (mvres > 0)
+                {
+                    if (touch_points.ContainsKey(id))
+                    {
+                        touch_points[id] = position;
+                    }
+                }
+                else
+                {
+                    if (downres > 0)
+                    {
+                        if (!touch_points.ContainsKey(id))
+                        {
+                            touch_points.Add(id, position);
+                        }
+                    }
+                    else if (upres > 0)
+                    {
+                        if (touch_points.ContainsKey(id))
+                        {
+                            touch_points.Remove(id);
+                        }
+                    }
+                }
+            } catch(Exception ex)
+            {
+                throw ex;
+            } finally
+            {
+                tp_mutex.ReleaseMutex();
+            }
+            
+            //Console.WriteLine($"Touch event Id: {id} Pos:{position}  Size:{size}");
+        }
+
+        public void PrintTouchPoints()
+        {
+            try
+            {
+                tp_mutex.WaitOne();
+                Console.Clear();
+                Console.CursorTop = 0;
+                Console.CursorLeft = 0;
+
+                Console.WriteLine($"Touchpoints[{touch_points.Count}] <");
+                foreach (Vector2 vec in touch_points.Values)
+                {
+                    Console.WriteLine($"Touchpoint [{vec.X}, {vec.Y}]");
+                }
+                Console.WriteLine(">");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                tp_mutex.ReleaseMutex();
+            }
         }
     }
 }
