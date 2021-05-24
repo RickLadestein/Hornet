@@ -46,7 +46,7 @@ namespace HornetEngine.Graphics
         public bool Open(String title, int width, int height, bool fullscreen)
         {
             bool result = this.CreateWindowHandle(width, height, title, WindowMode.WINDOWED);
-            GL.ClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+            GL.ClearColor(0.35f, 0.35f, 0.35f, 1.0f);
             touch_driver.SetEventListener(this);
             return result;
         }
@@ -60,7 +60,7 @@ namespace HornetEngine.Graphics
             {
                 start_time = this.GetAliveTime();
                 this.PollEvents();
-                this.ClearBuffer(ClearBufferMask.ColorBufferBit);
+                this.ClearBuffer(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
                 this.Redraw?.Invoke(last_frame_time);
 

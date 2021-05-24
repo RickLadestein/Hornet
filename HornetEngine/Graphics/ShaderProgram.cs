@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using Silk.NET.OpenGL;
 using System.Numerics;
+using HornetEngine.Util;
 
 namespace HornetEngine.Graphics
 {
@@ -362,7 +363,7 @@ namespace HornetEngine.Graphics
         /// </summary>
         /// <param name="type">The type of shader [Vertex, Geometry, Fragment...]</param>
         /// <param name="sourcefile">The path to the shader source code</param>
-        public Shader(ShaderType type,  string sourcefile)
+        public Shader(ShaderType type, string folder_id, string file)
         {
             this.Type = type;
             this.Status = ShaderStatus.UNINITIALISED;
@@ -376,7 +377,15 @@ namespace HornetEngine.Graphics
             }
 
             this.Status = ShaderStatus.IMPORTING_SOURCE_CODE;
-            String code = Shader.ReadFromFile(sourcefile);
+            string dir = DirectoryManager.GetResourceDir(folder_id);
+            if (dir == String.Empty)
+            {
+                this.Error = $"Directory with id [{folder_id}] was not found in DirectoryManager";
+                return;
+            }
+            string path = DirectoryManager.ConcatDirFile(dir, file);
+            String code = Shader.ReadFromFile(path);
+
             if(code.Length == 0)
             {
                 this.Error = "Source code import has failed or the file was empty";
@@ -484,7 +493,7 @@ namespace HornetEngine.Graphics
     /// </summary>
     public class VertexShader : Shader
     {
-        public VertexShader(string file) : base(ShaderType.VertexShader, file) {}
+        public VertexShader(string folder_id, string file) : base(ShaderType.VertexShader, folder_id, file) {}
     }
 
     /// <summary>
@@ -492,7 +501,7 @@ namespace HornetEngine.Graphics
     /// </summary>
     public class GeometryShader : Shader
     {
-        public GeometryShader(string file) : base(ShaderType.GeometryShader, file) { }
+        public GeometryShader(string folder_id, string file) : base(ShaderType.GeometryShader, folder_id, file) { }
     }
 
     /// <summary>
@@ -500,7 +509,7 @@ namespace HornetEngine.Graphics
     /// </summary>
     public class FragmentShader : Shader
     {
-        public FragmentShader(string file) : base(ShaderType.FragmentShader, file) { }
+        public FragmentShader(string folder_id, string file) : base(ShaderType.FragmentShader, folder_id, file) { }
     }
 
     

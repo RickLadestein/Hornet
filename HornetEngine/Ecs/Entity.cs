@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HornetEngine.Ecs
 {
-    public abstract class Entity
+    public class Entity
     {
         private List<Component> components;
 
@@ -26,7 +26,12 @@ namespace HornetEngine.Ecs
         /// <summary>
         /// The children this entity has
         /// </summary>
-        public List<Entity> Children { get; private set; } 
+        public List<Entity> Children { get; private set; }
+
+        /// <summary>
+        /// The scripts that are bound to the entity
+        /// </summary>
+        public List<MonoScript> Scripts { get; private set; }
 
         /// <summary>
         /// Creates a new instance of Entity with default parameters
@@ -38,6 +43,7 @@ namespace HornetEngine.Ecs
             Name = "Entity";
             Transform = new Transform();
             Children = new List<Entity>();
+            Scripts = new List<MonoScript>();
         }
 
         /// <summary>
@@ -56,6 +62,7 @@ namespace HornetEngine.Ecs
                 Name = name;
                 Transform = new Transform();
                 Children = new List<Entity>();
+                Scripts = new List<MonoScript>();
             }
         }
 

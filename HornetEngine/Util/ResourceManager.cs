@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HornetEngine.Graphics;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -98,5 +99,49 @@ namespace HornetEngine.Util
             access_mutex.ReleaseMutex();
             return success;
         }
+    }
+
+    public class MeshResourceManager : ResourceManager<Mesh>
+    {
+        private static MeshResourceManager instance;
+        public static MeshResourceManager GetInstance()
+        {
+            if(instance == null)
+            {
+                instance = new MeshResourceManager();
+            }
+            return instance;
+        }
+
+        public new void AddResource(String identifier, Mesh resource)
+        {
+            if(resource == null)
+            {
+                throw new ArgumentNullException("Mesh");
+            }
+            if(resource.Status != MeshStatus.READY)
+            {
+                throw new Exception($"Could not add resource: Mesh creation failed or is not done yet! \n Error_str: {resource.Error}");
+            }
+            base.AddResource(identifier, resource);
+        }
+
+        private MeshResourceManager() : base() { }
+    }
+
+
+    public class ShaderResourceManager : ResourceManager<ShaderProgram>
+    {
+        private static ShaderResourceManager instance;
+        public static ShaderResourceManager GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new ShaderResourceManager();
+            }
+            return instance;
+        }
+
+        private ShaderResourceManager() : base() { }
     }
 }

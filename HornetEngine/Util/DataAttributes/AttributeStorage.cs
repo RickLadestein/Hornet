@@ -100,9 +100,9 @@ namespace HornetEngine.Graphics
                         throw new Exception("Attribute data in Attribute storage was not complete");
                     }
 
+                    count = at.GetDatapointCount();
                     if(i != 0)
                     {
-                        count = at.GetDatapointCount();
                         if (prev_count != count)
                         {
                             return false;

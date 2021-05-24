@@ -58,18 +58,19 @@ namespace HornetEngine.Util.Drivers
         private static ITouchEventListener listener;
 
         delegate IntPtr WndProcDelegate(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+        private WndProcDelegate procfunc;
 
-        private static TouchDriver instance;
-
-        public static TouchDriver GetInstance(ref GlfwNativeWindow wnd)
-        {
-            if (instance == null)
-            {
-                instance = new TouchDriver(ref wnd);
-            }
-            return instance;
-        }
-        private TouchDriver(ref GlfwNativeWindow wnd)
+        //private static TouchDriver instance;
+        //
+        //public static TouchDriver GetInstance(ref GlfwNativeWindow wnd)
+        //{
+        //    if (instance == null)
+        //    {
+        //        instance = new TouchDriver(ref wnd);
+        //    }
+        //    return instance;
+        //}
+        public TouchDriver(ref GlfwNativeWindow wnd)
         {
             GetWindowPtr(ref wnd);
             LinkToWin32();
@@ -104,7 +105,7 @@ namespace HornetEngine.Util.Drivers
             registered_touch = RegisterTouchWindow(HWnd, (ulong)RegisterTouchFlags.TWF_WANTPALM);
             if (registered_touch)
             {
-                WndProcDelegate procfunc = new WndProcDelegate(WndProc);
+                procfunc = new WndProcDelegate(WndProc);
                 IntPtr del = Marshal.GetFunctionPointerForDelegate(procfunc);
                 oldproc = SetWindowLongPtr(HWnd, -4, del);
                 bound = true;

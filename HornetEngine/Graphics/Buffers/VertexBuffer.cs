@@ -70,7 +70,6 @@ namespace HornetEngine.Graphics.Buffers
                 this.Error = "Could not load data into buffers: Buffers not initialised";
                 return;
             }
-
             //Allign all data
             uint total_byte_count = (uint)attributes.GetTotalByteCount();
             int vbo_copy_index = 0;
@@ -104,8 +103,13 @@ namespace HornetEngine.Graphics.Buffers
                 uint stride = 0;
                 foreach(Attribute at in attributes)
                 {
+                    int comp_count = (int)at.Components;
                     stride = at.Base_type_size * at.Components;
-                    NativeWindow.GL.VertexAttribPointer((uint)this.current_vao_attrib, (int)VertexCount, (GLEnum)at.Base_type, false, stride, (void*)offset);
+                    GLEnum base_type = (GLEnum)at.Base_type;
+                    void* offset_ptr = (void*)offset;
+                    uint attrib = (uint)this.current_vao_attrib;
+                    NativeWindow.GL.VertexAttribPointer(attrib, comp_count, base_type, false, stride, offset_ptr);
+                    NativeWindow.GL.EnableVertexAttribArray(attrib);
                     offset += at.byte_data.Count;
                     this.current_vao_attrib += 1;
                 }

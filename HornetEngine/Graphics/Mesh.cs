@@ -38,6 +38,7 @@ namespace HornetEngine.Graphics
 
         public static Mesh ImportMesh(String name, String folder_id, String file)
         {
+            
             Mesh output = new Mesh(name);
 
             output.Status = MeshStatus.IMPORTING_DATA;
@@ -56,7 +57,11 @@ namespace HornetEngine.Graphics
 
             output.Status = MeshStatus.CREATING_BUFFER;
             output.BuildVertexBuffer();
-
+            if (output.VertexBuffer.Error.Length > 0)
+            {
+                return output;
+            }
+            output.Status = MeshStatus.READY;
             return output;
         }
 
@@ -101,7 +106,7 @@ namespace HornetEngine.Graphics
             obj.Attributes.ClearAttributes();
             List<Vector3> vertex_data = new List<Vector3>();
             List<Vector3> normal_data = new List<Vector3>();
-            List<Vector2> texture_data = new List<Vector2>();
+            List<Vector3> texture_data = new List<Vector3>();
 
             bool hastex = mesh.HasTextureCoords(0);
 
@@ -117,16 +122,18 @@ namespace HornetEngine.Graphics
                 n.Y = mesh.Normals[i].Y;
                 n.Z = mesh.Normals[i].Z;
 
-                Vector2 t;
+                Vector3 t;
                 if (hastex)
                 {
                     t.X = mesh.TextureCoordinateChannels[0][i].X;
                     t.Y = mesh.TextureCoordinateChannels[0][i].Y;
+                    t.Z = 0.0f;
                 }
                 else
                 {
                     t.X = 0.0f;
                     t.Y = 0.0f;
+                    t.Z = 0.0f;
                 }
 
                 vertex_data.Add(v);
@@ -147,9 +154,6 @@ namespace HornetEngine.Graphics
             obj.Attributes.AddAttribute(normal_attrib);
             obj.Attributes.AddAttribute(texture_attrib);
         }
-
-        
-
         public void Dispose()
         {
             this.Attributes.ClearAttributes();
