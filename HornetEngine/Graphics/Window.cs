@@ -5,13 +5,14 @@ using Silk.NET.OpenGL;
 using System.Numerics;
 using Silk.NET.GLFW;
 using HornetEngine.Util.Drivers;
+using HornetEngine.Util;
 using System.Threading;
 
 namespace HornetEngine.Graphics
 {
     public class Window : NativeWindow, ITouchEventListener
     {
-        public delegate void WindowRefreshFunc(float timestep);
+        public delegate void WindowRefreshFunc();
         public delegate void WindowMoveFunc(Vector2 newpos);
         public delegate void WindowResizeFunc(Vector2 newsize);
         public delegate void WindowFocusFunc(bool focussed);
@@ -74,11 +75,11 @@ namespace HornetEngine.Graphics
                 this.PollEvents();
                 this.ClearBuffer(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-                this.Redraw?.Invoke(last_frame_time);
+                this.Redraw?.Invoke();
 
                 this.SwapBuffers();
                 end_time = this.GetAliveTime();
-                last_frame_time = (float) (end_time - start_time);
+                Time.FrameDelta = (float) (end_time - start_time);
             }
         }
 
@@ -171,7 +172,7 @@ namespace HornetEngine.Graphics
                 Console.WriteLine($"Touchpoints[{touch_points.Count}] <");
                 foreach (Vector2 vec in touch_points.Values)
                 {
-                    Console.WriteLine($"Touchpoint [{vec.X}, {vec.Y}]");
+                    Console.WriteLine($"Touchpoint [{vec.X / 100}, {vec.Y / 100}]");
                 }
                 Console.WriteLine(">");
             }
