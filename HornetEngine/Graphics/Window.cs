@@ -12,6 +12,7 @@ namespace HornetEngine.Graphics
     public class Window : NativeWindow, ITouchEventListener
     {
         public Mouse mouse { get; private set; }
+        public Keyboard keyboard { get; private set; }
 
 
         public delegate void WindowRefreshFunc(float timestep);
@@ -55,6 +56,7 @@ namespace HornetEngine.Graphics
             unsafe
             {
                 this.mouse = new Mouse(this.w_handle);
+                this.keyboard = new Keyboard(this.w_handle);
             }
             return result;
         }
