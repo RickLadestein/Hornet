@@ -8,16 +8,41 @@ using System.Threading;
 
 namespace HornetEngine.Input
 {
-
+    /// <summary>
+    /// Structure containing data about a TouchPoint on the screen
+    /// </summary>
     public struct TouchPoint
     {
+        /// <summary>
+        /// The TouchPoint X position
+        /// </summary>
         public Int32 xpos;
+
+        /// <summary>
+        /// The TouchPoint Y position
+        /// </summary>
         public Int32 ypos;
+
+        /// <summary>
+        /// The TouchPoint contact area width in pixels
+        /// </summary>
         public UInt32 contact_width;
+
+        /// <summary>
+        /// The TouchPoint contact area height in pixel
+        /// </summary>
         public UInt32 contact_height;
+
+        /// <summary>
+        /// The TouchPoint virtual id
+        /// </summary>
         public UInt32 virt_id;
 
     }
+
+    /// <summary>
+    /// Class that defines behaviour and events for catching and passing TouchEvents
+    /// </summary>
     public class TouchPanel : ITouchEventListener
     {
         public delegate void TouchPointMoveFunc(Vector2 position, Vector2 delta, Vector2 size, uint id);
@@ -27,10 +52,25 @@ namespace HornetEngine.Input
         private Mutex touch_mutex;
         private Dictionary<UInt32, TouchPoint> captured_points;
 
+        /// <summary>
+        /// Event queue for listening to Touch Move events
+        /// </summary>
         public event TouchPointMoveFunc TouchMove;
+
+        /// <summary>
+        /// Event queue for listening to Touch Press events
+        /// </summary>
         public event TouchPointPressFunc TouchPress;
+
+        /// <summary>
+        /// Event queue for listening to Touch Release events
+        /// </summary>
         public event TouchPointReleaseFunc TouchRelease;
 
+        /// <summary>
+        /// Instantiates a new instance of TouchPanel that hooks into the touch driver event bus
+        /// </summary>
+        /// <param name="drv">The TouchDriver instance</param>
         public TouchPanel(TouchDriver drv)
         {
             touch_mutex = new Mutex();
@@ -39,6 +79,10 @@ namespace HornetEngine.Input
             drv.SetEventListener(this);
         }
 
+        /// <summary>
+        /// Gets a list of all the currently active touch points on the screen
+        /// </summary>
+        /// <returns>A list of all the active touch points on the screen</returns>
         public List<TouchPoint> GetTouchPoints()
         {
             try
@@ -55,6 +99,13 @@ namespace HornetEngine.Input
             }
         }
 
+        /// <summary>
+        /// Internal interface function for catching touch events from the touch driver
+        /// </summary>
+        /// <param name="position">The position of the touch point</param>
+        /// <param name="size">The size of the touch point in pixels</param>
+        /// <param name="id">The id of the touch point</param>
+        /// <param name="flags">The special flags that identifies the event type</param>
         public void OnTouchEvent(Vector2 position, Vector2 size, uint id, uint flags)
         {
             //Check if the flag for touchevent up is true
