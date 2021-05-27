@@ -52,9 +52,9 @@ namespace HornetEngine.Graphics
         /// <param name="height">The height of the application window in pixels</param>
         /// <param name="fullscreen">Fullscreen specifier, false: undecorated window, true: decorated window</param>
         /// <returns>Window creation succes status, false: window creation failed, true: window creation succesfull</returns>
-        public bool Open(String title, int width, int height, bool fullscreen)
+        public bool Open(String title, int width, int height, WindowMode mode)
         {
-            bool result = this.CreateWindowHandle(width, height, title, WindowMode.WINDOWED);
+            bool result = this.CreateWindowHandle(width, height, title, mode);
             GL.ClearColor(0.35f, 0.35f, 0.35f, 1.0f);
             touch_driver.SetEventListener(this);
 

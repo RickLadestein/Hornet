@@ -117,20 +117,23 @@ namespace HornetEngine.Util.Drivers
             if (msg == WM_TOUCH)
             {
                 long touch_event_count = wparam.ToInt64();
-                int touch_arr_size = (int)(sizeof(TOUCH_STRUCT) * touch_event_count);
-                IntPtr touch_arr = Marshal.AllocHGlobal(touch_arr_size);
-                bool succes = GetTouchInputInfo(lparam, (uint)touch_event_count, touch_arr, (uint)sizeof(TOUCH_STRUCT));
-                if (succes)
+                if (touch_event_count != 0)
                 {
-                    TOUCH_STRUCT* ptr = (TOUCH_STRUCT*)touch_arr.ToPointer();
-                    for (int i = 0; i < (int)touch_event_count; i++)
+                    int touch_arr_size = (int)(sizeof(TOUCH_STRUCT) * touch_event_count);
+                    IntPtr touch_arr = Marshal.AllocHGlobal(touch_arr_size);
+                    bool succes = GetTouchInputInfo(lparam, (uint)touch_event_count, touch_arr, (uint)sizeof(TOUCH_STRUCT));
+                    if (succes)
                     {
-                        TOUCH_STRUCT ts = ptr[i];
-                        Vector2 pos = new Vector2(ts.x, ts.y);
-                        Vector2 size = new Vector2(ts.cxContact, ts.cyContact);
-                        listener?.OnTouchEvent(pos, size, ts.dwID, ts.dwFlags);
+                        TOUCH_STRUCT* ptr = (TOUCH_STRUCT*)touch_arr.ToPointer();
+                        for (int i = 0; i < (int)touch_event_count; i++)
+                        {
+                            TOUCH_STRUCT ts = ptr[i];
+                            Vector2 pos = new Vector2(ts.x, ts.y);
+                            Vector2 size = new Vector2(ts.cxContact, ts.cyContact);
+                            listener?.OnTouchEvent(pos, size, ts.dwID, ts.dwFlags);
+                        }
+                        CloseTouchInputHandle(lparam);
                     }
-                    CloseTouchInputHandle(lparam);
                 }
             }
             return (IntPtr)CallWindowProc(oldproc, hwnd, msg, wparam, lparam);
