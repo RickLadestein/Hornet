@@ -170,6 +170,15 @@ namespace HornetEngine.Input
         }
 
         /// <summary>
+        /// A function which will return the current mode of the mouse
+        /// </summary>
+        /// <returns>A MouseMode, depending on the current mode.</returns>
+        public MouseMode getMode()
+        {
+            return this.mode;
+        }
+
+        /// <summary>
         /// The constructor of the Mouse class
         /// </summary>
         /// <param name="w_handle">The handle of the window</param>
