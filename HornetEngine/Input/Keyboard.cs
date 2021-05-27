@@ -17,9 +17,9 @@ namespace HornetEngine.Input
         public delegate void KeyReleaseFunc(Keys key);
         public delegate void KeyRepeatFunc(Keys key);
 
-        public event KeyPressFunc keyPress;
-        public event KeyReleaseFunc keyRelease;
-        public event KeyRepeatFunc keyRepeat;
+        public event KeyPressFunc KeyPress;
+        public event KeyReleaseFunc KeyRelease;
+        public event KeyRepeatFunc KeyRepeat;
 
         /// <summary>
         /// The constructor of the Keyboard class
@@ -38,14 +38,14 @@ namespace HornetEngine.Input
             mode = KeyboardMode.ACTION;
 
             // Set the callback for the key actions
-            NativeWindow.GLFW.SetKeyCallback(w_handle, onKeyAction);
+            NativeWindow.GLFW.SetKeyCallback(w_handle, OnKeyAction);
         }
 
         /// <summary>
         /// A function which can be used to change the keyboard's mode.
         /// </summary>
         /// <param name="newMode">The new mode which should be used.</param>
-        public void changeMode(KeyboardMode newMode)
+        public void ChangeMode(KeyboardMode newMode)
         {
             this.mode = newMode;
         }
@@ -58,7 +58,7 @@ namespace HornetEngine.Input
         /// <param name="scanCode">The physical code which the keyboard passes to Windows.</param>
         /// <param name="action">A variable which holds whether the key has been pressed or released.</param>
         /// <param name="mods">Modifiers for the keys, such as shift/control etc.</param>
-        private unsafe void onKeyAction(WindowHandle* window, Keys key, int scanCode, InputAction action, KeyModifiers mods)
+        private unsafe void OnKeyAction(WindowHandle* window, Keys key, int scanCode, InputAction action, KeyModifiers mods)
         {
             // Check whether the current mode is TYPING
             if(mode == KeyboardMode.TYPING)
@@ -69,13 +69,13 @@ namespace HornetEngine.Input
             switch(action)
             {
                 case InputAction.Press:
-                    handlePressedKey(key);
+                    HandlePressedKey(key);
                     break;
                 case InputAction.Release:
-                    handleReleasedKey(key);
+                    HandleReleasedKey(key);
                     break;
                 case InputAction.Repeat:
-                    handleRepeatKey(key);
+                    HandleRepeatKey(key);
                     break;
             }
         }
@@ -84,24 +84,24 @@ namespace HornetEngine.Input
         /// A function which will handle a released key.
         /// </summary>
         /// <param name="releasedKey">The key which has been released.</param>
-        private void handleReleasedKey(Keys releasedKey)
+        private void HandleReleasedKey(Keys releasedKey)
         {
-            removeKey(releasedKey);
-            keyRelease?.Invoke(releasedKey);
+            RemoveKey(releasedKey);
+            KeyRelease?.Invoke(releasedKey);
         }
 
         /// <summary>
         /// A function which will handle a pressed key.
         /// </summary>
         /// <param name="pressedKey">The key which has been pressed.</param>
-        private void handlePressedKey(Keys pressedKey)
+        private void HandlePressedKey(Keys pressedKey)
         {
             switch(pressedKey)
             {
                 case Keys.E:
-                    addKey(Keys.E);
-                    handleKeyE();
-                    keyPress?.Invoke(pressedKey);
+                    AddKey(Keys.E);
+                    HandleKeyE();
+                    KeyPress?.Invoke(pressedKey);
                     break;
                 default:
                     Console.WriteLine("This key has not been implemented yet.");
@@ -113,13 +113,13 @@ namespace HornetEngine.Input
         /// A function which will handle the repeated usage of a key.
         /// </summary>
         /// <param name="repeatKey">The key which has been repeated.</param>
-        private void handleRepeatKey(Keys repeatKey)
+        private void HandleRepeatKey(Keys repeatKey)
         {
             switch(repeatKey)
             {
                 case Keys.E:
-                    handleKeyE();
-                    keyRepeat?.Invoke(repeatKey);
+                    HandleKeyE();
+                    KeyRepeat?.Invoke(repeatKey);
                     break;
                 default:
                     Console.WriteLine("An unknown key has been repeated.");
@@ -130,7 +130,7 @@ namespace HornetEngine.Input
         /// <summary>
         /// A function which will handle the specific 'e' key.
         /// </summary>
-        private void handleKeyE()
+        private void HandleKeyE()
         {
             Console.WriteLine("E has been pressed");
         }
@@ -139,7 +139,7 @@ namespace HornetEngine.Input
         /// A function which can be used to add a key to the pressed keys arrays
         /// </summary>
         /// <param name="key"></param>
-        private void addKey(Keys key)
+        private void AddKey(Keys key)
         {
             Console.Clear();
             for (int i = 0; i < MAX_PRESSED_BUTTONS; i++)
@@ -170,7 +170,7 @@ namespace HornetEngine.Input
         /// A function which can be used to remove a key from the pressed keys array
         /// </summary>
         /// <param name="key">The key which should be removed.</param>
-        private void removeKey(Keys key)
+        private void RemoveKey(Keys key)
         {
             Console.Clear();
             // Loop through the pressed buttons to find the specific key

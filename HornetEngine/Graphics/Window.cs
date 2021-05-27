@@ -11,8 +11,8 @@ namespace HornetEngine.Graphics
 {
     public class Window : NativeWindow
     {
-        public Mouse mouse { get; private set; }
-        public Keyboard keyboard { get; private set; }
+        public Mouse Mouse { get; private set; }
+        public Keyboard Keyboard { get; private set; }
         public TouchPanel Touch_panel { get; private set; }
 
 
@@ -55,8 +55,8 @@ namespace HornetEngine.Graphics
             GL.ClearColor(1.0f, 0.0f, 0.0f, 1.0f);
             unsafe
             {
-                this.mouse = new Mouse(this.w_handle);
-                this.keyboard = new Keyboard(this.w_handle);
+                this.Mouse = new Mouse(this.w_handle);
+                this.Keyboard = new Keyboard(this.w_handle);
                 this.Touch_panel = new TouchPanel(this.touch_driver);
             }
             return result;
