@@ -61,15 +61,17 @@ namespace HornetEngine.Util.Drivers
 
         private static TouchDriver instance;
 
-        public static TouchDriver GetInstance(ref GlfwNativeWindow wnd)
+        public static TouchDriver GetInstance()
         {
             if (instance == null)
             {
-                instance = new TouchDriver(ref wnd);
+                instance = new TouchDriver();
             }
             return instance;
         }
-        private TouchDriver(ref GlfwNativeWindow wnd)
+        private TouchDriver() {}
+
+        public void Initialise(ref GlfwNativeWindow wnd)
         {
             GetWindowPtr(ref wnd);
             LinkToWin32();
@@ -125,7 +127,7 @@ namespace HornetEngine.Util.Drivers
                     for (int i = 0; i < (int)touch_event_count; i++)
                     {
                         TOUCH_STRUCT ts = ptr[i];
-                        Vector2 pos = new Vector2(ts.x, ts.y);
+                        Vector2 pos = new Vector2(ts.x / 100, ts.y / 100);
                         Vector2 size = new Vector2(ts.cxContact, ts.cyContact);
                         listener?.OnTouchEvent(pos, size, ts.dwID, ts.dwFlags);
                     }
