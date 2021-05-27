@@ -9,9 +9,10 @@ using HornetEngine.Input;
 
 namespace HornetEngine.Graphics
 {
-    public class Window : NativeWindow, ITouchEventListener
+    public class Window : NativeWindow
     {
-        public Mouse mouse { get; private set; }
+        public Mouse Mouse { get; private set; }
+        public TouchPanel Touch_panel { get; private set; }
 
 
         public delegate void WindowRefreshFunc(float timestep);
@@ -51,10 +52,10 @@ namespace HornetEngine.Graphics
         {
             bool result = this.CreateWindowHandle(width, height, title, WindowMode.WINDOWED);
             GL.ClearColor(1.0f, 0.0f, 0.0f, 1.0f);
-            touch_driver.SetEventListener(this);
             unsafe
             {
-                this.mouse = new Mouse(this.w_handle);
+                this.Mouse = new Mouse(this.w_handle);
+                this.Touch_panel = new TouchPanel(this.touch_driver);
             }
             return result;
         }
@@ -106,15 +107,6 @@ namespace HornetEngine.Graphics
         protected override void OnWindowMaximize(bool maximized)
         {
             return;
-        }
-
-        public void OnTouchEvent(Vector2 position, Vector2 size, uint id, uint flags)
-        {
-            //uint downres = flags & ((uint)TouchEventFlags.TOUCHEVENTF_DOWN);
-            //if(downres > 0) {
-            //    Console.WriteLine($"Touch Down [{id}]");    
-            //}
-            Console.WriteLine($"Touch event Id: {id} Pos:{position}  Size:{size}");
         }
     }
 }
