@@ -17,8 +17,6 @@ namespace Sandbox
         public static Camera cam;
         public static SoundEntity en;
 
-        private static int ctr = 0;
-
         static void Main()
         {
             DirectoryManager.RegisterResourceDir("textures", "resources\\textures");
@@ -26,7 +24,7 @@ namespace Sandbox
             DirectoryManager.RegisterResourceDir("models", "resources\\models");
             
 
-            w.Open("Test", 1080, 720, false);
+            w.Open("Test", 3840, 2160, WindowMode.WINDOWED);
             w.Title = "Helloworld";
             w.Redraw += W_Redraw;
             DoManualResourceAquisition();
@@ -38,8 +36,12 @@ namespace Sandbox
             MaterialComponent matcomp = new MaterialComponent();
             matcomp.SetShaderFromId("default");
 
+            MonkeyScript monkeyscr = new MonkeyScript();
+
+
             e.AddComponent(meshcomp);
             e.AddComponent(matcomp);
+            e.AddScript(monkeyscr);
 
             cam = new Camera();
             cam.ViewSettings = new CameraViewSettings()
@@ -60,7 +62,7 @@ namespace Sandbox
 
         
 
-        private static void W_Redraw(float timestep)
+        private static void W_Redraw()
         {
             MaterialComponent matcomp = e.GetComponent<MaterialComponent>();
             MeshComponent meshcomp = e.GetComponent<MeshComponent>();
@@ -83,16 +85,10 @@ namespace Sandbox
             vbuf.Unbind();
             ShaderProgram.UnbindAll();
 
-            Vector3 rot_movement = new Vector3(0.0f, 10.0f, 0.0f) * timestep;
-            e.Transform.Rotation = e.Transform.Rotation + rot_movement;
-
-            //Ensure that touch points are printed at least once a second
-            if(ctr > 60)
+            foreach (MonoScript ms in e.Scripts)
             {
-                //w.PrintTouchPoints();
-                ctr = 0;
+                ms.Update();
             }
-            ctr += 1;
             return;
             
         }

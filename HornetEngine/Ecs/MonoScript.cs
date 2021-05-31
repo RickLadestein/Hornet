@@ -6,8 +6,12 @@ namespace HornetEngine.Ecs
 {
     public abstract class MonoScript
     {
-        public Entity self;
+        public Entity entity;
 
+
+        public MonoScript() {
+            this.Start();
+        }
         public abstract void Start();
 
         public abstract void Update();

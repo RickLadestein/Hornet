@@ -9,6 +9,11 @@ namespace HornetEngine.Ecs
         private List<Component> components;
 
         /// <summary>
+        /// The scripts that are bound to the entity
+        /// </summary>
+        public List<MonoScript> Scripts { get; private set; }
+
+        /// <summary>
         /// The identifier of this Entity
         /// </summary>
         public Guid Id { get; private set; }
@@ -28,10 +33,7 @@ namespace HornetEngine.Ecs
         /// </summary>
         public List<Entity> Children { get; private set; }
 
-        /// <summary>
-        /// The scripts that are bound to the entity
-        /// </summary>
-        public List<MonoScript> Scripts { get; private set; }
+        
 
         /// <summary>
         /// Creates a new instance of Entity with default parameters
@@ -39,11 +41,11 @@ namespace HornetEngine.Ecs
         public Entity()
         {
             components = new List<Component>();
+            Scripts = new List<MonoScript>();
             Id = Guid.NewGuid();
             Name = "Entity";
             Transform = new Transform();
             Children = new List<Entity>();
-            Scripts = new List<MonoScript>();
         }
 
         /// <summary>
@@ -105,6 +107,58 @@ namespace HornetEngine.Ecs
         /// <typeparam name="T">The type of component that is to be found</typeparam>
         /// <param name="comps">A list where found c</param>
         public void GetComponents<T>(ref List<T> comps) where T : Component
+        {
+            foreach (Component c in components)
+            {
+                if (c != null && c is T t)
+                {
+                    comps.Add(t);
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Adds a script to this Entity
+        /// </summary>
+        /// <param name="c">The script to add</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public void AddScript(MonoScript c)
+        {
+            if (c == null)
+            {
+                throw new ArgumentNullException("Component cannot be null");
+            }
+            else
+            {
+                c.entity = this;
+                Scripts.Add(c);
+            }
+        }
+
+        /// <summary>
+        /// Retrieves the first found script that matches the search parameter.
+        /// </summary>
+        /// <typeparam name="T">The script that is to be found</typeparam>
+        /// <returns>Found script, if not found returns <c>null</c></returns>
+        public T GetScript<T>() where T : MonoScript
+        {
+            foreach (MonoScript c in Scripts)
+            {
+                if (c != null && c is T t)
+                {
+                    return t;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Retrieves all scripts that match the search parameter
+        /// </summary>
+        /// <typeparam name="T">The type of script that is to be found</typeparam>
+        /// <param name="comps">A list where found scripts are stored</param>
+        public void GetScripts<T>(ref List<T> comps) where T : MonoScript
         {
             foreach (Component c in components)
             {

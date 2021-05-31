@@ -5,8 +5,10 @@ using Silk.NET.OpenGL;
 using System.Numerics;
 using Silk.NET.GLFW;
 using HornetEngine.Util.Drivers;
+using HornetEngine.Util;
 using System.Threading;
 using HornetEngine.Input;
+using HornetEngine.Graphics.Buffers;
 
 namespace HornetEngine.Graphics
 {
@@ -15,7 +17,7 @@ namespace HornetEngine.Graphics
         public Mouse mouse { get; private set; }
 
 
-        public delegate void WindowRefreshFunc(float timestep);
+        public delegate void WindowRefreshFunc();
         public delegate void WindowMoveFunc(Vector2 newpos);
         public delegate void WindowResizeFunc(Vector2 newsize);
         public delegate void WindowFocusFunc(bool focussed);
@@ -55,10 +57,11 @@ namespace HornetEngine.Graphics
         /// <param name="height">The height of the application window in pixels</param>
         /// <param name="fullscreen">Fullscreen specifier, false: undecorated window, true: decorated window</param>
         /// <returns>Window creation succes status, false: window creation failed, true: window creation succesfull</returns>
-        public bool Open(String title, int width, int height, bool fullscreen)
+        public bool Open(String title, int width, int height, WindowMode mode)
         {
-            bool result = this.CreateWindowHandle(width, height, title, WindowMode.WINDOWED);
+            bool result = this.CreateWindowHandle(width, height, title, mode);
             GL.ClearColor(0.35f, 0.35f, 0.35f, 1.0f);
+            DepthBuffer.Enable();
             touch_driver.SetEventListener(this);
 
             //Todo: replace with seperate callable buffer
@@ -82,11 +85,11 @@ namespace HornetEngine.Graphics
                 this.PollEvents();
                 this.ClearBuffer(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-                this.Redraw?.Invoke(last_frame_time);
+                this.Redraw?.Invoke();
 
                 this.SwapBuffers();
                 end_time = this.GetAliveTime();
-                last_frame_time = (float) (end_time - start_time);
+                Time.FrameDelta = (float) (end_time - start_time);
             }
         }
 
@@ -179,7 +182,7 @@ namespace HornetEngine.Graphics
                 Console.WriteLine($"Touchpoints[{touch_points.Count}] <");
                 foreach (Vector2 vec in touch_points.Values)
                 {
-                    Console.WriteLine($"Touchpoint [{vec.X}, {vec.Y}]");
+                    Console.WriteLine($"Touchpoint [{vec.X / 100}, {vec.Y / 100}]");
                 }
                 Console.WriteLine(">");
             }
