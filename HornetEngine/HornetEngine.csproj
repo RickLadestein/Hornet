@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="AssimpNet" Version="4.1.0" />
+    <PackageReference Include="GlmSharp" Version="0.9.8" />
     <PackageReference Include="OpenTK.OpenAL" Version="4.6.3" />
     <PackageReference Include="Silk.NET.Core" Version="2.3.0" />
     <PackageReference Include="Silk.NET.GLFW" Version="2.3.0" />

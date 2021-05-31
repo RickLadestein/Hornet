@@ -26,7 +26,7 @@ namespace HornetEngine.Ecs
         /// <summary>
         /// The current transform of this entity
         /// </summary>
-        public Transform Transform { get; private set; }
+        public Transform Transform;
 
         /// <summary>
         /// The children this entity has
@@ -46,6 +46,7 @@ namespace HornetEngine.Ecs
             Name = "Entity";
             Transform = new Transform();
             Children = new List<Entity>();
+            Transform.Reset();
         }
 
         /// <summary>
@@ -65,6 +66,7 @@ namespace HornetEngine.Ecs
                 Transform = new Transform();
                 Children = new List<Entity>();
                 Scripts = new List<MonoScript>();
+                Transform.Reset();
             }
         }
 
@@ -132,6 +134,7 @@ namespace HornetEngine.Ecs
             else
             {
                 c.entity = this;
+                c.Start();
                 Scripts.Add(c);
             }
         }

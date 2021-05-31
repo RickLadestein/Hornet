@@ -52,7 +52,7 @@ namespace Sandbox
             cam.UpdateProjectionMatrix();
             cam.UpdateViewMatrix();
 
-            e.Transform.Position += new System.Numerics.Vector3(0.0f, 0.0f, 5.0f);
+            e.Transform.Position += new GlmSharp.vec3(0.0f, 0.0f, 5.0f);
             w.Run();
         }
 

@@ -42,7 +42,7 @@ namespace HornetEngine.Graphics
             Mesh output = new Mesh(name);
 
             output.Status = MeshStatus.IMPORTING_DATA;
-            output.Error = Mesh.ImportFromFile(folder_id, file, out Scene s);
+            output.Error = Mesh.ImportFromFile(folder_id, file, out Assimp.Scene s);
             if(output.Error != String.Empty)
             {
                 return output;
@@ -65,7 +65,7 @@ namespace HornetEngine.Graphics
             return output;
         }
 
-        private static String ImportFromFile(String folder_id, String file, out Scene scene)
+        private static String ImportFromFile(String folder_id, String file, out Assimp.Scene scene)
         {
             string dir = DirectoryManager.GetResourceDir(folder_id);
             if(dir == String.Empty)
@@ -79,7 +79,7 @@ namespace HornetEngine.Graphics
             {
                 Assimp.AssimpContext ac = new AssimpContext();
                 ac.SetConfig(new NormalSmoothingAngleConfig(66.0f));
-                Scene s = ac.ImportFile(path, PostProcessSteps.Triangulate | PostProcessSteps.GenerateNormals);
+                Assimp.Scene s = ac.ImportFile(path, PostProcessSteps.Triangulate | PostProcessSteps.GenerateNormals);
 
                 if (s.MeshCount == 0)
                 {

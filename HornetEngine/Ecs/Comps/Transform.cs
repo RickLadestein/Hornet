@@ -1,65 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Numerics;
+using GlmSharp;
 
 namespace HornetEngine.Ecs
 {
-    public class Transform : Component
+    public struct Transform
     {
         /// <summary>
         /// The current Position
         /// </summary>
-        public Vector3 Position
-        {
-            get
-            {
-                return _position;
-            }
-            set
-            {
-                _position = value;
-                this.update_matrix = true;
-            }
-        }
-        private Vector3 _position;
+        public vec3 Position;
 
         /// <summary>
         /// The current Rotation in degrees
         /// </summary>
-        public Vector3 Rotation {
-            get
-            {
-                return _rotation;
-            }
-            set
-            {
-                _rotation = value;
-                this.update_matrix = true;
-            }
-        }
-        private Vector3 _rotation;
+        public vec3 Rotation;
 
         /// <summary>
         /// The current Scale
         /// </summary>
-        public Vector3 Scale { 
-            get
-            {
-                return _scale;
-            }
-            set
-            {
-                _scale = value;
-                this.update_matrix = true;
-            }
-        }
-        private Vector3 _scale;
+        public vec3 Scale;
 
         /// <summary>
         /// The matrix that describes the orientation, scale and position
         /// </summary>
-        public Matrix4x4 ModelMat
+        public mat4 ModelMat
         {
             get
             {
@@ -67,52 +33,39 @@ namespace HornetEngine.Ecs
                 return _model;
             }
         }
-        private Matrix4x4 _model;
-
-        private bool update_matrix;
-
-        public Transform()
-        {
-            this.Reset();
-        }
-
-        public Transform(Vector3 pos, Vector3 rot, Vector3 scl)
-        {
-            this._position = pos;
-            this._rotation = rot;
-            this._scale = scl;
-        }
+        private mat4 _model;
 
         /// <summary>
         /// Resets the transform rotation, position and scale to default values
         /// </summary>
         public void Reset()
         {
-            this._position = Vector3.Zero;
-            this._rotation = Vector3.Zero;
-            this._scale = new Vector3(1.0f, 1.0f, 1.0f);
+            this.Position = vec3.Zero;
+            this.Rotation = vec3.Zero;
+            this.Scale = new vec3(1.0f, 1.0f, 1.0f);
         }
 
         private void CalcModelMatrix()
         {
-            if (update_matrix)
-            {
-                float rad_x = OpenTK.Mathematics.MathHelper.DegreesToRadians(_rotation.X);
-                float rad_y = OpenTK.Mathematics.MathHelper.DegreesToRadians(_rotation.Y);
-                float rad_z = OpenTK.Mathematics.MathHelper.DegreesToRadians(_rotation.Z);
-                Quaternion quat = Quaternion.CreateFromYawPitchRoll(rad_y, rad_x, rad_z);
+            float rad_x = OpenTK.Mathematics.MathHelper.DegreesToRadians(Rotation.x);
+            float rad_y = OpenTK.Mathematics.MathHelper.DegreesToRadians(Rotation.y);
+            float rad_z = OpenTK.Mathematics.MathHelper.DegreesToRadians(Rotation.z);
 
-                Matrix4x4 rot = Matrix4x4.CreateFromQuaternion(quat);
-                Matrix4x4 trans = Matrix4x4.CreateTranslation(_position);
-                Matrix4x4 scl = Matrix4x4.CreateScale(_scale);
-                this._model = rot * trans * scl;
-            }
+            quat quat_x = quat.FromAxisAngle(rad_x, new vec3(1.0f, 0.0f, 0.0f));
+            quat quat_y = quat.FromAxisAngle(rad_y, new vec3(0.0f, 1.0f, 0.0f));
+            quat quat_z = quat.FromAxisAngle(rad_z, new vec3(0.0f, 0.0f, 1.0f));
+            quat quat_fin = quat_y * quat_z * quat_x;
+
+            mat4 rot = quat_fin.ToMat4;
+            mat4 trans = mat4.Translate(Position);
+            mat4 scl = mat4.Scale(Scale);
+            this._model = mat4.Identity * trans * scl * rot;
         }
         public override string ToString()
         {
-            return $"Position: {_position.X}, {_position.Y}, {_position.Z}" +
-                $"Rotation: {_rotation.X}, {_rotation.Y}, {_rotation.Z}" +
-                $"Scale: {_scale.X}, {_scale.Y}, {_scale.Z}";
+            return $"Position: {Position.x}, {Position.y}, {Position.z}" +
+                $"Rotation: {Rotation.x}, {Rotation.y}, {Rotation.z}" +
+                $"Scale: {Scale.x}, {Scale.y}, {Scale.z}";
         }
     }
 }
