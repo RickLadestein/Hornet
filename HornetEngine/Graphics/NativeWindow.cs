@@ -258,8 +258,8 @@ namespace HornetEngine.Graphics
             //fwcontext.SwapInterval(0);
 
             n_window = new GlfwNativeWindow(fwcontext, w_handle);
-            touch_driver = new TouchDriver(ref n_window);
-
+            touch_driver = TouchDriver.GetInstance();
+            touch_driver.Initialise(ref n_window);
             return true;
         }
 

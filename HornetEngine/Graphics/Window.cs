@@ -12,9 +12,11 @@ using HornetEngine.Graphics.Buffers;
 
 namespace HornetEngine.Graphics
 {
-    public class Window : NativeWindow, ITouchEventListener
+    public class Window : NativeWindow
     {
-        public Mouse mouse { get; private set; }
+        public Mouse Mouse { get; private set; }
+        public Keyboard Keyboard { get; private set; }
+        public TouchPanel Touch_panel { get; private set; }
 
 
         public delegate void WindowRefreshFunc();
@@ -59,17 +61,13 @@ namespace HornetEngine.Graphics
         /// <returns>Window creation succes status, false: window creation failed, true: window creation succesfull</returns>
         public bool Open(String title, int width, int height, WindowMode mode)
         {
-            bool result = this.CreateWindowHandle(width, height, title, mode);
-            GL.ClearColor(0.35f, 0.35f, 0.35f, 1.0f);
-            DepthBuffer.Enable();
-            touch_driver.SetEventListener(this);
-
-            //Todo: replace with seperate callable buffer
-            NativeWindow.GL.Enable(EnableCap.DepthTest);
-            NativeWindow.GL.DepthFunc(DepthFunction.Less);
+            bool result = this.CreateWindowHandle(width, height, title, WindowMode.WINDOWED);
+            GL.ClearColor(0.75f, 0.75f, 0.75f, 1.0f);
             unsafe
             {
-                this.mouse = new Mouse(this.w_handle);
+                this.Mouse = new Mouse(this.w_handle);
+                this.Keyboard = new Keyboard(this.w_handle);
+                this.Touch_panel = new TouchPanel(this.touch_driver);
             }
             return result;
         }
@@ -121,79 +119,6 @@ namespace HornetEngine.Graphics
         protected override void OnWindowMaximize(bool maximized)
         {
             return;
-        }
-
-        public void OnTouchEvent(Vector2 position, Vector2 size, uint id, uint flags)
-        {
-            //uint downres = flags & ((uint)TouchEventFlags.TOUCHEVENTF_DOWN);
-            //if(downres > 0) {
-            //    Console.WriteLine($"Touch Down [{id}]");    
-            //}
-            try
-            {
-                tp_mutex.WaitOne();
-                uint downres = flags & ((uint)TouchEventFlags.TOUCHEVENTF_DOWN);
-                uint mvres = flags & ((uint)TouchEventFlags.TOUCHEVENTF_MOVE);
-                uint upres = flags & ((uint)TouchEventFlags.TOUCHEVENTF_UP);
-                if (mvres > 0)
-                {
-                    if (touch_points.ContainsKey(id))
-                    {
-                        touch_points[id] = position;
-                    }
-                }
-                else
-                {
-                    if (downres > 0)
-                    {
-                        if (!touch_points.ContainsKey(id))
-                        {
-                            touch_points.Add(id, position);
-                        }
-                    }
-                    else if (upres > 0)
-                    {
-                        if (touch_points.ContainsKey(id))
-                        {
-                            touch_points.Remove(id);
-                        }
-                    }
-                }
-            } catch(Exception ex)
-            {
-                throw ex;
-            } finally
-            {
-                tp_mutex.ReleaseMutex();
-            }
-            
-            //Console.WriteLine($"Touch event Id: {id} Pos:{position}  Size:{size}");
-        }
-
-        public void PrintTouchPoints()
-        {
-            try
-            {
-                tp_mutex.WaitOne();
-                Console.Clear();
-                Console.CursorTop = 0;
-                Console.CursorLeft = 0;
-
-                Console.WriteLine($"Touchpoints[{touch_points.Count}] <");
-                foreach (Vector2 vec in touch_points.Values)
-                {
-                    Console.WriteLine($"Touchpoint [{vec.X / 100}, {vec.Y / 100}]");
-                }
-                Console.WriteLine(">");
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                tp_mutex.ReleaseMutex();
-            }
         }
     }
 }

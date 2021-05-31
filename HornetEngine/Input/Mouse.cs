@@ -23,10 +23,10 @@ namespace HornetEngine.Input
         public delegate void MouseScrollFunc(double xoffset, double yoffset);
         public delegate void MouseMoveFunc(double xpos, double ypos, double deltaX, double deltaY);
 
-        public event MousePressFunc mousePress;
-        public event MouseReleaseFunc mouseRelease;
-        public event MouseScrollFunc mouseScroll;
-        public event MouseMoveFunc mouseMove;
+        public event MousePressFunc MousePress;
+        public event MouseReleaseFunc MouseRelease;
+        public event MouseScrollFunc MouseScroll;
+        public event MouseMoveFunc MouseMove;
 
         /// <summary>
         /// A function which will be called when the user scrolls
@@ -34,10 +34,10 @@ namespace HornetEngine.Input
         /// <param name="w_handle">The handle of the window</param>
         /// <param name="xoffset">The amount scrolled on the x-axis</param>
         /// <param name="yoffset">The amount scrolled on the y-axis</param>
-        private unsafe void onMouseScroll(WindowHandle* w_handle, double xoffset, double yoffset)
+        private unsafe void OnMouseScroll(WindowHandle* w_handle, double xoffset, double yoffset)
         {
             // Call the mouseScroll event
-            mouseScroll?.Invoke(xoffset, yoffset);
+            MouseScroll?.Invoke(xoffset, yoffset);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace HornetEngine.Input
         /// <param name="w_handle">The handle of the window</param>
         /// <param name="xpos">The new position on the x-axis</param>
         /// <param name="ypos">The new position on the y-axis</param>
-        private unsafe void onMouseMoved(WindowHandle* w_handle, double xpos, double ypos)
+        private unsafe void OnMouseMoved(WindowHandle* w_handle, double xpos, double ypos)
         {
             // Initialize the old values
             float oldX = position.X;
@@ -61,7 +61,7 @@ namespace HornetEngine.Input
             position.Y = (float)ypos;
 
             // Call the mouseMoved event
-            mouseMove?.Invoke(xpos, ypos, deltaX, deltaY);
+            MouseMove?.Invoke(xpos, ypos, deltaX, deltaY);
         }
 
         /// <summary>
@@ -71,20 +71,20 @@ namespace HornetEngine.Input
         /// <param name="button">The button which has used/param>
         /// <param name="action">The action of the button (pressed/released)</param>
         /// <param name="mods">The modifiers of the button (for ex: Ctrl, Shift etc.)</param>
-        private unsafe void onMousePressed(WindowHandle* w_handle, MouseButton button, InputAction action, KeyModifiers mods)
+        private unsafe void OnMousePressed(WindowHandle* w_handle, MouseButton button, InputAction action, KeyModifiers mods)
         {
             switch(action)
             {
                 case InputAction.Press:
                     // Register the button as pressed
-                    addMouseButton(button);
-                    changeMode(w_handle, button);
-                    mousePress?.Invoke(button);
+                    AddMouseButton(button);
+                    ChangeMode(w_handle, button);
+                    MousePress?.Invoke(button);
                     break;
                 case InputAction.Release:
                     // Deregister the button as pressed
-                    removeMouseButton(button);
-                    mouseRelease?.Invoke(button);
+                    RemoveMouseButton(button);
+                    MouseRelease?.Invoke(button);
                     break;
             }
         }
@@ -93,7 +93,7 @@ namespace HornetEngine.Input
         /// A function which can be used to register a pressed button
         /// </summary>
         /// <param name="button">The button which has been pressed</param>
-        private void addMouseButton(MouseButton button)
+        private void AddMouseButton(MouseButton button)
         {
             //Console.Clear();
             for (int i = 0; i < MAX_PRESSED_BUTTONS; i++)
@@ -124,7 +124,7 @@ namespace HornetEngine.Input
         /// A function which can be used to deregister a button
         /// </summary>
         /// <param name="button">The button which should be deregistered</param>
-        private void removeMouseButton(MouseButton button)
+        private void RemoveMouseButton(MouseButton button)
         {
             //Console.Clear();
             // Loop through the pressed buttons to find the specific button
@@ -149,7 +149,7 @@ namespace HornetEngine.Input
         /// </summary>
         /// <param name="w_handle">The handle of the window</param>
         /// <param name="button">The button which has been pressed</param>
-        private unsafe void changeMode(WindowHandle* w_handle, MouseButton button)
+        private unsafe void ChangeMode(WindowHandle* w_handle, MouseButton button)
         {
             // Check which button has been pressed and set the mode accordingly
             if(button == MouseButton.Left)
@@ -170,6 +170,15 @@ namespace HornetEngine.Input
         }
 
         /// <summary>
+        /// A function which will return the current mode of the mouse
+        /// </summary>
+        /// <returns>A MouseMode, depending on the current mode.</returns>
+        public MouseMode GetMode()
+        {
+            return this.mode;
+        }
+
+        /// <summary>
         /// The constructor of the Mouse class
         /// </summary>
         /// <param name="w_handle">The handle of the window</param>
@@ -187,9 +196,9 @@ namespace HornetEngine.Input
             mode = MouseMode.VISIBLE;
 
             // Initialize the callbacks
-            NativeWindow.GLFW.SetCursorPosCallback(w_handle, onMouseMoved);
-            NativeWindow.GLFW.SetMouseButtonCallback(w_handle, onMousePressed);
-            NativeWindow.GLFW.SetScrollCallback(w_handle, onMouseScroll);
+            NativeWindow.GLFW.SetCursorPosCallback(w_handle, OnMouseMoved);
+            NativeWindow.GLFW.SetMouseButtonCallback(w_handle, OnMousePressed);
+            NativeWindow.GLFW.SetScrollCallback(w_handle, OnMouseScroll);
         }
     }
 }

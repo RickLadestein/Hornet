@@ -60,17 +60,19 @@ namespace HornetEngine.Util.Drivers
         delegate IntPtr WndProcDelegate(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
         private WndProcDelegate procfunc;
 
-        //private static TouchDriver instance;
-        //
-        //public static TouchDriver GetInstance(ref GlfwNativeWindow wnd)
-        //{
-        //    if (instance == null)
-        //    {
-        //        instance = new TouchDriver(ref wnd);
-        //    }
-        //    return instance;
-        //}
-        public TouchDriver(ref GlfwNativeWindow wnd)
+        private static TouchDriver instance;
+
+        public static TouchDriver GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new TouchDriver();
+            }
+            return instance;
+        }
+        private TouchDriver() {}
+
+        public void Initialise(ref GlfwNativeWindow wnd)
         {
             GetWindowPtr(ref wnd);
             LinkToWin32();
@@ -124,15 +126,10 @@ namespace HornetEngine.Util.Drivers
                     bool succes = GetTouchInputInfo(lparam, (uint)touch_event_count, touch_arr, (uint)sizeof(TOUCH_STRUCT));
                     if (succes)
                     {
-                        TOUCH_STRUCT* ptr = (TOUCH_STRUCT*)touch_arr.ToPointer();
-                        for (int i = 0; i < (int)touch_event_count; i++)
-                        {
-                            TOUCH_STRUCT ts = ptr[i];
-                            Vector2 pos = new Vector2(ts.x, ts.y);
-                            Vector2 size = new Vector2(ts.cxContact, ts.cyContact);
-                            listener?.OnTouchEvent(pos, size, ts.dwID, ts.dwFlags);
-                        }
-                        CloseTouchInputHandle(lparam);
+                        TOUCH_STRUCT ts = ptr[i];
+                        Vector2 pos = new Vector2(ts.x / 100, ts.y / 100);
+                        Vector2 size = new Vector2(ts.cxContact, ts.cyContact);
+                        listener?.OnTouchEvent(pos, size, ts.dwID, ts.dwFlags);
                     }
                 }
             }
