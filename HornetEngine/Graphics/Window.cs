@@ -62,7 +62,9 @@ namespace HornetEngine.Graphics
         public bool Open(String title, int width, int height, WindowMode mode)
         {
             bool result = this.CreateWindowHandle(width, height, title, WindowMode.WINDOWED);
-            GL.ClearColor(0.75f, 0.75f, 0.75f, 1.0f);
+            GL.ClearColor(0.45f, 0.45f, 0.45f, 1.0f);
+            GL.Enable(GLEnum.DepthTest);
+            DepthBuffer.Enable();
             unsafe
             {
                 this.Mouse = new Mouse(this.w_handle);
