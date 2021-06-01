@@ -15,7 +15,15 @@ namespace HornetEngine.Ecs
         /// <summary>
         /// The current Rotation in degrees
         /// </summary>
-        public vec3 Rotation;
+        public vec3 Rotation { 
+            get {
+                dvec3 _rot = glm.EulerAngles(Orientation);
+                return new vec3((float)_rot.x, (float)_rot.y, (float)_rot.z);
+            } 
+        }
+
+
+        public quat Orientation;
 
         /// <summary>
         /// The current Scale
@@ -41,22 +49,36 @@ namespace HornetEngine.Ecs
         public void Reset()
         {
             this.Position = vec3.Zero;
-            this.Rotation = vec3.Zero;
+            this.Orientation = quat.Identity;
             this.Scale = new vec3(1.0f, 1.0f, 1.0f);
         }
 
-        private void CalcModelMatrix()
+        public void SetOrientation(float roll, float pitch, float yaw)
         {
-            float rad_x = OpenTK.Mathematics.MathHelper.DegreesToRadians(Rotation.x);
-            float rad_y = OpenTK.Mathematics.MathHelper.DegreesToRadians(Rotation.y);
-            float rad_z = OpenTK.Mathematics.MathHelper.DegreesToRadians(Rotation.z);
+            float rad_x = OpenTK.Mathematics.MathHelper.DegreesToRadians(pitch);
+            float rad_y = OpenTK.Mathematics.MathHelper.DegreesToRadians(yaw);
+            float rad_z = OpenTK.Mathematics.MathHelper.DegreesToRadians(roll);
 
             quat quat_x = quat.FromAxisAngle(rad_x, new vec3(1.0f, 0.0f, 0.0f));
             quat quat_y = quat.FromAxisAngle(rad_y, new vec3(0.0f, 1.0f, 0.0f));
             quat quat_z = quat.FromAxisAngle(rad_z, new vec3(0.0f, 0.0f, 1.0f));
             quat quat_fin = quat_y * quat_z * quat_x;
+            this.Orientation = quat_fin;
+        }
 
-            mat4 rot = quat_fin.ToMat4;
+        public void Rotate(quat rotation_quat)
+        {
+            this.Orientation = this.Orientation * rotation_quat;
+        }
+
+        public void Rotate(vec3 axis_angle, float degrees)
+        {
+            this.Orientation = this.Orientation.Rotated(OpenTK.Mathematics.MathHelper.DegreesToRadians(degrees), axis_angle);
+        }
+
+        private void CalcModelMatrix()
+        {
+            mat4 rot = this.Orientation.ToMat4;
             mat4 trans = mat4.Translate(Position);
             mat4 scl = mat4.Scale(Scale);
             this._model = mat4.Identity * trans * scl * rot;
