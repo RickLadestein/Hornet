@@ -65,6 +65,11 @@ namespace HornetEngine.Graphics
             return output;
         }
 
+        public static void ImportMeshFromScene(Assimp.Scene scene, int mesh_in)
+        {
+
+        }
+
         private static String ImportFromFile(String folder_id, String file, out Assimp.Scene scene)
         {
             string dir = DirectoryManager.GetResourceDir(folder_id);

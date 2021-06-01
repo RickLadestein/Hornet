@@ -3,7 +3,6 @@ using HornetEngine.Ecs;
 using HornetEngine.Graphics;
 using HornetEngine.Graphics.Buffers;
 using HornetEngine.Util;
-using Silk.NET.OpenGL;
 using System.Numerics;
 
 namespace Sandbox
@@ -32,6 +31,10 @@ namespace Sandbox
 
             MaterialComponent matcomp = new MaterialComponent();
             matcomp.SetShaderFromId("default");
+
+            TextureComponent texcomp = new TextureComponent();
+            texcomp.SetTextureUnit("laminate", HTextureUnit.Unit_0);
+            texcomp.SetTextureUnit("awp_color", HTextureUnit.Unit_1);
 
             MonkeyScript monkeyscr = new MonkeyScript();
 
@@ -63,10 +66,23 @@ namespace Sandbox
         {
             MaterialComponent matcomp = e.GetComponent<MaterialComponent>();
             MeshComponent meshcomp = e.GetComponent<MeshComponent>();
+            TextureComponent texcomp = e.GetComponent<TextureComponent>();
 
             if(meshcomp.Mesh == null || matcomp.Shader == null)
             {
                 Console.WriteLine("Mesh or Shader was null");
+            }
+
+            if(texcomp != null)
+            {
+                texcomp.Textures.Bind();
+                for(int i = 0; i < texcomp.Textures.textures.Length; i++)
+                {
+                    if(texcomp.Textures.textures[i] != null)
+                    {
+                        matcomp.Shader.SetUniform($"texture_{i}", i);
+                    }
+                }
             }
 
             VertexBuffer vbuf = meshcomp.Mesh.VertexBuffer;
@@ -77,10 +93,18 @@ namespace Sandbox
             sh.SetUniform("model", e.Transform.ModelMat);
             sh.SetUniform("projection", cam.ProjectionMatrix);
             sh.SetUniform("view", cam.ViewMatrix);
+            sh.SetUniform("camera_position", cam.Position);
+            sh.SetUniform("camera_target", cam.Target);
+            sh.SetUniform("time", 10);
 
             NativeWindow.GL.DrawArrays(Silk.NET.OpenGL.GLEnum.Triangles, 0, vbuf.VertexCount);
             vbuf.Unbind();
             ShaderProgram.UnbindAll();
+
+            if (texcomp != null)
+            {
+                texcomp.Textures.Unbind();
+            }
 
             foreach (MonoScript ms in e.Scripts)
             {
@@ -103,10 +127,16 @@ namespace Sandbox
                 throw new Exception("Mesh loading failed");
             }
 
-            VertexShader vsh = new VertexShader("shaders", "toon.vert");
-            FragmentShader fsh = new FragmentShader("shaders", "toon.frag");
+            VertexShader vsh = new VertexShader("shaders", "multitex.vert");
+            FragmentShader fsh = new FragmentShader("shaders", "multitex.frag");
             ShaderProgram prog = new ShaderProgram(vsh, fsh);
             ShaderResourceManager.GetInstance().AddResource("default", prog);
+
+            Texture tex = new Texture("textures", "laminate1.png", false);
+            TextureResourceManager.GetInstance().AddResource("laminate", tex);
+
+            Texture tex2 = new Texture("textures", "sponza_column_c_ddn.tga", false);
+            TextureResourceManager.GetInstance().AddResource("awp_color", tex2);
         }
         #endregion
     }

@@ -32,5 +32,23 @@ namespace HornetEngine.Graphics
             });
             return new List<Entity>(entities);
         }
+
+        public void LoadScene(string folder_id, string scene_file)
+        {
+            List<Mesh> meshes = new List<Mesh>();
+
+            string error = Mesh.ImportFromFile(folder_id, scene_file, out Assimp.Scene s);
+            if(error != string.Empty)
+            {
+                throw new Exception($"Could not load scene: {error}");
+            }
+            foreach(Assimp.Mesh _mesh in s.Meshes)
+            {
+                Mesh tmp = new Mesh(_mesh.Name);
+                HornetEngine.Graphics.Mesh.ParseMeshData(tmp, _mesh);
+                tmp.BuildVertexBuffer();
+            }
+
+        }
     }
 }

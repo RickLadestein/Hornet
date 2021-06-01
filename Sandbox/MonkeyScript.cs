@@ -13,14 +13,14 @@ namespace Sandbox
         private vec3 rot;
         public override void Start()
         {
-            rot = new vec3(0.0f, 10.0f, 0.0f);
-            entity.Transform.Rotation = new vec3(0.0f, 0.0f, 90.0f);
+            rot = new vec3(5.3f, 10.9f, 15.97f);
+            entity.Transform.SetOrientation(0, 0, 0);
         }
 
         public override void Update()
         {
             Entity bound = this.entity;
-            bound.Transform.Rotation += rot * Time.FrameDelta;
+            bound.Transform.Rotate(new vec3(0, 10, 0), rot.z * Time.FrameDelta);
         }
     }
 }

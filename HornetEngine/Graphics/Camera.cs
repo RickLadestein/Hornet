@@ -38,9 +38,22 @@ namespace HornetEngine.Graphics
         public vec3 Position { get; set; }
 
         /// <summary>
-        /// Vector for describing the orientation of the camera in euler angles; camera will always look at Z+ if orientation[0,0,0]
+        /// Quaternion for describing the orientation of the camera; camera will always look at Z+ if orientation[0,0,0]
         /// </summary>
-        public vec3 Orientation { get; set; }
+        public quat Orientation { get; set; }
+
+
+        /// <summary>
+        /// The current Rotation in degrees
+        /// </summary>
+        public vec3 Rotation
+        {
+            get
+            {
+                dvec3 _rot = glm.EulerAngles(Orientation);
+                return new vec3((float)_rot.x, (float)_rot.y, (float)_rot.z);
+            }
+        }
 
 
         public vec3 Target { get; private set; }
@@ -53,7 +66,30 @@ namespace HornetEngine.Graphics
         public Camera()
         {
             this.Position = new vec3(0.0f);
-            this.Orientation = new vec3(0.0f);
+            this.Orientation = quat.Identity;
+        }
+
+        public void SetOrientation(float roll, float pitch, float yaw)
+        {
+            float rad_x = OpenTK.Mathematics.MathHelper.DegreesToRadians(pitch);
+            float rad_y = OpenTK.Mathematics.MathHelper.DegreesToRadians(yaw);
+            float rad_z = OpenTK.Mathematics.MathHelper.DegreesToRadians(roll);
+
+            quat quat_x = quat.FromAxisAngle(rad_x, new vec3(1.0f, 0.0f, 0.0f));
+            quat quat_y = quat.FromAxisAngle(rad_y, new vec3(0.0f, 1.0f, 0.0f));
+            quat quat_z = quat.FromAxisAngle(rad_z, new vec3(0.0f, 0.0f, 1.0f));
+            quat quat_fin = quat_y * quat_z * quat_x;
+            this.Orientation = quat_fin;
+        }
+
+        public void Rotate(quat rotation_quat)
+        {
+            this.Orientation = this.Orientation * rotation_quat;
+        }
+
+        public void Rotate(vec3 axis_angle, float degrees)
+        {
+            this.Orientation = this.Orientation.Rotated(OpenTK.Mathematics.MathHelper.DegreesToRadians(degrees), axis_angle);
         }
 
         public void UpdateViewMatrix()
