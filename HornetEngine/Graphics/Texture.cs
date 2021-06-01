@@ -135,6 +135,7 @@ namespace HornetEngine.Graphics
                 NativeWindow.GL.GenerateMipmap(GLEnum.Texture2D);
             }
             this.Status = TextureStatus.READY;
+            NativeWindow.GL.BindTexture(GLEnum.Texture2D, 0);
         }
 
         public Texture(uint width, uint height)
@@ -190,6 +191,7 @@ namespace HornetEngine.Graphics
             this.Wrap = wrap;
             NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapS, (uint)wrap);
             NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapT, (uint)wrap);
+            var err = NativeWindow.GL.GetError();
             this.Unbind();
         }
 

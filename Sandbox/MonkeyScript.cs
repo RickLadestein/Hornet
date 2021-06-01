@@ -20,7 +20,7 @@ namespace Sandbox
         public override void Update()
         {
             Entity bound = this.entity;
-            bound.Transform.Rotate(new vec3(0, 10, 0), rot.z * Time.FrameDelta);
+            bound.Transform.Rotate(new vec3(0, 1, 0), rot.z * Time.FrameDelta);
         }
     }
 }
