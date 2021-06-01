@@ -250,6 +250,15 @@ namespace HornetEngine.Graphics
             }
         }
 
+        public void SetUniform(string location, GlmSharp.vec2 vec)
+        {
+            int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
+            if (loc != -1)
+            {
+                NativeWindow.GL.Uniform2(loc, vec.x, vec.y);
+            }
+        }
+
         /// <summary>
         /// Sets a shader specific global variable in the GPU
         /// </summary>
@@ -261,6 +270,15 @@ namespace HornetEngine.Graphics
             if (loc != -1)
             {
                 NativeWindow.GL.Uniform3(loc, vec);
+            }
+        }
+
+        public void SetUniform(string location, GlmSharp.vec3 vec)
+        {
+            int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
+            if (loc != -1)
+            {
+                NativeWindow.GL.Uniform3(loc, vec.x, vec.y, vec.z);
             }
         }
 
@@ -278,6 +296,15 @@ namespace HornetEngine.Graphics
             }
         }
 
+        public void SetUniform(string location, GlmSharp.vec4 vec)
+        {
+            int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
+            if (loc != -1)
+            {
+                NativeWindow.GL.Uniform4(loc, vec.x, vec.y, vec.z, vec.w);
+            }
+        }
+
         /// <summary>
         /// Sets a shader specific global variable in the GPU
         /// </summary>
@@ -289,6 +316,15 @@ namespace HornetEngine.Graphics
             if (loc != -1)
             {
                 NativeWindow.GL.UniformMatrix4(loc, 1, false, (float*) &matrix);
+            }
+        }
+
+        public unsafe void SetUniform(string location, GlmSharp.mat4 matrix)
+        {
+            int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
+            if (loc != -1)
+            {
+                NativeWindow.GL.UniformMatrix4(loc, 1, false, (float*)&matrix);
             }
         }
         #endregion

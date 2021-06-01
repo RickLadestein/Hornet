@@ -4,20 +4,23 @@ using System.Text;
 using HornetEngine.Ecs;
 using HornetEngine.Util;
 using System.Numerics;
+using GlmSharp;
+
 namespace Sandbox
 {
     public class MonkeyScript : MonoScript
     {
-        private Vector3 rot;
+        private vec3 rot;
         public override void Start()
         {
-            rot = new Vector3(0.0f, 10.0f, 0.0f);
+            rot = new vec3(5.3f, 10.9f, 15.97f);
+            entity.Transform.SetOrientation(0, 0, 0);
         }
 
         public override void Update()
         {
             Entity bound = this.entity;
-            bound.Transform.Rotation += rot * Time.FrameDelta;
+            bound.Transform.Rotate(new vec3(0, 1, 0), rot.z * Time.FrameDelta);
         }
     }
 }

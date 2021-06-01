@@ -10,7 +10,6 @@ namespace HornetEngine.Ecs
 
 
         public MonoScript() {
-            this.Start();
         }
         public abstract void Start();
 

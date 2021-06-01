@@ -27,6 +27,7 @@ namespace HornetEngine.Graphics
             this.VertexBuffer = new VertexBuffer();
             Attributes = new AttributeStorage();
             this.Name = name;
+            this.Error = string.Empty;
         }
 
         public void BuildVertexBuffer()
@@ -42,7 +43,7 @@ namespace HornetEngine.Graphics
             Mesh output = new Mesh(name);
 
             output.Status = MeshStatus.IMPORTING_DATA;
-            output.Error = Mesh.ImportFromFile(folder_id, file, out Scene s);
+            output.Error = Mesh.ImportSingleMeshFromFile(folder_id, file, out Assimp.Scene s);
             if(output.Error != String.Empty)
             {
                 return output;
@@ -65,7 +66,38 @@ namespace HornetEngine.Graphics
             return output;
         }
 
-        private static String ImportFromFile(String folder_id, String file, out Scene scene)
+        public static Mesh ImportMeshFromScene(Assimp.Scene scene, uint mesh_id)
+        {
+            if (!(mesh_id <= scene.MeshCount))
+            {
+
+                return null;
+            }
+
+
+            Assimp.Mesh _amesh = scene.Meshes[(int)mesh_id];
+            Mesh output = new Mesh(_amesh.Name)
+            {
+                Status = MeshStatus.PARSING_DATA
+            };
+
+            ParseMeshData(output, scene.Meshes[0]);
+            if (output.Attributes.Count == 0)
+            {
+                return output;
+            }
+
+            output.Status = MeshStatus.CREATING_BUFFER;
+            output.BuildVertexBuffer();
+            if (output.VertexBuffer.Error.Length > 0)
+            {
+                return output;
+            }
+            output.Status = MeshStatus.READY;
+            return output;
+        }
+
+        public static String ImportSingleMeshFromFile(String folder_id, String file, out Assimp.Scene scene)
         {
             string dir = DirectoryManager.GetResourceDir(folder_id);
             if(dir == String.Empty)
@@ -79,7 +111,7 @@ namespace HornetEngine.Graphics
             {
                 Assimp.AssimpContext ac = new AssimpContext();
                 ac.SetConfig(new NormalSmoothingAngleConfig(66.0f));
-                Scene s = ac.ImportFile(path, PostProcessSteps.Triangulate | PostProcessSteps.GenerateNormals);
+                Assimp.Scene s = ac.ImportFile(path, PostProcessSteps.Triangulate | PostProcessSteps.GenerateNormals);
 
                 if (s.MeshCount == 0)
                 {
@@ -95,6 +127,38 @@ namespace HornetEngine.Graphics
                 scene = s;
                 return String.Empty;
             } catch(Exception ex)
+            {
+                scene = null;
+                return ex.Message;
+            }
+        }
+
+        public static String ImportMeshesFromFile(String folder_id, String file, out Assimp.Scene scene)
+        {
+            string dir = DirectoryManager.GetResourceDir(folder_id);
+            if (dir == String.Empty)
+            {
+                scene = null;
+                return $"Directory with id [{folder_id}] was not found in DirectoryManager";
+            }
+            string path = DirectoryManager.ConcatDirFile(dir, file);
+
+            try
+            {
+                Assimp.AssimpContext ac = new AssimpContext();
+                ac.SetConfig(new NormalSmoothingAngleConfig(66.0f));
+                Assimp.Scene s = ac.ImportFile(path, PostProcessSteps.Triangulate | PostProcessSteps.GenerateNormals);
+
+                if (s.MeshCount == 0)
+                {
+                    scene = null;
+                    return "No meshes were found in the file";
+                }
+
+                scene = s;
+                return String.Empty;
+            }
+            catch (Exception ex)
             {
                 scene = null;
                 return ex.Message;

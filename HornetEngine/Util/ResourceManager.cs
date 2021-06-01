@@ -144,4 +144,19 @@ namespace HornetEngine.Util
 
         private ShaderResourceManager() : base() { }
     }
+
+    public class TextureResourceManager : ResourceManager<Texture>
+    {
+        private static TextureResourceManager instance;
+        public static TextureResourceManager GetInstance()
+        {
+            if(instance == null)
+            {
+                instance = new TextureResourceManager();
+            }
+            return instance;
+        }
+
+        private TextureResourceManager() : base() { }
+    }
 }
