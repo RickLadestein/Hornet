@@ -48,6 +48,10 @@ namespace HornetEngine.Ecs
             sh.SetUniform("camera_position", cam.Position);
             sh.SetUniform("camera_target", cam.Target);
             sh.SetUniform("time", (float)NativeWindow.GLFW.GetTime());
+            sh.SetUniform("material[0]", meshcomp.Mesh.Material.Ambient);
+            sh.SetUniform("material[1]", meshcomp.Mesh.Material.Diffuse);
+            sh.SetUniform("material[2]", meshcomp.Mesh.Material.Specular);
+            sh.SetUniform("material[3]", meshcomp.Mesh.Material.ShinyFactor);
 
             NativeWindow.GL.DrawArrays((GLEnum)vbuf.PrimitiveType, 0, vbuf.VertexCount);
             vbuf.Unbind();

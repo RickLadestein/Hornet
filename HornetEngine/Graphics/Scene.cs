@@ -73,7 +73,9 @@ namespace HornetEngine.Graphics
 
             for(int i = 0; i < s.MeshCount; i++)
             {
-                Mesh tmp = Mesh.ImportMesh(s.Meshes[i]);
+                Assimp.Mesh _amesh = s.Meshes[i];
+                Assimp.Material mat = s.Materials[s.Meshes[i].MaterialIndex];
+                Mesh tmp = Mesh.ImportMesh(_amesh, mat);
                 if(tmp.Error.Length != 0)
                 {
                     throw new Exception($"Mesh {tmp.Name} loading encountered an error: {tmp.Error}");
@@ -84,7 +86,6 @@ namespace HornetEngine.Graphics
 
                 MeshComponent meshcomp = new MeshComponent();
                 meshcomp.SetTargetMesh(tmp.Name);
-                meshcomp.Mesh.VertexBuffer.SetPrimitiveType(Buffers.ElementType.POINTS);
                 e.AddComponent(meshcomp);
 
                 MaterialComponent matcomp = new MaterialComponent();

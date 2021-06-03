@@ -109,7 +109,7 @@ namespace Sandbox
             Texture tex2 = new Texture("textures", "sponza_column_c_ddn.tga", false);
             TextureResourceManager.GetInstance().AddResource("awp_color", tex2);
 
-            //sc.LoadScene("models", "sponza.obj");
+            sc.LoadScene("models", "sponza.obj");
         }
         #endregion
     }

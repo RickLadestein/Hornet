@@ -7,6 +7,7 @@ using Assimp.Configs;
 using HornetEngine.Graphics.Buffers;
 using HornetEngine.Util;
 using OpenTK.Mathematics;
+using GlmSharp;
 
 namespace HornetEngine.Graphics
 {
@@ -15,6 +16,8 @@ namespace HornetEngine.Graphics
         public MeshStatus Status { get; private set; }
 
         public VertexBuffer VertexBuffer { get; private set; }
+
+        public Material Material { get; set; }
 
         public AttributeStorage Attributes { get; private set; }
 
@@ -28,6 +31,7 @@ namespace HornetEngine.Graphics
             Attributes = new AttributeStorage();
             this.Name = name;
             this.Error = string.Empty;
+            this.Material = new Material();
         }
 
         public void BuildVertexBuffer()
@@ -43,11 +47,13 @@ namespace HornetEngine.Graphics
             Mesh output = new Mesh(name);
 
             output.Status = MeshStatus.IMPORTING_DATA;
-            output.Error = Mesh.ImportMeshFromFile(folder_id, file, out Assimp.Mesh mesh);
+            output.Error = Mesh.ImportMeshFromFile(folder_id, file, out Assimp.Mesh mesh, out Material mat);
             if(output.Error != String.Empty)
             {
                 return output;
             }
+            output.Material = mat;
+            
 
             output.Status = MeshStatus.PARSING_DATA;
             ParseMeshData(output, mesh);
@@ -66,7 +72,7 @@ namespace HornetEngine.Graphics
             return output;
         }
 
-        public static Mesh ImportMesh(Assimp.Mesh mesh)
+        public static Mesh ImportMesh(Assimp.Mesh mesh, Assimp.Material mat)
         {
             if(mesh == null)
             {
@@ -81,6 +87,23 @@ namespace HornetEngine.Graphics
                 return output;
             }
 
+            if (mat != null)
+            {
+                Assimp.Material _amat = mat;
+                output.Material = new Material()
+                {
+                    Ambient = _amat.HasColorAmbient == true ? new vec3(_amat.ColorAmbient.R, _amat.ColorAmbient.G, _amat.ColorAmbient.B) : new vec3(0),
+                    Diffuse = _amat.HasColorDiffuse == true ? new vec3(_amat.ColorDiffuse.R, _amat.ColorDiffuse.G, _amat.ColorDiffuse.B) : new vec3(0),
+                    Specular = _amat.HasColorSpecular == true ? new vec3(_amat.ColorSpecular.R, _amat.ColorSpecular.G, _amat.ColorSpecular.B) : new vec3(0),
+                    ShinyFactor = _amat.HasShininess == true ? _amat.Shininess : 0,
+
+                    Ambient_Texture = _amat.HasTextureAmbient == true ? _amat.TextureAmbient.FilePath : "",
+                    Diffuse_Texture = _amat.HasTextureDiffuse == true ? _amat.TextureDiffuse.FilePath : "",
+                    Specular_Texture = _amat.HasTextureSpecular == true ? _amat.TextureSpecular.FilePath : ""
+                };
+            }
+
+
             output.Status = MeshStatus.CREATING_BUFFER;
             output.BuildVertexBuffer();
             if (output.VertexBuffer.Error.Length > 0)
@@ -91,10 +114,12 @@ namespace HornetEngine.Graphics
             return output;
         }
 
-        private static String ImportMeshFromFile(String folder_id, String file, out Assimp.Mesh mesh)
+        private static String ImportMeshFromFile(String folder_id, String file, out Assimp.Mesh mesh, out Material mat)
         {
             string dir = DirectoryManager.GetResourceDir(folder_id);
             mesh = null;
+            mat = new Material();
+
             if (dir == String.Empty)
             {
                 return $"Directory with id [{folder_id}] was not found in DirectoryManager";
@@ -117,6 +142,21 @@ namespace HornetEngine.Graphics
                     return "Scene detected: please only load single mesh files";
                 }
                 mesh = s.Meshes[0];
+                if (mesh.MaterialIndex != -1)
+                {
+                    Assimp.Material _amat = s.Materials[mesh.MaterialIndex];
+                    mat = new Material()
+                    {
+                        Ambient = _amat.HasColorAmbient == true ? new vec3(_amat.ColorAmbient.R, _amat.ColorAmbient.G, _amat.ColorAmbient.B) : new vec3(0),
+                        Diffuse = _amat.HasColorDiffuse == true ? new vec3(_amat.ColorDiffuse.R, _amat.ColorDiffuse.G, _amat.ColorDiffuse.B) : new vec3(0),
+                        Specular = _amat.HasColorSpecular == true ? new vec3(_amat.ColorSpecular.R, _amat.ColorSpecular.G, _amat.ColorSpecular.B) : new vec3(0),
+                        ShinyFactor = _amat.HasShininess == true ? _amat.Shininess : 0,
+
+                        Ambient_Texture = _amat.HasTextureAmbient == true ? _amat.TextureAmbient.FilePath : "",
+                        Diffuse_Texture = _amat.HasTextureDiffuse == true ? _amat.TextureDiffuse.FilePath : "",
+                        Specular_Texture = _amat.HasTextureSpecular == true ? _amat.TextureSpecular.FilePath : ""
+                    };
+                }
                 return String.Empty;
             } catch(Exception ex)
             {
@@ -208,6 +248,19 @@ namespace HornetEngine.Graphics
         {
             this.Attributes.ClearAttributes();
         }
+    }
+
+    public struct Material
+    {
+        public GlmSharp.vec3 Ambient;
+        public GlmSharp.vec3 Diffuse;
+        public GlmSharp.vec3 Specular;
+        
+        public String Ambient_Texture;
+        public String Diffuse_Texture;
+        public String Specular_Texture;
+        
+        public float ShinyFactor;
     }
 
     public enum MeshStatus
