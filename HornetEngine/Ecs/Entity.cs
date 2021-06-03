@@ -82,6 +82,7 @@ namespace HornetEngine.Ecs
                 throw new ArgumentNullException("Component cannot be null");
             } else
             {
+                c.parent = this;
                 components.Add(c);
             }
         }
@@ -119,6 +120,18 @@ namespace HornetEngine.Ecs
             }
         }
 
+        public bool HasComponent<T>()
+        {
+            foreach (Component c in components)
+            {
+                if (c != null && c is T t)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
         /// <summary>
         /// Adds a script to this Entity
@@ -134,7 +147,6 @@ namespace HornetEngine.Ecs
             else
             {
                 c.entity = this;
-                c.Start();
                 Scripts.Add(c);
             }
         }

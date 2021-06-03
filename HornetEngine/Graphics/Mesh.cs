@@ -43,14 +43,14 @@ namespace HornetEngine.Graphics
             Mesh output = new Mesh(name);
 
             output.Status = MeshStatus.IMPORTING_DATA;
-            output.Error = Mesh.ImportSingleMeshFromFile(folder_id, file, out Assimp.Scene s);
+            output.Error = Mesh.ImportMeshFromFile(folder_id, file, out Assimp.Mesh mesh);
             if(output.Error != String.Empty)
             {
                 return output;
             }
 
             output.Status = MeshStatus.PARSING_DATA;
-            ParseMeshData(output, s.Meshes[0]);
+            ParseMeshData(output, mesh);
             if(output.Attributes.Count == 0)
             {
                 return output;
@@ -66,22 +66,16 @@ namespace HornetEngine.Graphics
             return output;
         }
 
-        public static Mesh ImportMeshFromScene(Assimp.Scene scene, uint mesh_id)
+        public static Mesh ImportMesh(Assimp.Mesh mesh)
         {
-            if (!(mesh_id <= scene.MeshCount))
+            if(mesh == null)
             {
-
-                return null;
+                throw new ArgumentNullException("mesh");
             }
 
-
-            Assimp.Mesh _amesh = scene.Meshes[(int)mesh_id];
-            Mesh output = new Mesh(_amesh.Name)
-            {
-                Status = MeshStatus.PARSING_DATA
-            };
-
-            ParseMeshData(output, scene.Meshes[0]);
+            Mesh output = new Mesh(mesh.Name);
+            output.Status = MeshStatus.PARSING_DATA;
+            ParseMeshData(output, mesh);
             if (output.Attributes.Count == 0)
             {
                 return output;
@@ -97,12 +91,12 @@ namespace HornetEngine.Graphics
             return output;
         }
 
-        public static String ImportSingleMeshFromFile(String folder_id, String file, out Assimp.Scene scene)
+        private static String ImportMeshFromFile(String folder_id, String file, out Assimp.Mesh mesh)
         {
             string dir = DirectoryManager.GetResourceDir(folder_id);
-            if(dir == String.Empty)
+            mesh = null;
+            if (dir == String.Empty)
             {
-                scene = null;
                 return $"Directory with id [{folder_id}] was not found in DirectoryManager";
             }
             string path = DirectoryManager.ConcatDirFile(dir, file);
@@ -111,56 +105,21 @@ namespace HornetEngine.Graphics
             {
                 Assimp.AssimpContext ac = new AssimpContext();
                 ac.SetConfig(new NormalSmoothingAngleConfig(66.0f));
-                Assimp.Scene s = ac.ImportFile(path, PostProcessSteps.Triangulate | PostProcessSteps.GenerateNormals);
+                Assimp.Scene s = ac.ImportFile(path, PostProcessSteps.Triangulate | PostProcessSteps.GenerateNormals | PostProcessSteps.CalculateTangentSpace);
 
                 if (s.MeshCount == 0)
                 {
-                    scene = null;
                     return "No meshes were found in the file";
                 }
 
                 if(s.MeshCount > 1)
                 {
-                    scene = null;
                     return "Scene detected: please only load single mesh files";
                 }
-                scene = s;
+                mesh = s.Meshes[0];
                 return String.Empty;
             } catch(Exception ex)
             {
-                scene = null;
-                return ex.Message;
-            }
-        }
-
-        public static String ImportMeshesFromFile(String folder_id, String file, out Assimp.Scene scene)
-        {
-            string dir = DirectoryManager.GetResourceDir(folder_id);
-            if (dir == String.Empty)
-            {
-                scene = null;
-                return $"Directory with id [{folder_id}] was not found in DirectoryManager";
-            }
-            string path = DirectoryManager.ConcatDirFile(dir, file);
-
-            try
-            {
-                Assimp.AssimpContext ac = new AssimpContext();
-                ac.SetConfig(new NormalSmoothingAngleConfig(66.0f));
-                Assimp.Scene s = ac.ImportFile(path, PostProcessSteps.Triangulate | PostProcessSteps.GenerateNormals);
-
-                if (s.MeshCount == 0)
-                {
-                    scene = null;
-                    return "No meshes were found in the file";
-                }
-
-                scene = s;
-                return String.Empty;
-            }
-            catch (Exception ex)
-            {
-                scene = null;
                 return ex.Message;
             }
         }
@@ -171,6 +130,8 @@ namespace HornetEngine.Graphics
             List<Vector3> vertex_data = new List<Vector3>();
             List<Vector3> normal_data = new List<Vector3>();
             List<Vector3> texture_data = new List<Vector3>();
+            List<Vector3> tangent_data = new List<Vector3>();
+            List<Vector3> bitangent_data = new List<Vector3>();
 
             bool hastex = mesh.HasTextureCoords(0);
 
@@ -200,9 +161,26 @@ namespace HornetEngine.Graphics
                     t.Z = 0.0f;
                 }
 
+                Vector3 tangent = new Vector3();
+                Vector3 bitangent = new Vector3();
+
+                if(mesh.HasTangentBasis)
+                {
+                    tangent.X = mesh.Tangents[i].X;
+                    tangent.Y = mesh.Tangents[i].Y;
+                    tangent.Z = mesh.Tangents[i].Z;
+
+                    bitangent.X = mesh.BiTangents[i].X;
+                    bitangent.Y = mesh.BiTangents[i].Y;
+                    bitangent.Z = mesh.BiTangents[i].Z;
+                }
+
                 vertex_data.Add(v);
                 normal_data.Add(n);
                 texture_data.Add(t);
+                tangent_data.Add(tangent);
+                bitangent_data.Add(bitangent);
+
             }
 
             FloatAttribute vertex_attrib = new FloatAttribute("Vertices", 3);
@@ -214,9 +192,17 @@ namespace HornetEngine.Graphics
             FloatAttribute texture_attrib = new FloatAttribute("TexCoords", 3);
             texture_attrib.AddData(texture_data.ToArray());
 
+            FloatAttribute tangent_attrib = new FloatAttribute("NormalTangents", 3);
+            tangent_attrib.AddData(tangent_data.ToArray());
+
+            FloatAttribute bitangent_attrib = new FloatAttribute("NormalBiTangents", 3);
+            bitangent_attrib.AddData(bitangent_data.ToArray());
+
             obj.Attributes.AddAttribute(vertex_attrib);
             obj.Attributes.AddAttribute(normal_attrib);
             obj.Attributes.AddAttribute(texture_attrib);
+            obj.Attributes.AddAttribute(tangent_attrib);
+            obj.Attributes.AddAttribute(bitangent_attrib);
         }
         public void Dispose()
         {

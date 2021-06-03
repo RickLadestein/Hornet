@@ -96,6 +96,21 @@ namespace HornetEngine.Graphics
             }
         }
 
+        public void AddData(GlmSharp.vec3[] data)
+        {
+            unsafe
+            {
+                int size = Marshal.SizeOf(typeof(Vector3)) * data.Length;
+                byte[] array = new byte[size];
+                fixed (void* dp = &data[0])
+                {
+                    IntPtr ptr = new IntPtr(dp);
+                    Marshal.Copy(ptr, array, 0, size);
+                    this.byte_data.AddRange(array);
+                }
+            }
+        }
+
         public void AddData(Vector4[] data)
         {
             unsafe

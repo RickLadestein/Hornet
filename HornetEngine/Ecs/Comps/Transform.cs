@@ -43,6 +43,15 @@ namespace HornetEngine.Ecs
         }
         private mat4 _model;
 
+        public mat3 NormalMat
+        {
+            get
+            {
+                CalcModelMatrix();
+                return new mat3(_model.Transposed.Inverse);
+            }
+        }
+
         /// <summary>
         /// Resets the transform rotation, position and scale to default values
         /// </summary>

@@ -319,12 +319,31 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// Sets a shader specific global variable in the GPU
+        /// </summary>
+        /// <param name="location">The uniform name in the shader program</param>
+        /// <param name="matrix">Matrix4 value</param>
         public unsafe void SetUniform(string location, GlmSharp.mat4 matrix)
         {
             int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
             if (loc != -1)
             {
                 NativeWindow.GL.UniformMatrix4(loc, 1, false, (float*)&matrix);
+            }
+        }
+
+        /// <summary>
+        /// Sets a shader specific global variable in the GPU
+        /// </summary>
+        /// <param name="location">The uniform name in the shader program</param>
+        /// <param name="matrix">Matrix3 value</param>
+        public unsafe void SetUniform(string location, GlmSharp.mat3 matrix)
+        {
+            int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
+            if (loc != -1)
+            {
+                NativeWindow.GL.UniformMatrix3(loc, 1, false, (float*)&matrix);
             }
         }
         #endregion
