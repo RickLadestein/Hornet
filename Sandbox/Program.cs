@@ -12,7 +12,7 @@ namespace Sandbox
     class Program
     {
         public static Window w = new Window();
-        public static Entity e;
+        public static Entity line_entity;
         public static Camera cam;
         public static Scene sc;
 
@@ -23,31 +23,26 @@ namespace Sandbox
             DirectoryManager.RegisterResourceDir("models", "resources\\models");
             
 
-            w.Open("Test", 3840, 2160, WindowMode.WINDOWED);
+            w.Open("Test", 1920, 1080, WindowMode.WINDOWED);
             w.Title = "Helloworld";
             w.Redraw += W_Redraw;
             
             sc = new Scene();
             DoManualResourceAquisition();
 
+            line_entity = new Entity("line");
 
-            e = new Entity("monkeh");
-            MeshComponent meshcomp = new MeshComponent();
-            meshcomp.SetTargetMesh("monkey");
+            LineRenderComponent rc = new LineRenderComponent();
+            rc.AddLine(new GlmSharp.vec3(0, 0, 5), new GlmSharp.vec3(5, 0, 5));
+            rc.AddLine(new GlmSharp.vec3(5, 0, 5), new GlmSharp.vec3(0, 2, 5));
+            rc.Base_Color = new GlmSharp.vec4(1.0f, 0.0f, 0.0f, 1.0f);
+            rc.Line_width = 100.0f;
+            rc.BuildBuffer();
+            line_entity.AddComponent(rc);
 
-            MaterialComponent matcomp = new MaterialComponent();
-            matcomp.SetShaderFromId("default");
+            sc.scene_content.Add(line_entity);
 
-            TextureComponent texcomp = new TextureComponent();
-            texcomp.SetTextureUnit("awp_color", HTextureUnit.Unit_0);
-            //texcomp.SetTextureUnit("laminate", HTextureUnit.Unit_1);
-
-            MonkeyScript monkeyscr = new MonkeyScript();
-
-
-            e.AddComponent(meshcomp);
-            e.AddComponent(matcomp);
-            e.AddScript(monkeyscr);
+            NativeWindow.GL.PolygonMode(Silk.NET.OpenGL.MaterialFace.FrontAndBack, Silk.NET.OpenGL.PolygonMode.Line);
 
             cam = new Camera();
             cam.ViewSettings = new CameraViewSettings()
@@ -61,61 +56,26 @@ namespace Sandbox
             cam.UpdateProjectionMatrix();
             cam.UpdateViewMatrix();
 
-            e.Transform.Position += new GlmSharp.vec3(0.0f, 0.0f, 5.0f);
             w.Run();
         }
 
-
-        
-
         private static void W_Redraw()
         {
-            foreach(Entity en in sc.scene_content) {
-                MaterialComponent matcomp = en.GetComponent<MaterialComponent>();
-                MeshComponent meshcomp = en.GetComponent<MeshComponent>();
-                TextureComponent texcomp = en.GetComponent<TextureComponent>();
-
-                if (meshcomp.Mesh == null || matcomp.Shader == null)
+            foreach(Entity en in sc.scene_content)
+            {
+                RenderComponent rendercomp = en.GetComponent<RenderComponent>();
+                if(rendercomp != null)
                 {
-                    Console.WriteLine("Mesh or Shader was null");
+                    rendercomp.Render(cam);
                 }
+            }
 
-                if (texcomp != null)
+            foreach (Entity en in sc.scene_content)
+            {
+                LineRenderComponent linercomp = en.GetComponent<LineRenderComponent>();
+                if (linercomp != null)
                 {
-                    texcomp.Textures.Bind();
-                    for (int i = 0; i < texcomp.Textures.textures.Length; i++)
-                    {
-                        if (texcomp.Textures.textures[i] != null)
-                        {
-                            matcomp.Shader.SetUniform($"texture_{i}", i);
-                        }
-                    }
-                }
-
-                VertexBuffer vbuf = meshcomp.Mesh.VertexBuffer;
-                vbuf.Bind();
-
-                ShaderProgram sh = matcomp.Shader;
-                sh.Bind();
-                sh.SetUniform("model", e.Transform.ModelMat);
-                sh.SetUniform("projection", cam.ProjectionMatrix);
-                sh.SetUniform("view", cam.ViewMatrix);
-                sh.SetUniform("camera_position", cam.Position);
-                sh.SetUniform("camera_target", cam.Target);
-                sh.SetUniform("time", 10);
-
-                NativeWindow.GL.DrawArrays(Silk.NET.OpenGL.GLEnum.Triangles, 0, vbuf.VertexCount);
-                vbuf.Unbind();
-                ShaderProgram.UnbindAll();
-
-                if (texcomp != null)
-                {
-                    texcomp.Textures.Unbind();
-                }
-
-                foreach (MonoScript ms in en.Scripts)
-                {
-                    ms.Update();
+                    linercomp.Render(cam);
                 }
             }
             return;
@@ -125,18 +85,23 @@ namespace Sandbox
         #region MANUAL_RESOURCE
         private static void DoManualResourceAquisition()
         {
-            Mesh m = Mesh.ImportMesh("monkey", "models", "ape.obj");
-            if (m != null)
-            {
-                MeshResourceManager.GetInstance().AddResource("monkey", m);
-            }
-            else
-            {
-                throw new Exception("Mesh loading failed");
-            }
+            //Mesh m = Mesh.ImportMesh("monkey", "models", "ape.obj");
+            //if (m != null)
+            //{
+            //    MeshResourceManager.GetInstance().AddResource("monkey", m);
+            //}
+            //else
+            //{
+            //    throw new Exception("Mesh loading failed");
+            //}
 
-            VertexShader vsh = new VertexShader("shaders", "default.vert");
-            FragmentShader fsh = new FragmentShader("shaders", "default.frag");
+            VertexShader dvsh = new VertexShader("shaders", "line_default.vert");
+            FragmentShader dfsh = new FragmentShader("shaders", "line_default.frag");
+            ShaderProgram dprog = new ShaderProgram(dvsh, dfsh);
+            ShaderResourceManager.GetInstance().AddResource("default_line", dprog);
+
+            VertexShader vsh = new VertexShader("shaders", "block.vert");
+            FragmentShader fsh = new FragmentShader("shaders", "block.frag");
             ShaderProgram prog = new ShaderProgram(vsh, fsh);
             ShaderResourceManager.GetInstance().AddResource("default", prog);
 

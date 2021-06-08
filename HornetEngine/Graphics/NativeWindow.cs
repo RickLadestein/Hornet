@@ -130,16 +130,16 @@ namespace HornetEngine.Graphics
             }
         }
 
-        public unsafe bool ShouldClose()
-        {
-            EnsureContextAndWindow();
-            return fwcontext.WindowShouldClose(w_handle);
-        }
-
         public unsafe double GetAliveTime()
         {
             EnsureContextAndWindow();
             return fwcontext.GetTime();
+        }
+
+        public unsafe bool ShouldClose()
+        {
+            EnsureContextAndWindow();
+            return fwcontext.WindowShouldClose(w_handle);
         }
 
         public unsafe void SetDrawArea(uint x, uint y, uint width, uint height)

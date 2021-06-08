@@ -14,11 +14,14 @@ namespace HornetEngine.Ecs
         /// </summary>
         public Mesh Mesh;
 
+        public bool IsTransperant { get; set; }
+
         /// <summary>
         /// Creates a new instance of MeshComponent with default parameters
         /// </summary>
         public MeshComponent() : base() {
             this.Mesh = null;
+            this.IsTransperant = false;
         }
 
         /// <summary>
