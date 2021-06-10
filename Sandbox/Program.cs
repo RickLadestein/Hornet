@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using HornetEngine.Ecs;
 using HornetEngine.Graphics;
 using HornetEngine.Graphics.Buffers;
@@ -20,7 +20,7 @@ namespace Sandbox
 
         static void Main()
         {
-            setupTouchDemo();
+            setupGraphicsDemo();
         }
 
         private static void setupGraphicsDemo()
@@ -29,8 +29,7 @@ namespace Sandbox
             DirectoryManager.RegisterResourceDir("shaders", "resources\\shaders");
             DirectoryManager.RegisterResourceDir("models", "resources\\models");
 
-
-            w.Open("Test", 3840, 2160, WindowMode.WINDOWED);
+            w.Open("Test", 3840, 2160, WindowMode.WINDOWED_FULLSCREEN);
             w.Title = "Helloworld";
             w.Redraw += W_Redraw;
             DoManualResourceAquisition();
@@ -74,10 +73,10 @@ namespace Sandbox
 
             TouchObject obj = new TouchObject(touch_points);
         }
-        
 
         private static void W_Redraw()
         {
+            w.Touch_manager.Refresh();
             MaterialComponent matcomp = e.GetComponent<MaterialComponent>();
             MeshComponent meshcomp = e.GetComponent<MeshComponent>();
 
@@ -104,7 +103,6 @@ namespace Sandbox
                 ms.Update();
             }
             return;
-            
         }
 
         #region MANUAL_RESOURCE

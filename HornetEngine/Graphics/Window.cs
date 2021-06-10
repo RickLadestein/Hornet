@@ -9,6 +9,7 @@ using HornetEngine.Util;
 using System.Threading;
 using HornetEngine.Input;
 using HornetEngine.Graphics.Buffers;
+using HornetEngine.Input.Touch_Recognition;
 
 namespace HornetEngine.Graphics
 {
@@ -17,6 +18,7 @@ namespace HornetEngine.Graphics
         public Mouse Mouse { get; private set; }
         public Keyboard Keyboard { get; private set; }
         public TouchPanel Touch_panel { get; private set; }
+        public TouchManager Touch_manager { get; private set; }
 
 
         public delegate void WindowRefreshFunc();
@@ -70,6 +72,7 @@ namespace HornetEngine.Graphics
                 this.Mouse = new Mouse(this.w_handle);
                 this.Keyboard = new Keyboard(this.w_handle);
                 this.Touch_panel = new TouchPanel(this.touch_driver);
+                this.Touch_manager = new TouchManager(this.Touch_panel);
             }
             return result;
         }
