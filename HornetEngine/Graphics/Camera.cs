@@ -63,10 +63,17 @@ namespace HornetEngine.Graphics
 
         public mat4 ProjectionMatrix { get; private set; }
         public mat4 ViewMatrix { get; private set; }
+
+        public static Camera Primary { get; private set; }
         public Camera()
         {
             this.Position = new vec3(0.0f);
             this.Orientation = quat.Identity;
+        }
+
+        public static void RegisterScenePrimaryCamera(Scene scene)
+        {
+            Primary = scene.PrimaryCam;
         }
 
         public void SetOrientation(float roll, float pitch, float yaw)
@@ -95,11 +102,7 @@ namespace HornetEngine.Graphics
         public void UpdateViewMatrix()
         {
             //Translate the orientation to looking point
-            quat x_quat = quat.FromAxisAngle(OpenTK.Mathematics.MathHelper.DegreesToRadians(Orientation.x), new vec3(1, 0, 0));
-            quat y_quat = quat.FromAxisAngle(OpenTK.Mathematics.MathHelper.DegreesToRadians(Orientation.y), new vec3(0, 1, 0));
-            quat z_quat = quat.FromAxisAngle(OpenTK.Mathematics.MathHelper.DegreesToRadians(Orientation.z), new vec3(0, 0, 1));
-            quat orient_quat = x_quat * y_quat * z_quat;
-            vec4 _foreward = orient_quat * new vec4(0.0f, 0.0f, 1.0f, 0.0f);
+            vec4 _foreward = Orientation * new vec4(0.0f, 0.0f, 1.0f, 0.0f);
             this.Foreward = _foreward.xyz;
             this.Target = this.Foreward + this.Position;
 

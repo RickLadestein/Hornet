@@ -7,24 +7,27 @@ namespace HornetEngine.Ecs
     public abstract class MonoScript
     {
         public Entity entity;
+        public bool start;
         public MonoScript() {
-            this.Start();
+            start = true;
         }
 
         /// <summary>
         /// Function that runs the first frame when this script was added to the entity
         /// </summary>
-        protected abstract void Start();
+        public virtual void Start() {
+            start = false;
+        }
 
         /// <summary>
         /// Function that runs every frame update
         /// </summary>
-        public abstract void Update();
+        public virtual void Update() { }
 
         /// <summary>
         /// Function that runs every update from the Fixed Update Thread
         /// </summary>
-        public abstract void FixedUpdate();
+        public virtual void FixedUpdate() { }
 
     }
 }

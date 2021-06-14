@@ -83,6 +83,7 @@ namespace HornetEngine.Ecs
             } else
             {
                 c.parent = this;
+                c.Initialise();
                 components.Add(c);
             }
         }
@@ -120,7 +121,7 @@ namespace HornetEngine.Ecs
             }
         }
 
-        public bool HasComponent<T>()
+        public bool HasComponent<T>() where T : Component
         {
             foreach (Component c in components)
             {
@@ -182,6 +183,18 @@ namespace HornetEngine.Ecs
                     comps.Add(t);
                 }
             }
+        }
+
+        public bool HasScript<T>() where T : MonoScript
+        {
+            foreach (MonoScript m in Scripts)
+            {
+                if (m != null && m is T t)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
