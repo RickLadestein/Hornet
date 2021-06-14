@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HornetEngine
+namespace HornetEngine.Sound
 {
     public class SoundEntity : SoundSource
     {

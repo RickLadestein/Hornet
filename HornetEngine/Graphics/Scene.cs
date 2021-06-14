@@ -13,11 +13,35 @@ namespace HornetEngine.Graphics
         private List<Entity> renderable_objects;
         private List<Entity> transperant_objects;
 
+        public Camera PrimaryCam { get; set; }
+
         public Scene()
         {
             scene_content = new List<Entity>();
             renderable_objects = new List<Entity>();
             transperant_objects = new List<Entity>();
+
+            PrimaryCam = new Camera();
+            PrimaryCam.ViewSettings = new CameraViewSettings()
+            {
+                Lens_height = 1080,
+                Lens_width = 1920,
+                Fov = OpenTK.Mathematics.MathHelper.DegreesToRadians(45),
+                clip_min = 0.001f,
+                clip_max = 10000.0f
+            };
+            PrimaryCam.UpdateProjectionMatrix();
+            PrimaryCam.UpdateViewMatrix();
+            Camera.RegisterScenePrimaryCamera(this);
+        }
+
+        public Entity FindEntityById(String id)
+        {
+            Entity found = this.scene_content.Find(entity => {
+                return entity.Name == id;
+            });
+
+            return found;
         }
 
         public void UpdateScene()
@@ -26,7 +50,13 @@ namespace HornetEngine.Graphics
             {
                 foreach(MonoScript mc in ex.Scripts)
                 {
-                    mc.Update();
+                    if(mc.start)
+                    {
+                        mc.Start();
+                    } else
+                    {
+                        mc.Update();
+                    }
                 }
             }
         }

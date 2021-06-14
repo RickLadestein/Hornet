@@ -7,7 +7,7 @@ namespace HornetEngine.Input
     public class Keyboard
     {
         // The variables for the currently pressed buttons
-        public readonly int MAX_PRESSED_BUTTONS = 5;
+        public static readonly int MAX_PRESSED_BUTTONS = 5;
         private char[] pressed_buttons;
 
         // The keyboard mode
@@ -39,6 +39,13 @@ namespace HornetEngine.Input
 
             // Set the callback for the key actions
             NativeWindow.GLFW.SetKeyCallback(w_handle, OnKeyAction);
+        }
+
+        public char[] GetPressedButtons()
+        {
+            char[] output = new char[MAX_PRESSED_BUTTONS];
+            pressed_buttons.CopyTo(output, 0);
+            return output;
         }
 
         /// <summary>
@@ -96,43 +103,17 @@ namespace HornetEngine.Input
         /// <param name="pressedKey">The key which has been pressed.</param>
         private void HandlePressedKey(Keys pressedKey)
         {
-            switch(pressedKey)
-            {
-                case Keys.E:
-                    AddKey(Keys.E);
-                    HandleKeyE();
-                    KeyPress?.Invoke(pressedKey);
-                    break;
-                default:
-                    Console.WriteLine("This key has not been implemented yet.");
-                    break;
-            }
+            AddKey(pressedKey);
+            KeyPress?.Invoke(pressedKey);
         }
 
         /// <summary>
-        /// A function which will handle the repeated usage of a key.
+        /// A function which will handle a pressed key.
         /// </summary>
-        /// <param name="repeatKey">The key which has been repeated.</param>
-        private void HandleRepeatKey(Keys repeatKey)
+        /// <param name="pressedKey">The key which has been pressed.</param>
+        private void HandleRepeatKey(Keys pressedKey)
         {
-            switch(repeatKey)
-            {
-                case Keys.E:
-                    HandleKeyE();
-                    KeyRepeat?.Invoke(repeatKey);
-                    break;
-                default:
-                    Console.WriteLine("An unknown key has been repeated.");
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// A function which will handle the specific 'e' key.
-        /// </summary>
-        private void HandleKeyE()
-        {
-            Console.WriteLine("E has been pressed");
+            KeyRepeat?.Invoke(pressedKey);
         }
 
         /// <summary>
@@ -158,12 +139,6 @@ namespace HornetEngine.Input
                     pressed_buttons[0] = (char)key;
                 }
             }
-
-            // Print the currently pressed buttons
-            for (int i = 0; i < MAX_PRESSED_BUTTONS; i++)
-            {
-                Console.WriteLine(pressed_buttons[i]);
-            }
         }
 
         /// <summary>
@@ -182,11 +157,6 @@ namespace HornetEngine.Input
                     pressed_buttons[i] = ' ';
                     break;
                 }
-            }
-            // Print the currently pressed buttons
-            for (int i = 0; i < MAX_PRESSED_BUTTONS; i++)
-            {
-                Console.WriteLine(pressed_buttons[i]);
             }
         }
     }
