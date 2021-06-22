@@ -67,10 +67,9 @@ namespace Sandbox
         {
             foreach (Entity en in sc.scene_content)
             {
-                RenderComponent rendercomp = en.GetComponent<RenderComponent>();
-                if(rendercomp != null)
+                if(en.HasComponent<MeshComponent>())
                 {
-                    rendercomp.Render(Camera.Primary);
+                    Renderer.Instance.RenderEntity(Camera.Primary, en);
                 }
             }
 
@@ -101,7 +100,7 @@ namespace Sandbox
             ShaderResourceManager.GetInstance().AddResource("default", prog);
 
             Texture tex = new Texture("textures", "laminate1.png", false);
-            TextureResourceManager.GetInstance().AddResource("laminate", tex);
+            TextureResourceManager.GetInstance().AddResource("default", tex);
 
             Texture tex2 = new Texture("textures", "sponza_column_c_ddn.tga", false);
             TextureResourceManager.GetInstance().AddResource("awp_color", tex2);

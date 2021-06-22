@@ -8,13 +8,14 @@ namespace HornetEngine.Ecs.Comps
     {
         public GlmSharp.vec3 Albedo { get; set; }
         public float Range { get; set; }
+        public float Intensity { get; set; }
 
 
         /// <summary>
         /// Sets the Albedo color from color temperature
         /// </summary>
         /// <param name="color_temp">Color temperature in Kelvin</param>
-        public void SetAlbedoFromTemperature(float color_temp)
+        public void SetAlbedoFromTemperature(uint color_temp)
         {
             float norm_temp = color_temp / 100;
             float r_val, g_val, b_val;
