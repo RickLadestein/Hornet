@@ -28,7 +28,7 @@ namespace HornetEngine.Graphics
 		EDGE_CLAMP = GLEnum.ClampToEdge,
 
 		/// <summary>
-		/// Use edge clamp mode for outside of bounds texture mapping
+		/// Use border clamp mode for outside of bounds texture mapping
 		/// </summary>
 		BORDER_CLAMP = GLEnum.ClampToBorder
     };
@@ -162,6 +162,30 @@ namespace HornetEngine.Graphics
             this.Status = TextureStatus.READY;
         }
 
+        public Texture(uint width, uint height, InternalFormat bits_per_channel, PixelFormat channels, PixelType pixel_type)
+        {
+            this.Status = TextureStatus.UNINITIALISED;
+            this.InitDefaults();
+
+            this.Status = TextureStatus.AQUIRING_HANDLE;
+            this.Handle = NativeWindow.GL.GenTexture();
+            if (this.Handle == 0)
+            {
+                Error = "OpenGL could not create Texture handle";
+                return;
+            }
+
+            this.Status = TextureStatus.LOADING_IMAGE;
+            NativeWindow.GL.ActiveTexture(GLEnum.Texture0);
+            NativeWindow.GL.BindTexture(GLEnum.Texture2D, this.Handle);
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapS, (uint)Wrap);
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapT, (uint)Wrap);
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureMinFilter, (uint)Filter);
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureMagFilter, (uint)Filter);
+            NativeWindow.GL.TexImage2D(TextureTarget.Texture2D, 0, (int)bits_per_channel, width, height, 0, channels, pixel_type, 0);
+            this.Status = TextureStatus.READY;
+        }
+
         private void InitDefaults()
         {
             this.Wrap = TextureWrapSetting.REPEAT;
@@ -191,7 +215,6 @@ namespace HornetEngine.Graphics
             this.Wrap = wrap;
             NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapS, (uint)wrap);
             NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapT, (uint)wrap);
-            var err = NativeWindow.GL.GetError();
             this.Unbind();
         }
 
