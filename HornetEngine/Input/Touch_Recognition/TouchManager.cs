@@ -29,11 +29,26 @@ namespace HornetEngine.Input.Touch_Recognition
         {
             // TODO Check welke punten bij elkaar horen
             // TODO Initialiseer de lijst touchObjects met de verschillende objecten
-            Console.WriteLine("Initialization\nSize: {0}", touchPoints.Count);
+            
+            //Console.WriteLine("Initialization\nSize: {0}", touchPoints.Count);
 
-            if(touchPoints.Count == 3)
+            try
             {
-                TouchObject obj = new TouchObject(SizeCheck(touchPoints));
+                for (int i = 0; i < touchPoints.Count; i += 3)
+                {
+                    List<TouchPoint> newList = new List<TouchPoint>();
+                    newList.Add(touchPoints[i]);
+                    newList.Add(touchPoints[i + 1]);
+                    newList.Add(touchPoints[i + 2]);
+
+                    TouchObject touchObj = new TouchObject(SizeCheck(newList));
+                    touchObjects.Add(touchObj);
+                }
+
+                Console.WriteLine("Touch obj length: {0}", touchObjects.Count);
+            } catch
+            {
+
             }
         }
 
@@ -49,10 +64,8 @@ namespace HornetEngine.Input.Touch_Recognition
             uint size_1 = touchPoints[1].contact_height * touchPoints[1].contact_width;
             uint size_2 = touchPoints[2].contact_height * touchPoints[2].contact_width;
 
-            Console.WriteLine("Size 0: {0}\nSize 1: {1}\nSize 2: {2}", size_0, size_1, size_2);
-
             Vector2[] touch_vector = new Vector2[3];
-
+           
             // Order the list based on size
             if (size_0 > size_1)
             {
@@ -85,6 +98,9 @@ namespace HornetEngine.Input.Touch_Recognition
                 }
             }
 
+
+            //Console.WriteLine("Size 0: {0}\nSize 1: {1}\nSize 2: {2}", touch_vector[0], touch_vector[1], touch_vector[2]);
+
             return touch_vector;
         }
 
@@ -94,6 +110,9 @@ namespace HornetEngine.Input.Touch_Recognition
         public void Refresh()
         {
             List<TouchPoint> touchPoints = panel.GetTouchPoints();
+            touchObjects.Clear();
+            
+            Console.WriteLine("\n\nRefresh called");
             InitializeTouchpoints(touchPoints);
         }
     }

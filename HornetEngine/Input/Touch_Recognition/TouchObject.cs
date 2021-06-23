@@ -18,6 +18,11 @@ namespace HornetEngine.Input.Touch_Recognition
             InitializeObject();
         }
 
+        public Vector2[] getTouchPoints()
+        {
+            return this.touch_points;
+        }
+
         /// <summary>
         /// A function which can be used to move the touch object to a new location
         /// </summary>
