@@ -27,8 +27,8 @@ namespace HornetEngine.Graphics
                 Lens_height = 1080,
                 Lens_width = 1920,
                 Fov = OpenTK.Mathematics.MathHelper.DegreesToRadians(45),
-                clip_min = 0.001f,
-                clip_max = 10000.0f
+                clip_min = 1.0f,
+                clip_max = 1000.0f
             };
             PrimaryCam.UpdateProjectionMatrix();
             PrimaryCam.UpdateViewMatrix();
@@ -46,6 +46,8 @@ namespace HornetEngine.Graphics
 
         public void UpdateScene()
         {
+            Camera.Primary.UpdateProjectionMatrix();
+            Camera.Primary.UpdateViewMatrix();
             foreach(Entity ex in this.scene_content)
             {
                 foreach(MonoScript mc in ex.Scripts)
@@ -121,9 +123,6 @@ namespace HornetEngine.Graphics
                 MaterialComponent matcomp = new MaterialComponent();
                 matcomp.SetShaderFromId("default");
                 e.AddComponent(matcomp);
-
-                RenderComponent rendcomp = new RenderComponent();
-                e.AddComponent(rendcomp);
 
                 scene_content.Add(e);
             }

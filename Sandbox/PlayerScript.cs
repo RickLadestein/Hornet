@@ -23,12 +23,11 @@ namespace Sandbox
         private void Mouse_MouseMove(double xpos, double ypos, double deltaX, double deltaY)
         {
             Camera cam = Camera.Primary;
-            float mouse_modifier = 0.5f;
+            float mouse_modifier = 0.3f;
             if (mouse.GetMode() == MouseMode.FPS)
             {
                 cam.Rotate(new GlmSharp.vec3(1.0f, 0.0f, 0.0f), (float)-deltaY * mouse_modifier);
                 cam.Rotate(new GlmSharp.vec3(0.0f, 1.0f, 0.0f), (float)-deltaX * mouse_modifier);
-                cam.UpdateViewMatrix();
             }
         }
 

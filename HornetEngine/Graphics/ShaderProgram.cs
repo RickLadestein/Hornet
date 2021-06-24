@@ -41,11 +41,6 @@ namespace HornetEngine.Graphics
         public uint Handle { get; private set; }
 
         /// <summary>
-        /// The error string containing the error log of the ShaderProgram
-        /// </summary>
-        public String Error { get; private set; }
-
-        /// <summary>
         /// The current status of the ShaderProgram
         /// </summary>
         public ShaderProgramStatus Status { get; private set; }
@@ -60,16 +55,14 @@ namespace HornetEngine.Graphics
             this.Status = ShaderProgramStatus.UNINITIALISED;
             if (vertex.Status != ShaderStatus.READY || fragment.Status != ShaderStatus.READY)
             {
-                Error = "One of the shaders was not compiled correctly: see individual shader error logs for detail";
-                return;
+                throw new Exception("Vertex/Fragment Shader compilation has failed: check individual error logs for detail");
             }
 
             this.Status = ShaderProgramStatus.AQUIRING_HANDLE;
             this.Handle = NativeWindow.GL.CreateProgram();
             if (Handle == 0)
             {
-                Error = "OpenGL was not able to create ShaderProgram handle";
-                return;
+                throw new Exception("OpenGL was not able to create ShaderProgram handle at this time");
             }
 
             this.Status = ShaderProgramStatus.LINKING;
@@ -79,8 +72,7 @@ namespace HornetEngine.Graphics
             String log = GetProgramInfoLog();
             if(log.Length > 0)
             {
-                this.Error = log;
-                return;
+                throw new Exception($"Shader program linking has failed: {log}");
             }
             this.Status = ShaderProgramStatus.READY;
         }
@@ -98,16 +90,14 @@ namespace HornetEngine.Graphics
                 fragment.Status != ShaderStatus.READY || 
                 geometry.Status != ShaderStatus.READY)
             {
-                Error = "One of the shaders was not compiled correctly: see individual shader error logs for detail";
-                return;
+                throw new Exception("Vertex/Geometry/Fragment Shader compilation has failed: check individual error logs for detail");
             }
 
             this.Status = ShaderProgramStatus.AQUIRING_HANDLE;
             this.Handle = NativeWindow.GL.CreateProgram();
             if (Handle == 0)
             {
-                Error = "OpenGL was not able to create ShaderProgram handle";
-                return;
+                throw new Exception("OpenGL was not able to create ShaderProgram handle at this time");
             }
 
             this.Status = ShaderProgramStatus.LINKING;
@@ -118,8 +108,7 @@ namespace HornetEngine.Graphics
             String log = GetProgramInfoLog();
             if (log.Length > 0)
             {
-                this.Error = log;
-                return;
+                throw new Exception($"Shader program linking has failed: {log}");
             }
             this.Status = ShaderProgramStatus.READY;
         }

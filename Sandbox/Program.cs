@@ -59,7 +59,7 @@ namespace Sandbox
 
             sc.scene_content.Add(line_entity);
 
-            NativeWindow.GL.PolygonMode(Silk.NET.OpenGL.MaterialFace.FrontAndBack, Silk.NET.OpenGL.PolygonMode.Line);
+            //NativeWindow.GL.PolygonMode(Silk.NET.OpenGL.MaterialFace.FrontAndBack, Silk.NET.OpenGL.PolygonMode.Fill);
             w.Run();
         }
 

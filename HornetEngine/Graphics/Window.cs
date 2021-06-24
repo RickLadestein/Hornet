@@ -71,6 +71,10 @@ namespace HornetEngine.Graphics
                 this.Keyboard = new Keyboard(this.w_handle);
                 this.Touch_panel = new TouchPanel(this.touch_driver);
             }
+            NativeWindow.GL.Enable(GLEnum.CullFace);
+            NativeWindow.GL.CullFace(CullFaceMode.Back);
+            
+            NativeWindow.GL.Enable(GLEnum.DepthTest);
             DepthBuffer.Enable();
             DepthBuffer.SetDepthCheckBehaviour(DepthFunc.LESS);
             fixed_update_thread.Start();

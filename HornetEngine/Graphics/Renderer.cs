@@ -26,6 +26,7 @@ namespace HornetEngine.Graphics
             }
         }
 
+        private FrameBuffer fb;
         private MaterialComponent default_material;
 
         private Renderer()
@@ -33,6 +34,12 @@ namespace HornetEngine.Graphics
             default_material = new MaterialComponent();
             default_material.SetShaderFromId("default");
             default_material.SetTextureUnit("default", HTextureUnit.Unit_0);
+        }
+
+        public void InitFrameBuffer(Window window)
+        {
+            GlmSharp.vec2 size = window.Size;
+            fb = new FrameBuffer((uint)size.x, (uint)size.y);
         }
         public void RenderEntity(Camera cam, Entity entity)
         {

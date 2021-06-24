@@ -6,7 +6,7 @@ using Silk.NET.GLFW;
 using Silk.NET.OpenGL;
 using Silk.NET.Core.Contexts;
 using HornetEngine.Util.Exceptions;
-using System.Numerics;
+using GlmSharp;
 using HornetEngine.Input;
 using HornetEngine.Util.Drivers;
 
@@ -49,8 +49,8 @@ namespace HornetEngine.Graphics
         }
 
         private String _title;
-        private Vector2 _size;
-        private Vector2 _pos;
+        private vec2 _size;
+        private vec2 _pos;
 
         public String Title
         {
@@ -64,7 +64,7 @@ namespace HornetEngine.Graphics
             }
         }
 
-        public Vector2 Size
+        public vec2 Size
         {
             get
             {
@@ -72,11 +72,11 @@ namespace HornetEngine.Graphics
             }
             set
             {
-                this.SetSize((int)Size.X, (int)Size.Y);
+                this.SetSize((int)Size.x, (int)Size.y);
             }
         }
 
-        public Vector2 Pos
+        public vec2 Pos
         {
             get
             {
@@ -84,14 +84,14 @@ namespace HornetEngine.Graphics
             }
             set
             {
-                this.SetPosition((uint)value.X, (uint)value.Y);
+                this.SetPosition((uint)value.x, (uint)value.y);
             }
         }
         protected NativeWindow()
         {
             this._title = "";
-            this._pos = new Vector2(0.0f);
-            this._size = new Vector2(0.0f);
+            this._pos = new vec2(0.0f);
+            this._size = new vec2(0.0f);
         }
 
         public unsafe void SetTitle(String title)
@@ -105,7 +105,7 @@ namespace HornetEngine.Graphics
         {
             EnsureContextAndWindow();
             fwcontext.SetWindowSize(w_handle, width, height);
-            _size = new Vector2(width, height);
+            _size = new vec2(width, height);
         }
 
         public unsafe void SetPosition(uint x_pos, uint y_pos)
@@ -125,7 +125,7 @@ namespace HornetEngine.Graphics
                 else
                 {
                     fwcontext.SetWindowPos(w_handle, (int)x_pos, (int)y_pos);
-                    this._pos = new Vector2(x_pos, y_pos);
+                    this._pos = new vec2(x_pos, y_pos);
                 }
             }
         }
@@ -243,10 +243,10 @@ namespace HornetEngine.Graphics
                 }
             }
 
-            this._size = new Vector2(width, height);
+            this._size = new vec2(width, height);
             this._title = title;
             fwcontext.GetWindowPos(w_handle, out int x_pos, out int y_pos);
-            this._pos = new Vector2(x_pos, y_pos);
+            this._pos = new vec2(x_pos, y_pos);
 
 
             fwcontext.SetWindowPosCallback(w_handle, NativeWindowPosChanged);
