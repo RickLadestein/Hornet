@@ -28,18 +28,25 @@ namespace HornetEngine.Input.Touch_Recognition
         /// <param name="touchPoints">A list of all the touchpoints</param>
         public void InitializeTouchObjects(List<TouchPoint> touchPoints)
         {
-            // Loop through the list of current touchpoints with steps of 3
-            for (int i = 0; i < touchPoints.Count; i += 3)
+            try
             {
-                // Initialize the list of touchpoints for this object
-                List<TouchPoint> newList = new List<TouchPoint>();
-                newList.Add(touchPoints[i]);
-                newList.Add(touchPoints[i + 1]);
-                newList.Add(touchPoints[i + 2]);
+                // Loop through the list of current touchpoints with steps of 3
+                for (int i = 0; i < touchPoints.Count; i += 3)
+                {
+                    // Initialize the list of touchpoints for this object
+                    List<TouchPoint> newList = new List<TouchPoint>();
+                    newList.Add(touchPoints[i]);
+                    newList.Add(touchPoints[i + 1]);
+                    newList.Add(touchPoints[i + 2]);
 
-                // Initialize and add the object
-                TouchObject touchObj = new TouchObject(SizeCheck(newList));
-                touchObjects.Add(touchObj);
+                    // Initialize and add the object
+                    TouchObject touchObj = new TouchObject(SizeCheck(newList));
+                    touchObjects.Add(touchObj);
+                }
+            }
+            catch
+            {
+
             }
         }
 

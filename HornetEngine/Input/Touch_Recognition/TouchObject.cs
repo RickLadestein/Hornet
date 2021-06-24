@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HornetEngine.Configuration;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Numerics;
 
 namespace HornetEngine.Input.Touch_Recognition
@@ -7,6 +9,7 @@ namespace HornetEngine.Input.Touch_Recognition
     {
         public Vector2[] touch_points = new Vector2[3];
         public TouchPointType type;
+        public Config configuration = Config.Instance;
 
         /// <summary>
         /// The constructor of a touch object.
@@ -61,31 +64,22 @@ namespace HornetEngine.Input.Touch_Recognition
         private void CheckType(double angle)
         {
             // Assign the invalid type if the angle does not fit the chart
-            if(angle < 48 || angle > 80)
+            if (angle < 48 || angle > 80)
             {
                 Console.WriteLine("Invalid object");
                 type = TouchPointType.INVALID;
             }
 
-            // Assign the correct type for the angles
-            if(angle > 46 && angle < 53.99) 
+            // Loop through the given json rules
+            foreach(JsonRule rule in configuration.GetJsonRules())
             {
-                type = TouchPointType.TYPE1;
-            } else if (angle > 54 && angle < 61.99)
-            {
-                type = TouchPointType.TYPE2;
-            } else if (angle > 62 && angle < 69.99)
-            {
-                type = TouchPointType.TYPE3;
-            } else if (angle > 70 && angle < 77.99)
-            {
-                type = TouchPointType.TYPE4;
-            } else if (angle > 78 && angle < 85.99)
-            {
-                type = TouchPointType.TYPE5;
-            } else
-            {
-                type = TouchPointType.INVALID;
+                // Check whether the current rule applies to the current anglle
+                if(angle > rule.min_angle && angle < rule.max_angle)
+                {
+                    // Assign the type and break out of the loop
+                    type = (TouchPointType) rule.bound_type;
+                    break;
+                }
             }
         }
 
@@ -99,14 +93,14 @@ namespace HornetEngine.Input.Touch_Recognition
          *      /______|______\
          */
 
-        /// <summary>
-        /// A function which will calculate the angles between the touchpoints
-        /// </summary>
-        /// <param name="fwd">A vector to the FWD touchpoint which can be used for rotation</param>
-        /// <param name="vector1">A vector to one of the side touchpoints</param>
-        /// <param name="vector2">A vector to one of the side touchpoints</param>
-        /// <returns></returns>
-        private double AngleBetween(Vector2 fwd, Vector2 vector1, Vector2 vector2)
+            /// <summary>
+            /// A function which will calculate the angles between the touchpoints
+            /// </summary>
+            /// <param name="fwd">A vector to the FWD touchpoint which can be used for rotation</param>
+            /// <param name="vector1">A vector to one of the side touchpoints</param>
+            /// <param name="vector2">A vector to one of the side touchpoints</param>
+            /// <returns>A double which contains the angle between the points</returns>
+            private double AngleBetween(Vector2 fwd, Vector2 vector1, Vector2 vector2)
         {
             // Initialize the middle vector
             Vector2 middle = (vector1 + vector2) / 2;
