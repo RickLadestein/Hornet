@@ -9,7 +9,7 @@ namespace HornetEngine.Input.Touch_Recognition
         public TouchPointType type;
 
         /// <summary>
-        /// The constructor of a touch object
+        /// The constructor of a touch object.
         /// </summary>
         /// <param name="touchpoints">A list of touchpoints, where the first point will always be the FWD</param>
         public TouchObject(Vector2[] touchpoints)
@@ -18,13 +18,18 @@ namespace HornetEngine.Input.Touch_Recognition
             InitializeObject();
         }
 
+        /// <summary>
+        /// A function which can be called to get the object's touchpoints
+        /// </summary>
+        /// <returns>A list of Vector2.</returns>
         public Vector2[] getTouchPoints()
         {
             return this.touch_points;
         }
 
         /// <summary>
-        /// A function which can be used to move the touch object to a new location
+        /// A function which can be used to move the touch object to a new location.
+        /// The first Vector2 should always be the FWD point.
         /// </summary>
         /// <param name="newPos">An arraylist of touchpoints of the new location</param>
         public void Move(Vector2[] newPos)
@@ -45,10 +50,8 @@ namespace HornetEngine.Input.Touch_Recognition
             // Obtain the angle between the points
             double angle = AngleBetween(fwd_point, point1, point2);
 
-            // Assign the type, based on the angle
+            // Assign the type based on the angle
             CheckType(angle);
-
-            Console.WriteLine("Angle1: {0}\nType: {1}", angle, type);
         }
 
         /// <summary>

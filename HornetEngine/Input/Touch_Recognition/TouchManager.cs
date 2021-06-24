@@ -16,50 +16,41 @@ namespace HornetEngine.Input.Touch_Recognition
         /// <param name="panel">The touchpanel</param>
         public TouchManager(TouchPanel panel)
         {
+            // Initialize the list of TouchObjects
             this.touchObjects = new List<TouchObject>();
 
             this.panel = panel;
         }
 
         /// <summary>
-        /// A function which will initialize all the touchpoints.
+        /// A function which will initialize all the touchobjects.
         /// </summary>
         /// <param name="touchPoints">A list of all the touchpoints</param>
-        public void InitializeTouchpoints(List<TouchPoint> touchPoints)
+        public void InitializeTouchObjects(List<TouchPoint> touchPoints)
         {
-            // TODO Check welke punten bij elkaar horen
-            // TODO Initialiseer de lijst touchObjects met de verschillende objecten
-            
-            //Console.WriteLine("Initialization\nSize: {0}", touchPoints.Count);
-
-            try
+            // Loop through the list of current touchpoints with steps of 3
+            for (int i = 0; i < touchPoints.Count; i += 3)
             {
-                for (int i = 0; i < touchPoints.Count; i += 3)
-                {
-                    List<TouchPoint> newList = new List<TouchPoint>();
-                    newList.Add(touchPoints[i]);
-                    newList.Add(touchPoints[i + 1]);
-                    newList.Add(touchPoints[i + 2]);
+                // Initialize the list of touchpoints for this object
+                List<TouchPoint> newList = new List<TouchPoint>();
+                newList.Add(touchPoints[i]);
+                newList.Add(touchPoints[i + 1]);
+                newList.Add(touchPoints[i + 2]);
 
-                    TouchObject touchObj = new TouchObject(SizeCheck(newList));
-                    touchObjects.Add(touchObj);
-                }
-
-                Console.WriteLine("Touch obj length: {0}", touchObjects.Count);
-            } catch
-            {
-
+                // Initialize and add the object
+                TouchObject touchObj = new TouchObject(SizeCheck(newList));
+                touchObjects.Add(touchObj);
             }
         }
 
         /// <summary>
-        /// A function which will check which touchpoint is the largets, and orders the list of touchpoints.
+        /// A function which will check which touchpoint is the largest.
         /// </summary>
-        /// <param name="touchPoints">A list of touchpoints, where the first entry is the touchpoint with the largest surface area.</param>
-        /// <returns></returns>
+        /// <param name="touchPoints">A list of touchpoints in a random order.</param>
+        /// <returns>A list of touchpoints, where the first entry is the touchpoint with the largest surface area.</returns>
         private Vector2[] SizeCheck(List<TouchPoint> touchPoints)
         {
-            // Initialize the surface area
+            // Initialize the surface areas
             uint size_0 = touchPoints[0].contact_height * touchPoints[0].contact_width;
             uint size_1 = touchPoints[1].contact_height * touchPoints[1].contact_width;
             uint size_2 = touchPoints[2].contact_height * touchPoints[2].contact_width;
@@ -98,9 +89,6 @@ namespace HornetEngine.Input.Touch_Recognition
                 }
             }
 
-
-            //Console.WriteLine("Size 0: {0}\nSize 1: {1}\nSize 2: {2}", touch_vector[0], touch_vector[1], touch_vector[2]);
-
             return touch_vector;
         }
 
@@ -109,11 +97,14 @@ namespace HornetEngine.Input.Touch_Recognition
         /// </summary>
         public void Refresh()
         {
+            // Get the current touchpoints
             List<TouchPoint> touchPoints = panel.GetTouchPoints();
+
+            // Clear the old list
             touchObjects.Clear();
             
-            Console.WriteLine("\n\nRefresh called");
-            InitializeTouchpoints(touchPoints);
+            // Initialize the new touch objects
+            InitializeTouchObjects(touchPoints);
         }
     }
 }

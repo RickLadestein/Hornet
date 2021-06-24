@@ -64,16 +64,6 @@ namespace Sandbox
             w.Run();
         }
 
-        private static void setupTouchDemo()
-        {
-            Vector2[] touch_points = new Vector2[3];
-            touch_points[0] = new Vector2(0, 1);
-            touch_points[1] = new Vector2(-1, 0);
-            touch_points[2] = new Vector2(1, 0);
-
-            TouchObject obj = new TouchObject(touch_points);
-        }
-
         private static void W_Redraw()
         {
             w.Touch_manager.Refresh();
