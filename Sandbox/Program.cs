@@ -16,7 +16,6 @@ namespace Sandbox
         public static Window w = new Window();
         public static Entity line_entity;
         public static Entity player;
-        public static Scene sc;
 
         static void Main()
         {
@@ -29,61 +28,35 @@ namespace Sandbox
 
             w.Open("Test", 1920, 1080, WindowMode.WINDOWED_FULLSCREEN);
             w.Title = "Helloworld";
-            w.Redraw += W_Redraw;
-            
-            sc = new Scene();
+
             DoManualResourceAquisition();
 
             player = new Entity("Player");
             PlayerScript pscr = new PlayerScript
             {
                 mouse = w.Mouse,
-                keyboard = w.Keyboard,
-                scene = sc
+                keyboard = w.Keyboard
             };
             player.AddScript(pscr);
 
             player.AddComponent(new AudioListenerComponent());
-            sc.scene_content.Add(player);
+            Scene.Instance.AddEntity(player);
 
-            line_entity = new Entity("line");
-            LineRenderComponent rc = new LineRenderComponent();
-            rc.AddLine(new GlmSharp.vec3(0, 0, 5), new GlmSharp.vec3(5, 0, 5));
-            rc.AddLine(new GlmSharp.vec3(5, 0, 5), new GlmSharp.vec3(0, 2, 5));
-            rc.Base_Color = new GlmSharp.vec4(1.0f, 0.0f, 0.0f, 1.0f);
-            rc.Line_width = 100.0f;
-            rc.BuildBuffer();
-            line_entity.AddComponent(rc);
-
-            line_entity.AddComponent(new SoundSourceComponent());
-
-            sc.scene_content.Add(line_entity);
+            //line_entity = new Entity("line");
+            //LineRenderComponent rc = new LineRenderComponent();
+            //rc.AddLine(new GlmSharp.vec3(0, 0, 5), new GlmSharp.vec3(5, 0, 5));
+            //rc.AddLine(new GlmSharp.vec3(5, 0, 5), new GlmSharp.vec3(0, 2, 5));
+            //rc.Base_Color = new GlmSharp.vec4(1.0f, 0.0f, 0.0f, 1.0f);
+            //rc.Line_width = 100.0f;
+            //rc.BuildBuffer();
+            //line_entity.AddComponent(rc);
+            //
+            //line_entity.AddComponent(new SoundSourceComponent());
+            //
+            //sc.AddEntity(line_entity);
 
             //NativeWindow.GL.PolygonMode(Silk.NET.OpenGL.MaterialFace.FrontAndBack, Silk.NET.OpenGL.PolygonMode.Fill);
             w.Run();
-        }
-
-        private static void W_Redraw()
-        {
-            foreach (Entity en in sc.scene_content)
-            {
-                if(en.HasComponent<MeshComponent>())
-                {
-                    Renderer.Instance.RenderEntity(Camera.Primary, en);
-                }
-            }
-
-            foreach (Entity en in sc.scene_content)
-            {
-                LineRenderComponent linercomp = en.GetComponent<LineRenderComponent>();
-                if (linercomp != null)
-                {
-                    linercomp.Render(Camera.Primary);
-                }
-            }
-
-            sc.UpdateScene();
-            return;
         }
 
         #region MANUAL_RESOURCE
@@ -100,15 +73,15 @@ namespace Sandbox
             ShaderResourceManager.GetInstance().AddResource("default", prog);
 
             Texture tex = new Texture("textures", "laminate1.png", false);
-            TextureResourceManager.GetInstance().AddResource("default", tex);
+            TextureResourceManager.GetInstance().AddResource("laminate", tex);
 
             Texture tex2 = new Texture("textures", "sponza_column_c_ddn.tga", false);
-            TextureResourceManager.GetInstance().AddResource("awp_color", tex2);
+            TextureResourceManager.GetInstance().AddResource("default", tex2);
 
             Sample samp = new Sample("samples", "laser.wav");
             SoundManager.Instance.AddResource("bonk", samp);
 
-            sc.LoadScene("models", "sponza.obj");
+            Scene.Instance.LoadScene("models", "sponza.obj");
         }
         #endregion
     }

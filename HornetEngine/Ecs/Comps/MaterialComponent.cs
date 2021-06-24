@@ -12,6 +12,8 @@ namespace HornetEngine.Ecs
         public MultiTexture Textures { get; private set; }
         public ShaderProgram Shader { get; private set; }
 
+        public MaterialDescriptor Material { get; set; }
+
         public MaterialComponent()
         {
             this.Textures = new MultiTexture();

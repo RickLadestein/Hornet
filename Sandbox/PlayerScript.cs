@@ -12,7 +12,6 @@ namespace Sandbox
     {
         public Keyboard keyboard;
         public Mouse mouse;
-        public Scene scene;
 
         public override void Start()
         {
@@ -64,7 +63,7 @@ namespace Sandbox
 
         private void PlaySound()
         {
-            Entity found = scene.FindEntityById("line");
+            Entity found = Scene.Instance.FindEntityById("line");
             Sample sample = SoundManager.Instance.GetResource("bonk");
             if (found != null && sample != null)
             {

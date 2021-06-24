@@ -190,6 +190,7 @@ namespace HornetEngine.Graphics
         {
             this.Wrap = TextureWrapSetting.REPEAT;
             this.Filter = MinMagSetting.NEAREST;
+            this.Error = string.Empty;
         }
 
         private unsafe void LoadImageIntoTexture(ImageResource im)

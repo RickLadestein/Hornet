@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HornetEngine.Ecs.Comps
+namespace HornetEngine.Ecs
 {
     public class RadialLightComponent : Component
     {

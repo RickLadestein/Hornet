@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using GlmSharp;
+using HornetEngine.Graphics.Buffers;
 
 namespace HornetEngine.Graphics
 {
@@ -57,6 +58,8 @@ namespace HornetEngine.Graphics
             }
         }
 
+        public FrameBuffer FrameBuffer { get; private set; }
+
 
         public vec3 Target { get; private set; }
         public vec3 Foreward { get; private set; }
@@ -72,6 +75,17 @@ namespace HornetEngine.Graphics
             this.Position = new vec3(0.0f);
             this.Orientation = quat.Identity;
             this.Up = new vec3(0.0f, 1.0f, 0.0f);
+
+            this.ViewSettings = new CameraViewSettings()
+            {
+                Lens_height = 480,
+                Lens_width = 720,
+                Fov = OpenTK.Mathematics.MathHelper.DegreesToRadians(45),
+                clip_min = 1.0f,
+                clip_max = 100.0f
+            };
+            this.UpdateProjectionMatrix();
+            this.FrameBuffer = new FrameBuffer((uint)this.ViewSettings.Lens_width, (uint)this.ViewSettings.Lens_height);
         }
 
         public static void RegisterScenePrimaryCamera(Scene scene)

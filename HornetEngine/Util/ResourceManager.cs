@@ -16,6 +16,14 @@ namespace HornetEngine.Util
             access_mutex = new Mutex();
         }
 
+        public bool HasResource(string identifier)
+        {
+            access_mutex.WaitOne();
+            bool found = resources.ContainsKey(identifier);
+            access_mutex.ReleaseMutex();
+            return found;
+        }
+
         public bool AddResource(String identifier, T resource)
         {
             if(resource == null)
