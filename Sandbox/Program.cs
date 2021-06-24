@@ -113,8 +113,9 @@ namespace Sandbox
             ShaderProgram prog = new ShaderProgram(vsh, fsh);
             ShaderResourceManager.GetInstance().AddResource("default", prog);
 
-
+            Config config = Config.Instance;
             SoundManager manager = SoundManager.Instance;
+
             en = new SoundEntity();
             manager.addSample(1, "resources\\samples\\menu.wav");
             en.setVolume(1.0f);
