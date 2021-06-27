@@ -32,7 +32,7 @@ namespace HornetEngine.Ecs
 
         public void SetShaderFromId(String matId)
         {
-            ShaderProgram result = ShaderResourceManager.GetInstance().GetResource(matId);
+            ShaderProgram result = ShaderResourceManager.Instance.GetResource(matId);
             if(result == null)
             {
                 throw new MissingResourceException(matId);
@@ -42,7 +42,7 @@ namespace HornetEngine.Ecs
 
         public void SetTextureUnit(String tex_identifier, HTextureUnit layer)
         {
-            Texture tex = TextureResourceManager.GetInstance().GetResource(tex_identifier);
+            Texture tex = TextureResourceManager.Instance.GetResource(tex_identifier);
             if (tex == null)
             {
                 throw new Exception($"Could not find resource: {tex_identifier}");

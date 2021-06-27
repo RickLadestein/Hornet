@@ -271,7 +271,7 @@ namespace HornetEngine.Graphics
 
 
 
-                MeshResourceManager.GetInstance().AddResource(tmp.Name, tmp);
+                MeshResourceManager.Instance.AddResource(tmp.Name, tmp);
 
                 Entity e = new Entity(tmp.Name);
 
@@ -290,7 +290,7 @@ namespace HornetEngine.Graphics
                 matcomp.Material = MaterialDescriptor.ParseFrom(mat);
                 if (matcomp.Material.Ambient_map != string.Empty)
                 {
-                    if(!TextureResourceManager.GetInstance().HasResource(matcomp.Material.Ambient_map))
+                    if(!TextureResourceManager.Instance.HasResource(matcomp.Material.Ambient_map))
                     {
                         Texture tex1 = new Texture("textures", matcomp.Material.Ambient_map, false);
                         if (tex1.Error != string.Empty)
@@ -299,7 +299,7 @@ namespace HornetEngine.Graphics
                         }
                         else
                         {
-                            TextureResourceManager.GetInstance().AddResource(matcomp.Material.Ambient_map, tex1);
+                            TextureResourceManager.Instance.AddResource(matcomp.Material.Ambient_map, tex1);
                         }
                     }
                     matcomp.SetTextureUnit(matcomp.Material.Ambient_map, HTextureUnit.Unit_0);
@@ -308,7 +308,7 @@ namespace HornetEngine.Graphics
 
                 if (matcomp.Material.Diffuse_map != string.Empty)
                 {
-                    if (!TextureResourceManager.GetInstance().HasResource(matcomp.Material.Diffuse_map))
+                    if (!TextureResourceManager.Instance.HasResource(matcomp.Material.Diffuse_map))
                     {
                         Texture tex2 = new Texture("textures", matcomp.Material.Diffuse_map, false);
                         if (tex2.Error != string.Empty)
@@ -317,7 +317,7 @@ namespace HornetEngine.Graphics
                         }
                         else
                         {
-                            TextureResourceManager.GetInstance().AddResource(matcomp.Material.Diffuse_map, tex2);
+                            TextureResourceManager.Instance.AddResource(matcomp.Material.Diffuse_map, tex2);
                         }
                     }
                     matcomp.SetTextureUnit(matcomp.Material.Diffuse_map, HTextureUnit.Unit_1);
@@ -326,7 +326,7 @@ namespace HornetEngine.Graphics
 
                 if (matcomp.Material.Dispersion_map != string.Empty)
                 {
-                    if (!TextureResourceManager.GetInstance().HasResource(matcomp.Material.Dispersion_map))
+                    if (!TextureResourceManager.Instance.HasResource(matcomp.Material.Dispersion_map))
                     {
                         Texture tex3 = new Texture("textures", matcomp.Material.Dispersion_map, false);
                         if (tex3.Error != string.Empty)
@@ -335,7 +335,7 @@ namespace HornetEngine.Graphics
                         }
                         else
                         {
-                            TextureResourceManager.GetInstance().AddResource(matcomp.Material.Dispersion_map, tex3);
+                            TextureResourceManager.Instance.AddResource(matcomp.Material.Dispersion_map, tex3);
                         }
                     }
                     matcomp.SetTextureUnit(matcomp.Material.Dispersion_map, HTextureUnit.Unit_2);

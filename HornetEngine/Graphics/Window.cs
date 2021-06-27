@@ -63,7 +63,7 @@ namespace HornetEngine.Graphics
         /// <returns>Window creation succes status, false: window creation failed, true: window creation succesfull</returns>
         public bool Open(String title, int width, int height, WindowMode mode)
         {
-            bool result = this.CreateWindowHandle(width, height, title, WindowMode.WINDOWED);
+            bool result = this.CreateWindowHandle(width, height, title, mode);
             GL.ClearColor(0.45f, 0.45f, 0.45f, 1.0f);
             unsafe
             {

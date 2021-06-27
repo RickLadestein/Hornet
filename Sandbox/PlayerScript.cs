@@ -33,13 +33,21 @@ namespace Sandbox
         public override void Update()
         {
             base.Update();
+            if(mouse.IsButtonDown(MouseButtons.Left))
+            {
+                mouse.SetMode(MouseMode.VISIBLE);
+            } else if(mouse.IsButtonDown(MouseButtons.Right))
+            {
+               mouse.SetMode(MouseMode.FPS);
+            }
+
 
             Camera cam = Camera.Primary;
-            char[] btns = keyboard.GetPressedButtons();
+            Silk.NET.GLFW.Keys[] btns = keyboard.GetPressedButtons();
             float key_modifier = 2.0f;
             for (int i = 0; i < Keyboard.MAX_PRESSED_BUTTONS; i++)
             {
-                switch ((Silk.NET.GLFW.Keys)btns[i])
+                switch (btns[i])
                 {
                     case Silk.NET.GLFW.Keys.W:
                         cam.Position += cam.Foreward * key_modifier;

@@ -26,7 +26,7 @@ namespace Sandbox
 
             SoundManager mgr = SoundManager.Instance;
 
-            w.Open("Test", 1920, 1080, WindowMode.WINDOWED_FULLSCREEN);
+            w.Open("Test", 1920, 1080, WindowMode.WINDOWED);
             w.Title = "Helloworld";
 
             DoManualResourceAquisition();
@@ -42,18 +42,18 @@ namespace Sandbox
             player.AddComponent(new AudioListenerComponent());
             Scene.Instance.AddEntity(player);
 
-            //line_entity = new Entity("line");
-            //LineRenderComponent rc = new LineRenderComponent();
-            //rc.AddLine(new GlmSharp.vec3(0, 0, 5), new GlmSharp.vec3(5, 0, 5));
-            //rc.AddLine(new GlmSharp.vec3(5, 0, 5), new GlmSharp.vec3(0, 2, 5));
-            //rc.Base_Color = new GlmSharp.vec4(1.0f, 0.0f, 0.0f, 1.0f);
-            //rc.Line_width = 100.0f;
-            //rc.BuildBuffer();
-            //line_entity.AddComponent(rc);
-            //
-            //line_entity.AddComponent(new SoundSourceComponent());
-            //
-            //sc.AddEntity(line_entity);
+            line_entity = new Entity("line");
+            LineRenderComponent rc = new LineRenderComponent();
+            rc.AddLine(new GlmSharp.vec3(0, 0, 5), new GlmSharp.vec3(5, 0, 5));
+            rc.AddLine(new GlmSharp.vec3(5, 0, 5), new GlmSharp.vec3(0, 2, 5));
+            rc.Base_Color = new GlmSharp.vec4(1.0f, 0.0f, 0.0f, 1.0f);
+            rc.Line_width = 100.0f;
+            rc.BuildBuffer();
+            line_entity.AddComponent(rc);
+            
+            line_entity.AddComponent(new SoundSourceComponent());
+            
+            Scene.Instance.AddEntity(line_entity);
 
             //NativeWindow.GL.PolygonMode(Silk.NET.OpenGL.MaterialFace.FrontAndBack, Silk.NET.OpenGL.PolygonMode.Fill);
             w.Run();
@@ -65,20 +65,20 @@ namespace Sandbox
             VertexShader dvsh = new VertexShader("shaders", "line_default.vert");
             FragmentShader dfsh = new FragmentShader("shaders", "line_default.frag");
             ShaderProgram dprog = new ShaderProgram(dvsh, dfsh);
-            ShaderResourceManager.GetInstance().AddResource("default_line", dprog);
+            ShaderResourceManager.Instance.AddResource("default_line", dprog);
 
             VertexShader vsh = new VertexShader("shaders", "block.vert");
             FragmentShader fsh = new FragmentShader("shaders", "block.frag");
             ShaderProgram prog = new ShaderProgram(vsh, fsh);
-            ShaderResourceManager.GetInstance().AddResource("default", prog);
+            ShaderResourceManager.Instance.AddResource("default", prog);
 
             Texture tex = new Texture("textures", "laminate1.png", false);
-            TextureResourceManager.GetInstance().AddResource("laminate", tex);
+            TextureResourceManager.Instance.AddResource("laminate", tex);
 
             Texture tex2 = new Texture("textures", "sponza_column_c_ddn.tga", false);
-            TextureResourceManager.GetInstance().AddResource("default", tex2);
+            TextureResourceManager.Instance.AddResource("default", tex2);
 
-            Sample samp = new Sample("samples", "laser.wav");
+            Sample samp = new Sample("samples", "menu.wav");
             SoundManager.Instance.AddResource("bonk", samp);
 
             Scene.Instance.LoadScene("models", "sponza.obj");

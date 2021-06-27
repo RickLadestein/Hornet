@@ -127,8 +127,8 @@ namespace HornetEngine.Graphics
             vec3 virt_cam_up = new vec3(0.0f, 1.0f, 0.0f);
             vec3 cam_dir = glm.Normalized(this.Position - this.Target);
             this.Right = glm.Normalized(glm.Cross(virt_cam_up, cam_dir));
-            this.Up = glm.Normalized(glm.Cross(cam_dir, this.Right)); ;
-            this.ViewMatrix = mat4.LookAt(this.Position, this.Target, virt_cam_up);
+            this.Up = glm.Normalized(glm.Cross(cam_dir, this.Right));
+            this.ViewMatrix = mat4.LookAt(this.Position, this.Target, this.Up);
         }
 
         public void UpdateProjectionMatrix()
