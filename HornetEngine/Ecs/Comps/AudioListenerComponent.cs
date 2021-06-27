@@ -19,6 +19,7 @@ namespace HornetEngine.Ecs
             {
                 throw new Exception("Audio listener count cannot be greater than 1 in the entire scene");
             }
+            Listener.setGlobalVol(0.5f);
         }
 
         private new void Initialise()

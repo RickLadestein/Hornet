@@ -13,7 +13,6 @@ namespace HornetEngine.Sound
     /// </summary>
     public class Sample
     {
-        private string givenFileLocation;
         public int Handle { get; private set; }
 
         /// <summary>
@@ -22,9 +21,7 @@ namespace HornetEngine.Sound
         /// <param name="givenFileLocation">A string which contains the path to the file which should be played.</param>
         public Sample(string givenFileLocation) 
         {
-            this.givenFileLocation = givenFileLocation;
-
-            initBuffer();
+            InitBuffer(givenFileLocation);
         }
 
         public Sample(string folder_id, string file)
@@ -35,8 +32,8 @@ namespace HornetEngine.Sound
                 throw new NotSupportedException($".{tokens[1]} extension type not supported: please only use .wav files");
             }
             string folder_dir = DirectoryManager.GetResourceDir(folder_id);
-            this.givenFileLocation = DirectoryManager.ConcatDirFile(folder_dir, file);
-            initBuffer();
+            string path = DirectoryManager.ConcatDirFile(folder_dir, file);
+            InitBuffer(path);
         }
 
         /// <summary>
@@ -44,7 +41,7 @@ namespace HornetEngine.Sound
         /// 
         /// This function will initialize the buffers for the specific sample.
         /// </summary>
-        public void initBuffer()
+        private void InitBuffer(string givenFileLocation)
         {
             // Initialize the buffer
             Handle = AL.GenBuffer();
@@ -52,20 +49,18 @@ namespace HornetEngine.Sound
             // Prints the file location to the console
             Console.WriteLine("Sample {0} initialized", givenFileLocation);
 
-            int channels, bits_per_sample, sample_rate;
-            byte[] sound_data = loadWave(File.Open(givenFileLocation, FileMode.Open), out channels, out bits_per_sample, out sample_rate);
+            //int channels, bits_per_sample, sample_rate;
+            //byte[] sound_data = loadWave(File.Open(givenFileLocation, FileMode.Open), out channels, out bits_per_sample, out sample_rate);
 
-            fmt_subchunk fmt;
-            data_chunk dta;
-            chunk_descriptor dsc;
-            loadWave(File.Open(givenFileLocation, FileMode.Open), out dsc, out fmt, out dta);
+            Stream fstream = File.OpenRead(givenFileLocation);
+            LoadWave(fstream, out chunk_descriptor dsc, out fmt_subchunk fmt, out data_chunk dta);
 
             // Create an IntPtr which points towards the sound_data
-            GCHandle pinnedArray = GCHandle.Alloc(sound_data, GCHandleType.Pinned);
+            GCHandle pinnedArray = GCHandle.Alloc(dta.data, GCHandleType.Pinned);
             IntPtr pointer = pinnedArray.AddrOfPinnedObject();
 
-            // Assign the sound to the buffer
-            AL.BufferData(Handle, getSoundFormat(channels, bits_per_sample), pointer, sound_data.Length, sample_rate);
+            ALFormat al_format = GetSoundFormat(fmt.num_channels, fmt.bits_per_sample);
+            AL.BufferData(Handle, al_format, pointer, dta.data.Length, fmt.sample_rate);
 
             // Free the array to prevent memory leaks
             pinnedArray.Free();
@@ -119,7 +114,7 @@ namespace HornetEngine.Sound
             }
         }
 
-        private void loadWave(Stream stream, out chunk_descriptor primary_header, out fmt_subchunk format_header, out data_chunk data_chunk)
+        private void LoadWave(Stream stream, out chunk_descriptor primary_header, out fmt_subchunk format_header, out data_chunk data_chunk)
         {
             if (stream == null)
                 throw new ArgumentNullException("stream");
@@ -138,8 +133,13 @@ namespace HornetEngine.Sound
         /// <param name="channels">The amount of channels within the sound file.</param>
         /// <param name="bits">The sample frequency in Hz.</param>
         /// <returns></returns>
-        private ALFormat getSoundFormat(int channels, int bits)
+        private ALFormat GetSoundFormat(int channels, int bits)
         {
+            if(bits > 16)
+            {
+                throw new NotSupportedException("32 bit audio channels not supported");
+            }
+
             switch (channels)
             {
                 case 1: return bits == 8 ? ALFormat.Mono8 : ALFormat.Mono16;
@@ -203,11 +203,19 @@ namespace HornetEngine.Sound
 
         public static data_chunk Parse(BinaryReader reader)
         {
+
+            //Read until data block is reached
+            string data_id = "";
+            while(!data_id.Equals("data"))
+            {
+                data_id = new string(reader.ReadChars(4));
+            }
+
             data_chunk output = new data_chunk
             {
-                chunk_id = new string(reader.ReadChars(4)),
+                chunk_id = data_id,
                 chunk_size = reader.ReadInt32(),
-                data = reader.ReadBytes((int)reader.BaseStream.Length)
+                data = reader.ReadBytes((int)(reader.BaseStream.Length - reader.BaseStream.Position))
             };
             return output;
         }
