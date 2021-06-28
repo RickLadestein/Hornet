@@ -1,4 +1,6 @@
 ﻿using HornetEngine.Graphics;
+using HornetEngine.Sound;
+using OpenTK.Audio.OpenAL;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -167,6 +169,18 @@ namespace HornetEngine.Util
             base.AddResource(identifier, resource);
         }
 
+        public void ImportResource(string identifier, string folder_id, string file)
+        {
+            Mesh m = Mesh.ImportMesh(identifier, folder_id, file);
+            if(m.Error.Length != 0 || m.Status != MeshStatus.READY)
+            {
+                throw new Exception($"Failed to import mesh resource. status: {m.Status}. error: {m.Error}");
+            } else
+            {
+                this.AddResource(identifier, m);
+            }
+        }
+
         private MeshResourceManager() : base() { }
     }
 
@@ -190,6 +204,55 @@ namespace HornetEngine.Util
             }
         }
 
+        public void ImportResource(string identifier, string folder_id, string vert_file, string frag_file)
+        {
+            VertexShader vs = new VertexShader(folder_id, vert_file);
+            FragmentShader fs = new FragmentShader(folder_id, frag_file);
+            if (vs.Error.Length != 0)
+            {
+                throw new Exception($"Failed to import vertex shader resource: {vs.Error}");
+            }
+
+            if(fs.Error.Length != 0)
+            {
+                throw new Exception($"Failed to import fragment shader resource: {vs.Error}");
+            }
+
+            ShaderProgram shp = new ShaderProgram(vs, fs);
+            if(shp.Status != ShaderProgramStatus.READY)
+            {
+                throw new Exception($"ShaderProgram error status: {shp.Status}");
+            }
+            this.AddResource(identifier, shp);
+        }
+
+        public void ImportResource(string identifier, string folder_id, string vert_file, string geo_file, string frag_file)
+        {
+            VertexShader vs = new VertexShader(folder_id, vert_file);
+            GeometryShader gs = new GeometryShader(folder_id, geo_file);
+            FragmentShader fs = new FragmentShader(folder_id, frag_file);
+            if (vs.Error.Length != 0)
+            {
+                throw new Exception($"Failed to import vertex shader resource: {vs.Error}");
+            }
+
+            if (gs.Error.Length != 0)
+            {
+                throw new Exception($"Failed to import geometry shader resource: {vs.Error}");
+            }
+
+            if (fs.Error.Length != 0)
+            {
+                throw new Exception($"Failed to import fragment shader resource: {vs.Error}");
+            }
+
+            ShaderProgram shp = new ShaderProgram(vs, gs, fs);
+            if (shp.Status != ShaderProgramStatus.READY)
+            {
+                throw new Exception($"ShaderProgram error status: {shp.Status}");
+            }
+            this.AddResource(identifier, shp);
+        }
         private ShaderResourceManager() : base() { }
     }
 
@@ -212,6 +275,58 @@ namespace HornetEngine.Util
             }
         }
 
+        public void ImportResource(string identifier, string folder_id, string tex_file)
+        {
+            Texture tex = new Texture(folder_id, tex_file, false);
+            if(tex.Error.Length != 0 || tex.Status != TextureStatus.READY)
+            {
+                throw new Exception($"Failed to import texture resource:{tex.Error}");
+            }
+            this.AddResource(identifier, tex);
+        }
+
         private TextureResourceManager() : base() { }
+    }
+
+
+    public class SoundManager : ResourceManager<Sample>
+    {
+        private static SoundManager instance;
+        private static object _lck = new object();
+
+        /// <summary>
+        /// A method to get the instance of the SoundManager.
+        /// The lock ensures that the singleton is thread-safe.
+        /// </summary>
+        public static SoundManager Instance
+        {
+            get
+            {
+                lock (_lck)
+                {
+                    if (instance == null)
+                    {
+                        instance = new SoundManager();
+                    }
+                }
+                return instance;
+            }
+        }
+
+        public void ImportResource(string identifier, string folder_id, string sound_file)
+        {
+            Sample samp = new Sample(folder_id, sound_file);
+            this.AddResource(identifier, samp);
+        }
+
+        /// <summary>
+        /// The constructor of the SoundManager
+        /// </summary>
+        unsafe SoundManager()
+        {
+            var device = ALC.OpenDevice(null);
+            var context = ALC.CreateContext(device, (int*)null);
+            ALC.MakeContextCurrent(context);
+        }
     }
 }
