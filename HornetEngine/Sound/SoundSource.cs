@@ -37,6 +37,11 @@ namespace HornetEngine.Sound
             AL.DeleteSource(this.handle);
         }
 
+        /// <summary>
+        /// A function which will play a sound effect
+        /// </summary>
+        /// <param name="s">The sample which should be played</param>
+        /// <exception cref="ArgumentNullException">Throws an ArgumentNullException</exception>
         public void PlaySoundEffect(Sample s)
         {
             if(s == null)
@@ -46,12 +51,20 @@ namespace HornetEngine.Sound
             AL.Source(this.handle, ALSourcei.Buffer, s.Handle);
             AL.SourcePlay(this.handle);
         }
+
+        /// <summary>
+        /// A function which gets the current ALSourceState
+        /// </summary>
+        /// <returns>Returns the current state</returns>
         public ALSourceState GetState()
         {
             AL.GetSource(this.handle, ALGetSourcei.SourceState, out int state);
             return (ALSourceState)state;
         }
 
+        /// <summary>
+        /// A function which can be used to pause a sound
+        /// </summary>
         public void Pause()
         {
             if(GetState() == ALSourceState.Playing)
@@ -60,6 +73,9 @@ namespace HornetEngine.Sound
             }
         }
 
+        /// <summary>
+        /// A function which can be used to stop a sound
+        /// </summary>
         public void Stop()
         {
             ALSourceState state = GetState();
@@ -89,11 +105,19 @@ namespace HornetEngine.Sound
             AL.Source(handle, ALSourcef.Gain, this.volume);
         } 
 
+        /// <summary>
+        /// A function which can be used to set the position of the sound source
+        /// </summary>
+        /// <param name="world_pos">A vec3 containing the new position</param>
         public void SetPosition(GlmSharp.vec3 world_pos)
         {
             AL.Source(handle, ALSource3f.Position, world_pos.x, world_pos.y, world_pos.z);
         }
 
+        /// <summary>
+        /// A function which can be used to set the velocity
+        /// </summary>
+        /// <param name="velocity">A vec3 containing the new velocity</param>
         public void SetVelocity(GlmSharp.vec3 velocity)
         {
             AL.Source(handle, ALSource3f.Velocity, velocity.x, velocity.y, velocity.z);

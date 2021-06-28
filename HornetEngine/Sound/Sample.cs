@@ -24,6 +24,12 @@ namespace HornetEngine.Sound
             InitBuffer(givenFileLocation);
         }
 
+        /// <summary>
+        /// The constructor of the Sound Sample
+        /// </summary>
+        /// <param name="folder_id">The folder ID</param>
+        /// <param name="file">The file name</param>
+        /// <exception cref="ArgumentException">Throws an ArgumentException</exception>
         public Sample(string folder_id, string file)
         {
             if(folder_id == null || folder_id.Length == 0)
