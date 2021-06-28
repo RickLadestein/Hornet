@@ -41,40 +41,6 @@ namespace Sandbox
 
             player.AddComponent(new AudioListenerComponent());
             Scene.Instance.AddEntity(player);
-
-
-            Entity henk = new Entity("Henk");
-            HenkScript hs = new HenkScript();
-            hs.cam = Camera.Primary;
-            henk.AddScript(hs);
-
-            SoundSourceComponent ssc = new SoundSourceComponent();
-            henk.AddComponent(ssc);
-
-            Mesh mesh = Mesh.ImportMesh("henkmesh", "models", "ape.obj");
-            MeshResourceManager.Instance.AddResource("henkmesh" , mesh);
-            MeshComponent ms = new MeshComponent();
-            ms.SetTargetMesh("henkmesh");
-            henk.AddComponent(ms);
-
-            InterfaceRenderComponent mrc = new InterfaceRenderComponent();
-            henk.AddComponent(mrc);
-
-
-            MaterialComponent matcomp = new MaterialComponent();
-            matcomp.SetShaderFromId("default");
-            matcomp.SetTextureUnit("laminate", HTextureUnit.Unit_0);
-            henk.AddComponent(matcomp);
-
-            henk.Transform.Position = new GlmSharp.vec3(0.0f, 0.0f, 5.0f);
-            Scene.Instance.AddEntity(henk);
-
-
-
-
-
-
-
             w.Run();
         }
 
@@ -94,18 +60,13 @@ namespace Sandbox
             ShaderProgram prog1 = new ShaderProgram(new VertexShader("shaders", "deferred_pre.vert"), new FragmentShader("shaders", "deferred_pre.frag"));
             ShaderResourceManager.Instance.AddResource("deferred_pre", prog1);
 
-
-
             Texture tex = new Texture("textures", "laminate1.png", false);
-            TextureResourceManager.Instance.AddResource("laminate", tex);
-
-            Texture tex2 = new Texture("textures", "sponza_column_c_ddn.tga", false);
-            TextureResourceManager.Instance.AddResource("default", tex2);
+            TextureResourceManager.Instance.AddResource("default", tex);
 
             Sample samp = new Sample("samples", "menu.wav");
             SoundManager.Instance.AddResource("bonk", samp);
 
-            //Scene.Instance.LoadScene("models", "sponza.obj");
+            Scene.Instance.LoadScene("models", "sponza.obj");
         }
         #endregion
     }
