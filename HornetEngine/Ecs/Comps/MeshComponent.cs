@@ -14,21 +14,24 @@ namespace HornetEngine.Ecs
         /// </summary>
         public Mesh Mesh;
 
-        public bool IsTransperant { get; set; }
+        /// <summary>
+        /// A bool which indicates whether the mesh is transparent
+        /// </summary>
+        public bool IsTransparent { get; set; }
 
         /// <summary>
         /// Creates a new instance of MeshComponent with default parameters
         /// </summary>
         public MeshComponent() : base() {
             this.Mesh = null;
-            this.IsTransperant = false;
+            this.IsTransparent = false;
         }
 
         /// <summary>
         /// Retrieves a Mesh from the MeshResourceManager and sets it as the active Mesh in this component
         /// </summary>
-        /// <param name="meshId"></param>
-        /// <exception cref="Exception"></exception>
+        /// <param name="meshId">A string containing the ID of the mesh</param>
+        /// <exception cref="MissingResourceException">Throws a MissingResourceException</exception>
         public void SetTargetMesh(String meshId)
         {
             Mesh result = MeshResourceManager.Instance.GetResource(meshId);
@@ -38,7 +41,6 @@ namespace HornetEngine.Ecs
             }
             Mesh = result;
         }
-
 
         public override string ToString()
         {

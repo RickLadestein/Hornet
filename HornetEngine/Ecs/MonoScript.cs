@@ -6,8 +6,19 @@ namespace HornetEngine.Ecs
 {
     public abstract class MonoScript
     {
+        /// <summary>
+        /// The entity within the MonoScript
+        /// </summary>
         public Entity entity;
+
+        /// <summary>
+        /// A bool used to check whether the script has been run
+        /// </summary>
         public bool start;
+
+        /// <summary>
+        /// The constructor of the MonoScript
+        /// </summary>
         public MonoScript() {
             start = true;
         }
@@ -28,6 +39,5 @@ namespace HornetEngine.Ecs
         /// Function that runs every update from the Fixed Update Thread
         /// </summary>
         public virtual void FixedUpdate() { }
-
     }
 }

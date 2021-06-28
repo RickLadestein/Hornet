@@ -9,28 +9,89 @@ using HornetEngine.Util;
 using System.Threading;
 using HornetEngine.Input;
 using HornetEngine.Graphics.Buffers;
+using HornetEngine.Input.Touch_Recognition;
 
 namespace HornetEngine.Graphics
 {
     public class Window : NativeWindow
     {
+        /// <summary>
+        /// The mouse within the window
+        /// </summary>
         public Mouse Mouse { get; private set; }
+
+        /// <summary>
+        /// The keyboard within the window
+        /// </summary>
         public Keyboard Keyboard { get; private set; }
+
+        /// <summary>
+        /// The touch panel within the window
+        /// </summary>
         public TouchPanel Touch_panel { get; private set; }
+        public TouchManager Touch_manager { get; private set; }
 
-
+        /// <summary>
+        /// The refresh function of the window
+        /// </summary>
         public delegate void WindowRefreshFunc();
+
+        /// <summary>
+        /// The fixed update function of the window
+        /// </summary>
         public delegate void WindowFixedUpdateFunc();
+
+        /// <summary>
+        /// The move function of the window
+        /// </summary>
+        /// <param name="newpos">The new position</param>
         public delegate void WindowMoveFunc(Vector2 newpos);
+
+        /// <summary>
+        /// The resize function of the window
+        /// </summary>
+        /// <param name="newsize">The new size</param>
         public delegate void WindowResizeFunc(Vector2 newsize);
+
+        /// <summary>
+        /// The focus function of the window
+        /// </summary>
+        /// <param name="focussed">A bool which shows whether the window is focused</param>
         public delegate void WindowFocusFunc(bool focussed);
+
+        /// <summary>
+        /// The close function of the window
+        /// </summary>
         public delegate void WindowCloseFunc();
 
+        /// <summary>
+        /// The redraw event
+        /// </summary>
         public event WindowRefreshFunc Redraw;
+
+        /// <summary>
+        /// The move event
+        /// </summary>
         public event WindowMoveFunc Move;
+
+        /// <summary>
+        /// The resize event
+        /// </summary>
         public event WindowResizeFunc Resize;
+
+        /// <summary>
+        /// The focus event
+        /// </summary>
         public event WindowFocusFunc Focus;
+
+        /// <summary>
+        /// The close event
+        /// </summary>
         public event WindowCloseFunc Close;
+
+        /// <summary>
+        /// The fixed update event
+        /// </summary>
         public event WindowFixedUpdateFunc FixedUpdate;
 
         private Thread fixed_update_thread;
@@ -70,6 +131,7 @@ namespace HornetEngine.Graphics
                 this.Mouse = new Mouse(this.w_handle);
                 this.Keyboard = new Keyboard(this.w_handle);
                 this.Touch_panel = new TouchPanel(this.touch_driver);
+                this.Touch_manager = new TouchManager(this.Touch_panel);
             }
 
             this.Redraw += Scene.Instance.GetRefreshFunc();

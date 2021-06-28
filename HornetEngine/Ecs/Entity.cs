@@ -33,8 +33,6 @@ namespace HornetEngine.Ecs
         /// </summary>
         public List<Entity> Children { get; private set; }
 
-        
-
         /// <summary>
         /// Creates a new instance of Entity with default parameters
         /// </summary>
@@ -121,6 +119,11 @@ namespace HornetEngine.Ecs
             }
         }
 
+        /// <summary>
+        /// A function which checks whether the entity has components
+        /// </summary>
+        /// <typeparam name="T">The type of the component which should be checked</typeparam>
+        /// <returns>A boolean depending on the result</returns>
         public bool HasComponent<T>() where T : Component
         {
             foreach (Component c in components)
@@ -185,6 +188,11 @@ namespace HornetEngine.Ecs
             }
         }
 
+        /// <summary>
+        /// A function which checks whether the entity has a script
+        /// </summary>
+        /// <typeparam name="T">The type of the script which should be checked</typeparam>
+        /// <returns>A boolean depending on the result</returns>
         public bool HasScript<T>() where T : MonoScript
         {
             foreach (MonoScript m in Scripts)

@@ -13,17 +13,40 @@ namespace HornetEngine.Graphics
 {
     public class Mesh : IDisposable
     {
+        /// <summary>
+        /// The status of the mesh
+        /// </summary>
         public MeshStatus Status { get; private set; }
 
+        /// <summary>
+        /// The vertex buffer
+        /// </summary>
         public VertexBuffer VertexBuffer { get; private set; }
 
+        /// <summary>
+        /// The material
+        /// </summary>
         public Material Material { get; set; }
 
+        /// <summary>
+        /// The attributes
+        /// </summary>
         public AttributeStorage Attributes { get; private set; }
 
+        /// <summary>
+        /// The name
+        /// </summary>
         public String Name { get; private set; }
 
+        /// <summary>
+        /// The error message
+        /// </summary>
         public String Error { get; private set; }
+
+        /// <summary>
+        /// The constructor of the mesg
+        /// </summary>
+        /// <param name="name">The name of the mesh</param>
         public Mesh(String name)
         {
             this.Status = MeshStatus.INVALID;
@@ -34,13 +57,22 @@ namespace HornetEngine.Graphics
             this.Material = new Material();
         }
 
+        /// <summary>
+        /// A function which can be used to build the vertex buffers
+        /// </summary>
         public void BuildVertexBuffer()
         {
             VertexBuffer.InitialiseBuffers();
             VertexBuffer.BufferData(Attributes, ElementType.TRIANGLES);
         }
 
-
+        /// <summary>
+        /// A function which can be used to import a mesh
+        /// </summary>
+        /// <param name="name">The name of the mesh</param>
+        /// <param name="folder_id">The ID of the folder</param>
+        /// <param name="file">The name of the file</param>
+        /// <returns>A mesh</returns>
         public static Mesh ImportMesh(String name, String folder_id, String file)
         {
             
@@ -72,6 +104,12 @@ namespace HornetEngine.Graphics
             return output;
         }
 
+        /// <summary>
+        /// A function which can be used to import a mesh
+        /// </summary>
+        /// <param name="mesh">The mesh</param>
+        /// <param name="mat">The material</param>
+        /// <returns>A mesh</returns>
         public static Mesh ImportMesh(Assimp.Mesh mesh, Assimp.Material mat)
         {
             if(mesh == null)
@@ -114,6 +152,14 @@ namespace HornetEngine.Graphics
             return output;
         }
 
+        /// <summary>
+        /// A function which can import a mesh from a file
+        /// </summary>
+        /// <param name="folder_id">The ID of the folder</param>
+        /// <param name="file">The name of the file</param>
+        /// <param name="mesh">The mesg</param>
+        /// <param name="mat">The material</param>
+        /// <returns></returns>
         private static String ImportMeshFromFile(String folder_id, String file, out Assimp.Mesh mesh, out Material mat)
         {
             string dir = DirectoryManager.GetResourceDir(folder_id);
@@ -164,6 +210,11 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// A function which can parse the mesh data
+        /// </summary>
+        /// <param name="obj">The mesh object</param>
+        /// <param name="mesh">The mesh</param>
         private static void ParseMeshData(HornetEngine.Graphics.Mesh obj, Assimp.Mesh mesh)
         {
             obj.Attributes.ClearAttributes();
@@ -244,6 +295,10 @@ namespace HornetEngine.Graphics
             obj.Attributes.AddAttribute(tangent_attrib);
             obj.Attributes.AddAttribute(bitangent_attrib);
         }
+
+        /// <summary>
+        /// A function which can disppose of the attributes
+        /// </summary>
         public void Dispose()
         {
             this.Attributes.ClearAttributes();

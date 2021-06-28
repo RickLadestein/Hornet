@@ -10,6 +10,10 @@ namespace HornetEngine.Util
     {
         private Dictionary<String, T> resources;
         private Mutex access_mutex;
+
+        /// <summary>
+        /// The constructor of the ResourceManager
+        /// </summary>
         public ResourceManager()
         {
             resources = new Dictionary<string, T>();
@@ -139,6 +143,10 @@ namespace HornetEngine.Util
     {
         private static MeshResourceManager instance;
         private static object _lck = new object();
+
+        /// <summary>
+        /// The instance of the MeshResourceManager
+        /// </summary>
         public static MeshResourceManager Instance 
         {
             get
@@ -154,6 +162,11 @@ namespace HornetEngine.Util
             }
         }
 
+        /// <summary>
+        /// A function which adds a resource to the resource manager
+        /// </summary>
+        /// <param name="identifier">The ID of the resource</param>
+        /// <param name="resource">The mesh resource</param>
         public new void AddResource(String identifier, Mesh resource)
         {
             if(resource == null)
@@ -175,6 +188,10 @@ namespace HornetEngine.Util
     {
         private static ShaderResourceManager instance;
         private static object _lck = new object();
+
+        /// <summary>
+        /// The ShaderResourceManager instance
+        /// </summary>
         public static ShaderResourceManager Instance
         {
             get
@@ -197,6 +214,10 @@ namespace HornetEngine.Util
     {
         private static TextureResourceManager instance;
         private static object _lck = new object();
+
+        /// <summary>
+        /// The TextureResourceManager instance
+        /// </summary>
         public static TextureResourceManager Instance
         {
             get

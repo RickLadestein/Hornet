@@ -13,14 +13,48 @@ namespace HornetEngine.Input
         // The keyboard mode
         private KeyboardMode mode;
 
+        /// <summary>
+        /// The key press function
+        /// </summary>
+        /// <param name="key">The keys which were pressed</param>
         public delegate void KeyPressFunc(Keys key);
+
+        /// <summary>
+        /// The key release function
+        /// </summary>
+        /// <param name="key">The keys which were released</param>
         public delegate void KeyReleaseFunc(Keys key);
+
+        /// <summary>
+        /// The key repeat function
+        /// </summary>
+        /// <param name="key">The keys which were held down</param>
         public delegate void KeyRepeatFunc(Keys key);
+
+        /// <summary>
+        /// The key type function
+        /// </summary>
+        /// <param name="identifier">The identifier of the key</param>
         public delegate void KeyTypeFunc(uint identifier);
 
+        /// <summary>
+        /// The key press event
+        /// </summary>
         public event KeyPressFunc KeyPress;
+
+        /// <summary>
+        /// The key release event
+        /// </summary>
         public event KeyReleaseFunc KeyRelease;
+
+        /// <summary>
+        /// The key repeat event
+        /// </summary>
         public event KeyRepeatFunc KeyRepeat;
+
+        /// <summary>
+        /// The key type event
+        /// </summary>
         public event KeyTypeFunc KeyType;
 
         /// <summary>

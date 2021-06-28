@@ -6,6 +6,7 @@ namespace HornetEngine.Input
 {
     public enum KeyboardMode
     {
-        TYPING, ACTION
+        TYPING, 
+        ACTION
     }
 }

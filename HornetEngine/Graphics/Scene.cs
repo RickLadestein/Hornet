@@ -12,6 +12,10 @@ namespace HornetEngine.Graphics
     {
         private static Scene _scene;
         private static object lck = new object();
+
+        /// <summary>
+        /// The instance of the scene
+        /// </summary>
         public static Scene Instance
         {
             get
@@ -33,6 +37,10 @@ namespace HornetEngine.Graphics
         private List<Entity> light_objects;
 
         private bool scene_content_changed;
+
+        /// <summary>
+        /// The primary camera
+        /// </summary>
         public Camera PrimaryCam { get; private set; }
         private Scene()
         {
@@ -180,6 +188,9 @@ namespace HornetEngine.Graphics
             this.scene_content_changed = true;
         }
 
+        /// <summary>
+        /// A function which updates the fixed entities
+        /// </summary>
         public void UpdateFixed()
         {
             foreach (Entity ex in this.scene_content)
@@ -196,6 +207,9 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// A function which updates the scene
+        /// </summary>
         public void UpdateScene()
         {
             SortSceneContent();
@@ -216,6 +230,10 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// A function which gets the refresh function
+        /// </summary>
+        /// <returns>The refresh function of the window</returns>
         public Window.WindowRefreshFunc GetRefreshFunc()
         {
             return RedrawFunc;
@@ -256,6 +274,11 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// A function which loads the scene
+        /// </summary>
+        /// <param name="folder_id">The ID of the folder</param>
+        /// <param name="scene_file">The name of the scene file</param>
         public void LoadScene(string folder_id, string scene_file)
         {
             scene_content.Clear();
@@ -383,7 +406,5 @@ namespace HornetEngine.Graphics
                 return ex.Message;
             }
         }
-
-
     }
 }

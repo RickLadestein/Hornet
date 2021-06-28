@@ -12,8 +12,14 @@ namespace HornetEngine.Graphics
     /// </summary>
     public struct CameraViewSettings
     {
+        /// <summary>
+        /// The width of the lens
+        /// </summary>
         public float Lens_width;
 
+        /// <summary>
+        /// The height of the lens
+        /// </summary>
         public float Lens_height;
 
         /// <summary>
@@ -34,6 +40,9 @@ namespace HornetEngine.Graphics
 
     public class Camera
     {
+        /// <summary>
+        /// The CameraViewSettings
+        /// </summary>
         public CameraViewSettings ViewSettings {get; set; }
 
         /// <summary>
@@ -58,18 +67,49 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// The framebuffer of the camera
+        /// </summary>
         public FrameBuffer FrameBuffer { get; private set; }
 
-
+        /// <summary>
+        /// The target view
+        /// </summary>
         public vec3 Target { get; private set; }
+
+        /// <summary>
+        /// The foreward view
+        /// </summary>
         public vec3 Foreward { get; private set; }
+
+        /// <summary>
+        /// The right view
+        /// </summary>
         public vec3 Right { get; private set; }
+
+        /// <summary>
+        /// The up view
+        /// </summary>
         public vec3 Up { get; private set; }
 
+        /// <summary>
+        /// The projection matrix
+        /// </summary>
         public mat4 ProjectionMatrix { get; private set; }
+
+        /// <summary>
+        /// The view matrix
+        /// </summary>
         public mat4 ViewMatrix { get; private set; }
 
+        /// <summary>
+        /// The primary camera
+        /// </summary>
         public static Camera Primary { get; private set; }
+
+        /// <summary>
+        /// The constructor of the camera
+        /// </summary>
         public Camera()
         {
             this.Position = new vec3(0.0f);
@@ -88,11 +128,21 @@ namespace HornetEngine.Graphics
             this.FrameBuffer = new FrameBuffer((uint)this.ViewSettings.Lens_width, (uint)this.ViewSettings.Lens_height);
         }
 
+        /// <summary>
+        /// A function which can be used to register the primary camera 
+        /// </summary>
+        /// <param name="scene">The scene from which the primary camera can be pulled</param>
         public static void RegisterScenePrimaryCamera(Scene scene)
         {
             Primary = scene.PrimaryCam;
         }
 
+        /// <summary>
+        /// Sets the orientation
+        /// </summary>
+        /// <param name="roll">The roll used in the rotation</param>
+        /// <param name="pitch">The pitch used in the rotation</param>
+        /// <param name="yaw">The yaw used in the rotation</param>
         public void SetOrientation(float roll, float pitch, float yaw)
         {
             float rad_x = OpenTK.Mathematics.MathHelper.DegreesToRadians(pitch);
@@ -106,16 +156,28 @@ namespace HornetEngine.Graphics
             this.Orientation = quat_fin;
         }
 
+        /// <summary>
+        /// Rotate the camera
+        /// </summary>
+        /// <param name="rotation_quat">The rotation quat used for the rotation</param>
         public void Rotate(quat rotation_quat)
         {
             this.Orientation = this.Orientation * rotation_quat;
         }
 
+        /// <summary>
+        /// Rotate the camera
+        /// </summary>
+        /// <param name="axis_angle">The axis over which the camera should be rotated</param>
+        /// <param name="degrees">The amount of degrees which the camera should be rotated</param>
         public void Rotate(vec3 axis_angle, float degrees)
         {
             this.Orientation = this.Orientation.Rotated(OpenTK.Mathematics.MathHelper.DegreesToRadians(degrees), axis_angle);
         }
 
+        /// <summary>
+        /// Update the view matrix
+        /// </summary>
         public void UpdateViewMatrix()
         {
             //Translate the orientation to looking point
@@ -131,12 +193,13 @@ namespace HornetEngine.Graphics
             this.ViewMatrix = mat4.LookAt(this.Position, this.Target, this.Up);
         }
 
+        /// <summary>
+        /// Update the projection matrix
+        /// </summary>
         public void UpdateProjectionMatrix()
         {
             float aspect = ViewSettings.Lens_width / ViewSettings.Lens_height;
             this.ProjectionMatrix = mat4.PerspectiveFov(ViewSettings.Fov, ViewSettings.Lens_width, ViewSettings.Lens_height, ViewSettings.clip_min, ViewSettings.clip_max);
         }
-
-
     }
 }

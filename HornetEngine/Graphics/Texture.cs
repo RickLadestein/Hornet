@@ -90,15 +90,37 @@ namespace HornetEngine.Graphics
     }
     public class Texture : IDisposable
     {
+        /// <summary>
+        /// The handle of the texture
+        /// </summary>
         public uint Handle { get; private set; }
+
+        /// <summary>
+        /// The status of the etxture
+        /// </summary>
         public TextureStatus Status { get; private set; }
+
+        /// <summary>
+        /// The error string
+        /// </summary>
         public String Error { get; private set; }
 
+        /// <summary>
+        /// The wrap settings
+        /// </summary>
         public TextureWrapSetting Wrap { get; private set; }
 
+        /// <summary>
+        /// The min mag filter
+        /// </summary>
         public MinMagSetting Filter { get; private set; }
 
-
+        /// <summary>
+        /// The constructor of the texture
+        /// </summary>
+        /// <param name="dir_id">The folder ID</param>
+        /// <param name="imfile">The name of the file</param>
+        /// <param name="mipmap">A bool used for the mipmap initialization</param>
         public Texture(String dir_id, String imfile, bool mipmap)
         {
             this.Status = TextureStatus.UNINITIALISED;
@@ -138,6 +160,11 @@ namespace HornetEngine.Graphics
             NativeWindow.GL.BindTexture(GLEnum.Texture2D, 0);
         }
 
+        /// <summary>
+        /// The constructor of a texture
+        /// </summary>
+        /// <param name="width">The width of thhe texture</param>
+        /// <param name="height">The height of the texture</param>
         public Texture(uint width, uint height)
         {
             this.Status = TextureStatus.UNINITIALISED;
@@ -162,6 +189,14 @@ namespace HornetEngine.Graphics
             this.Status = TextureStatus.READY;
         }
 
+        /// <summary>
+        /// The constructor of a Texture
+        /// </summary>
+        /// <param name="width">The width of the texture</param>
+        /// <param name="height">The height of a texture</param>
+        /// <param name="bits_per_channel">The bits per channel</param>
+        /// <param name="channels">The channels of the texture</param>
+        /// <param name="pixel_type">The pixeltype of the texture</param>
         public Texture(uint width, uint height, InternalFormat bits_per_channel, PixelFormat channels, PixelType pixel_type)
         {
             this.Status = TextureStatus.UNINITIALISED;
@@ -206,6 +241,10 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// A function which sets a filter mode
+        /// </summary>
+        /// <param name="filter">The filter which should be set</param>
         public void SetFilterMode(MinMagSetting filter)
         {
             this.Bind();
@@ -215,6 +254,10 @@ namespace HornetEngine.Graphics
             this.Unbind();
         }
 
+        /// <summary>
+        /// A function which sets a wrap mode
+        /// </summary>
+        /// <param name="wrap">The wrap settings which should be set</param>
         public void SetWrapMode(TextureWrapSetting wrap)
         {
             this.Bind();
@@ -224,16 +267,25 @@ namespace HornetEngine.Graphics
             this.Unbind();
         }
 
+        /// <summary>
+        /// A function which binds the texture
+        /// </summary>
         public void Bind()
         {
             NativeWindow.GL.BindTexture(GLEnum.Texture2D, this.Handle);
         }
 
+        /// <summary>
+        /// A function which unbinds the texture
+        /// </summary>
         public void Unbind()
         {
             NativeWindow.GL.BindTexture(GLEnum.Texture2D, 0);
         }
 
+        /// <summary>
+        /// A function that disposes the texture
+        /// </summary>
         public void Dispose()
         {
             if(this.Handle > 0)
@@ -245,15 +297,32 @@ namespace HornetEngine.Graphics
 
     public class MultiTexture
     {
+        /// <summary>
+        /// The maximum amount of texture layers
+        /// </summary>
         public static readonly uint MAX_TEXTURE_LAYERS = 8;
+        
+        /// <summary>
+        /// The currently bound textures
+        /// </summary>
         public static MultiTexture current_bound;
+
+        /// <summary>
+        /// An arraylist of textures
+        /// </summary>
         public Texture[] textures;
 
+        /// <summary>
+        /// The constructor of the MultiTexture
+        /// </summary>
         public MultiTexture()
         {
             textures = new Texture[MAX_TEXTURE_LAYERS];
         }
 
+        /// <summary>
+        /// A function which binds the current multi textures
+        /// </summary>
         public void Bind()
         {
             if(current_bound != null)
@@ -276,6 +345,9 @@ namespace HornetEngine.Graphics
             NativeWindow.GL.ActiveTexture(GLEnum.Texture0);
         }
 
+        /// <summary>
+        /// A function which unbinds the current multi textures
+        /// </summary>
         public void Unbind()
         {
             if(current_bound == this)
@@ -292,6 +364,11 @@ namespace HornetEngine.Graphics
             NativeWindow.GL.ActiveTexture(GLEnum.Texture0);
         }
 
+        /// <summary>
+        /// A function which sets a texture unit
+        /// </summary>
+        /// <param name="tex">The texture unit to set</param>
+        /// <param name="layer">The allocated location for the GPU</param>
         public void SetTextureUnit(Texture tex, HTextureUnit layer)
         {
             uint loc = (uint)layer;
@@ -302,6 +379,10 @@ namespace HornetEngine.Graphics
             this.textures[(uint)layer] = tex;
         }
 
+        /// <summary>
+        /// A function that clears the texture unit
+        /// </summary>
+        /// <param name="layer">The allocated space by the GPU</param>
         public void ClearTextureUnit(HTextureUnit layer)
         {
             uint loc = (uint)layer;

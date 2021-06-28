@@ -45,8 +45,29 @@ namespace HornetEngine.Input
     /// </summary>
     public class TouchPanel : ITouchEventListener
     {
+        /// <summary>
+        /// The touch move function
+        /// </summary>
+        /// <param name="position">The new position</param>
+        /// <param name="delta">The difference between the new and the old position</param>
+        /// <param name="size">The size of the touch points</param>
+        /// <param name="id">The ID of the touch point</param>
         public delegate void TouchPointMoveFunc(Vector2 position, Vector2 delta, Vector2 size, uint id);
+
+        /// <summary>
+        /// The touch press function
+        /// </summary>
+        /// <param name="position">The position of the touch point</param>
+        /// <param name="size">The size of the touch point</param>
+        /// <param name="id">The ID of the touch point</param>
         public delegate void TouchPointPressFunc(Vector2 position, Vector2 size, uint id);
+
+        /// <summary>
+        /// The touch release function
+        /// </summary>
+        /// <param name="position">The position of the touch point</param>
+        /// <param name="size">The size of the touch point</param>
+        /// <param name="id">The ID of the touch point</param>
         public delegate void TouchPointReleaseFunc(Vector2 position, Vector2 size, uint id);
 
         private Mutex touch_mutex;
@@ -132,6 +153,12 @@ namespace HornetEngine.Input
                     };
                     touch_mutex.WaitOne();
                     captured_points.Add(id, tp);
+
+                    foreach(var touchpoint in captured_points)
+                    {
+                        Console.WriteLine("Pos\nX: {0}\nY: {1}", touchpoint.Value.xpos, touchpoint.Value.ypos);
+                    }
+                    Console.WriteLine("------");
                     touch_mutex.ReleaseMutex();
                 }
                 TouchPress?.Invoke(position, size, id);

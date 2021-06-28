@@ -18,6 +18,9 @@ namespace HornetEngine.Sound
         private Vector3 up;
         private float global_vol;
 
+        /// <summary>
+        /// The constructor of the listener class
+        /// </summary>
         public Listener()
         {
             position = new Vector3(0.0f, 0.0f, 0.0f);
@@ -36,6 +39,10 @@ namespace HornetEngine.Sound
             AL.Listener(ALListener3f.Position, position.X, position.Y, position.Z);
         }
 
+        /// <summary>
+        /// A function which can be used to set a new position
+        /// </summary>
+        /// <param name="pos">A vec3 containing the new position</param>
         public void SetPosition(GlmSharp.vec3 pos)
         {
             position = new Vector3(pos.x, pos.y, pos.z);
@@ -55,6 +62,10 @@ namespace HornetEngine.Sound
             AL.Listener(ALListenerfv.Orientation, ref looking_dir_tk, ref up_dir_tk);
         }
 
+        /// <summary>
+        /// A function which can be used to set the looking direction
+        /// </summary>
+        /// <param name="dir">A vec3 containing the new looking direction</param>
         public void SetLookingDir(GlmSharp.vec3 dir)
         {
             looking_dir = new Vector3(dir.x, dir.y, dir.z);

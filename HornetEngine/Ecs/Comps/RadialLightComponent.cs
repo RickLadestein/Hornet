@@ -6,8 +6,19 @@ namespace HornetEngine.Ecs
 {
     public class RadialLightComponent : Component
     {
+        /// <summary>
+        /// The default color
+        /// </summary>
         public GlmSharp.vec3 Albedo { get; set; }
+
+        /// <summary>
+        /// The range
+        /// </summary>
         public float Range { get; set; }
+
+        /// <summary>
+        /// The intensity
+        /// </summary>
         public float Intensity { get; set; }
 
 

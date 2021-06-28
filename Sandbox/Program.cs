@@ -1,8 +1,10 @@
-﻿using System;
+using System;
 using HornetEngine.Ecs;
 using HornetEngine.Graphics;
 using HornetEngine.Graphics.Buffers;
 using HornetEngine.Util;
+using HornetEngine.Input.Touch_Recognition;
+using Silk.NET.OpenGL;
 using System.Numerics;
 using HornetEngine;
 using System.Threading.Tasks;
@@ -18,6 +20,11 @@ namespace Sandbox
         public static Entity player;
 
         static void Main()
+        {
+            setupGraphicsDemo();
+        }
+
+        private static void setupGraphicsDemo()
         {
             DirectoryManager.RegisterResourceDir("textures", "resources\\textures");
             DirectoryManager.RegisterResourceDir("shaders", "resources\\shaders");
@@ -72,9 +79,14 @@ namespace Sandbox
             ShaderProgram prog = new ShaderProgram(vsh, fsh);
             ShaderResourceManager.Instance.AddResource("default", prog);
 
+            Config config = Config.Instance;
+            SoundManager manager = SoundManager.Instance;
             Texture tex = new Texture("textures", "laminate1.png", false);
             TextureResourceManager.Instance.AddResource("laminate", tex);
 
+            en = new SoundEntity();
+            manager.addSample(1, "resources\\samples\\menu.wav");
+            en.setVolume(1.0f);
             Texture tex2 = new Texture("textures", "sponza_column_c_ddn.tga", false);
             TextureResourceManager.Instance.AddResource("default", tex2);
 

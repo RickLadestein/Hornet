@@ -23,6 +23,9 @@ namespace HornetEngine.Ecs
         }
 
 
+        /// <summary>
+        /// The current orientation
+        /// </summary>
         public quat Orientation;
 
         /// <summary>
@@ -43,6 +46,9 @@ namespace HornetEngine.Ecs
         }
         private mat4 _model;
 
+        /// <summary>
+        /// The matrix that describes the translation of the normal vector
+        /// </summary>
         public mat3 NormalMat
         {
             get
@@ -62,6 +68,12 @@ namespace HornetEngine.Ecs
             this.Scale = new vec3(1.0f, 1.0f, 1.0f);
         }
 
+        /// <summary>
+        /// Set the current orientation
+        /// </summary>
+        /// <param name="roll">A float containing the roll of the orientation</param>
+        /// <param name="pitch">A float containing the pitch of the orientation</param>
+        /// <param name="yaw">A float containing the yaw of the orientation</param>
         public void SetOrientation(float roll, float pitch, float yaw)
         {
             float rad_x = OpenTK.Mathematics.MathHelper.DegreesToRadians(pitch);
@@ -75,11 +87,20 @@ namespace HornetEngine.Ecs
             this.Orientation = quat_fin;
         }
 
+        /// <summary>
+        /// Rotate the object
+        /// </summary>
+        /// <param name="rotation_quat">The quat used for the rotation</param>
         public void Rotate(quat rotation_quat)
         {
             this.Orientation = this.Orientation * rotation_quat;
         }
 
+        /// <summary>
+        /// Rotate the object
+        /// </summary>
+        /// <param name="axis_angle">A vec3 which contains the axis angle over which the object should be rotated</param>
+        /// <param name="degrees">A float which contains the degrees of the rotation</param>
         public void Rotate(vec3 axis_angle, float degrees)
         {
             this.Orientation = this.Orientation.Rotated(OpenTK.Mathematics.MathHelper.DegreesToRadians(degrees), axis_angle);
@@ -92,6 +113,7 @@ namespace HornetEngine.Ecs
             mat4 scl = mat4.Scale(Scale);
             this._model = mat4.Identity * trans * scl * rot;
         }
+
         public override string ToString()
         {
             return $"Position: {Position.x}, {Position.y}, {Position.z}" +
