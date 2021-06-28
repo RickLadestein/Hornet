@@ -9,25 +9,63 @@ namespace HornetEngine.Input
 {
     public class Mouse
     {
-        // The variables for the currently pressed buttons
+        /// <summary>
+        /// The maximum amount of buttons which can be pressed
+        /// </summary>
         public readonly int MAX_PRESSED_BUTTONS = 5;
-        private MouseButtons[] pressed_buttons;
 
-        // The current mouse position
+        private MouseButtons[] pressed_buttons;
         private Vector2 position = new Vector2(0, 0);
-        // The current mode of the mouse {FPS, Invible or Visible}
         private MouseMode mode;
 
         private unsafe WindowHandle* parent_window;
 
+        /// <summary>
+        /// The mouse press function
+        /// </summary>
+        /// <param name="button">The mouse button which has been pressed</param>
         public delegate void MousePressFunc(MouseButtons button);
+
+        /// <summary>
+        /// The mouse release function
+        /// </summary>
+        /// <param name="button">The mouse button which has been released</param>
         public delegate void MouseReleaseFunc(MouseButtons button);
+
+        /// <summary>
+        /// The mouse scroll function
+        /// </summary>
+        /// <param name="xoffset">The x offset</param>
+        /// <param name="yoffset">The y offset</param>
         public delegate void MouseScrollFunc(double xoffset, double yoffset);
+
+        /// <summary>
+        /// The mouse move function
+        /// </summary>
+        /// <param name="xpos">The new x pos</param>
+        /// <param name="ypos">The new y pos</param>
+        /// <param name="deltaX">The difference between the x positions</param>
+        /// <param name="deltaY">The difference between the y positions</param>
         public delegate void MouseMoveFunc(double xpos, double ypos, double deltaX, double deltaY);
 
+        /// <summary>
+        /// The mouse press event
+        /// </summary>
         public event MousePressFunc MousePress;
+
+        /// <summary>
+        /// The mouse release event
+        /// </summary>
         public event MouseReleaseFunc MouseRelease;
+
+        /// <summary>
+        /// The mouse scroll event
+        /// </summary>
         public event MouseScrollFunc MouseScroll;
+
+        /// <summary>
+        /// The mouse move event
+        /// </summary>
         public event MouseMoveFunc MouseMove;
 
 
@@ -208,9 +246,5 @@ namespace HornetEngine.Input
                 }
             }
         }
-
-        
-
-       
     }
 }
