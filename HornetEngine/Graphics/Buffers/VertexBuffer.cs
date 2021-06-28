@@ -42,6 +42,9 @@ namespace HornetEngine.Graphics.Buffers
 
         private uint primitive_vertex_count;
 
+        /// <summary>
+        /// The constructor of the VertexBuffer
+        /// </summary>
         public VertexBuffer()
         {
             this.Error = string.Empty;
@@ -53,16 +56,27 @@ namespace HornetEngine.Graphics.Buffers
             this.PrimitiveType = ElementType.POINTS;
         }
 
+        /// <summary>
+        /// Bind the buffer
+        /// </summary>
         public void Bind()
         {
             NativeWindow.GL.BindVertexArray(this.Handle);
         }
 
+        /// <summary>
+        /// Unbind the buffer
+        /// </summary>
         public void Unbind()
         {
             NativeWindow.GL.BindVertexArray(0);
         }
 
+        /// <summary>
+        /// A function which can be used to initialize the buffer data
+        /// </summary>
+        /// <param name="attributes">The atrributes which should be bound</param>
+        /// <param name="ptype">The way the data should be interpreted by the GPU</param>
         public void BufferData(AttributeStorage attributes, ElementType ptype)
         {
             if (this.Handle == 0 || this.vbo_handle == 0)
@@ -121,6 +135,10 @@ namespace HornetEngine.Graphics.Buffers
             NativeWindow.GL.BindVertexArray(0);
         }
 
+        /// <summary>
+        /// A function which sets the primitive type
+        /// </summary>
+        /// <param name="eltype"></param>
         public void SetPrimitiveType(ElementType eltype)
         {
             this.Error = String.Empty;
@@ -144,6 +162,9 @@ namespace HornetEngine.Graphics.Buffers
             }
         }
 
+        /// <summary>
+        /// A function which initializes the buffers
+        /// </summary>
         public void InitialiseBuffers()
         {
             if(this.Handle != 0 || this.vbo_handle != 0)
@@ -155,6 +176,9 @@ namespace HornetEngine.Graphics.Buffers
             this.vbo_handle = NativeWindow.GL.GenBuffer();
         }
 
+        /// <summary>
+        /// A function which destroys the buffers
+        /// </summary>
         public void DestroyBuffers()
         {
             if(this.Handle != 0)
@@ -171,6 +195,9 @@ namespace HornetEngine.Graphics.Buffers
             this.current_vao_attrib = 0;
         }
 
+        /// <summary>
+        /// A function which disposes of the vertex buffers
+        /// </summary>
         public void Dispose()
         {
             this.DestroyBuffers();

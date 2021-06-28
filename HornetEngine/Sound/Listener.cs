@@ -1,8 +1,9 @@
-﻿using OpenTK.Audio.OpenAL;
+﻿using HornetEngine.Ecs;
+using OpenTK.Audio.OpenAL;
 using System;
 using System.Numerics;
 
-namespace HornetEngine
+namespace HornetEngine.Sound
 {
     /// <summary>
     /// The SoundManager class can be used to manage the user's details within the application.
@@ -17,7 +18,10 @@ namespace HornetEngine
         private Vector3 up;
         private float global_vol;
 
-        Listener()
+        /// <summary>
+        /// The constructor of the listener class
+        /// </summary>
+        public Listener()
         {
             position = new Vector3(0.0f, 0.0f, 0.0f);
             looking_dir = new Vector3(0.0f, 0.0f, 0.0f);
@@ -29,9 +33,19 @@ namespace HornetEngine
         /// A function which will allow the user to change their own position
         /// </summary>
         /// <param name="pos">A vector with 3 elements, containing the X, Y and Z coords of the user.</param>
-        public void setPosition(Vector3 pos)
+        public void SetPosition(Vector3 pos)
         {
             position = pos;
+            AL.Listener(ALListener3f.Position, position.X, position.Y, position.Z);
+        }
+
+        /// <summary>
+        /// A function which can be used to set a new position
+        /// </summary>
+        /// <param name="pos">A vec3 containing the new position</param>
+        public void SetPosition(GlmSharp.vec3 pos)
+        {
+            position = new Vector3(pos.x, pos.y, pos.z);
             AL.Listener(ALListener3f.Position, position.X, position.Y, position.Z);
         }
 
@@ -39,13 +53,23 @@ namespace HornetEngine
         /// A function which will allow the user to change their looking direction
         /// </summary>
         /// <param name="dir">A vector with 3 elements, containing the X, Y and Z coords of the direction the user is looking at.</param>
-        public void setLookingDir(Vector3 dir)
+        public void SetLookingDir(Vector3 dir)
         {
             looking_dir = dir;
             OpenTK.Mathematics.Vector3 looking_dir_tk = new OpenTK.Mathematics.Vector3(dir.X, dir.Y, dir.Z);
             OpenTK.Mathematics.Vector3 up_dir_tk = new OpenTK.Mathematics.Vector3(up.X, up.Y, up.Z);
 
             AL.Listener(ALListenerfv.Orientation, ref looking_dir_tk, ref up_dir_tk);
+        }
+
+        /// <summary>
+        /// A function which can be used to set the looking direction
+        /// </summary>
+        /// <param name="dir">A vec3 containing the new looking direction</param>
+        public void SetLookingDir(GlmSharp.vec3 dir)
+        {
+            looking_dir = new Vector3(dir.x, dir.y, dir.z);
+            SetLookingDir(looking_dir);
         }
 
         /// <summary>

@@ -45,8 +45,29 @@ namespace HornetEngine.Input
     /// </summary>
     public class TouchPanel : ITouchEventListener
     {
+        /// <summary>
+        /// The touch move function
+        /// </summary>
+        /// <param name="position">The new position</param>
+        /// <param name="delta">The difference between the new and the old position</param>
+        /// <param name="size">The size of the touch points</param>
+        /// <param name="id">The ID of the touch point</param>
         public delegate void TouchPointMoveFunc(Vector2 position, Vector2 delta, Vector2 size, uint id);
+
+        /// <summary>
+        /// The touch press function
+        /// </summary>
+        /// <param name="position">The position of the touch point</param>
+        /// <param name="size">The size of the touch point</param>
+        /// <param name="id">The ID of the touch point</param>
         public delegate void TouchPointPressFunc(Vector2 position, Vector2 size, uint id);
+
+        /// <summary>
+        /// The touch release function
+        /// </summary>
+        /// <param name="position">The position of the touch point</param>
+        /// <param name="size">The size of the touch point</param>
+        /// <param name="id">The ID of the touch point</param>
         public delegate void TouchPointReleaseFunc(Vector2 position, Vector2 size, uint id);
 
         private Mutex touch_mutex;

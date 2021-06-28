@@ -225,6 +225,10 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// A function which getts the attribute's enumerator
+        /// </summary>
+        /// <returns>The enumerator</returns>
         public IEnumerator<Attribute> GetEnumerator()
         {
             return attribs.GetEnumerator();

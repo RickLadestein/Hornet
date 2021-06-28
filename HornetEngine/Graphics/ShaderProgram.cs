@@ -41,11 +41,6 @@ namespace HornetEngine.Graphics
         public uint Handle { get; private set; }
 
         /// <summary>
-        /// The error string containing the error log of the ShaderProgram
-        /// </summary>
-        public String Error { get; private set; }
-
-        /// <summary>
         /// The current status of the ShaderProgram
         /// </summary>
         public ShaderProgramStatus Status { get; private set; }
@@ -60,16 +55,14 @@ namespace HornetEngine.Graphics
             this.Status = ShaderProgramStatus.UNINITIALISED;
             if (vertex.Status != ShaderStatus.READY || fragment.Status != ShaderStatus.READY)
             {
-                Error = "One of the shaders was not compiled correctly: see individual shader error logs for detail";
-                return;
+                throw new Exception("Vertex/Fragment Shader compilation has failed: check individual error logs for detail");
             }
 
             this.Status = ShaderProgramStatus.AQUIRING_HANDLE;
             this.Handle = NativeWindow.GL.CreateProgram();
             if (Handle == 0)
             {
-                Error = "OpenGL was not able to create ShaderProgram handle";
-                return;
+                throw new Exception("OpenGL was not able to create ShaderProgram handle at this time");
             }
 
             this.Status = ShaderProgramStatus.LINKING;
@@ -79,8 +72,7 @@ namespace HornetEngine.Graphics
             String log = GetProgramInfoLog();
             if(log.Length > 0)
             {
-                this.Error = log;
-                return;
+                throw new Exception($"Shader program linking has failed: {log}");
             }
             this.Status = ShaderProgramStatus.READY;
         }
@@ -98,16 +90,14 @@ namespace HornetEngine.Graphics
                 fragment.Status != ShaderStatus.READY || 
                 geometry.Status != ShaderStatus.READY)
             {
-                Error = "One of the shaders was not compiled correctly: see individual shader error logs for detail";
-                return;
+                throw new Exception("Vertex/Geometry/Fragment Shader compilation has failed: check individual error logs for detail");
             }
 
             this.Status = ShaderProgramStatus.AQUIRING_HANDLE;
             this.Handle = NativeWindow.GL.CreateProgram();
             if (Handle == 0)
             {
-                Error = "OpenGL was not able to create ShaderProgram handle";
-                return;
+                throw new Exception("OpenGL was not able to create ShaderProgram handle at this time");
             }
 
             this.Status = ShaderProgramStatus.LINKING;
@@ -118,8 +108,7 @@ namespace HornetEngine.Graphics
             String log = GetProgramInfoLog();
             if (log.Length > 0)
             {
-                this.Error = log;
-                return;
+                throw new Exception($"Shader program linking has failed: {log}");
             }
             this.Status = ShaderProgramStatus.READY;
         }
@@ -250,6 +239,15 @@ namespace HornetEngine.Graphics
             }
         }
 
+        public void SetUniform(string location, GlmSharp.vec2 vec)
+        {
+            int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
+            if (loc != -1)
+            {
+                NativeWindow.GL.Uniform2(loc, vec.x, vec.y);
+            }
+        }
+
         /// <summary>
         /// Sets a shader specific global variable in the GPU
         /// </summary>
@@ -261,6 +259,15 @@ namespace HornetEngine.Graphics
             if (loc != -1)
             {
                 NativeWindow.GL.Uniform3(loc, vec);
+            }
+        }
+
+        public void SetUniform(string location, GlmSharp.vec3 vec)
+        {
+            int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
+            if (loc != -1)
+            {
+                NativeWindow.GL.Uniform3(loc, vec.x, vec.y, vec.z);
             }
         }
 
@@ -278,6 +285,15 @@ namespace HornetEngine.Graphics
             }
         }
 
+        public void SetUniform(string location, GlmSharp.vec4 vec)
+        {
+            int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
+            if (loc != -1)
+            {
+                NativeWindow.GL.Uniform4(loc, vec.x, vec.y, vec.z, vec.w);
+            }
+        }
+
         /// <summary>
         /// Sets a shader specific global variable in the GPU
         /// </summary>
@@ -289,6 +305,34 @@ namespace HornetEngine.Graphics
             if (loc != -1)
             {
                 NativeWindow.GL.UniformMatrix4(loc, 1, false, (float*) &matrix);
+            }
+        }
+
+        /// <summary>
+        /// Sets a shader specific global variable in the GPU
+        /// </summary>
+        /// <param name="location">The uniform name in the shader program</param>
+        /// <param name="matrix">Matrix4 value</param>
+        public unsafe void SetUniform(string location, GlmSharp.mat4 matrix)
+        {
+            int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
+            if (loc != -1)
+            {
+                NativeWindow.GL.UniformMatrix4(loc, 1, false, (float*)&matrix);
+            }
+        }
+
+        /// <summary>
+        /// Sets a shader specific global variable in the GPU
+        /// </summary>
+        /// <param name="location">The uniform name in the shader program</param>
+        /// <param name="matrix">Matrix3 value</param>
+        public unsafe void SetUniform(string location, GlmSharp.mat3 matrix)
+        {
+            int loc = NativeWindow.GL.GetUniformLocation(this.Handle, location);
+            if (loc != -1)
+            {
+                NativeWindow.GL.UniformMatrix3(loc, 1, false, (float*)&matrix);
             }
         }
         #endregion
@@ -511,6 +555,4 @@ namespace HornetEngine.Graphics
     {
         public FragmentShader(string folder_id, string file) : base(ShaderType.FragmentShader, folder_id, file) { }
     }
-
-    
 }

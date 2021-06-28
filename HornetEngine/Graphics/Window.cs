@@ -15,31 +15,92 @@ namespace HornetEngine.Graphics
 {
     public class Window : NativeWindow
     {
+        /// <summary>
+        /// The mouse within the window
+        /// </summary>
         public Mouse Mouse { get; private set; }
+
+        /// <summary>
+        /// The keyboard within the window
+        /// </summary>
         public Keyboard Keyboard { get; private set; }
+
+        /// <summary>
+        /// The touch panel within the window
+        /// </summary>
         public TouchPanel Touch_panel { get; private set; }
         public TouchManager Touch_manager { get; private set; }
 
-
+        /// <summary>
+        /// The refresh function of the window
+        /// </summary>
         public delegate void WindowRefreshFunc();
+
+        /// <summary>
+        /// The fixed update function of the window
+        /// </summary>
+        public delegate void WindowFixedUpdateFunc();
+
+        /// <summary>
+        /// The move function of the window
+        /// </summary>
+        /// <param name="newpos">The new position</param>
         public delegate void WindowMoveFunc(Vector2 newpos);
+
+        /// <summary>
+        /// The resize function of the window
+        /// </summary>
+        /// <param name="newsize">The new size</param>
         public delegate void WindowResizeFunc(Vector2 newsize);
+
+        /// <summary>
+        /// The focus function of the window
+        /// </summary>
+        /// <param name="focussed">A bool which shows whether the window is focused</param>
         public delegate void WindowFocusFunc(bool focussed);
+
+        /// <summary>
+        /// The close function of the window
+        /// </summary>
         public delegate void WindowCloseFunc();
 
+        /// <summary>
+        /// The redraw event
+        /// </summary>
         public event WindowRefreshFunc Redraw;
+
+        /// <summary>
+        /// The move event
+        /// </summary>
         public event WindowMoveFunc Move;
+
+        /// <summary>
+        /// The resize event
+        /// </summary>
         public event WindowResizeFunc Resize;
+
+        /// <summary>
+        /// The focus event
+        /// </summary>
         public event WindowFocusFunc Focus;
+
+        /// <summary>
+        /// The close event
+        /// </summary>
         public event WindowCloseFunc Close;
+
+        /// <summary>
+        /// The fixed update event
+        /// </summary>
+        public event WindowFixedUpdateFunc FixedUpdate;
+
+        private Thread fixed_update_thread;
 
         private double start_time;
         private double end_time;
         private float last_frame_time;
-
-
-        private Mutex tp_mutex;
-        private Dictionary<uint, Vector2> touch_points;
+        private bool alive;
+        private float fixed_update_frequency;
 
         /// <summary>
         /// Instantiates a new window object with base parameters
@@ -48,9 +109,9 @@ namespace HornetEngine.Graphics
             start_time = 0.0d;
             end_time = 0.0d;
             last_frame_time = 0.0f;
-
-            touch_points = new Dictionary<uint, Vector2>();
-            tp_mutex = new Mutex();
+            alive = false;
+            fixed_update_frequency = 1.0f / 60.0f;
+            fixed_update_thread = new Thread(() => { FixedUpdateFunc(); });
         }
 
         /// <summary>
@@ -63,10 +124,8 @@ namespace HornetEngine.Graphics
         /// <returns>Window creation succes status, false: window creation failed, true: window creation succesfull</returns>
         public bool Open(String title, int width, int height, WindowMode mode)
         {
-            bool result = this.CreateWindowHandle(width, height, title, WindowMode.WINDOWED);
+            bool result = this.CreateWindowHandle(width, height, title, mode);
             GL.ClearColor(0.45f, 0.45f, 0.45f, 1.0f);
-            GL.Enable(GLEnum.DepthTest);
-            DepthBuffer.Enable();
             unsafe
             {
                 this.Mouse = new Mouse(this.w_handle);
@@ -74,6 +133,19 @@ namespace HornetEngine.Graphics
                 this.Touch_panel = new TouchPanel(this.touch_driver);
                 this.Touch_manager = new TouchManager(this.Touch_panel);
             }
+
+            this.Redraw += Scene.Instance.GetRefreshFunc();
+
+            //init default opengl behaviour
+            NativeWindow.GL.Enable(GLEnum.CullFace);
+            NativeWindow.GL.CullFace(CullFaceMode.Back);
+            NativeWindow.GL.Enable(GLEnum.DepthTest);
+            DepthBuffer.Enable();
+            DepthBuffer.SetDepthCheckBehaviour(DepthFunc.LESS);
+
+
+            fixed_update_thread.Start();
+
             return result;
         }
 
@@ -88,12 +160,41 @@ namespace HornetEngine.Graphics
                 this.PollEvents();
                 this.ClearBuffer(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
+                
+                Scene.Instance.UpdateScene();
                 this.Redraw?.Invoke();
 
                 this.SwapBuffers();
                 end_time = this.GetAliveTime();
                 Time.FrameDelta = (float) (end_time - start_time);
+
             }
+        }
+
+        private void FixedUpdateFunc()
+        {
+            while(alive)
+            {
+                DateTime begin = DateTime.Now;
+                Scene.Instance.UpdateFixed();
+                FixedUpdate?.Invoke();
+                DateTime end = DateTime.Now;
+                TimeSpan delta = end - begin;
+                if(delta.TotalSeconds < fixed_update_frequency)
+                {
+                    double wait_time = (double)fixed_update_frequency - delta.TotalSeconds;
+                    Thread.Sleep((int)wait_time * 1000);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sets the FixedUpdate frequency of the FixedUpdate thread
+        /// </summary>
+        /// <param name="newfreq">The new frequency in Hz</param>
+        public void SetFixedUpdateFrequency(float newfreq)
+        {
+            this.fixed_update_frequency = 1.0f / newfreq;
         }
 
         protected override void OnWindowSizeChanged(int width, int height)

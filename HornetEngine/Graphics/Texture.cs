@@ -28,7 +28,7 @@ namespace HornetEngine.Graphics
 		EDGE_CLAMP = GLEnum.ClampToEdge,
 
 		/// <summary>
-		/// Use edge clamp mode for outside of bounds texture mapping
+		/// Use border clamp mode for outside of bounds texture mapping
 		/// </summary>
 		BORDER_CLAMP = GLEnum.ClampToBorder
     };
@@ -90,17 +90,37 @@ namespace HornetEngine.Graphics
     }
     public class Texture : IDisposable
     {
+        /// <summary>
+        /// The handle of the texture
+        /// </summary>
         public uint Handle { get; private set; }
+
+        /// <summary>
+        /// The status of the etxture
+        /// </summary>
         public TextureStatus Status { get; private set; }
+
+        /// <summary>
+        /// The error string
+        /// </summary>
         public String Error { get; private set; }
 
-        public TextureWrapSetting wrap_s_behaviour { get; private set; }
-        public TextureWrapSetting wrap_t_behaviour { get; private set; }
+        /// <summary>
+        /// The wrap settings
+        /// </summary>
+        public TextureWrapSetting Wrap { get; private set; }
 
-        public MinMagSetting magnification_behaviour { get; private set; }
-        public MinMagSetting minification_behaviour { get; private set; }
+        /// <summary>
+        /// The min mag filter
+        /// </summary>
+        public MinMagSetting Filter { get; private set; }
 
-
+        /// <summary>
+        /// The constructor of the texture
+        /// </summary>
+        /// <param name="dir_id">The folder ID</param>
+        /// <param name="imfile">The name of the file</param>
+        /// <param name="mipmap">A bool used for the mipmap initialization</param>
         public Texture(String dir_id, String imfile, bool mipmap)
         {
             this.Status = TextureStatus.UNINITIALISED;
@@ -116,7 +136,7 @@ namespace HornetEngine.Graphics
 
             this.Status = TextureStatus.IMPORTING_IMAGE;
             String str = DirectoryManager.GetResourceDir(dir_id);
-            String path = DirectoryManager.ConcatDirFile(dir_id, imfile);
+            String path = DirectoryManager.ConcatDirFile(str, imfile);
             ImageResource im = ImageResource.Load(path, true); 
             if(im == null)
             {
@@ -127,18 +147,24 @@ namespace HornetEngine.Graphics
             this.Status = TextureStatus.LOADING_IMAGE;
             NativeWindow.GL.ActiveTexture(GLEnum.Texture0);
             NativeWindow.GL.BindTexture(GLEnum.Texture2D, this.Handle);
-            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapS, (uint)wrap_s_behaviour);
-            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapT, (uint)wrap_t_behaviour);
-            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureMinFilter, (uint)minification_behaviour);
-            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureMagFilter, (uint)magnification_behaviour);
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapS, (uint)Wrap);
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapT, (uint)Wrap);
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureMinFilter, (uint)Filter);
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureMagFilter, (uint)Filter);
             LoadImageIntoTexture(im);
             if (mipmap)
             {
                 NativeWindow.GL.GenerateMipmap(GLEnum.Texture2D);
             }
             this.Status = TextureStatus.READY;
+            NativeWindow.GL.BindTexture(GLEnum.Texture2D, 0);
         }
 
+        /// <summary>
+        /// The constructor of a texture
+        /// </summary>
+        /// <param name="width">The width of thhe texture</param>
+        /// <param name="height">The height of the texture</param>
         public Texture(uint width, uint height)
         {
             this.Status = TextureStatus.UNINITIALISED;
@@ -155,21 +181,56 @@ namespace HornetEngine.Graphics
             this.Status = TextureStatus.LOADING_IMAGE;
             NativeWindow.GL.ActiveTexture(GLEnum.Texture0);
             NativeWindow.GL.BindTexture(GLEnum.Texture2D, this.Handle);
-            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapS, (uint)wrap_s_behaviour);
-            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapT, (uint)wrap_t_behaviour);
-            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureMinFilter, (uint)minification_behaviour);
-            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureMagFilter, (uint)magnification_behaviour);
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapS, (uint)Wrap);
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapT, (uint)Wrap);
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureMinFilter, (uint)Filter);
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureMagFilter, (uint)Filter);
             NativeWindow.GL.TexImage2D(TextureTarget.Texture2D, 0, (int)InternalFormat.Rgba, width, height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, 0);
+            this.Status = TextureStatus.READY;
+        }
+
+        /// <summary>
+        /// The constructor of a Texture
+        /// </summary>
+        /// <param name="width">The width of the texture</param>
+        /// <param name="height">The height of a texture</param>
+        /// <param name="bits_per_channel">The bits per channel</param>
+        /// <param name="channels">The channels of the texture</param>
+        /// <param name="pixel_type">The pixeltype of the texture</param>
+        public Texture(uint width, uint height, InternalFormat bits_per_channel, PixelFormat channels, PixelType pixel_type)
+        {
+            this.Status = TextureStatus.UNINITIALISED;
+            this.InitDefaults();
+
+            this.Status = TextureStatus.AQUIRING_HANDLE;
+            this.Handle = NativeWindow.GL.GenTexture();
+            if (this.Handle == 0)
+            {
+                Error = "OpenGL could not create Texture handle";
+                return;
+            }
+
+            this.Status = TextureStatus.LOADING_IMAGE;
+            NativeWindow.GL.ActiveTexture(GLEnum.Texture0);
+            NativeWindow.GL.BindTexture(GLEnum.Texture2D, this.Handle);
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapS, (uint)Wrap);
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapT, (uint)Wrap);
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureMinFilter, (uint)Filter);
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureMagFilter, (uint)Filter);
+            //NativeWindow.GL.TexImage2D(TextureTarget.Texture2D, 0, (int)bits_per_channel, width, height, 0, channels, pixel_type, IntPtr.Zero);
+            unsafe
+            {
+                NativeWindow.GL.TexImage2D(TextureTarget.Texture2D, 0, (int)bits_per_channel, width, height, 0, channels, pixel_type, null);
+            }
+            //glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 800, 600, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
             this.Status = TextureStatus.READY;
         }
 
         private void InitDefaults()
         {
-            this.wrap_s_behaviour = TextureWrapSetting.REPEAT;
-            this.wrap_t_behaviour = TextureWrapSetting.REPEAT;
-
-            this.minification_behaviour = MinMagSetting.NEAREST;
-            this.magnification_behaviour = MinMagSetting.NEAREST;
+            this.Wrap = TextureWrapSetting.REPEAT;
+            this.Filter = MinMagSetting.NEAREST;
+            this.Error = string.Empty;
         }
 
         private unsafe void LoadImageIntoTexture(ImageResource im)
@@ -180,36 +241,51 @@ namespace HornetEngine.Graphics
             }
         }
 
-        public void SetMinMagSettings(MinMagSetting min, MinMagSetting mag)
+        /// <summary>
+        /// A function which sets a filter mode
+        /// </summary>
+        /// <param name="filter">The filter which should be set</param>
+        public void SetFilterMode(MinMagSetting filter)
         {
             this.Bind();
-            this.minification_behaviour = min;
-            this.magnification_behaviour = mag;
-            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureMinFilter, (uint)min);
-            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureMagFilter, (uint)mag);
+            this.Filter = filter;
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureMinFilter, (uint)filter);
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureMagFilter, (uint)filter);
             this.Unbind();
         }
 
-        public void SetSTWrapModes(TextureWrapSetting s_axis, TextureWrapSetting t_axis)
+        /// <summary>
+        /// A function which sets a wrap mode
+        /// </summary>
+        /// <param name="wrap">The wrap settings which should be set</param>
+        public void SetWrapMode(TextureWrapSetting wrap)
         {
             this.Bind();
-            this.wrap_s_behaviour = s_axis;
-            this.wrap_t_behaviour = t_axis;
-            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapS, (uint)s_axis);
-            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapT, (uint)t_axis);
+            this.Wrap = wrap;
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapS, (uint)wrap);
+            NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapT, (uint)wrap);
             this.Unbind();
         }
 
+        /// <summary>
+        /// A function which binds the texture
+        /// </summary>
         public void Bind()
         {
             NativeWindow.GL.BindTexture(GLEnum.Texture2D, this.Handle);
         }
 
+        /// <summary>
+        /// A function which unbinds the texture
+        /// </summary>
         public void Unbind()
         {
             NativeWindow.GL.BindTexture(GLEnum.Texture2D, 0);
         }
 
+        /// <summary>
+        /// A function that disposes the texture
+        /// </summary>
         public void Dispose()
         {
             if(this.Handle > 0)
@@ -221,15 +297,32 @@ namespace HornetEngine.Graphics
 
     public class MultiTexture
     {
+        /// <summary>
+        /// The maximum amount of texture layers
+        /// </summary>
         public static readonly uint MAX_TEXTURE_LAYERS = 8;
+        
+        /// <summary>
+        /// The currently bound textures
+        /// </summary>
         public static MultiTexture current_bound;
+
+        /// <summary>
+        /// An arraylist of textures
+        /// </summary>
         public Texture[] textures;
 
+        /// <summary>
+        /// The constructor of the MultiTexture
+        /// </summary>
         public MultiTexture()
         {
             textures = new Texture[MAX_TEXTURE_LAYERS];
         }
 
+        /// <summary>
+        /// A function which binds the current multi textures
+        /// </summary>
         public void Bind()
         {
             if(current_bound != null)
@@ -252,6 +345,9 @@ namespace HornetEngine.Graphics
             NativeWindow.GL.ActiveTexture(GLEnum.Texture0);
         }
 
+        /// <summary>
+        /// A function which unbinds the current multi textures
+        /// </summary>
         public void Unbind()
         {
             if(current_bound == this)
@@ -268,6 +364,11 @@ namespace HornetEngine.Graphics
             NativeWindow.GL.ActiveTexture(GLEnum.Texture0);
         }
 
+        /// <summary>
+        /// A function which sets a texture unit
+        /// </summary>
+        /// <param name="tex">The texture unit to set</param>
+        /// <param name="layer">The allocated location for the GPU</param>
         public void SetTextureUnit(Texture tex, HTextureUnit layer)
         {
             uint loc = (uint)layer;
@@ -278,6 +379,10 @@ namespace HornetEngine.Graphics
             this.textures[(uint)layer] = tex;
         }
 
+        /// <summary>
+        /// A function that clears the texture unit
+        /// </summary>
+        /// <param name="layer">The allocated space by the GPU</param>
         public void ClearTextureUnit(HTextureUnit layer)
         {
             uint loc = (uint)layer;

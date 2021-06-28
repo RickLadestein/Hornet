@@ -8,15 +8,16 @@ using Silk.NET.OpenGL;
 using System.Numerics;
 using HornetEngine;
 using System.Threading.Tasks;
+using HornetEngine.Input;
+using HornetEngine.Sound;
 
 namespace Sandbox
 {
     class Program
     {
         public static Window w = new Window();
-        public static Entity e;
-        public static Camera cam;
-        public static SoundEntity en;
+        public static Entity line_entity;
+        public static Entity player;
 
         static void Main()
         {
@@ -28,102 +29,71 @@ namespace Sandbox
             DirectoryManager.RegisterResourceDir("textures", "resources\\textures");
             DirectoryManager.RegisterResourceDir("shaders", "resources\\shaders");
             DirectoryManager.RegisterResourceDir("models", "resources\\models");
+            DirectoryManager.RegisterResourceDir("samples", "resources\\samples");
 
-            w.Open("Test", 3840, 2160, WindowMode.WINDOWED_FULLSCREEN);
+            SoundManager mgr = SoundManager.Instance;
+
+            w.Open("Test", 1920, 1080, WindowMode.WINDOWED);
             w.Title = "Helloworld";
-            w.Redraw += W_Redraw;
+
             DoManualResourceAquisition();
 
-            e = new Entity("monkeh");
-            MeshComponent meshcomp = new MeshComponent();
-            meshcomp.SetTargetMesh("monkey");
-
-            MaterialComponent matcomp = new MaterialComponent();
-            matcomp.SetShaderFromId("default");
-
-            MonkeyScript monkeyscr = new MonkeyScript();
-
-
-            e.AddComponent(meshcomp);
-            e.AddComponent(matcomp);
-            e.AddScript(monkeyscr);
-
-            cam = new Camera();
-            cam.ViewSettings = new CameraViewSettings()
+            player = new Entity("Player");
+            PlayerScript pscr = new PlayerScript
             {
-                Lens_height = 1080,
-                Lens_width = 1920,
-                Fov = OpenTK.Mathematics.MathHelper.DegreesToRadians(45),
-                clip_min = 0.001f,
-                clip_max = 1000.0f
+                mouse = w.Mouse,
+                keyboard = w.Keyboard
             };
-            cam.UpdateProjectionMatrix();
-            cam.UpdateViewMatrix();
+            player.AddScript(pscr);
 
-            e.Transform.Position += new System.Numerics.Vector3(0.0f, 0.0f, 5.0f);
+            player.AddComponent(new AudioListenerComponent());
+            Scene.Instance.AddEntity(player);
+
+            line_entity = new Entity("line");
+            LineRenderComponent rc = new LineRenderComponent();
+            rc.AddLine(new GlmSharp.vec3(0, 0, 5), new GlmSharp.vec3(5, 0, 5));
+            rc.AddLine(new GlmSharp.vec3(5, 0, 5), new GlmSharp.vec3(0, 2, 5));
+            rc.Base_Color = new GlmSharp.vec4(1.0f, 0.0f, 0.0f, 1.0f);
+            rc.Line_width = 100.0f;
+            rc.BuildBuffer();
+            line_entity.AddComponent(rc);
+            
+            line_entity.AddComponent(new SoundSourceComponent());
+            
+            Scene.Instance.AddEntity(line_entity);
+
+            //NativeWindow.GL.PolygonMode(Silk.NET.OpenGL.MaterialFace.FrontAndBack, Silk.NET.OpenGL.PolygonMode.Fill);
             w.Run();
-        }
-
-        private static void W_Redraw()
-        {
-            w.Touch_manager.Refresh();
-            MaterialComponent matcomp = e.GetComponent<MaterialComponent>();
-            MeshComponent meshcomp = e.GetComponent<MeshComponent>();
-
-            if(meshcomp.Mesh == null || matcomp.Shader == null)
-            {
-                Console.WriteLine("Mesh or Shader was null");
-            }
-
-            VertexBuffer vbuf = meshcomp.Mesh.VertexBuffer;
-            vbuf.Bind();
-
-            ShaderProgram sh = matcomp.Shader;
-            sh.Bind();
-            sh.SetUniform("model", e.Transform.ModelMat);
-            sh.SetUniform("projection", cam.ProjectionMatrix);
-            sh.SetUniform("view", cam.ViewMatrix);
-
-            NativeWindow.GL.DrawArrays(Silk.NET.OpenGL.GLEnum.Triangles, 0, vbuf.VertexCount);
-            vbuf.Unbind();
-            ShaderProgram.UnbindAll();
-
-            foreach (MonoScript ms in e.Scripts)
-            {
-                ms.Update();
-            }
-            return;
         }
 
         #region MANUAL_RESOURCE
         private static void DoManualResourceAquisition()
         {
-            Mesh m = Mesh.ImportMesh("monkey", "models", "ape.obj");
-            if (m != null)
-            {
-                MeshResourceManager.GetInstance().AddResource("monkey", m);
-            }
-            else
-            {
-                throw new Exception("Mesh loading failed");
-            }
+            VertexShader dvsh = new VertexShader("shaders", "line_default.vert");
+            FragmentShader dfsh = new FragmentShader("shaders", "line_default.frag");
+            ShaderProgram dprog = new ShaderProgram(dvsh, dfsh);
+            ShaderResourceManager.Instance.AddResource("default_line", dprog);
 
-            VertexShader vsh = new VertexShader("shaders", "toon.vert");
-            FragmentShader fsh = new FragmentShader("shaders", "toon.frag");
+            VertexShader vsh = new VertexShader("shaders", "block.vert");
+            FragmentShader fsh = new FragmentShader("shaders", "block.frag");
             ShaderProgram prog = new ShaderProgram(vsh, fsh);
-            ShaderResourceManager.GetInstance().AddResource("default", prog);
+            ShaderResourceManager.Instance.AddResource("default", prog);
 
             Config config = Config.Instance;
             SoundManager manager = SoundManager.Instance;
+            Texture tex = new Texture("textures", "laminate1.png", false);
+            TextureResourceManager.Instance.AddResource("laminate", tex);
 
             en = new SoundEntity();
             manager.addSample(1, "resources\\samples\\menu.wav");
             en.setVolume(1.0f);
+            Texture tex2 = new Texture("textures", "sponza_column_c_ddn.tga", false);
+            TextureResourceManager.Instance.AddResource("default", tex2);
 
-            Task t = new Task(() => {
-                manager.getSample(1).playSound(en);
-            });
-            t.Start();
+            Sample samp = new Sample("samples", "menu.wav");
+            SoundManager.Instance.AddResource("bonk", samp);
+
+            Scene.Instance.LoadScene("models", "sponza.obj");
         }
         #endregion
     }

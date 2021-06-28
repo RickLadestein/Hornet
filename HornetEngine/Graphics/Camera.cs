@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Numerics;
 using System.Text;
+using GlmSharp;
+using HornetEngine.Graphics.Buffers;
 
 namespace HornetEngine.Graphics
 {
@@ -11,8 +12,14 @@ namespace HornetEngine.Graphics
     /// </summary>
     public struct CameraViewSettings
     {
+        /// <summary>
+        /// The width of the lens
+        /// </summary>
         public float Lens_width;
 
+        /// <summary>
+        /// The height of the lens
+        /// </summary>
         public float Lens_height;
 
         /// <summary>
@@ -33,54 +40,166 @@ namespace HornetEngine.Graphics
 
     public class Camera
     {
+        /// <summary>
+        /// The CameraViewSettings
+        /// </summary>
         public CameraViewSettings ViewSettings {get; set; }
 
-        public Vector3 Position { get; set; }
+        /// <summary>
+        /// The current position of the camera
+        /// </summary>
+        public vec3 Position { get; set; }
 
         /// <summary>
-        /// Vector for describing the orientation of the camera in euler angles; camera will always look at Z+ if orientation[0,0,0]
+        /// Quaternion for describing the orientation of the camera; camera will always look at Z+ if orientation[0,0,0]
         /// </summary>
-        public Vector3 Orientation { get; set; }
+        public quat Orientation { get; set; }
 
-
-        public Vector3 Target { get; private set; }
-        public Vector3 Foreward { get; private set; }
-        public Vector3 Right { get; private set; }
-        public Vector3 Up { get; private set; }
-
-        public Matrix4x4 ProjectionMatrix { get; private set; }
-        public Matrix4x4 ViewMatrix { get; private set; }
-        public Camera()
+        /// <summary>
+        /// The current Rotation in degrees
+        /// </summary>
+        public vec3 Rotation
         {
-            this.Position = new Vector3(0.0f);
-            this.Orientation = new Vector3(0.0f);
+            get
+            {
+                dvec3 _rot = glm.EulerAngles(Orientation);
+                return new vec3((float)_rot.x, (float)_rot.y, (float)_rot.z);
+            }
         }
 
+        /// <summary>
+        /// The framebuffer of the camera
+        /// </summary>
+        public FrameBuffer FrameBuffer { get; private set; }
+
+        /// <summary>
+        /// The target view
+        /// </summary>
+        public vec3 Target { get; private set; }
+
+        /// <summary>
+        /// The foreward view
+        /// </summary>
+        public vec3 Foreward { get; private set; }
+
+        /// <summary>
+        /// The right view
+        /// </summary>
+        public vec3 Right { get; private set; }
+
+        /// <summary>
+        /// The up view
+        /// </summary>
+        public vec3 Up { get; private set; }
+
+        /// <summary>
+        /// The projection matrix
+        /// </summary>
+        public mat4 ProjectionMatrix { get; private set; }
+
+        /// <summary>
+        /// The view matrix
+        /// </summary>
+        public mat4 ViewMatrix { get; private set; }
+
+        /// <summary>
+        /// The primary camera
+        /// </summary>
+        public static Camera Primary { get; private set; }
+
+        /// <summary>
+        /// The constructor of the camera
+        /// </summary>
+        public Camera()
+        {
+            this.Position = new vec3(0.0f);
+            this.Orientation = quat.Identity;
+            this.Up = new vec3(0.0f, 1.0f, 0.0f);
+
+            this.ViewSettings = new CameraViewSettings()
+            {
+                Lens_height = 480,
+                Lens_width = 720,
+                Fov = OpenTK.Mathematics.MathHelper.DegreesToRadians(45),
+                clip_min = 1.0f,
+                clip_max = 100.0f
+            };
+            this.UpdateProjectionMatrix();
+            this.FrameBuffer = new FrameBuffer((uint)this.ViewSettings.Lens_width, (uint)this.ViewSettings.Lens_height);
+        }
+
+        /// <summary>
+        /// A function which can be used to register the primary camera 
+        /// </summary>
+        /// <param name="scene">The scene from which the primary camera can be pulled</param>
+        public static void RegisterScenePrimaryCamera(Scene scene)
+        {
+            Primary = scene.PrimaryCam;
+        }
+
+        /// <summary>
+        /// Sets the orientation
+        /// </summary>
+        /// <param name="roll">The roll used in the rotation</param>
+        /// <param name="pitch">The pitch used in the rotation</param>
+        /// <param name="yaw">The yaw used in the rotation</param>
+        public void SetOrientation(float roll, float pitch, float yaw)
+        {
+            float rad_x = OpenTK.Mathematics.MathHelper.DegreesToRadians(pitch);
+            float rad_y = OpenTK.Mathematics.MathHelper.DegreesToRadians(yaw);
+            float rad_z = OpenTK.Mathematics.MathHelper.DegreesToRadians(roll);
+
+            quat quat_x = quat.FromAxisAngle(rad_x, new vec3(1.0f, 0.0f, 0.0f));
+            quat quat_y = quat.FromAxisAngle(rad_y, new vec3(0.0f, 1.0f, 0.0f));
+            quat quat_z = quat.FromAxisAngle(rad_z, new vec3(0.0f, 0.0f, 1.0f));
+            quat quat_fin = quat_y * quat_z * quat_x;
+            this.Orientation = quat_fin;
+        }
+
+        /// <summary>
+        /// Rotate the camera
+        /// </summary>
+        /// <param name="rotation_quat">The rotation quat used for the rotation</param>
+        public void Rotate(quat rotation_quat)
+        {
+            this.Orientation = this.Orientation * rotation_quat;
+        }
+
+        /// <summary>
+        /// Rotate the camera
+        /// </summary>
+        /// <param name="axis_angle">The axis over which the camera should be rotated</param>
+        /// <param name="degrees">The amount of degrees which the camera should be rotated</param>
+        public void Rotate(vec3 axis_angle, float degrees)
+        {
+            this.Orientation = this.Orientation.Rotated(OpenTK.Mathematics.MathHelper.DegreesToRadians(degrees), axis_angle);
+        }
+
+        /// <summary>
+        /// Update the view matrix
+        /// </summary>
         public void UpdateViewMatrix()
         {
             //Translate the orientation to looking point
-            Quaternion x_quat = Quaternion.CreateFromAxisAngle(new Vector3(1, 0, 0), OpenTK.Mathematics.MathHelper.DegreesToRadians(Orientation.X));
-            Quaternion y_quat = Quaternion.CreateFromAxisAngle(new Vector3(0, 1, 0), OpenTK.Mathematics.MathHelper.DegreesToRadians(Orientation.Y));
-            Quaternion z_quat = Quaternion.CreateFromAxisAngle(new Vector3(0, 0, 1), OpenTK.Mathematics.MathHelper.DegreesToRadians(Orientation.Z));
-            Quaternion orient_quat = x_quat * y_quat * z_quat;
-            Vector4 _foreward = Vector4.Transform(new Vector4(0.0f, 0.0f, 1.0f, 0.0f), orient_quat);
-            this.Foreward = new Vector3(_foreward.X, _foreward.Y, _foreward.Z);
+            vec4 _foreward = Orientation * new vec4(0.0f, 0.0f, 1.0f, 0.0f);
+            this.Foreward = _foreward.xyz;
             this.Target = this.Foreward + this.Position;
 
             //apply the current orientation and calculate right vector, up vector and lookat matrix
-            Vector3 virt_cam_up = new Vector3(0.0f, 1.0f, 0.0f);
-            Vector3 cam_dir = Vector3.Normalize(this.Position - this.Target);
-            this.Right = Vector3.Normalize(Vector3.Cross(virt_cam_up, cam_dir));
-            this.Up = Vector3.Normalize(Vector3.Cross(cam_dir, this.Right));
-            this.ViewMatrix = Matrix4x4.CreateLookAt(this.Position, this.Target, this.Up);
+            vec3 virt_cam_up = new vec3(0.0f, 1.0f, 0.0f);
+            vec3 cam_dir = glm.Normalized(this.Position - this.Target);
+            this.Right = glm.Normalized(glm.Cross(virt_cam_up, cam_dir));
+            this.Up = glm.Normalized(glm.Cross(cam_dir, this.Right));
+            this.ViewMatrix = mat4.LookAt(this.Position, this.Target, this.Up);
         }
 
+        /// <summary>
+        /// Update the projection matrix
+        /// </summary>
         public void UpdateProjectionMatrix()
         {
             float aspect = ViewSettings.Lens_width / ViewSettings.Lens_height;
-            this.ProjectionMatrix = Matrix4x4.CreatePerspectiveFieldOfView(ViewSettings.Fov, aspect, ViewSettings.clip_min, ViewSettings.clip_max);
+            this.ProjectionMatrix = mat4.PerspectiveFov(ViewSettings.Fov, ViewSettings.Lens_width, ViewSettings.Lens_height, ViewSettings.clip_min, ViewSettings.clip_max);
         }
-
-
     }
 }

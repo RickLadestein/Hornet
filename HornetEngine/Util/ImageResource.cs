@@ -12,9 +12,20 @@ namespace HornetEngine.Util
 {
     public class ImageResource : IDisposable
     {
+        /// <summary>
+        /// An image
+        /// </summary>
         public Image<Rgba32> image;
+
+        /// <summary>
+        /// The width and height of an image
+        /// </summary>
         public uint width, height;
 
+        /// <summary>
+        /// The constructor of an image
+        /// </summary>
+        /// <param name="im">The given image</param>
         public ImageResource(SixLabors.ImageSharp.Image<Rgba32> im)
         {
             if(im == null)
@@ -27,6 +38,12 @@ namespace HornetEngine.Util
             height = (uint)im.Height;
         }
 
+        /// <summary>
+        /// A function which loads an image
+        /// </summary>
+        /// <param name="path">The path of the image</param>
+        /// <param name="flip">A boolean which contains whether the image should be flipped</param>
+        /// <returns></returns>
         public static ImageResource Load(string path, bool flip)
         {
             try
@@ -43,6 +60,9 @@ namespace HornetEngine.Util
             }
         }
 
+        /// <summary>
+        /// A function which diposes of an image
+        /// </summary>
         public void Dispose()
         {
             if(image != null)

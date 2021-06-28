@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Silk.NET.OpenGL;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -68,7 +69,6 @@ namespace HornetEngine.Graphics.Buffers
             IsEnabled = true;
         }
 
-
         /// <summary>
         /// Disables the depth buffering feature
         /// </summary>
@@ -76,6 +76,15 @@ namespace HornetEngine.Graphics.Buffers
         {
             NativeWindow.GL.DepthMask(false);
             IsEnabled = false;
+        }
+
+        /// <summary>
+        /// Set the DepthCheckBehaviour
+        /// </summary>
+        /// <param name="func_enum">The DepthFunction</param>
+        public static void SetDepthCheckBehaviour(DepthFunc func_enum)
+        {
+            NativeWindow.GL.DepthFunc((GLEnum)func_enum);
         }
 
         /// <summary>

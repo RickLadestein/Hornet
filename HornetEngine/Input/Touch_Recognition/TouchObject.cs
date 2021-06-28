@@ -7,8 +7,19 @@ namespace HornetEngine.Input.Touch_Recognition
 {
     public class TouchObject
     {
+        /// <summary>
+        /// The touchpoints of the touch object
+        /// </summary>
         public Vector2[] touch_points = new Vector2[3];
+
+        /// <summary>
+        /// The type of the touch object
+        /// </summary>
         public TouchPointType type;
+
+        /// <summary>
+        /// The configuration of the program
+        /// </summary>
         public Config configuration = Config.Instance;
 
         /// <summary>
@@ -83,7 +94,6 @@ namespace HornetEngine.Input.Touch_Recognition
             }
         }
 
-
         /*            /|\
          *           / | \
          *          /  |  \
@@ -93,14 +103,14 @@ namespace HornetEngine.Input.Touch_Recognition
          *      /______|______\
          */
 
-            /// <summary>
-            /// A function which will calculate the angles between the touchpoints
-            /// </summary>
-            /// <param name="fwd">A vector to the FWD touchpoint which can be used for rotation</param>
-            /// <param name="vector1">A vector to one of the side touchpoints</param>
-            /// <param name="vector2">A vector to one of the side touchpoints</param>
-            /// <returns>A double which contains the angle between the points</returns>
-            private double AngleBetween(Vector2 fwd, Vector2 vector1, Vector2 vector2)
+        /// <summary>
+        /// A function which will calculate the angles between the touchpoints
+        /// </summary>
+        /// <param name="fwd">A vector to the FWD touchpoint which can be used for rotation</param>
+        /// <param name="vector1">A vector to one of the side touchpoints</param>
+        /// <param name="vector2">A vector to one of the side touchpoints</param>
+        /// <returns>A double which contains the angle between the points</returns>
+        private double AngleBetween(Vector2 fwd, Vector2 vector1, Vector2 vector2)
         {
             // Initialize the middle vector
             Vector2 middle = (vector1 + vector2) / 2;

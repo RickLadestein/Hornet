@@ -7,19 +7,55 @@ namespace HornetEngine.Input
     public class Keyboard
     {
         // The variables for the currently pressed buttons
-        public readonly int MAX_PRESSED_BUTTONS = 5;
-        private char[] pressed_buttons;
+        public static readonly int MAX_PRESSED_BUTTONS = 5;
+        private Silk.NET.GLFW.Keys[] pressed_buttons;
 
         // The keyboard mode
         private KeyboardMode mode;
 
+        /// <summary>
+        /// The key press function
+        /// </summary>
+        /// <param name="key">The keys which were pressed</param>
         public delegate void KeyPressFunc(Keys key);
+
+        /// <summary>
+        /// The key release function
+        /// </summary>
+        /// <param name="key">The keys which were released</param>
         public delegate void KeyReleaseFunc(Keys key);
+
+        /// <summary>
+        /// The key repeat function
+        /// </summary>
+        /// <param name="key">The keys which were held down</param>
         public delegate void KeyRepeatFunc(Keys key);
 
+        /// <summary>
+        /// The key type function
+        /// </summary>
+        /// <param name="identifier">The identifier of the key</param>
+        public delegate void KeyTypeFunc(uint identifier);
+
+        /// <summary>
+        /// The key press event
+        /// </summary>
         public event KeyPressFunc KeyPress;
+
+        /// <summary>
+        /// The key release event
+        /// </summary>
         public event KeyReleaseFunc KeyRelease;
+
+        /// <summary>
+        /// The key repeat event
+        /// </summary>
         public event KeyRepeatFunc KeyRepeat;
+
+        /// <summary>
+        /// The key type event
+        /// </summary>
+        public event KeyTypeFunc KeyType;
 
         /// <summary>
         /// The constructor of the Keyboard class
@@ -28,10 +64,10 @@ namespace HornetEngine.Input
         public unsafe Keyboard(WindowHandle* w_handle) 
         {
             // Initialize the pressed keys array
-            pressed_buttons = new char[MAX_PRESSED_BUTTONS];
+            pressed_buttons = new Silk.NET.GLFW.Keys[MAX_PRESSED_BUTTONS];
             for (int i = 0; i < MAX_PRESSED_BUTTONS; i++)
             {
-                pressed_buttons[i] = ' ';
+                pressed_buttons[i] = Silk.NET.GLFW.Keys.Unknown;
             }
 
             // Initialize the default keyboard mode
@@ -39,6 +75,35 @@ namespace HornetEngine.Input
 
             // Set the callback for the key actions
             NativeWindow.GLFW.SetKeyCallback(w_handle, OnKeyAction);
+            NativeWindow.GLFW.SetCharCallback(w_handle, OnKeyChar);
+        }
+
+        /// <summary>
+        /// Gets all the pressed buttons
+        /// </summary>
+        /// <returns>Array filled with the currently pressed buttons</returns>
+        public Silk.NET.GLFW.Keys[] GetPressedButtons()
+        {
+            Silk.NET.GLFW.Keys[] output = new Silk.NET.GLFW.Keys[MAX_PRESSED_BUTTONS];
+            pressed_buttons.CopyTo(output, 0);
+            return output;
+        }
+
+        /// <summary>
+        /// Checks if the requested key is currently pressed
+        /// </summary>
+        /// <param name="key">The key that needs to be checked</param>
+        /// <returns>true if the specified key was down, false if not</returns>
+        public bool IsKeyDown(Silk.NET.GLFW.Keys key)
+        {
+            for(int i = 0; i < MAX_PRESSED_BUTTONS; i++)
+            {
+                if (pressed_buttons[i] == key)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         /// <summary>
@@ -60,23 +125,33 @@ namespace HornetEngine.Input
         /// <param name="mods">Modifiers for the keys, such as shift/control etc.</param>
         private unsafe void OnKeyAction(WindowHandle* window, Keys key, int scanCode, InputAction action, KeyModifiers mods)
         {
-            // Check whether the current mode is TYPING
+            if(mode == KeyboardMode.ACTION)
+            {
+                switch(action)
+                {
+                    case InputAction.Press:
+                        HandlePressedKey(key);
+                        break;
+                    case InputAction.Release:
+                        HandleReleasedKey(key);
+                        break;
+                    case InputAction.Repeat:
+                        HandleRepeatKey(key);
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// A function which will be called when a key has been typed.
+        /// </summary>
+        /// <param name="window"></param>
+        /// <param name="codepoint"></param>
+        private unsafe void OnKeyChar(WindowHandle* window, uint codepoint)
+        {
             if(mode == KeyboardMode.TYPING)
             {
-                return;
-            } 
-
-            switch(action)
-            {
-                case InputAction.Press:
-                    HandlePressedKey(key);
-                    break;
-                case InputAction.Release:
-                    HandleReleasedKey(key);
-                    break;
-                case InputAction.Repeat:
-                    HandleRepeatKey(key);
-                    break;
+                KeyType?.Invoke(codepoint);
             }
         }
 
@@ -96,43 +171,17 @@ namespace HornetEngine.Input
         /// <param name="pressedKey">The key which has been pressed.</param>
         private void HandlePressedKey(Keys pressedKey)
         {
-            switch(pressedKey)
-            {
-                case Keys.E:
-                    AddKey(Keys.E);
-                    HandleKeyE();
-                    KeyPress?.Invoke(pressedKey);
-                    break;
-                default:
-                    Console.WriteLine("This key has not been implemented yet.");
-                    break;
-            }
+            AddKey(pressedKey);
+            KeyPress?.Invoke(pressedKey);
         }
 
         /// <summary>
-        /// A function which will handle the repeated usage of a key.
+        /// A function which will handle a pressed key.
         /// </summary>
-        /// <param name="repeatKey">The key which has been repeated.</param>
-        private void HandleRepeatKey(Keys repeatKey)
+        /// <param name="pressedKey">The key which has been pressed.</param>
+        private void HandleRepeatKey(Keys pressedKey)
         {
-            switch(repeatKey)
-            {
-                case Keys.E:
-                    HandleKeyE();
-                    KeyRepeat?.Invoke(repeatKey);
-                    break;
-                default:
-                    Console.WriteLine("An unknown key has been repeated.");
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// A function which will handle the specific 'e' key.
-        /// </summary>
-        private void HandleKeyE()
-        {
-            Console.WriteLine("E has been pressed");
+            KeyRepeat?.Invoke(pressedKey);
         }
 
         /// <summary>
@@ -145,24 +194,18 @@ namespace HornetEngine.Input
             for (int i = 0; i < MAX_PRESSED_BUTTONS; i++)
             {
                 // Check which place in the array has not been filled yet
-                if (pressed_buttons[i] == ' ')
+                if (pressed_buttons[i] == Silk.NET.GLFW.Keys.Unknown)
                 {
                     // Register the button within the array
-                    pressed_buttons[i] = (char)key;
+                    pressed_buttons[i] = key;
                     break;
                 }
                 // If all the buttons have been registered
                 else if (i == MAX_PRESSED_BUTTONS - 1)
                 {
                     // Overwrite the first button entry
-                    pressed_buttons[0] = (char)key;
+                    pressed_buttons[0] = key;
                 }
-            }
-
-            // Print the currently pressed buttons
-            for (int i = 0; i < MAX_PRESSED_BUTTONS; i++)
-            {
-                Console.WriteLine(pressed_buttons[i]);
             }
         }
 
@@ -176,17 +219,12 @@ namespace HornetEngine.Input
             // Loop through the pressed buttons to find the specific key
             for (int i = 0; i < MAX_PRESSED_BUTTONS; i++)
             {
-                if (pressed_buttons[i] == (char)key)
+                if (pressed_buttons[i] == key)
                 {
                     // Overwrite the value with an empty char
-                    pressed_buttons[i] = ' ';
+                    pressed_buttons[i] = Silk.NET.GLFW.Keys.Unknown;
                     break;
                 }
-            }
-            // Print the currently pressed buttons
-            for (int i = 0; i < MAX_PRESSED_BUTTONS; i++)
-            {
-                Console.WriteLine(pressed_buttons[i]);
             }
         }
     }

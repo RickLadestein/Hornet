@@ -26,14 +26,12 @@ namespace HornetEngine.Ecs
         /// <summary>
         /// The current transform of this entity
         /// </summary>
-        public Transform Transform { get; private set; }
+        public Transform Transform;
 
         /// <summary>
         /// The children this entity has
         /// </summary>
         public List<Entity> Children { get; private set; }
-
-        
 
         /// <summary>
         /// Creates a new instance of Entity with default parameters
@@ -46,6 +44,7 @@ namespace HornetEngine.Ecs
             Name = "Entity";
             Transform = new Transform();
             Children = new List<Entity>();
+            Transform.Reset();
         }
 
         /// <summary>
@@ -65,6 +64,7 @@ namespace HornetEngine.Ecs
                 Transform = new Transform();
                 Children = new List<Entity>();
                 Scripts = new List<MonoScript>();
+                Transform.Reset();
             }
         }
 
@@ -80,6 +80,8 @@ namespace HornetEngine.Ecs
                 throw new ArgumentNullException("Component cannot be null");
             } else
             {
+                c.parent = this;
+                c.Initialise();
                 components.Add(c);
             }
         }
@@ -115,6 +117,23 @@ namespace HornetEngine.Ecs
                     comps.Add(t);
                 }
             }
+        }
+
+        /// <summary>
+        /// A function which checks whether the entity has components
+        /// </summary>
+        /// <typeparam name="T">The type of the component which should be checked</typeparam>
+        /// <returns>A boolean depending on the result</returns>
+        public bool HasComponent<T>() where T : Component
+        {
+            foreach (Component c in components)
+            {
+                if (c != null && c is T t)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
 
@@ -167,6 +186,23 @@ namespace HornetEngine.Ecs
                     comps.Add(t);
                 }
             }
+        }
+
+        /// <summary>
+        /// A function which checks whether the entity has a script
+        /// </summary>
+        /// <typeparam name="T">The type of the script which should be checked</typeparam>
+        /// <returns>A boolean depending on the result</returns>
+        public bool HasScript<T>() where T : MonoScript
+        {
+            foreach (MonoScript m in Scripts)
+            {
+                if (m != null && m is T t)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
