@@ -19,6 +19,10 @@ namespace HornetEngine.Graphics
         protected TouchDriver touch_driver;
         
         private static GL gcontext;
+
+        /// <summary>
+        /// The GL context
+        /// </summary>
         public static GL GL {
             get
             {
@@ -34,6 +38,10 @@ namespace HornetEngine.Graphics
         }
 
         private static Glfw fwcontext;
+
+        /// <summary>
+        /// The GLFW context
+        /// </summary>
         public static Glfw GLFW
         {
             get
@@ -52,6 +60,9 @@ namespace HornetEngine.Graphics
         private vec2 _size;
         private vec2 _pos;
 
+        /// <summary>
+        /// The title of the window
+        /// </summary>
         public String Title
         {
             get
@@ -64,6 +75,9 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// The size of the window
+        /// </summary>
         public vec2 Size
         {
             get
@@ -76,6 +90,9 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// The position of the window
+        /// </summary>
         public vec2 Pos
         {
             get
@@ -94,6 +111,10 @@ namespace HornetEngine.Graphics
             this._size = new vec2(0.0f);
         }
 
+        /// <summary>
+        /// A function which can set the title of the window
+        /// </summary>
+        /// <param name="title">The given title</param>
         public unsafe void SetTitle(String title)
         {
             EnsureContextAndWindow();
@@ -101,6 +122,11 @@ namespace HornetEngine.Graphics
             _title = title;
         }
 
+        /// <summary>
+        /// A function which can set the size of the window
+        /// </summary>
+        /// <param name="width">The given width</param>
+        /// <param name="height">The given height</param>
         public unsafe void SetSize(int width, int height)
         {
             EnsureContextAndWindow();
@@ -108,6 +134,11 @@ namespace HornetEngine.Graphics
             _size = new vec2(width, height);
         }
 
+        /// <summary>
+        /// A function which can set the position of the screen
+        /// </summary>
+        /// <param name="x_pos">The x position</param>
+        /// <param name="y_pos">The y position</param>
         public unsafe void SetPosition(uint x_pos, uint y_pos)
         {
             EnsureContextAndWindow();
@@ -130,18 +161,33 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// A function which checks how long the window has been running
+        /// </summary>
+        /// <returns>A double containing the time</returns>
         public unsafe double GetAliveTime()
         {
             EnsureContextAndWindow();
             return fwcontext.GetTime();
         }
 
+        /// <summary>
+        /// A function which checks whether the window should be closed
+        /// </summary>
+        /// <returns>A boolean depending on the result</returns>
         public unsafe bool ShouldClose()
         {
             EnsureContextAndWindow();
             return fwcontext.WindowShouldClose(w_handle);
         }
 
+        /// <summary>
+        /// A function which sets the draw area of the window
+        /// </summary>
+        /// <param name="x">The x position</param>
+        /// <param name="y">The y position</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
         public unsafe void SetDrawArea(uint x, uint y, uint width, uint height)
         {
             EnsureContextAndWindow();
@@ -322,6 +368,9 @@ namespace HornetEngine.Graphics
         }
 
         #endregion native_callbacks
+        /// <summary>
+        /// A function which can be used to dispose the current window
+        /// </summary>
         public unsafe void Dispose()
         {
             if(w_handle != null)

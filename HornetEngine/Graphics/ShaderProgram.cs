@@ -555,6 +555,4 @@ namespace HornetEngine.Graphics
     {
         public FragmentShader(string folder_id, string file) : base(ShaderType.FragmentShader, folder_id, file) { }
     }
-
-    
 }

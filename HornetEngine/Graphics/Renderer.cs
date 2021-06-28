@@ -11,6 +11,10 @@ namespace HornetEngine.Graphics
     {
         private static Renderer _instance;
         private static object lck = new object();
+
+        /// <summary>
+        /// The instance of the renderer
+        /// </summary>
         public static Renderer Instance
         {
             get
@@ -36,10 +40,14 @@ namespace HornetEngine.Graphics
             default_material.SetTextureUnit("default", HTextureUnit.Unit_0);
         }
 
-
+        /// <summary>
+        /// A function which renders the entity
+        /// </summary>
+        /// <param name="cam">The given camera</param>
+        /// <param name="entity">The given entity</param>
         public void RenderEntity(Camera cam, Entity entity)
         {
-            
+
         }
     }
 }
