@@ -140,6 +140,9 @@ namespace HornetEngine.Graphics
             //NativeWindow.GL.Enable(GLEnum.CullFace);
             //NativeWindow.GL.CullFace(CullFaceMode.Back);
             NativeWindow.GL.Enable(GLEnum.DepthTest);
+            NativeWindow.GL.Enable(GLEnum.Blend);
+            NativeWindow.GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+            NativeWindow.GL.BlendFuncSeparate(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha, BlendingFactor.One, BlendingFactor.Zero);
             DepthBuffer.Enable();
             DepthBuffer.SetDepthCheckBehaviour(DepthFunc.LESS);
 
