@@ -4,7 +4,6 @@ using HornetEngine.Graphics;
 using HornetEngine.Graphics.Buffers;
 using HornetEngine.Util;
 using HornetEngine.Input.Touch_Recognition;
-using Silk.NET.OpenGL;
 using System.Numerics;
 using HornetEngine;
 using System.Threading.Tasks;
@@ -49,20 +48,39 @@ namespace Sandbox
             player.AddComponent(new AudioListenerComponent());
             Scene.Instance.AddEntity(player);
 
-            line_entity = new Entity("line");
-            LineRenderComponent rc = new LineRenderComponent();
-            rc.AddLine(new GlmSharp.vec3(0, 0, 5), new GlmSharp.vec3(5, 0, 5));
-            rc.AddLine(new GlmSharp.vec3(5, 0, 5), new GlmSharp.vec3(0, 2, 5));
-            rc.Base_Color = new GlmSharp.vec4(1.0f, 0.0f, 0.0f, 1.0f);
-            rc.Line_width = 100.0f;
-            rc.BuildBuffer();
-            line_entity.AddComponent(rc);
-            
-            line_entity.AddComponent(new SoundSourceComponent());
-            
-            Scene.Instance.AddEntity(line_entity);
 
-            //NativeWindow.GL.PolygonMode(Silk.NET.OpenGL.MaterialFace.FrontAndBack, Silk.NET.OpenGL.PolygonMode.Fill);
+            Entity henk = new Entity("Henk");
+            HenkScript hs = new HenkScript();
+            hs.cam = Camera.Primary;
+            henk.AddScript(hs);
+
+            SoundSourceComponent ssc = new SoundSourceComponent();
+            henk.AddComponent(ssc);
+
+            Mesh mesh = Mesh.ImportMesh("henkmesh", "models", "ape.obj");
+            MeshResourceManager.Instance.AddResource("henkmesh" , mesh);
+            MeshComponent ms = new MeshComponent();
+            ms.SetTargetMesh("henkmesh");
+            henk.AddComponent(ms);
+
+            InterfaceRenderComponent mrc = new InterfaceRenderComponent();
+            henk.AddComponent(mrc);
+
+
+            MaterialComponent matcomp = new MaterialComponent();
+            matcomp.SetShaderFromId("default");
+            matcomp.SetTextureUnit("laminate", HTextureUnit.Unit_0);
+            henk.AddComponent(matcomp);
+
+            henk.Transform.Position = new GlmSharp.vec3(0.0f, 0.0f, 5.0f);
+            Scene.Instance.AddEntity(henk);
+
+
+
+
+
+
+
             w.Run();
         }
 
@@ -74,26 +92,28 @@ namespace Sandbox
             ShaderProgram dprog = new ShaderProgram(dvsh, dfsh);
             ShaderResourceManager.Instance.AddResource("default_line", dprog);
 
-            VertexShader vsh = new VertexShader("shaders", "block.vert");
-            FragmentShader fsh = new FragmentShader("shaders", "block.frag");
+            VertexShader vsh = new VertexShader("shaders", "default.vert");
+            FragmentShader fsh = new FragmentShader("shaders", "default.frag");
             ShaderProgram prog = new ShaderProgram(vsh, fsh);
             ShaderResourceManager.Instance.AddResource("default", prog);
+
+            ShaderProgram prog1 = new ShaderProgram(new VertexShader("shaders", "deferred_pre.vert"), new FragmentShader("shaders", "deferred_pre.frag"));
+            ShaderResourceManager.Instance.AddResource("deferred_pre", prog1);
+
+
 
             Config config = Config.Instance;
             SoundManager manager = SoundManager.Instance;
             Texture tex = new Texture("textures", "laminate1.png", false);
             TextureResourceManager.Instance.AddResource("laminate", tex);
 
-            en = new SoundEntity();
-            manager.addSample(1, "resources\\samples\\menu.wav");
-            en.setVolume(1.0f);
             Texture tex2 = new Texture("textures", "sponza_column_c_ddn.tga", false);
             TextureResourceManager.Instance.AddResource("default", tex2);
 
             Sample samp = new Sample("samples", "menu.wav");
             SoundManager.Instance.AddResource("bonk", samp);
 
-            Scene.Instance.LoadScene("models", "sponza.obj");
+            //Scene.Instance.LoadScene("models", "sponza.obj");
         }
         #endregion
     }

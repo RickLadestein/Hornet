@@ -26,26 +26,9 @@ namespace HornetEngine.Graphics
         /// </summary>
         public float Opacity;
 
-        /// <summary>
-        /// The diffuse map
-        /// </summary>
-        public string Diffuse_map;
-
-        /// <summary>
-        /// The ambient map
-        /// </summary>
         public string Ambient_map;
-
-        /// <summary>
-        /// The dispersion map
-        /// </summary>
-        public string Dispersion_map;
-
-        /// <summary>
-        /// A function which can be used to initialise the Material 
-        /// </summary>
-        /// <param name="material">The given material</param>
-        /// <returns></returns>
+        public string Normal_map;
+        public string Specular_map;
         public static MaterialDescriptor ParseFrom(Assimp.Material material)
         {
             MaterialDescriptor output = new MaterialDescriptor()
@@ -55,9 +38,9 @@ namespace HornetEngine.Graphics
                 Color_specular = new GlmSharp.vec3(material.ColorSpecular.R, material.ColorSpecular.G, material.ColorSpecular.B),
                 Opacity = material.Opacity,
 
-                Diffuse_map = CutTexFilepath(material.TextureDiffuse.FilePath),
                 Ambient_map = CutTexFilepath(material.TextureAmbient.FilePath),
-                Dispersion_map = CutTexFilepath(material.TextureDisplacement.FilePath)
+                Normal_map = CutTexFilepath(material.TextureDisplacement.FilePath),
+                Specular_map = CutTexFilepath(material.TextureSpecular.FilePath)
             };
             return output;
         }

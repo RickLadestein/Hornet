@@ -47,10 +47,19 @@ namespace HornetEngine.Graphics
             }
         }
 
-        /// <summary>
-        /// A function which can be used to add data to the attribute
-        /// </summary>
-        /// <param name="data">The data which should be added</param>
+        public void AddData(GlmSharp.vec2 data)
+        {
+            unsafe
+            {
+                byte[] bts = new byte[sizeof(float)];
+                for (int i = 0; i < 2; i++)
+                {
+                    bts = BitConverter.GetBytes(data[i]);
+                    this.byte_data.AddRange(bts);
+                }
+            }
+        }
+
         public void AddData(Vector3 data)
         {
             byte[] bts = new byte[sizeof(float)];
@@ -61,10 +70,19 @@ namespace HornetEngine.Graphics
             }
         }
 
-        /// <summary>
-        /// A function which can be used to add data to the attribute
-        /// </summary>
-        /// <param name="data">The data which should be added</param>
+        public void AddData(GlmSharp.vec3 data)
+        {
+            unsafe
+            {
+                byte[] bts = new byte[sizeof(float)];
+                for (int i = 0; i < 3; i++)
+                {
+                    bts = BitConverter.GetBytes(data[i]);
+                    this.byte_data.AddRange(bts);
+                }
+            }
+        }
+
         public void AddData(Vector4 data)
         {
             byte[] bts = new byte[sizeof(float)];

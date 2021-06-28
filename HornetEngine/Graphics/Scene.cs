@@ -60,6 +60,9 @@ namespace HornetEngine.Graphics
         /// </summary>
         private void Initialize()
         {
+            Texture tex = new Texture("textures", "black.png", false);
+            TextureResourceManager.Instance.AddResource("black", tex);
+
             PrimaryCam.FrameBuffer.AttachColorRenderTarget(Silk.NET.OpenGL.InternalFormat.Rgb16f, Silk.NET.OpenGL.PixelFormat.Rgb, Silk.NET.OpenGL.PixelType.Float);
             PrimaryCam.FrameBuffer.AttachColorRenderTarget(Silk.NET.OpenGL.InternalFormat.Rgb16f, Silk.NET.OpenGL.PixelFormat.Rgb, Silk.NET.OpenGL.PixelType.Float);
             PrimaryCam.FrameBuffer.AttachColorRenderTarget(Silk.NET.OpenGL.InternalFormat.Rgba, Silk.NET.OpenGL.PixelFormat.Rgba, Silk.NET.OpenGL.PixelType.UnsignedByte);
@@ -76,6 +79,7 @@ namespace HornetEngine.Graphics
             };
             PrimaryCam.UpdateProjectionMatrix();
             PrimaryCam.UpdateViewMatrix();
+
         }
 
         private void SortSceneContent()
@@ -92,12 +96,12 @@ namespace HornetEngine.Graphics
                         light_objects.Add(e);
 
 
-                    if(e.HasComponent<DeferredRenderComponent>())
+                    if(e.HasComponent<MeshRenderComponent>())
                     {
                         deferred_objects.Add(e);
                     }
 
-                    if(e.HasComponent<ForewardRenderComponent>())
+                    if(e.HasComponent<InterfaceRenderComponent>())
                     {
                         foreward_objects.Add(e);
                     }
@@ -242,21 +246,28 @@ namespace HornetEngine.Graphics
         private void RedrawFunc()
         {
             PrimaryCam.FrameBuffer.Bind();
+            NativeWindow.GL.Clear((int)Silk.NET.OpenGL.GLEnum.ColorBufferBit);
+            NativeWindow.GL.Clear((int)Silk.NET.OpenGL.GLEnum.DepthBufferBit);
             foreach (Entity en in deferred_objects)
             {
                 if (en.HasComponent<MeshComponent>())
                 {
-                    DeferredRenderComponent fwc = en.GetComponent<DeferredRenderComponent>();
+                    MeshRenderComponent fwc = en.GetComponent<MeshRenderComponent>();
                     fwc.Render(Camera.Primary);
                 }
             }
             Buffers.FrameBuffer.Unbind();
 
+            PrimaryCam.FrameBuffer.Textures.Bind();
+
+
+            PrimaryCam.FrameBuffer.Textures.Unbind();
+
             foreach (Entity en in foreward_objects)
             {
                 if (en.HasComponent<MeshComponent>())
                 {
-                    ForewardRenderComponent fwc = en.GetComponent<ForewardRenderComponent>();
+                    InterfaceRenderComponent fwc = en.GetComponent<InterfaceRenderComponent>();
                     fwc.Render(Camera.Primary);
                 }
             }
@@ -300,8 +311,6 @@ namespace HornetEngine.Graphics
                     throw new Exception($"Mesh {tmp.Name} loading encountered an error: {tmp.Error}");
                 }
 
-
-
                 MeshResourceManager.Instance.AddResource(tmp.Name, tmp);
 
                 Entity e = new Entity(tmp.Name);
@@ -313,11 +322,11 @@ namespace HornetEngine.Graphics
                 MaterialComponent matcomp = new MaterialComponent();
                 e.AddComponent(matcomp);
 
-                e.AddComponent(new DeferredRenderComponent());
+                e.AddComponent(new MeshRenderComponent());
                 AddEntity(e);
 
 
-                matcomp.SetShaderFromId("default");
+                matcomp.SetShaderFromId("deferred_pre");
                 matcomp.Material = MaterialDescriptor.ParseFrom(mat);
                 if (matcomp.Material.Ambient_map != string.Empty)
                 {
@@ -334,42 +343,51 @@ namespace HornetEngine.Graphics
                         }
                     }
                     matcomp.SetTextureUnit(matcomp.Material.Ambient_map, HTextureUnit.Unit_0);
-                    
+                }
+                else
+                {
+                    matcomp.SetTextureUnit("black", HTextureUnit.Unit_0);
                 }
 
-                if (matcomp.Material.Diffuse_map != string.Empty)
+                if (matcomp.Material.Specular_map != string.Empty)
                 {
-                    if (!TextureResourceManager.Instance.HasResource(matcomp.Material.Diffuse_map))
+                    if (!TextureResourceManager.Instance.HasResource(matcomp.Material.Normal_map))
                     {
-                        Texture tex2 = new Texture("textures", matcomp.Material.Diffuse_map, false);
+                        Texture tex2 = new Texture("textures", matcomp.Material.Normal_map, false);
                         if (tex2.Error != string.Empty)
                         {
-                            Console.WriteLine($"Texture loading for {matcomp.Material.Diffuse_map} failed");
+                            Console.WriteLine($"Texture loading for {matcomp.Material.Normal_map} failed");
                         }
                         else
                         {
-                            TextureResourceManager.Instance.AddResource(matcomp.Material.Diffuse_map, tex2);
+                            TextureResourceManager.Instance.AddResource(matcomp.Material.Normal_map, tex2);
                         }
                     }
-                    matcomp.SetTextureUnit(matcomp.Material.Diffuse_map, HTextureUnit.Unit_1);
-                    
+                    matcomp.SetTextureUnit(matcomp.Material.Normal_map, HTextureUnit.Unit_1);
+                }
+                else
+                {
+                    matcomp.SetTextureUnit("black", HTextureUnit.Unit_1);
                 }
 
-                if (matcomp.Material.Dispersion_map != string.Empty)
+                if (matcomp.Material.Specular_map != string.Empty)
                 {
-                    if (!TextureResourceManager.Instance.HasResource(matcomp.Material.Dispersion_map))
+                    if (!TextureResourceManager.Instance.HasResource(matcomp.Material.Specular_map))
                     {
-                        Texture tex3 = new Texture("textures", matcomp.Material.Dispersion_map, false);
+                        Texture tex3 = new Texture("textures", matcomp.Material.Specular_map, false);
                         if (tex3.Error != string.Empty)
                         {
-                            Console.WriteLine($"Texture loading for {matcomp.Material.Dispersion_map} failed");
+                            Console.WriteLine($"Texture loading for {matcomp.Material.Specular_map} failed");
                         }
                         else
                         {
-                            TextureResourceManager.Instance.AddResource(matcomp.Material.Dispersion_map, tex3);
+                            TextureResourceManager.Instance.AddResource(matcomp.Material.Specular_map, tex3);
                         }
                     }
-                    matcomp.SetTextureUnit(matcomp.Material.Dispersion_map, HTextureUnit.Unit_2);
+                    matcomp.SetTextureUnit(matcomp.Material.Specular_map, HTextureUnit.Unit_2);
+                } else
+                {
+                    matcomp.SetTextureUnit("black", HTextureUnit.Unit_2);
                 }
             }
 

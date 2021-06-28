@@ -64,6 +64,7 @@ namespace HornetEngine.Graphics
         {
             VertexBuffer.InitialiseBuffers();
             VertexBuffer.BufferData(Attributes, ElementType.TRIANGLES);
+            this.Status = MeshStatus.READY;
         }
 
         /// <summary>
