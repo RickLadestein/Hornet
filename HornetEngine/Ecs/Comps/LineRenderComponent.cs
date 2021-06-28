@@ -62,7 +62,7 @@ namespace HornetEngine.Ecs
 
         public void Render(Camera cam)
         {
-            ShaderProgram sh = ShaderResourceManager.GetInstance().GetResource("default_line");
+            ShaderProgram sh = ShaderResourceManager.Instance.GetResource("default_line");
 
             if (sh == null)
             {

@@ -63,7 +63,7 @@ namespace HornetEngine.Graphics
         /// <returns>Window creation succes status, false: window creation failed, true: window creation succesfull</returns>
         public bool Open(String title, int width, int height, WindowMode mode)
         {
-            bool result = this.CreateWindowHandle(width, height, title, WindowMode.WINDOWED);
+            bool result = this.CreateWindowHandle(width, height, title, mode);
             GL.ClearColor(0.45f, 0.45f, 0.45f, 1.0f);
             unsafe
             {
@@ -71,9 +71,19 @@ namespace HornetEngine.Graphics
                 this.Keyboard = new Keyboard(this.w_handle);
                 this.Touch_panel = new TouchPanel(this.touch_driver);
             }
+
+            this.Redraw += Scene.Instance.GetRefreshFunc();
+
+            //init default opengl behaviour
+            NativeWindow.GL.Enable(GLEnum.CullFace);
+            NativeWindow.GL.CullFace(CullFaceMode.Back);
+            NativeWindow.GL.Enable(GLEnum.DepthTest);
             DepthBuffer.Enable();
             DepthBuffer.SetDepthCheckBehaviour(DepthFunc.LESS);
+
+
             fixed_update_thread.Start();
+
             return result;
         }
 
@@ -88,11 +98,14 @@ namespace HornetEngine.Graphics
                 this.PollEvents();
                 this.ClearBuffer(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
+                
+                Scene.Instance.UpdateScene();
                 this.Redraw?.Invoke();
 
                 this.SwapBuffers();
                 end_time = this.GetAliveTime();
                 Time.FrameDelta = (float) (end_time - start_time);
+
             }
         }
 
@@ -101,6 +114,7 @@ namespace HornetEngine.Graphics
             while(alive)
             {
                 DateTime begin = DateTime.Now;
+                Scene.Instance.UpdateFixed();
                 FixedUpdate?.Invoke();
                 DateTime end = DateTime.Now;
                 TimeSpan delta = end - begin;

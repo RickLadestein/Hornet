@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using GlmSharp;
+using HornetEngine.Graphics.Buffers;
 
 namespace HornetEngine.Graphics
 {
@@ -35,13 +36,15 @@ namespace HornetEngine.Graphics
     {
         public CameraViewSettings ViewSettings {get; set; }
 
+        /// <summary>
+        /// The current position of the camera
+        /// </summary>
         public vec3 Position { get; set; }
 
         /// <summary>
         /// Quaternion for describing the orientation of the camera; camera will always look at Z+ if orientation[0,0,0]
         /// </summary>
         public quat Orientation { get; set; }
-
 
         /// <summary>
         /// The current Rotation in degrees
@@ -54,6 +57,8 @@ namespace HornetEngine.Graphics
                 return new vec3((float)_rot.x, (float)_rot.y, (float)_rot.z);
             }
         }
+
+        public FrameBuffer FrameBuffer { get; private set; }
 
 
         public vec3 Target { get; private set; }
@@ -69,6 +74,18 @@ namespace HornetEngine.Graphics
         {
             this.Position = new vec3(0.0f);
             this.Orientation = quat.Identity;
+            this.Up = new vec3(0.0f, 1.0f, 0.0f);
+
+            this.ViewSettings = new CameraViewSettings()
+            {
+                Lens_height = 480,
+                Lens_width = 720,
+                Fov = OpenTK.Mathematics.MathHelper.DegreesToRadians(45),
+                clip_min = 1.0f,
+                clip_max = 100.0f
+            };
+            this.UpdateProjectionMatrix();
+            this.FrameBuffer = new FrameBuffer((uint)this.ViewSettings.Lens_width, (uint)this.ViewSettings.Lens_height);
         }
 
         public static void RegisterScenePrimaryCamera(Scene scene)
@@ -110,7 +127,7 @@ namespace HornetEngine.Graphics
             vec3 virt_cam_up = new vec3(0.0f, 1.0f, 0.0f);
             vec3 cam_dir = glm.Normalized(this.Position - this.Target);
             this.Right = glm.Normalized(glm.Cross(virt_cam_up, cam_dir));
-            this.Up = glm.Normalized(glm.Cross(cam_dir, this.Right)); ;
+            this.Up = glm.Normalized(glm.Cross(cam_dir, this.Right));
             this.ViewMatrix = mat4.LookAt(this.Position, this.Target, this.Up);
         }
 

@@ -31,7 +31,7 @@ namespace HornetEngine.Ecs
         /// <exception cref="Exception"></exception>
         public void SetTargetMesh(String meshId)
         {
-            Mesh result = MeshResourceManager.GetInstance().GetResource(meshId);
+            Mesh result = MeshResourceManager.Instance.GetResource(meshId);
             if(result == null)
             {
                 throw new MissingResourceException(meshId);

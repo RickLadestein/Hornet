@@ -13,7 +13,6 @@ namespace HornetEngine.Sound
     /// </summary>
     public class Sample
     {
-        private string givenFileLocation;
         public int Handle { get; private set; }
 
         /// <summary>
@@ -22,29 +21,37 @@ namespace HornetEngine.Sound
         /// <param name="givenFileLocation">A string which contains the path to the file which should be played.</param>
         public Sample(string givenFileLocation) 
         {
-            this.givenFileLocation = givenFileLocation;
-
-            initBuffer();
+            InitBuffer(givenFileLocation);
         }
 
         public Sample(string folder_id, string file)
         {
-            if(!file.EndsWith(".wav"))
+            if(folder_id == null || folder_id.Length == 0)
+            {
+                throw new ArgumentException("folder_id cannot be null or empty");
+            }
+
+            if (file == null || file.Length == 0)
+            {
+                throw new ArgumentException("file location cannot be null or empty");
+            }
+
+
+            if (!file.EndsWith(".wav"))
             {
                 String[] tokens = file.Split(".");
                 throw new NotSupportedException($".{tokens[1]} extension type not supported: please only use .wav files");
             }
             string folder_dir = DirectoryManager.GetResourceDir(folder_id);
-            this.givenFileLocation = DirectoryManager.ConcatDirFile(folder_dir, file);
-            initBuffer();
+            if(folder_dir == null || folder_dir.Length == 0)
+            {
+                throw new Exception($"Folder with id {folder_id} was not found within");
+            }
+            string path = DirectoryManager.ConcatDirFile(folder_dir, file);
+            InitBuffer(path);
         }
 
-        /// <summary>
-        /// A function which will be called when creating a Sample
-        /// 
-        /// This function will initialize the buffers for the specific sample.
-        /// </summary>
-        public void initBuffer()
+        private void InitBuffer(string givenFileLocation)
         {
             // Initialize the buffer
             Handle = AL.GenBuffer();
@@ -52,94 +59,43 @@ namespace HornetEngine.Sound
             // Prints the file location to the console
             Console.WriteLine("Sample {0} initialized", givenFileLocation);
 
-            int channels, bits_per_sample, sample_rate;
-            byte[] sound_data = loadWave(File.Open(givenFileLocation, FileMode.Open), out channels, out bits_per_sample, out sample_rate);
+            //int channels, bits_per_sample, sample_rate;
+            //byte[] sound_data = loadWave(File.Open(givenFileLocation, FileMode.Open), out channels, out bits_per_sample, out sample_rate);
 
-            fmt_subchunk fmt;
-            data_chunk dta;
-            chunk_descriptor dsc;
-            loadWave(File.Open(givenFileLocation, FileMode.Open), out dsc, out fmt, out dta);
+            Stream fstream = File.OpenRead(givenFileLocation);
+            LoadWave(fstream, out DescriptorChunk dsc, out FormatChunk fmt, out DataChunk dta);
 
             // Create an IntPtr which points towards the sound_data
-            GCHandle pinnedArray = GCHandle.Alloc(sound_data, GCHandleType.Pinned);
+            GCHandle pinnedArray = GCHandle.Alloc(dta.data, GCHandleType.Pinned);
             IntPtr pointer = pinnedArray.AddrOfPinnedObject();
 
-            // Assign the sound to the buffer
-            AL.BufferData(Handle, getSoundFormat(channels, bits_per_sample), pointer, sound_data.Length, sample_rate);
+            ALFormat al_format = GetSoundFormat(fmt.num_channels, fmt.bits_per_sample);
+            AL.BufferData(Handle, al_format, pointer, dta.data.Length, fmt.sample_rate);
 
             // Free the array to prevent memory leaks
             pinnedArray.Free();
         }
 
-        /// <summary>
-        /// A function which will load the sample's file
-        /// </summary>
-        /// <param name="stream">The stream which will be used to open the file</param>
-        /// <param name="channels">The amount of channels within the sound.</param>
-        /// <param name="bits">Sound encoding level</param>
-        /// <param name="rate">The sample frequency in Hz.</param>
-        /// <returns></returns>
-        private byte[] loadWave(Stream stream, out int channels, out int bits, out int rate)
+        private void LoadWave(Stream stream, out DescriptorChunk primary_header, out FormatChunk format_header, out DataChunk data_chunk)
         {
             if (stream == null)
                 throw new ArgumentNullException("stream");
 
             using (BinaryReader reader = new BinaryReader(stream))
             {
-                // RIFF header
-                string signature = new string(reader.ReadChars(4));
-                if (signature != "RIFF")
-                    throw new NotSupportedException("Specified stream is not a wave (.wav) file.");
-
-                int riff_chunck_size = reader.ReadInt32();
-
-                string format = new string(reader.ReadChars(4));
-                if (format != "WAVE")
-                    throw new NotSupportedException("Specified stream is not a wave (.wav) file.");
-
-                // WAVE header
-                string format_signature = new string(reader.ReadChars(4));
-
-                //int format_chunk_size = reader.ReadInt32();
-                int fmt_chunk_size = BinaryPrimitives.ReadInt32LittleEndian(reader.ReadBytes(4));
-                int audio_format = reader.ReadInt16();
-                int num_channels = reader.ReadInt16();
-                int sample_rate = reader.ReadInt32();
-                int byte_rate = reader.ReadInt32();
-                int block_align = reader.ReadInt16();
-                int bits_per_sample = reader.ReadInt16();
-
-                string data_signature = new string(reader.ReadChars(6));
-                int data_chunk_size = reader.ReadInt32();
-
-                channels = num_channels;
-                bits = bits_per_sample;
-                rate = sample_rate;
-                return reader.ReadBytes((int)reader.BaseStream.Length);
+                primary_header = DescriptorChunk.Parse(reader);
+                format_header = FormatChunk.Parse(reader);
+                data_chunk = DataChunk.Parse(reader);
             }
         }
 
-        private void loadWave(Stream stream, out chunk_descriptor primary_header, out fmt_subchunk format_header, out data_chunk data_chunk)
+        private ALFormat GetSoundFormat(int channels, int bits)
         {
-            if (stream == null)
-                throw new ArgumentNullException("stream");
-
-            using (BinaryReader reader = new BinaryReader(stream))
+            if(bits > 16)
             {
-                primary_header = chunk_descriptor.Parse(reader);
-                format_header = fmt_subchunk.Parse(reader);
-                data_chunk = data_chunk.Parse(reader);
+                throw new NotSupportedException("32 bit audio channels not supported");
             }
-        }
 
-        /// <summary>
-        /// A function which will get the sound format.
-        /// </summary>
-        /// <param name="channels">The amount of channels within the sound file.</param>
-        /// <param name="bits">The sample frequency in Hz.</param>
-        /// <returns></returns>
-        private ALFormat getSoundFormat(int channels, int bits)
-        {
             switch (channels)
             {
                 case 1: return bits == 8 ? ALFormat.Mono8 : ALFormat.Mono16;
@@ -149,15 +105,35 @@ namespace HornetEngine.Sound
         }
     }
 
-    public struct chunk_descriptor
+    /// <summary>
+    /// Struct for storing Chunk Descriptor data
+    /// </summary>
+    public struct DescriptorChunk
     {
+        /// <summary>
+        /// The chunk signature string
+        /// </summary>
         public string signature;
+
+        /// <summary>
+        /// The size of the Chunk Descriptor
+        /// </summary>
         public int chunk_size;
+
+        /// <summary>
+        /// The format of the File
+        /// </summary>
         public string format;
 
-        public static chunk_descriptor Parse(BinaryReader reader)
+        /// <summary>
+        /// Tries to parse a chunk descriptor from given stream
+        /// </summary>
+        /// <param name="reader">The binary reader to the opened audio file stream</param>
+        /// <returns>Filled <c>DescriptorChunk</c></returns>
+        /// <exception cref="Exception"></exception>
+        public static DescriptorChunk Parse(BinaryReader reader)
         {
-            chunk_descriptor output = new chunk_descriptor
+            DescriptorChunk output = new DescriptorChunk
             {
                 signature = new string(reader.ReadChars(4)),
                 chunk_size = reader.ReadInt32(),
@@ -167,20 +143,62 @@ namespace HornetEngine.Sound
         }
     }
 
-    public struct fmt_subchunk
+
+    /// <summary>
+    /// Struct for storing Format Chunk data
+    /// </summary>
+    public struct FormatChunk
     {
+        /// <summary>
+        /// The id of this format chunk
+        /// </summary>
         public string chunk_id;
+
+        /// <summary>
+        /// The size of the format chunk
+        /// </summary>
         public int sub_chunk_size;
+
+        /// <summary>
+        /// The format the audio is stored in (wave)
+        /// </summary>
         public short audio_format;
+
+        /// <summary>
+        /// The amount of channels
+        /// </summary>
         public short num_channels;
+
+        /// <summary>
+        /// The sound sample rate in Hz
+        /// </summary>
         public int sample_rate;
+
+        /// <summary>
+        /// The sound byte rate Bytes/Second
+        /// </summary>
         public int byte_rate;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public short block_align;
+
+        /// <summary>
+        /// The amount of bits per sound sample
+        /// </summary>
         public short bits_per_sample;
 
-        public static fmt_subchunk Parse(BinaryReader reader)
+
+        /// <summary>
+        /// Tries to parse a format chunk from given stream
+        /// </summary>
+        /// <param name="reader">The binary reader to the opened audio file stream</param>
+        /// <returns>Filled <c>FormatChunk</c></returns>
+        /// /// <exception cref="Exception"></exception>
+        public static FormatChunk Parse(BinaryReader reader)
         {
-            fmt_subchunk output = new fmt_subchunk
+            FormatChunk output = new FormatChunk
             {
                 chunk_id = new string(reader.ReadChars(4)),
                 sub_chunk_size = reader.ReadInt32(),
@@ -195,19 +213,48 @@ namespace HornetEngine.Sound
         }
     }
 
-    public struct data_chunk
+    /// <summary>
+    /// Struct for storing Audio data
+    /// </summary>
+    public struct DataChunk
     {
+        /// <summary>
+        /// The ID of the data stored in this chunk
+        /// </summary>
         public string chunk_id;
+
+        /// <summary>
+        /// The total size of the data contained in this chunk
+        /// </summary>
         public int chunk_size;
+
+        /// <summary>
+        /// The raw audio data
+        /// </summary>
         public byte[] data;
 
-        public static data_chunk Parse(BinaryReader reader)
+
+        /// <summary>
+        /// Tries to parse a data chunk from given stream
+        /// </summary>
+        /// <param name="reader">The binary reader to the opened audio file stream</param>
+        /// <returns>Filled <c>DataChunk</c></returns>
+        /// <exception cref="Exception"></exception>
+        public static DataChunk Parse(BinaryReader reader)
         {
-            data_chunk output = new data_chunk
+
+            //Read until data block is reached
+            string data_id = "";
+            while(!data_id.Equals("data"))
             {
-                chunk_id = new string(reader.ReadChars(4)),
+                data_id = new string(reader.ReadChars(4));
+            }
+
+            DataChunk output = new DataChunk
+            {
+                chunk_id = data_id,
                 chunk_size = reader.ReadInt32(),
-                data = reader.ReadBytes((int)reader.BaseStream.Length)
+                data = reader.ReadBytes((int)(reader.BaseStream.Length - reader.BaseStream.Position))
             };
             return output;
         }
