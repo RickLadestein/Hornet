@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using GlmSharp;
+using HornetEngine.Ecs;
 using HornetEngine.Graphics.Buffers;
+using HornetEngine.Util;
 
 namespace HornetEngine.Graphics
 {
@@ -60,6 +62,8 @@ namespace HornetEngine.Graphics
 
         public FrameBuffer FrameBuffer { get; private set; }
 
+        private MeshComponent Render_plane;
+        private MaterialComponent Material;
 
         public vec3 Target { get; private set; }
         public vec3 Foreward { get; private set; }
@@ -84,8 +88,39 @@ namespace HornetEngine.Graphics
                 clip_min = 1.0f,
                 clip_max = 100.0f
             };
+            InitCamRenderPlane();
             this.UpdateProjectionMatrix();
+            
+            
+        }
+
+        private void InitCamRenderPlane()
+        {
             this.FrameBuffer = new FrameBuffer((uint)this.ViewSettings.Lens_width, (uint)this.ViewSettings.Lens_height);
+            if (!MeshResourceManager.Instance.HasResource("camplane"))
+            {
+                Mesh m = new Mesh("camplane");
+                FloatAttribute attrib = new FloatAttribute("position", 3);
+                attrib.AddData(new GlmSharp.vec3(-1.0f, -1.0f, 0.0f));
+                attrib.AddData(new GlmSharp.vec3(-1.0f, 1.0f, 0.0f));
+                attrib.AddData(new GlmSharp.vec3(1.0f, 1.0f, 0.0f));
+
+                attrib.AddData(new GlmSharp.vec3(-1.0f, -1.0f, 0.0f));
+                attrib.AddData(new GlmSharp.vec3(1.0f, 1.0f, 0.0f));
+                attrib.AddData(new GlmSharp.vec3(1.0f, -1.0f, 0.0f));
+                m.Attributes.AddAttribute(attrib);
+                m.BuildVertexBuffer();
+                MeshResourceManager.Instance.AddResource("camplane", m);
+
+                ShaderProgram prog1 = new ShaderProgram(new VertexShader("shaders", "deferred_post.vert"), new FragmentShader("shaders", "deferred_post.frag"));
+                ShaderResourceManager.Instance.AddResource("deferred_post", prog1);
+            }
+
+            this.Render_plane = new MeshComponent();
+            this.Render_plane.SetTargetMesh("camplane");
+
+            this.Material = new MaterialComponent();
+            this.Material.SetShaderFromId("deferred_post");
         }
 
         public static void RegisterScenePrimaryCamera(Scene scene)

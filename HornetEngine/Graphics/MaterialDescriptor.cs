@@ -11,9 +11,9 @@ namespace HornetEngine.Graphics
         public GlmSharp.vec3 Color_specular;
         public float Opacity;
 
-        public string Diffuse_map;
         public string Ambient_map;
-        public string Dispersion_map;
+        public string Normal_map;
+        public string Specular_map;
         public static MaterialDescriptor ParseFrom(Assimp.Material material)
         {
 
@@ -24,9 +24,9 @@ namespace HornetEngine.Graphics
                 Color_specular = new GlmSharp.vec3(material.ColorSpecular.R, material.ColorSpecular.G, material.ColorSpecular.B),
                 Opacity = material.Opacity,
 
-                Diffuse_map = CutTexFilepath(material.TextureDiffuse.FilePath),
                 Ambient_map = CutTexFilepath(material.TextureAmbient.FilePath),
-                Dispersion_map = CutTexFilepath(material.TextureDisplacement.FilePath)
+                Normal_map = CutTexFilepath(material.TextureDisplacement.FilePath),
+                Specular_map = CutTexFilepath(material.TextureSpecular.FilePath)
             };
             return output;
         }

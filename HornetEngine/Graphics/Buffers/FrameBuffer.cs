@@ -17,12 +17,15 @@ namespace HornetEngine.Graphics.Buffers
         /// </summary>
         public uint RB_Handle { get; private set; }
 
+        public MultiTexture Textures { get; private set; }
+
         private List<Texture> render_targets;
         private List<GLEnum> color_attachments;
         private uint width;
         private uint height;
         private uint current_attachment;
         private bool has_depth_buffer;
+
 
         /// <summary>
         /// Instantiates a new instance of FrameBuffer with specified screen width and height settings
@@ -35,6 +38,7 @@ namespace HornetEngine.Graphics.Buffers
             this.height = buffer_height;
             this.current_attachment = 0;
             this.Handle = NativeWindow.GL.GenFramebuffer();
+            this.Textures = new MultiTexture();
             render_targets = new List<Texture>();
             color_attachments = new List<GLEnum>();
         }
@@ -101,6 +105,8 @@ namespace HornetEngine.Graphics.Buffers
             }
 
             //this.color_attachments.Add(use);
+            HTextureUnit unit = HTextureUnit.Unit_0 + current_attachment;
+            this.Textures.SetTextureUnit(tex, unit);
             this.current_attachment += 1;
 
             //Unbind the current framebuffer

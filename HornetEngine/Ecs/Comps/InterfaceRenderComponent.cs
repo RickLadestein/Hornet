@@ -7,11 +7,11 @@ using System.Text;
 
 namespace HornetEngine.Ecs
 {
-    class ForewardRenderComponent : Component
+    public class InterfaceRenderComponent : Component
     {
         private MaterialComponent default_material;
 
-        public ForewardRenderComponent()
+        public InterfaceRenderComponent()
         {
             default_material = new MaterialComponent();
             default_material.SetShaderFromId("default");
@@ -47,11 +47,8 @@ namespace HornetEngine.Ecs
             ShaderProgram sh = matcomp.Shader;
             sh.Bind();
             sh.SetUniform("model", parent.Transform.ModelMat);
-            sh.SetUniform("normal_mat", parent.Transform.NormalMat);
             sh.SetUniform("projection", target.ProjectionMatrix);
             sh.SetUniform("view", target.ViewMatrix);
-            sh.SetUniform("camera_position", target.Position);
-            sh.SetUniform("camera_target", target.Target);
             sh.SetUniform("time", (float)NativeWindow.GLFW.GetTime());
 
             NativeWindow.GL.DrawArrays((GLEnum)vbuf.PrimitiveType, 0, vbuf.VertexCount);

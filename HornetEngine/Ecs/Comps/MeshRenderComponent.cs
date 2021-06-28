@@ -7,10 +7,10 @@ using System.Text;
 
 namespace HornetEngine.Ecs
 {
-    class DeferredRenderComponent : Component
+    public class MeshRenderComponent : Component
     {
         private MaterialComponent default_material;
-        public DeferredRenderComponent()
+        public MeshRenderComponent()
         {
             default_material = new MaterialComponent();
             default_material.SetShaderFromId("default");
@@ -19,8 +19,7 @@ namespace HornetEngine.Ecs
 
         public void Render(Camera target)
         {
-            NativeWindow.GL.Clear((int)GLEnum.ColorBufferBit);
-            NativeWindow.GL.Clear((int)GLEnum.DepthBufferBit);
+            
 
             if (!parent.HasComponent<MeshComponent>())
             {
@@ -33,7 +32,9 @@ namespace HornetEngine.Ecs
             {
                 matcomp = default_material;
             }
-
+            ShaderProgram sh = matcomp.Shader;
+            sh.Bind();
+            
             matcomp.Textures.Bind();
             for (int i = 0; i < matcomp.Textures.textures.Length; i++)
             {
@@ -44,10 +45,7 @@ namespace HornetEngine.Ecs
             }
 
             VertexBuffer vbuf = meshcomp.Mesh.VertexBuffer;
-            vbuf.Bind();
-
-            ShaderProgram sh = matcomp.Shader;
-            sh.Bind();
+            vbuf.Bind();            
             sh.SetUniform("model", parent.Transform.ModelMat);
             sh.SetUniform("normal_mat", parent.Transform.NormalMat);
             sh.SetUniform("projection", target.ProjectionMatrix);
@@ -62,6 +60,11 @@ namespace HornetEngine.Ecs
             {
                 matcomp.Textures.Unbind();
             }
+        }
+
+        public static void RenderOnCamPlane()
+        {
+
         }
         public override string ToString()
         {
