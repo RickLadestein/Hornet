@@ -10,6 +10,10 @@ namespace HornetEngine.Ecs
     class DeferredRenderComponent : Component
     {
         private MaterialComponent default_material;
+
+        /// <summary>
+        /// The constructor of the DeferredRenderComponent
+        /// </summary>
         public DeferredRenderComponent()
         {
             default_material = new MaterialComponent();
@@ -17,6 +21,11 @@ namespace HornetEngine.Ecs
             default_material.SetTextureUnit("default", HTextureUnit.Unit_0);
         }
 
+        /// <summary>
+        /// A function which can be used to render the target
+        /// </summary>
+        /// <param name="target">The camera used for the rendering</param>
+        /// <exception cref="Exception">Throws an Exception</exception>
         public void Render(Camera target)
         {
             NativeWindow.GL.Clear((int)GLEnum.ColorBufferBit);
@@ -63,6 +72,7 @@ namespace HornetEngine.Ecs
                 matcomp.Textures.Unbind();
             }
         }
+
         public override string ToString()
         {
             throw new NotImplementedException();

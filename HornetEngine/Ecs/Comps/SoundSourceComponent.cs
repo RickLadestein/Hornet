@@ -7,10 +7,17 @@ namespace HornetEngine.Ecs
 {
     public class SoundSourceComponent : Component
     {
+        /// <summary>
+        /// A list of active SoundSources
+        /// </summary>
         public List<SoundSource> ActiveSources;
 
         private System.Timers.Timer source_refresh_timer;
         private Mutex src_mutex;
+
+        /// <summary>
+        /// The constructor of the SoundSourceComponent
+        /// </summary>
         public SoundSourceComponent()
         {
             ActiveSources = new List<SoundSource>();
@@ -27,6 +34,7 @@ namespace HornetEngine.Ecs
         /// <param name="samp">The sample to be played</param>
         /// <param name="pitch">The playback pitch [0.5 > pitch < float.maxvalue]</param>
         /// <param name="volume">The source volume at which the sound effect plays</param>
+        /// <exception cref="ArgumentNullException">Throws an ArgumentNullException</exception>
         public void PlaySoundEffect(Sample samp, float pitch, float volume)
         {
             if(samp == null)
@@ -45,6 +53,13 @@ namespace HornetEngine.Ecs
             src_mutex.ReleaseMutex();
         }
 
+        /// <summary>
+        /// A function which can be used to play music
+        /// </summary>
+        /// <param name="samp">The sample which should be played</param>
+        /// <param name="pitch">The pitch which should be used</param>
+        /// <param name="volume">The volume which should be used</param>
+        /// <exception cref="ArgumentNullException">Throws an ArgumentNullException</exception>
         public void PlayMusic(Sample samp, float pitch, float volume)
         {
             if (samp == null)

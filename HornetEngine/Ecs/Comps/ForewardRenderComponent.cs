@@ -11,6 +11,9 @@ namespace HornetEngine.Ecs
     {
         private MaterialComponent default_material;
 
+        /// <summary>
+        /// The constructor of the ForewardRenderComponent
+        /// </summary>
         public ForewardRenderComponent()
         {
             default_material = new MaterialComponent();
@@ -18,6 +21,11 @@ namespace HornetEngine.Ecs
             default_material.SetTextureUnit("default", HTextureUnit.Unit_0);
         }
 
+        /// <summary>
+        /// A function which can be used to render the target
+        /// </summary>
+        /// <param name="target">The camera</param>
+        /// <exception cref="Exception">Throws an Exception</exception>
         public void Render(Camera target)
         {
             if (!parent.HasComponent<MeshComponent>())
