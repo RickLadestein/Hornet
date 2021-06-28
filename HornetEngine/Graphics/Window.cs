@@ -137,8 +137,8 @@ namespace HornetEngine.Graphics
             this.Redraw += Scene.Instance.GetRefreshFunc();
 
             //init default opengl behaviour
-            NativeWindow.GL.Enable(GLEnum.CullFace);
-            NativeWindow.GL.CullFace(CullFaceMode.Back);
+            //NativeWindow.GL.Enable(GLEnum.CullFace);
+            //NativeWindow.GL.CullFace(CullFaceMode.Back);
             NativeWindow.GL.Enable(GLEnum.DepthTest);
             DepthBuffer.Enable();
             DepthBuffer.SetDepthCheckBehaviour(DepthFunc.LESS);
