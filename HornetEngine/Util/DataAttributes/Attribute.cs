@@ -12,9 +12,25 @@ namespace HornetEngine.Graphics
         /// Attribute data that is stored within is Attribute
         /// </summary>
         public List<byte> byte_data { get; protected set; }
+
+        /// <summary>
+        /// The name of the Attribute
+        /// </summary>
         public string Name { get; protected set; }
+
+        /// <summary>
+        /// The type of the attribute
+        /// </summary>
         public AttributeType Base_type { get; protected set; }
+
+        /// <summary>
+        /// The components of the attribute
+        /// </summary>
         public uint Components { get; protected set; }
+
+        /// <summary>
+        /// The size of the base type
+        /// </summary>
         public uint Base_type_size { get; protected set; }
 
         protected Attribute()
@@ -60,6 +76,9 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// A function which clears the attribute data
+        /// </summary>
         public void ClearData()
         {
             this.byte_data.Clear();

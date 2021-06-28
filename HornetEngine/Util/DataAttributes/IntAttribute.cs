@@ -10,6 +10,11 @@ namespace HornetEngine.Graphics
 {
     public class IntAttribute : Attribute
     {
+        /// <summary>
+        /// The constructor of the Intattribute
+        /// </summary>
+        /// <param name="name">The name of the attribute</param>
+        /// <param name="comps">The components of the attribute</param>
         public IntAttribute(String name, uint comps)
         {
             this.Base_type = AttributeType.INT;
@@ -18,12 +23,20 @@ namespace HornetEngine.Graphics
             this.Name = name;
         }
 
+        /// <summary>
+        /// A function which can be used to add data to the attribute
+        /// </summary>
+        /// <param name="data">The data which should be added</param>
         public void AddData(int data)
         {
             byte[] bts = BitConverter.GetBytes(data);
             this.byte_data.AddRange(bts);
         }
 
+        /// <summary>
+        /// A function which can be used to add data to the attribute
+        /// </summary>
+        /// <param name="data">The data which should be added</param>
         public void AddData(Vector2i data)
         {
             byte[] bts = new byte[sizeof(int)];
@@ -34,6 +47,10 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// A function which can be used to add data to the attribute
+        /// </summary>
+        /// <param name="data">The data which should be added</param>
         public void AddData(Vector3i data)
         {
             byte[] bts = new byte[sizeof(int)];
@@ -44,6 +61,10 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// A function which can be used to add data to the attribute
+        /// </summary>
+        /// <param name="data">The data which should be added</param>
         public void AddData(Vector4i data)
         {
             byte[] bts = new byte[sizeof(int)];

@@ -43,12 +43,18 @@ namespace HornetEngine.Util.Drivers
 
     public interface ITouchEventListener
     {
+        /// <summary>
+        /// The touch event
+        /// </summary>
+        /// <param name="position">The position of the touch point</param>
+        /// <param name="size">The size of the touch point</param>
+        /// <param name="id">The ID of the touch point</param>
+        /// <param name="flags">The flags of the touch point</param>
         void OnTouchEvent(Vector2 position, Vector2 size, UInt32 id, UInt32 flags);
     }
 
     public class TouchDriver : IDisposable
     {
-
         private static readonly uint WM_TOUCH = 0x0240;
         
         private IntPtr HWnd;
@@ -62,6 +68,10 @@ namespace HornetEngine.Util.Drivers
 
         private static TouchDriver instance;
 
+        /// <summary>
+        /// A function which gets TouchDriver instance
+        /// </summary>
+        /// <returns>The TouchDriver instance</returns>
         public static TouchDriver GetInstance()
         {
             if (instance == null)
@@ -72,12 +82,21 @@ namespace HornetEngine.Util.Drivers
         }
         private TouchDriver() {}
 
+        /// <summary>
+        /// A function which initializes the TouchDriver
+        /// </summary>
+        /// <param name="wnd">A reference to the GLFW window</param>
         public void Initialise(ref GlfwNativeWindow wnd)
         {
             GetWindowPtr(ref wnd);
             LinkToWin32();
         }
 
+        /// <summary>
+        /// A function which sets an event listener
+        /// </summary>
+        /// <param name="lst">The listener which should be set</param>
+        /// <exception cref="ArgumentNullException">Throws an ArgumentNullException</exception>
         public void SetEventListener(ITouchEventListener lst)
         {
             if (lst == null)
@@ -141,6 +160,9 @@ namespace HornetEngine.Util.Drivers
             return (IntPtr)CallWindowProc(oldproc, hwnd, msg, wparam, lparam);
         }
 
+        /// <summary>
+        /// A function which disposes of the TouchDriver
+        /// </summary>
         public void Dispose()
         {
             if (registered_touch)
@@ -171,6 +193,5 @@ namespace HornetEngine.Util.Drivers
         [DllImport("Kernel32.dll", SetLastError = true)]
         static extern long GetLastError();
         #endregion
-
     }
 }
