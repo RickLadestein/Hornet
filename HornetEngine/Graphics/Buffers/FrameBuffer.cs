@@ -88,9 +88,9 @@ namespace HornetEngine.Graphics.Buffers
             this.render_targets.Add(tex);
             GLEnum use = (GLEnum)(((int)FramebufferAttachment.ColorAttachment0) + current_attachment);
             NativeWindow.GL.FramebufferTexture2D(FramebufferTarget.Framebuffer, use, GLEnum.Texture2D, tex.Handle, 0);
-            
 
             //Tell opengl that we have (current_attachment + 1) color buffers
+            color_attachments.Add(use);
             GLEnum[] comps = this.color_attachments.ToArray();
             unsafe
             {
@@ -100,7 +100,7 @@ namespace HornetEngine.Graphics.Buffers
                 }
             }
 
-            this.color_attachments.Add(use);
+            //this.color_attachments.Add(use);
             this.current_attachment += 1;
 
             //Unbind the current framebuffer
@@ -112,7 +112,7 @@ namespace HornetEngine.Graphics.Buffers
         /// </summary>
         public void AttachDepthBufferTarget()
         {
-            if (this.has_depth_buffer)
+            if (!this.has_depth_buffer)
             {
                 this.RB_Handle = NativeWindow.GL.GenRenderbuffer();
                 this.Bind();

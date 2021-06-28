@@ -33,7 +33,7 @@ namespace HornetEngine.Graphics
         private List<Entity> light_objects;
 
         private bool scene_content_changed;
-        public Camera PrimaryCam { get; set; }
+        public Camera PrimaryCam { get; private set; }
         private Scene()
         {
             scene_content = new List<Entity>();
@@ -52,6 +52,12 @@ namespace HornetEngine.Graphics
         /// </summary>
         private void Initialize()
         {
+            PrimaryCam.FrameBuffer.AttachColorRenderTarget(Silk.NET.OpenGL.InternalFormat.Rgb16f, Silk.NET.OpenGL.PixelFormat.Rgb, Silk.NET.OpenGL.PixelType.Float);
+            PrimaryCam.FrameBuffer.AttachColorRenderTarget(Silk.NET.OpenGL.InternalFormat.Rgb16f, Silk.NET.OpenGL.PixelFormat.Rgb, Silk.NET.OpenGL.PixelType.Float);
+            PrimaryCam.FrameBuffer.AttachColorRenderTarget(Silk.NET.OpenGL.InternalFormat.Rgba, Silk.NET.OpenGL.PixelFormat.Rgba, Silk.NET.OpenGL.PixelType.UnsignedByte);
+            PrimaryCam.FrameBuffer.AttachDepthBufferTarget();
+
+
             PrimaryCam.ViewSettings = new CameraViewSettings()
             {
                 Lens_height = 1080,
@@ -72,9 +78,11 @@ namespace HornetEngine.Graphics
                 deferred_objects.Clear();
                 foreward_objects.Clear();
                 light_objects.Clear();
+
                 scene_content.ForEach((e) => {
                     if (e.HasComponent<RadialLightComponent>())
                         light_objects.Add(e);
+
 
                     if(e.HasComponent<DeferredRenderComponent>())
                     {
@@ -215,16 +223,16 @@ namespace HornetEngine.Graphics
 
         private void RedrawFunc()
         {
+            PrimaryCam.FrameBuffer.Bind();
             foreach (Entity en in deferred_objects)
             {
-                Camera.Primary.FrameBuffer.Bind();
                 if (en.HasComponent<MeshComponent>())
                 {
                     DeferredRenderComponent fwc = en.GetComponent<DeferredRenderComponent>();
                     fwc.Render(Camera.Primary);
                 }
-                Buffers.FrameBuffer.Unbind();
             }
+            Buffers.FrameBuffer.Unbind();
 
             foreach (Entity en in foreward_objects)
             {
@@ -282,7 +290,7 @@ namespace HornetEngine.Graphics
                 MaterialComponent matcomp = new MaterialComponent();
                 e.AddComponent(matcomp);
 
-                e.AddComponent(new ForewardRenderComponent());
+                e.AddComponent(new DeferredRenderComponent());
                 AddEntity(e);
 
 

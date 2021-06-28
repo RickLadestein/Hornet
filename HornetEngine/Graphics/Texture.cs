@@ -182,7 +182,12 @@ namespace HornetEngine.Graphics
             NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureWrapT, (uint)Wrap);
             NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureMinFilter, (uint)Filter);
             NativeWindow.GL.TextureParameterI(this.Handle, GLEnum.TextureMagFilter, (uint)Filter);
-            NativeWindow.GL.TexImage2D(TextureTarget.Texture2D, 0, (int)bits_per_channel, width, height, 0, channels, pixel_type, 0);
+            //NativeWindow.GL.TexImage2D(TextureTarget.Texture2D, 0, (int)bits_per_channel, width, height, 0, channels, pixel_type, IntPtr.Zero);
+            unsafe
+            {
+                NativeWindow.GL.TexImage2D(TextureTarget.Texture2D, 0, (int)bits_per_channel, width, height, 0, channels, pixel_type, null);
+            }
+            //glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 800, 600, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
             this.Status = TextureStatus.READY;
         }
 
