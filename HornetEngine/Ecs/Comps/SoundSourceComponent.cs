@@ -54,6 +54,18 @@ namespace HornetEngine.Ecs
         }
 
         /// <summary>
+        /// Checks whether the SoundSourceComponent is already playing a sound
+        /// </summary>
+        public bool IsPlaying
+        {
+            get
+            {
+                int playing = this.ActiveSources.Count;
+                return playing > 0;
+            }
+        }
+
+        /// <summary>
         /// A function which can be used to play music
         /// </summary>
         /// <param name="samp">The sample which should be played</param>
