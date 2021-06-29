@@ -132,15 +132,19 @@ namespace HornetEngine.Graphics
                 this.Mouse = new Mouse(this.w_handle);
                 this.Keyboard = new Keyboard(this.w_handle);
                 this.Touch_panel = new TouchPanel(this.touch_driver);
-                this.Touch_manager = new TouchManager(this.Touch_panel);
+                this.Touch_manager = TouchManager.Instance;
+                this.Touch_manager.Initialize(this.Touch_panel); 
             }
 
             this.Redraw += Scene.Instance.GetRefreshFunc();
 
             //init default opengl behaviour
-            NativeWindow.GL.Enable(GLEnum.CullFace);
-            NativeWindow.GL.CullFace(CullFaceMode.Back);
+            //NativeWindow.GL.Enable(GLEnum.CullFace);
+            //NativeWindow.GL.CullFace(CullFaceMode.Back);
             NativeWindow.GL.Enable(GLEnum.DepthTest);
+            NativeWindow.GL.Enable(GLEnum.Blend);
+            NativeWindow.GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+            NativeWindow.GL.BlendFuncSeparate(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha, BlendingFactor.One, BlendingFactor.Zero);
             DepthBuffer.Enable();
             DepthBuffer.SetDepthCheckBehaviour(DepthFunc.LESS);
 

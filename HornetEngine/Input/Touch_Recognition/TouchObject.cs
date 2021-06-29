@@ -1,4 +1,4 @@
-﻿using HornetEngine.Configuration;
+using HornetEngine.Configuration;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Numerics;
@@ -49,6 +49,11 @@ namespace HornetEngine.Input.Touch_Recognition
         public void Move(Vector2[] newPos)
         {
             this.touch_points = newPos;
+        }
+
+        public override string ToString()
+        {
+            return $"{this.type}";
         }
 
         /// <summary>

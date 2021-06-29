@@ -28,15 +28,6 @@ namespace HornetEngine.Ecs
             source_refresh_timer.Start();
         }
 
-        public bool IsPlaying
-        {
-            get
-            {
-                int playing = this.ActiveSources.Count;
-                return playing > 0;
-            }
-        }
-
         /// <summary>
         /// Plays a sound effect once with pitch and volume
         /// </summary>
@@ -60,6 +51,18 @@ namespace HornetEngine.Ecs
             src_mutex.WaitOne();
             ActiveSources.Add(src);
             src_mutex.ReleaseMutex();
+        }
+
+        /// <summary>
+        /// Checks whether the SoundSourceComponent is already playing a sound
+        /// </summary>
+        public bool IsPlaying
+        {
+            get
+            {
+                int playing = this.ActiveSources.Count;
+                return playing > 0;
+            }
         }
 
         /// <summary>

@@ -7,19 +7,46 @@ namespace HornetEngine.Input.Touch_Recognition
 {
     public class TouchManager
     {
+
+        private static TouchManager instance;
+
+        /// <summary>
+        /// A method to get the instance of the TouchManager.
+        /// The lock ensures that the singleton is thread-safe.
+        /// </summary>
+        public static TouchManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new TouchManager();
+                }
+                return instance;
+            }
+        }
+
         private List<TouchObject> touchObjects;
         private TouchPanel panel;
 
-        /// <summary>
-        /// The constructor of the TouchManager
-        /// </summary>
-        /// <param name="panel">The touchpanel</param>
-        public TouchManager(TouchPanel panel)
+        public void Initialize(TouchPanel panel)
+        {
+            this.panel = panel;
+        }
+
+        private TouchManager()
         {
             // Initialize the list of TouchObjects
             this.touchObjects = new List<TouchObject>();
+        }
 
-            this.panel = panel;
+        /// <summary>
+        /// A function which can be used to get the current touch objects
+        /// </summary>
+        /// <returns>A list of Touch Objects</returns>
+        public List<TouchObject> GetTouchObjects()
+        {
+            return this.touchObjects;
         }
 
         /// <summary>

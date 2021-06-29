@@ -37,30 +37,62 @@ namespace Sandbox
 
             DoManualResourceAquisition();
 
-            player = new Entity("Player");
-            PlayerScript pscr = new PlayerScript
-            {
-                mouse = w.Mouse,
-                keyboard = w.Keyboard
-            };
-            player.AddScript(pscr);
+            //player = new Entity("Player");
+            //PlayerScript pscr = new PlayerScript
+            //{
+            //    mouse = w.Mouse,
+            //    keyboard = w.Keyboard
+            //};
+            //player.AddScript(pscr);
 
-            player.AddComponent(new AudioListenerComponent());
-            Scene.Instance.AddEntity(player);
+            //player.AddComponent(new AudioListenerComponent());
+            //Scene.Instance.AddEntity(player);
+
+
+            Entity henk = new Entity("plane");
+            HenkScript hs = new HenkScript();
+            henk.AddScript(hs);
+
+            SoundSourceComponent ssc = new SoundSourceComponent();
+            henk.AddComponent(ssc);
+
+            Mesh mesh = Mesh.ImportMesh("planemesh", "models", "plane.obj");
+            MeshResourceManager.Instance.AddResource("planemesh" , mesh);
+            MeshComponent ms = new MeshComponent();
+            ms.SetTargetMesh("planemesh");
+            henk.AddComponent(ms);
+
+            InterfaceRenderComponent mrc = new InterfaceRenderComponent();
+            henk.AddComponent(mrc);
+
+            MaterialComponent matcomp = new MaterialComponent();
+            matcomp.SetShaderFromId("default");
+            //matcomp.SetTextureUnit("drum", HTextureUnit.Unit_0);
+            henk.AddComponent(matcomp);
+
+            henk.Transform.Position = new GlmSharp.vec3(0.0f, 0.0f, 20.0f);
+            henk.Transform.Scale = new GlmSharp.vec3(5.0f, 5.0f, 5.0f);
+            henk.Transform.Rotate(new GlmSharp.vec3(0.0f, 0.0f, 1.0f), 90);
+            Scene.Instance.AddEntity(henk);
+
             w.Run();
         }
 
         #region MANUAL_RESOURCE
         private static void DoManualResourceAquisition()
         {
-            
-
-            TextureResourceManager.Instance.ImportResource("default", "textures", "laminate1.png");
-
             SoundResourceManager.Instance.ImportResource("bonk", "samples", "menu.wav");
+            SoundResourceManager.Instance.ImportResource("drum", "samples", "drum_kick.wav");
+            SoundResourceManager.Instance.ImportResource("guitar", "samples", "guitar_acoustic.wav");
+            SoundResourceManager.Instance.ImportResource("violin", "samples", "violin_c4.wav");
 
             Config config = Config.Instance;
-            Scene.Instance.LoadScene("models", "sponza.obj");
+
+            TextureResourceManager.Instance.ImportResource("default", "textures", "laminate1.png");
+            TextureResourceManager.Instance.ImportResource("drum", "textures", "drum.png");
+            TextureResourceManager.Instance.ImportResource("guitar", "textures", "guitar.png");
+            TextureResourceManager.Instance.ImportResource("violin", "textures", "violin.png");
+            TextureResourceManager.Instance.ImportResource("qmark", "textures", "qmark.png");
         }
         #endregion
     }
