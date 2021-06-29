@@ -51,7 +51,7 @@ namespace Sandbox
 
             TextureResourceManager.Instance.ImportResource("default", "textures", "laminate1.png");
 
-            SoundResourceManager.Instance.ImportResource("bonk", "samples", "menu.wav");
+            //SoundResourceManager.Instance.ImportResource("bonk", "samples", "menu.wav");
 
             Scene.Instance.LoadScene("models", "sponza.obj");
         }
