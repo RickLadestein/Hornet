@@ -74,8 +74,8 @@ namespace HornetEngine.Graphics
         /// </summary>
         public FrameBuffer FrameBuffer { get; private set; }
 
-        private MeshComponent Render_plane;
-        private MaterialComponent Material;
+        public MeshComponent Render_plane { get; private set; }
+        public MaterialComponent Material { get; private set; }
 
         /// <summary>
         /// The foreward view
@@ -120,8 +120,8 @@ namespace HornetEngine.Graphics
 
             this.ViewSettings = new CameraViewSettings()
             {
-                Lens_height = 480,
-                Lens_width = 720,
+                Lens_height = 1080,
+                Lens_width = 1920,
                 Fov = OpenTK.Mathematics.MathHelper.DegreesToRadians(45),
                 clip_min = 1.0f,
                 clip_max = 100.0f
@@ -135,23 +135,40 @@ namespace HornetEngine.Graphics
         private void InitCamRenderPlane()
         {
             this.FrameBuffer = new FrameBuffer((uint)this.ViewSettings.Lens_width, (uint)this.ViewSettings.Lens_height);
+            FrameBuffer.AttachColorRenderTarget(Silk.NET.OpenGL.InternalFormat.Rgb16f, Silk.NET.OpenGL.PixelFormat.Rgb, Silk.NET.OpenGL.PixelType.Float);
+            FrameBuffer.AttachColorRenderTarget(Silk.NET.OpenGL.InternalFormat.Rgb16f, Silk.NET.OpenGL.PixelFormat.Rgb, Silk.NET.OpenGL.PixelType.Float);
+            FrameBuffer.AttachColorRenderTarget(Silk.NET.OpenGL.InternalFormat.Rgba, Silk.NET.OpenGL.PixelFormat.Rgba, Silk.NET.OpenGL.PixelType.UnsignedByte);
+            FrameBuffer.AttachDepthBufferTarget();
             if (!MeshResourceManager.Instance.HasResource("camplane"))
             {
                 Mesh m = new Mesh("camplane");
                 FloatAttribute attrib = new FloatAttribute("position", 3);
-                attrib.AddData(new GlmSharp.vec3(-1.0f, -1.0f, 0.0f));
-                attrib.AddData(new GlmSharp.vec3(-1.0f, 1.0f, 0.0f));
-                attrib.AddData(new GlmSharp.vec3(1.0f, 1.0f, 0.0f));
-
-                attrib.AddData(new GlmSharp.vec3(-1.0f, -1.0f, 0.0f));
-                attrib.AddData(new GlmSharp.vec3(1.0f, 1.0f, 0.0f));
-                attrib.AddData(new GlmSharp.vec3(1.0f, -1.0f, 0.0f));
+                attrib.AddData(new vec3(-1.1f,  1.1f, 0.1f));
+                attrib.AddData(new vec3(-1.1f, -1.1f, 0.1f));
+                attrib.AddData(new vec3( 1.1f, -1.1f, 0.1f));
+                                                  
+                attrib.AddData(new vec3(-1.1f,  1.1f, 0.1f));
+                attrib.AddData(new vec3( 1.1f, -1.1f, 0.1f));
+                attrib.AddData(new vec3( 1.1f,  1.1f, 0.1f));
                 m.Attributes.AddAttribute(attrib);
+
+
+                FloatAttribute attrib1 = new FloatAttribute("tex", 3);
+                attrib1.AddData(new GlmSharp.vec3(0.0f, 1.0f, 0.0f));
+                attrib1.AddData(new GlmSharp.vec3(0.0f, 0.0f, 0.0f));
+                attrib1.AddData(new GlmSharp.vec3(1.0f, 0.0f, 0.0f));
+
+                attrib1.AddData(new GlmSharp.vec3(0.0f, 1.0f, 0.0f));
+                attrib1.AddData(new GlmSharp.vec3(1.0f, 0.0f, 0.0f));
+                attrib1.AddData(new GlmSharp.vec3(1.0f, 1.0f, 0.0f));
+                m.Attributes.AddAttribute(attrib1);
+
                 m.BuildVertexBuffer();
                 MeshResourceManager.Instance.AddResource("camplane", m);
 
                 ShaderProgram prog1 = new ShaderProgram(new VertexShader("shaders", "deferred_post.vert"), new FragmentShader("shaders", "deferred_post.frag"));
                 ShaderResourceManager.Instance.AddResource("deferred_post", prog1);
+
             }
 
             this.Render_plane = new MeshComponent();

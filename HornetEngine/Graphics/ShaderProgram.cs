@@ -411,7 +411,7 @@ namespace HornetEngine.Graphics
         {
             this.Type = type;
             this.Status = ShaderStatus.UNINITIALISED;
-
+            this.Error = string.Empty;
             this.Status = ShaderStatus.AQUIRING_HANDLE;
             this.Handle = NativeWindow.GL.CreateShader(type);
             if(this.Handle == 0)
