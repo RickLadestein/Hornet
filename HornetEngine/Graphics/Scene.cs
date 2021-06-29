@@ -330,14 +330,16 @@ namespace HornetEngine.Graphics
                     fwc.Render(Camera.Primary);
                 }
             }
-            Buffers.FrameBuffer.Unbind();
 
+            Buffers.FrameBuffer.Unbind();
             MeshRenderComponent.RenderOnCamPlane(this.PrimaryCam);
 
-
+            PrimaryCam.FrameBuffer.Bind();
             NativeWindow.GL.BlitFramebuffer(0, 0, (int)PrimaryCam.FrameBuffer.Width, (int)PrimaryCam.FrameBuffer.Height,
                 0, 0, (int)PrimaryCam.FrameBuffer.Width, (int)PrimaryCam.FrameBuffer.Height,
                 (uint)Silk.NET.OpenGL.ClearBufferMask.DepthBufferBit, Silk.NET.OpenGL.BlitFramebufferFilter.Nearest);
+            Buffers.FrameBuffer.Unbind();
+
 
             foreach (Entity en in foreward_objects)
             {

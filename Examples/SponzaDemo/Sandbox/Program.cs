@@ -14,7 +14,6 @@ namespace Sandbox
     class Program
     {
         public static Window w = new Window();
-        public static Entity line_entity;
         public static Entity player;
 
         static void Main()
@@ -26,10 +25,7 @@ namespace Sandbox
 
             SoundResourceManager mgr = SoundResourceManager.Instance;
 
-            w.Open("Test", 1920, 1080, WindowMode.WINDOWED);
-            w.Title = "Helloworld";
-
-            DoManualResourceAquisition();
+            w.Open("Sponza", 1920, 1080, WindowMode.WINDOWED);
 
             player = new Entity("Player");
             PlayerScript pscr = new PlayerScript
@@ -41,20 +37,10 @@ namespace Sandbox
 
             player.AddComponent(new AudioListenerComponent());
             Scene.Instance.AddEntity(player);
-            w.Run();
-        }
-
-        #region MANUAL_RESOURCE
-        private static void DoManualResourceAquisition()
-        {
-            
 
             TextureResourceManager.Instance.ImportResource("default", "textures", "laminate1.png");
-
-            SoundResourceManager.Instance.ImportResource("bonk", "samples", "menu.wav");
-
             Scene.Instance.LoadScene("models", "sponza.obj");
+            w.Run();
         }
-        #endregion
     }
 }
