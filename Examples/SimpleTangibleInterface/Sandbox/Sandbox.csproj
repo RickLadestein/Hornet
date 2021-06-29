@@ -6,10 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AssimpNet" Version="4.1.0" />
     <PackageReference Include="GlmSharp" Version="0.9.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="OpenTK" Version="4.6.4" />
     <PackageReference Include="Silk.NET.Core" Version="2.5.0" />
     <PackageReference Include="Silk.NET.GLFW" Version="2.5.0" />
     <PackageReference Include="Silk.NET.OpenGL" Version="2.5.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
