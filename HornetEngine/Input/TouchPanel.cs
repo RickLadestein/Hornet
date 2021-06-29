@@ -153,12 +153,6 @@ namespace HornetEngine.Input
                     };
                     touch_mutex.WaitOne();
                     captured_points.Add(id, tp);
-
-                    foreach(var touchpoint in captured_points)
-                    {
-                        Console.WriteLine("Pos\nX: {0}\nY: {1}", touchpoint.Value.xpos, touchpoint.Value.ypos);
-                    }
-                    Console.WriteLine("------");
                     touch_mutex.ReleaseMutex();
                 }
                 TouchPress?.Invoke(position, size, id);

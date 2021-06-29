@@ -81,28 +81,15 @@ namespace Sandbox
         #region MANUAL_RESOURCE
         private static void DoManualResourceAquisition()
         {
-            
-
-            TextureResourceManager.Instance.ImportResource("default", "textures", "laminate1.png");
-
             SoundResourceManager.Instance.ImportResource("bonk", "samples", "menu.wav");
 
             Config config = Config.Instance;
-            SoundManager manager = SoundManager.Instance;
-            Texture tex = new Texture("textures", "laminate1.png", false);
-            TextureResourceManager.Instance.AddResource("default", tex);
 
-            Texture tex_drum = new Texture("textures", "drum.png", false);
-            TextureResourceManager.Instance.AddResource("drum", tex_drum);
-
-            Texture tex_guitar = new Texture("textures", "guitar.png", false);
-            TextureResourceManager.Instance.AddResource("guitar", tex_guitar);
-
-            Texture tex_violin= new Texture("textures", "violin.png", false);
-            TextureResourceManager.Instance.AddResource("violin", tex_violin);
-
-            Sample samp = new Sample("samples", "menu.wav");
-            SoundManager.Instance.AddResource("bonk", samp);
+            TextureResourceManager.Instance.ImportResource("default", "textures", "laminate1.png");
+            TextureResourceManager.Instance.ImportResource("drum", "textures", "drum.png");
+            TextureResourceManager.Instance.ImportResource("guitar", "textures", "guitar.png");
+            TextureResourceManager.Instance.ImportResource("violin", "textures", "violin.png");
+            TextureResourceManager.Instance.ImportResource("qmark", "textures", "qmark.png");
 
             //Scene.Instance.LoadScene("models", "sponza.obj");
         }

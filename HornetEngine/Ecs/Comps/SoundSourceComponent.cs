@@ -28,15 +28,6 @@ namespace HornetEngine.Ecs
             source_refresh_timer.Start();
         }
 
-        public bool IsPlaying
-        {
-            get
-            {
-                int playing = this.ActiveSources.Count;
-                return playing > 0;
-            }
-        }
-
         /// <summary>
         /// Plays a sound effect once with pitch and volume
         /// </summary>

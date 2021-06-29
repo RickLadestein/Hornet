@@ -28,7 +28,7 @@ namespace Sandbox
                 throw new Exception("Component was not initialized");
             }
 
-            mcomp.SetTextureUnit("guitar", HTextureUnit.Unit_0);
+            mcomp.SetTextureUnit("qmark", HTextureUnit.Unit_0);
 
             drum_kick = new Sample("samples", "drum_kick.wav");
         }
