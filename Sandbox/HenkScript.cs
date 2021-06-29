@@ -14,8 +14,6 @@ namespace Sandbox
         private SoundSourceComponent scomp;
         private MaterialComponent mcomp;
 
-        private Sample drum_kick;
-
         public override void Start()
         {
             base.Start();
@@ -29,8 +27,6 @@ namespace Sandbox
             }
 
             mcomp.SetTextureUnit("qmark", HTextureUnit.Unit_0);
-
-            drum_kick = new Sample("samples", "drum_kick.wav");
         }
 
         public override void Update()
@@ -66,7 +62,7 @@ namespace Sandbox
         {
             if (!scomp.IsPlaying)
             {
-                scomp.PlaySoundEffect(drum_kick, 1.0f, 1.0f);
+                scomp.PlaySoundEffect(SoundResourceManager.Instance.GetResource("drum"), 1.0f, 1.0f);
             }
 
             if (mcomp.Textures.textures[0] != TextureResourceManager.Instance.GetResource("drum"))
@@ -77,6 +73,11 @@ namespace Sandbox
 
         private void HandleViolin()
         {
+            if (!scomp.IsPlaying)
+            {
+                scomp.PlaySoundEffect(SoundResourceManager.Instance.GetResource("violin"), 1.0f, 1.0f);
+            }
+
             if (mcomp.Textures.textures[0] != TextureResourceManager.Instance.GetResource("violin"))
             {
                 mcomp.SetTextureUnit("violin", HTextureUnit.Unit_0);
@@ -85,6 +86,11 @@ namespace Sandbox
 
         private void HandleGuitar()
         {
+            if (!scomp.IsPlaying)
+            {
+                scomp.PlaySoundEffect(SoundResourceManager.Instance.GetResource("guitar"), 1.0f, 1.0f);
+            }
+
             if (mcomp.Textures.textures[0] != TextureResourceManager.Instance.GetResource("guitar"))
             {
                 mcomp.SetTextureUnit("guitar", HTextureUnit.Unit_0);

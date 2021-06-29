@@ -82,6 +82,9 @@ namespace Sandbox
         private static void DoManualResourceAquisition()
         {
             SoundResourceManager.Instance.ImportResource("bonk", "samples", "menu.wav");
+            SoundResourceManager.Instance.ImportResource("drum", "samples", "drum_kick.wav");
+            SoundResourceManager.Instance.ImportResource("guitar", "samples", "guitar_acoustic.wav");
+            SoundResourceManager.Instance.ImportResource("violin", "samples", "violin_c4.wav");
 
             Config config = Config.Instance;
 
@@ -90,8 +93,6 @@ namespace Sandbox
             TextureResourceManager.Instance.ImportResource("guitar", "textures", "guitar.png");
             TextureResourceManager.Instance.ImportResource("violin", "textures", "violin.png");
             TextureResourceManager.Instance.ImportResource("qmark", "textures", "qmark.png");
-
-            //Scene.Instance.LoadScene("models", "sponza.obj");
         }
         #endregion
     }
