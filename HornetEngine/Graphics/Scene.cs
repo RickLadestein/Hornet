@@ -12,6 +12,10 @@ namespace HornetEngine.Graphics
     {
         private static Scene _scene;
         private static object lck = new object();
+
+        /// <summary>
+        /// The current instance of the Scene
+        /// </summary>
         public static Scene Instance
         {
             get
@@ -33,6 +37,10 @@ namespace HornetEngine.Graphics
         private List<Entity> light_objects;
 
         private bool scene_content_changed;
+
+        /// <summary>
+        /// The Scene's primary camera that renders to the screen
+        /// </summary>
         public Camera PrimaryCam { get; private set; }
         private Scene()
         {
@@ -45,57 +53,6 @@ namespace HornetEngine.Graphics
             Camera.RegisterScenePrimaryCamera(this);
             scene_content_changed = true;
             Initialize();
-        }
-
-        /// <summary>
-        /// Initialises the scene content to default positions/getup
-        /// </summary>
-        private void Initialize()
-        {
-            TextureResourceManager.Instance.ImportResource("black", "textures", "black.png");
-            ShaderResourceManager.Instance.ImportResource("default_line", "shaders", "line_default.vert", "line_default.frag");
-            ShaderResourceManager.Instance.ImportResource("default", "shaders", "default.vert", "default.frag");
-            ShaderResourceManager.Instance.ImportResource("deferred_pre", "shaders", "deferred_pre.vert", "deferred_pre.frag");
-
-
-            PrimaryCam.ViewSettings = new CameraViewSettings()
-            {
-                Lens_height = 1080,
-                Lens_width = 1920,
-                Fov = OpenTK.Mathematics.MathHelper.DegreesToRadians(45),
-                clip_min = 1.0f,
-                clip_max = 10000.0f
-            };
-            PrimaryCam.UpdateProjectionMatrix();
-            PrimaryCam.UpdateViewMatrix();
-
-        }
-
-        private void SortSceneContent()
-        {
-            if(scene_content_changed)
-            {
-                scene_content_changed = false;
-                deferred_objects.Clear();
-                foreward_objects.Clear();
-                light_objects.Clear();
-
-                scene_content.ForEach((e) => {
-                    if (e.HasComponent<RadialLightComponent>())
-                        light_objects.Add(e);
-
-
-                    if(e.HasComponent<MeshRenderComponent>())
-                    {
-                        deferred_objects.Add(e);
-                    }
-
-                    if(e.HasComponent<InterfaceRenderComponent>())
-                    {
-                        foreward_objects.Add(e);
-                    }
-                });
-            }
         }
 
         /// <summary>
@@ -181,6 +138,9 @@ namespace HornetEngine.Graphics
             this.scene_content_changed = true;
         }
 
+        /// <summary>
+        /// Updates the scene and all entities by calling fixed update
+        /// </summary>
         public void UpdateFixed()
         {
             foreach (Entity ex in this.scene_content)
@@ -197,6 +157,9 @@ namespace HornetEngine.Graphics
             }
         }
 
+        /// <summary>
+        /// Updates the scene and all entities by calling update
+        /// </summary>
         public void UpdateScene()
         {
             SortSceneContent();
@@ -220,6 +183,134 @@ namespace HornetEngine.Graphics
         public Window.WindowRefreshFunc GetRefreshFunc()
         {
             return RedrawFunc;
+        }
+
+        public void LoadScene(string folder_id, string scene_file)
+        {
+            scene_content.Clear();
+            string error = DirectoryManager.ImportSceneFromFile(folder_id, scene_file, out Assimp.Scene s);
+
+            if (error != string.Empty)
+            {
+                throw new Exception($"Could not load scene: {error}");
+            }
+
+            for (int i = 0; i < s.MeshCount; i++)
+            {
+                Assimp.Mesh _amesh = s.Meshes[i];
+                Assimp.Material mat = s.Materials[s.Meshes[i].MaterialIndex];
+
+                Mesh tmp = Mesh.ImportMesh(_amesh, mat);
+                if (tmp.Error.Length != 0)
+                {
+                    throw new Exception($"Mesh {tmp.Name} loading encountered an error: {tmp.Error}");
+                }
+
+                MeshResourceManager.Instance.AddResource(tmp.Name, tmp);
+
+                Entity e = new Entity(tmp.Name);
+
+                MeshComponent meshcomp = new MeshComponent();
+                meshcomp.SetTargetMesh(tmp.Name);
+                e.AddComponent(meshcomp);
+
+                MaterialComponent matcomp = new MaterialComponent();
+                e.AddComponent(matcomp);
+
+                e.AddComponent(new MeshRenderComponent());
+                AddEntity(e);
+
+
+                matcomp.SetShaderFromId("deferred_pre");
+                matcomp.Material = MaterialDescriptor.ParseFrom(mat);
+                if (matcomp.Material.Ambient_map != string.Empty)
+                {
+                    if (!TextureResourceManager.Instance.HasResource(matcomp.Material.Ambient_map))
+                    {
+                        TextureResourceManager.Instance.ImportResource(matcomp.Material.Ambient_map, "textures", matcomp.Material.Ambient_map);
+                    }
+                    matcomp.SetTextureUnit(matcomp.Material.Ambient_map, HTextureUnit.Unit_0);
+                }
+                else
+                {
+                    matcomp.SetTextureUnit("black", HTextureUnit.Unit_0);
+                }
+
+                if (matcomp.Material.Specular_map != string.Empty)
+                {
+                    if (!TextureResourceManager.Instance.HasResource(matcomp.Material.Normal_map))
+                    {
+                        TextureResourceManager.Instance.ImportResource(matcomp.Material.Normal_map, "textures", matcomp.Material.Normal_map);
+                    }
+                    matcomp.SetTextureUnit(matcomp.Material.Normal_map, HTextureUnit.Unit_1);
+                }
+                else
+                {
+                    matcomp.SetTextureUnit("black", HTextureUnit.Unit_1);
+                }
+
+                if (matcomp.Material.Specular_map != string.Empty)
+                {
+                    if (!TextureResourceManager.Instance.HasResource(matcomp.Material.Specular_map))
+                    {
+                        TextureResourceManager.Instance.ImportResource(matcomp.Material.Specular_map, "textures", matcomp.Material.Specular_map);
+                    }
+                    matcomp.SetTextureUnit(matcomp.Material.Specular_map, HTextureUnit.Unit_2);
+                }
+                else
+                {
+                    matcomp.SetTextureUnit("black", HTextureUnit.Unit_2);
+                }
+            }
+
+        }
+
+        private void Initialize()
+        {
+            TextureResourceManager.Instance.ImportResource("black", "textures", "black.png");
+            ShaderResourceManager.Instance.ImportResource("default_line", "shaders", "line_default.vert", "line_default.frag");
+            ShaderResourceManager.Instance.ImportResource("default", "shaders", "default.vert", "default.frag");
+            ShaderResourceManager.Instance.ImportResource("deferred_pre", "shaders", "deferred_pre.vert", "deferred_pre.frag");
+
+
+            PrimaryCam.ViewSettings = new CameraViewSettings()
+            {
+                Lens_height = 1080,
+                Lens_width = 1920,
+                Fov = OpenTK.Mathematics.MathHelper.DegreesToRadians(45),
+                clip_min = 1.0f,
+                clip_max = 10000.0f
+            };
+            PrimaryCam.UpdateProjectionMatrix();
+            PrimaryCam.UpdateViewMatrix();
+
+        }
+
+        private void SortSceneContent()
+        {
+            if (scene_content_changed)
+            {
+                scene_content_changed = false;
+                deferred_objects.Clear();
+                foreward_objects.Clear();
+                light_objects.Clear();
+
+                scene_content.ForEach((e) => {
+                    if (e.HasComponent<RadialLightComponent>())
+                        light_objects.Add(e);
+
+
+                    if (e.HasComponent<MeshRenderComponent>())
+                    {
+                        deferred_objects.Add(e);
+                    }
+
+                    if (e.HasComponent<InterfaceRenderComponent>())
+                    {
+                        foreward_objects.Add(e);
+                    }
+                });
+            }
         }
 
         private void RedrawFunc()
@@ -266,84 +357,6 @@ namespace HornetEngine.Graphics
             }
         }
 
-        public void LoadScene(string folder_id, string scene_file)
-        {
-            scene_content.Clear();
-            string error = DirectoryManager.ImportSceneFromFile(folder_id, scene_file, out Assimp.Scene s);
-
-            if(error != string.Empty)
-            {
-                throw new Exception($"Could not load scene: {error}");
-            }
-
-            for(int i = 0; i < s.MeshCount; i++)
-            {
-                Assimp.Mesh _amesh = s.Meshes[i];
-                Assimp.Material mat = s.Materials[s.Meshes[i].MaterialIndex];
-                
-                Mesh tmp = Mesh.ImportMesh(_amesh, mat);
-                if(tmp.Error.Length != 0)
-                {
-                    throw new Exception($"Mesh {tmp.Name} loading encountered an error: {tmp.Error}");
-                }
-
-                MeshResourceManager.Instance.AddResource(tmp.Name, tmp);
-
-                Entity e = new Entity(tmp.Name);
-
-                MeshComponent meshcomp = new MeshComponent();
-                meshcomp.SetTargetMesh(tmp.Name);
-                e.AddComponent(meshcomp);
-
-                MaterialComponent matcomp = new MaterialComponent();
-                e.AddComponent(matcomp);
-
-                e.AddComponent(new MeshRenderComponent());
-                AddEntity(e);
-
-
-                matcomp.SetShaderFromId("deferred_pre");
-                matcomp.Material = MaterialDescriptor.ParseFrom(mat);
-                if (matcomp.Material.Ambient_map != string.Empty)
-                {
-                    if(!TextureResourceManager.Instance.HasResource(matcomp.Material.Ambient_map))
-                    {
-                        TextureResourceManager.Instance.ImportResource(matcomp.Material.Ambient_map, "textures", matcomp.Material.Ambient_map);
-                    }
-                    matcomp.SetTextureUnit(matcomp.Material.Ambient_map, HTextureUnit.Unit_0);
-                }
-                else
-                {
-                    matcomp.SetTextureUnit("black", HTextureUnit.Unit_0);
-                }
-
-                if (matcomp.Material.Specular_map != string.Empty)
-                {
-                    if (!TextureResourceManager.Instance.HasResource(matcomp.Material.Normal_map))
-                    {
-                        TextureResourceManager.Instance.ImportResource(matcomp.Material.Normal_map, "textures", matcomp.Material.Normal_map);
-                    }
-                    matcomp.SetTextureUnit(matcomp.Material.Normal_map, HTextureUnit.Unit_1);
-                }
-                else
-                {
-                    matcomp.SetTextureUnit("black", HTextureUnit.Unit_1);
-                }
-
-                if (matcomp.Material.Specular_map != string.Empty)
-                {
-                    if (!TextureResourceManager.Instance.HasResource(matcomp.Material.Specular_map))
-                    {
-                        TextureResourceManager.Instance.ImportResource(matcomp.Material.Specular_map, "textures", matcomp.Material.Specular_map);
-                    }
-                    matcomp.SetTextureUnit(matcomp.Material.Specular_map, HTextureUnit.Unit_2);
-                } 
-                else
-                {
-                    matcomp.SetTextureUnit("black", HTextureUnit.Unit_2);
-                }
-            }
-
-        }
+        
     }
 }
