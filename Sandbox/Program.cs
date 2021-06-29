@@ -37,49 +37,43 @@ namespace Sandbox
 
             DoManualResourceAquisition();
 
-            player = new Entity("Player");
-            PlayerScript pscr = new PlayerScript
-            {
-                mouse = w.Mouse,
-                keyboard = w.Keyboard
-            };
-            player.AddScript(pscr);
+            //player = new Entity("Player");
+            //PlayerScript pscr = new PlayerScript
+            //{
+            //    mouse = w.Mouse,
+            //    keyboard = w.Keyboard
+            //};
+            //player.AddScript(pscr);
 
-            player.AddComponent(new AudioListenerComponent());
-            Scene.Instance.AddEntity(player);
+            //player.AddComponent(new AudioListenerComponent());
+            //Scene.Instance.AddEntity(player);
 
 
-            Entity henk = new Entity("Henk");
+            Entity henk = new Entity("plane");
             HenkScript hs = new HenkScript();
-            hs.cam = Camera.Primary;
             henk.AddScript(hs);
 
             SoundSourceComponent ssc = new SoundSourceComponent();
             henk.AddComponent(ssc);
 
-            Mesh mesh = Mesh.ImportMesh("henkmesh", "models", "ape.obj");
-            MeshResourceManager.Instance.AddResource("henkmesh" , mesh);
+            Mesh mesh = Mesh.ImportMesh("planemesh", "models", "plane.obj");
+            MeshResourceManager.Instance.AddResource("planemesh" , mesh);
             MeshComponent ms = new MeshComponent();
-            ms.SetTargetMesh("henkmesh");
+            ms.SetTargetMesh("planemesh");
             henk.AddComponent(ms);
 
             InterfaceRenderComponent mrc = new InterfaceRenderComponent();
             henk.AddComponent(mrc);
 
-
             MaterialComponent matcomp = new MaterialComponent();
             matcomp.SetShaderFromId("default");
-            matcomp.SetTextureUnit("laminate", HTextureUnit.Unit_0);
+            //matcomp.SetTextureUnit("drum", HTextureUnit.Unit_0);
             henk.AddComponent(matcomp);
 
-            henk.Transform.Position = new GlmSharp.vec3(0.0f, 0.0f, 5.0f);
+            henk.Transform.Position = new GlmSharp.vec3(0.0f, 0.0f, 20.0f);
+            henk.Transform.Scale = new GlmSharp.vec3(5.0f, 5.0f, 5.0f);
+            henk.Transform.Rotate(new GlmSharp.vec3(0.0f, 0.0f, 1.0f), 90);
             Scene.Instance.AddEntity(henk);
-
-
-
-
-
-
 
             w.Run();
         }
@@ -100,15 +94,19 @@ namespace Sandbox
             ShaderProgram prog1 = new ShaderProgram(new VertexShader("shaders", "deferred_pre.vert"), new FragmentShader("shaders", "deferred_pre.frag"));
             ShaderResourceManager.Instance.AddResource("deferred_pre", prog1);
 
-
-
             Config config = Config.Instance;
             SoundManager manager = SoundManager.Instance;
             Texture tex = new Texture("textures", "laminate1.png", false);
-            TextureResourceManager.Instance.AddResource("laminate", tex);
+            TextureResourceManager.Instance.AddResource("default", tex);
 
-            Texture tex2 = new Texture("textures", "sponza_column_c_ddn.tga", false);
-            TextureResourceManager.Instance.AddResource("default", tex2);
+            Texture tex_drum = new Texture("textures", "drum.png", false);
+            TextureResourceManager.Instance.AddResource("drum", tex_drum);
+
+            Texture tex_guitar = new Texture("textures", "guitar.png", false);
+            TextureResourceManager.Instance.AddResource("guitar", tex_guitar);
+
+            Texture tex_violin= new Texture("textures", "violin.png", false);
+            TextureResourceManager.Instance.AddResource("violin", tex_violin);
 
             Sample samp = new Sample("samples", "menu.wav");
             SoundManager.Instance.AddResource("bonk", samp);
