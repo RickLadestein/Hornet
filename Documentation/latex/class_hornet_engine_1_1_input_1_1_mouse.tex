@@ -1,0 +1,265 @@
+\hypertarget{class_hornet_engine_1_1_input_1_1_mouse}{}\doxysection{Hornet\+Engine.\+Input.\+Mouse Class Reference}
+\label{class_hornet_engine_1_1_input_1_1_mouse}\index{HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+delegate void \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a921623c431a1056ff6726e55915efc2a}{Mouse\+Press\+Func}} (\mbox{\hyperlink{namespace_hornet_engine_1_1_input_a6df1a3d07f9e409634130cab6c9b3ef6}{Mouse\+Buttons}} button)
+\begin{DoxyCompactList}\small\item\em The mouse press function \end{DoxyCompactList}\item 
+delegate void \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a4e56f0bfa9e7a1161f94cb69c276943c}{Mouse\+Release\+Func}} (\mbox{\hyperlink{namespace_hornet_engine_1_1_input_a6df1a3d07f9e409634130cab6c9b3ef6}{Mouse\+Buttons}} button)
+\begin{DoxyCompactList}\small\item\em The mouse release function \end{DoxyCompactList}\item 
+delegate void \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a68b4c5c57fa2cebf4e0319f248cc5db9}{Mouse\+Scroll\+Func}} (double xoffset, double yoffset)
+\begin{DoxyCompactList}\small\item\em The mouse scroll function \end{DoxyCompactList}\item 
+delegate void \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a3cf535c65d87c2767f8b15c50ee4be16}{Mouse\+Move\+Func}} (double xpos, double ypos, double deltaX, double deltaY)
+\begin{DoxyCompactList}\small\item\em The mouse move function \end{DoxyCompactList}\item 
+unsafe \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a59bec60f5689532b874636c4fdcbb69d}{Mouse}} (Window\+Handle $\ast$w\+\_\+handle)
+\begin{DoxyCompactList}\small\item\em The constructor of the \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse}{Mouse}} class \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_ae5ec5321d0fbc06367aa928186b23a10}{Is\+Button\+Down}} (\mbox{\hyperlink{namespace_hornet_engine_1_1_input_a6df1a3d07f9e409634130cab6c9b3ef6}{Mouse\+Buttons}} button)
+\begin{DoxyCompactList}\small\item\em Checks if the specified mouse button is down \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_hornet_engine_1_1_input_a6df1a3d07f9e409634130cab6c9b3ef6}{Mouse\+Buttons}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a55412d6ea70a7627bd180ac991fdc8d7}{Get\+Pressed\+Buttons}} ()
+\begin{DoxyCompactList}\small\item\em Gets all the currently pressed mouse buttons \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_hornet_engine_1_1_input_ad30c1884cf09e8cda7ba06b2803cb36d}{Mouse\+Mode}} \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a7d2d89edff7a98e35ac6b245970460b9}{Get\+Mode}} ()
+\begin{DoxyCompactList}\small\item\em A function which will return the current mode of the mouse \end{DoxyCompactList}\item 
+unsafe void \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_aafd372a08fdb18cf97ee4f0240591fbe}{Set\+Mode}} (\mbox{\hyperlink{namespace_hornet_engine_1_1_input_ad30c1884cf09e8cda7ba06b2803cb36d}{Mouse\+Mode}} mode)
+\begin{DoxyCompactList}\small\item\em A function which can be used to switch the mouse\textquotesingle{}s mode \end{DoxyCompactList}\item 
+unsafe void \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a307a164cf71532ae68ba493eedbda11e}{Set\+Raw\+Input\+Mode}} (bool state)
+\begin{DoxyCompactList}\small\item\em Suggests to the window to use the raw mouse motion or not \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly int \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a98a69acd61429bfe0ad0cdafa1748976}{MAX\+\_\+\+PRESSED\+\_\+\+BUTTONS}} = 5
+\begin{DoxyCompactList}\small\item\em The maximum amount of buttons which can be pressed \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a921623c431a1056ff6726e55915efc2a}{Mouse\+Press\+Func}} \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_aee74e1ca821ac0bc3a034130ccaa5222}{Mouse\+Press}}
+\begin{DoxyCompactList}\small\item\em The mouse press event \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a4e56f0bfa9e7a1161f94cb69c276943c}{Mouse\+Release\+Func}} \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a347a086f84e9d014544681701c294dd1}{Mouse\+Release}}
+\begin{DoxyCompactList}\small\item\em The mouse release event \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a68b4c5c57fa2cebf4e0319f248cc5db9}{Mouse\+Scroll\+Func}} \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a75fbf5daed2e05158ad1fef04d01acdd}{Mouse\+Scroll}}
+\begin{DoxyCompactList}\small\item\em The mouse scroll event \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a3cf535c65d87c2767f8b15c50ee4be16}{Mouse\+Move\+Func}} \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_ab257df33f13b1d74863ff8f3a8490943}{Mouse\+Move}}
+\begin{DoxyCompactList}\small\item\em The mouse move event \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_mouse_a59bec60f5689532b874636c4fdcbb69d}\label{class_hornet_engine_1_1_input_1_1_mouse_a59bec60f5689532b874636c4fdcbb69d}} 
+\index{HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}!Mouse@{Mouse}}
+\index{Mouse@{Mouse}!HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}}
+\doxysubsubsection{\texorpdfstring{Mouse()}{Mouse()}}
+{\footnotesize\ttfamily unsafe Hornet\+Engine.\+Input.\+Mouse.\+Mouse (\begin{DoxyParamCaption}\item[{Window\+Handle $\ast$}]{w\+\_\+handle }\end{DoxyParamCaption})}
+
+
+
+The constructor of the \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse}{Mouse}} class 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w\+\_\+handle} & The handle of the window\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_mouse_a7d2d89edff7a98e35ac6b245970460b9}\label{class_hornet_engine_1_1_input_1_1_mouse_a7d2d89edff7a98e35ac6b245970460b9}} 
+\index{HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}!GetMode@{GetMode}}
+\index{GetMode@{GetMode}!HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}}
+\doxysubsubsection{\texorpdfstring{GetMode()}{GetMode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_hornet_engine_1_1_input_ad30c1884cf09e8cda7ba06b2803cb36d}{Mouse\+Mode}} Hornet\+Engine.\+Input.\+Mouse.\+Get\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function which will return the current mode of the mouse 
+
+\begin{DoxyReturn}{Returns}
+A Mouse\+Mode, depending on the current mode.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_mouse_a55412d6ea70a7627bd180ac991fdc8d7}\label{class_hornet_engine_1_1_input_1_1_mouse_a55412d6ea70a7627bd180ac991fdc8d7}} 
+\index{HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}!GetPressedButtons@{GetPressedButtons}}
+\index{GetPressedButtons@{GetPressedButtons}!HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}}
+\doxysubsubsection{\texorpdfstring{GetPressedButtons()}{GetPressedButtons()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_hornet_engine_1_1_input_a6df1a3d07f9e409634130cab6c9b3ef6}{Mouse\+Buttons}} \mbox{[}$\,$\mbox{]} Hornet\+Engine.\+Input.\+Mouse.\+Get\+Pressed\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets all the currently pressed mouse buttons 
+
+\begin{DoxyReturn}{Returns}
+Array with all currently pressed mouse buttons
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_mouse_ae5ec5321d0fbc06367aa928186b23a10}\label{class_hornet_engine_1_1_input_1_1_mouse_ae5ec5321d0fbc06367aa928186b23a10}} 
+\index{HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}!IsButtonDown@{IsButtonDown}}
+\index{IsButtonDown@{IsButtonDown}!HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}}
+\doxysubsubsection{\texorpdfstring{IsButtonDown()}{IsButtonDown()}}
+{\footnotesize\ttfamily bool Hornet\+Engine.\+Input.\+Mouse.\+Is\+Button\+Down (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_hornet_engine_1_1_input_a6df1a3d07f9e409634130cab6c9b3ef6}{Mouse\+Buttons}}}]{button }\end{DoxyParamCaption})}
+
+
+
+Checks if the specified mouse button is down 
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & The button to be checked against\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if mousebutton was down, false if not
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_mouse_a3cf535c65d87c2767f8b15c50ee4be16}\label{class_hornet_engine_1_1_input_1_1_mouse_a3cf535c65d87c2767f8b15c50ee4be16}} 
+\index{HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}!MouseMoveFunc@{MouseMoveFunc}}
+\index{MouseMoveFunc@{MouseMoveFunc}!HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}}
+\doxysubsubsection{\texorpdfstring{MouseMoveFunc()}{MouseMoveFunc()}}
+{\footnotesize\ttfamily delegate void Hornet\+Engine.\+Input.\+Mouse.\+Mouse\+Move\+Func (\begin{DoxyParamCaption}\item[{double}]{xpos,  }\item[{double}]{ypos,  }\item[{double}]{deltaX,  }\item[{double}]{deltaY }\end{DoxyParamCaption})}
+
+
+
+The mouse move function 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xpos} & The new x pos\\
+\hline
+{\em ypos} & The new y pos\\
+\hline
+{\em deltaX} & The difference between the x positions\\
+\hline
+{\em deltaY} & The difference between the y positions\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_mouse_a921623c431a1056ff6726e55915efc2a}\label{class_hornet_engine_1_1_input_1_1_mouse_a921623c431a1056ff6726e55915efc2a}} 
+\index{HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}!MousePressFunc@{MousePressFunc}}
+\index{MousePressFunc@{MousePressFunc}!HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}}
+\doxysubsubsection{\texorpdfstring{MousePressFunc()}{MousePressFunc()}}
+{\footnotesize\ttfamily delegate void Hornet\+Engine.\+Input.\+Mouse.\+Mouse\+Press\+Func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_hornet_engine_1_1_input_a6df1a3d07f9e409634130cab6c9b3ef6}{Mouse\+Buttons}}}]{button }\end{DoxyParamCaption})}
+
+
+
+The mouse press function 
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & The mouse button which has been pressed\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_mouse_a4e56f0bfa9e7a1161f94cb69c276943c}\label{class_hornet_engine_1_1_input_1_1_mouse_a4e56f0bfa9e7a1161f94cb69c276943c}} 
+\index{HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}!MouseReleaseFunc@{MouseReleaseFunc}}
+\index{MouseReleaseFunc@{MouseReleaseFunc}!HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}}
+\doxysubsubsection{\texorpdfstring{MouseReleaseFunc()}{MouseReleaseFunc()}}
+{\footnotesize\ttfamily delegate void Hornet\+Engine.\+Input.\+Mouse.\+Mouse\+Release\+Func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_hornet_engine_1_1_input_a6df1a3d07f9e409634130cab6c9b3ef6}{Mouse\+Buttons}}}]{button }\end{DoxyParamCaption})}
+
+
+
+The mouse release function 
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & The mouse button which has been released\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_mouse_a68b4c5c57fa2cebf4e0319f248cc5db9}\label{class_hornet_engine_1_1_input_1_1_mouse_a68b4c5c57fa2cebf4e0319f248cc5db9}} 
+\index{HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}!MouseScrollFunc@{MouseScrollFunc}}
+\index{MouseScrollFunc@{MouseScrollFunc}!HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}}
+\doxysubsubsection{\texorpdfstring{MouseScrollFunc()}{MouseScrollFunc()}}
+{\footnotesize\ttfamily delegate void Hornet\+Engine.\+Input.\+Mouse.\+Mouse\+Scroll\+Func (\begin{DoxyParamCaption}\item[{double}]{xoffset,  }\item[{double}]{yoffset }\end{DoxyParamCaption})}
+
+
+
+The mouse scroll function 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xoffset} & The x offset\\
+\hline
+{\em yoffset} & The y offset\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_mouse_aafd372a08fdb18cf97ee4f0240591fbe}\label{class_hornet_engine_1_1_input_1_1_mouse_aafd372a08fdb18cf97ee4f0240591fbe}} 
+\index{HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}!SetMode@{SetMode}}
+\index{SetMode@{SetMode}!HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}}
+\doxysubsubsection{\texorpdfstring{SetMode()}{SetMode()}}
+{\footnotesize\ttfamily unsafe void Hornet\+Engine.\+Input.\+Mouse.\+Set\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_hornet_engine_1_1_input_ad30c1884cf09e8cda7ba06b2803cb36d}{Mouse\+Mode}}}]{mode }\end{DoxyParamCaption})}
+
+
+
+A function which can be used to switch the mouse\textquotesingle{}s mode 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & The button which has been pressed\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_mouse_a307a164cf71532ae68ba493eedbda11e}\label{class_hornet_engine_1_1_input_1_1_mouse_a307a164cf71532ae68ba493eedbda11e}} 
+\index{HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}!SetRawInputMode@{SetRawInputMode}}
+\index{SetRawInputMode@{SetRawInputMode}!HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}}
+\doxysubsubsection{\texorpdfstring{SetRawInputMode()}{SetRawInputMode()}}
+{\footnotesize\ttfamily unsafe void Hornet\+Engine.\+Input.\+Mouse.\+Set\+Raw\+Input\+Mode (\begin{DoxyParamCaption}\item[{bool}]{state }\end{DoxyParamCaption})}
+
+
+
+Suggests to the window to use the raw mouse motion or not 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & true == raw mouse motion, false == windows normalised mouse motion\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_mouse_a98a69acd61429bfe0ad0cdafa1748976}\label{class_hornet_engine_1_1_input_1_1_mouse_a98a69acd61429bfe0ad0cdafa1748976}} 
+\index{HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}!MAX\_PRESSED\_BUTTONS@{MAX\_PRESSED\_BUTTONS}}
+\index{MAX\_PRESSED\_BUTTONS@{MAX\_PRESSED\_BUTTONS}!HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}}
+\doxysubsubsection{\texorpdfstring{MAX\_PRESSED\_BUTTONS}{MAX\_PRESSED\_BUTTONS}}
+{\footnotesize\ttfamily readonly int Hornet\+Engine.\+Input.\+Mouse.\+MAX\+\_\+\+PRESSED\+\_\+\+BUTTONS = 5}
+
+
+
+The maximum amount of buttons which can be pressed 
+
+
+
+\doxysubsection{Event Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_mouse_ab257df33f13b1d74863ff8f3a8490943}\label{class_hornet_engine_1_1_input_1_1_mouse_ab257df33f13b1d74863ff8f3a8490943}} 
+\index{HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}!MouseMove@{MouseMove}}
+\index{MouseMove@{MouseMove}!HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}}
+\doxysubsubsection{\texorpdfstring{MouseMove}{MouseMove}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a3cf535c65d87c2767f8b15c50ee4be16}{Mouse\+Move\+Func}} Hornet\+Engine.\+Input.\+Mouse.\+Mouse\+Move}
+
+
+
+The mouse move event 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_mouse_aee74e1ca821ac0bc3a034130ccaa5222}\label{class_hornet_engine_1_1_input_1_1_mouse_aee74e1ca821ac0bc3a034130ccaa5222}} 
+\index{HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}!MousePress@{MousePress}}
+\index{MousePress@{MousePress}!HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}}
+\doxysubsubsection{\texorpdfstring{MousePress}{MousePress}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a921623c431a1056ff6726e55915efc2a}{Mouse\+Press\+Func}} Hornet\+Engine.\+Input.\+Mouse.\+Mouse\+Press}
+
+
+
+The mouse press event 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_mouse_a347a086f84e9d014544681701c294dd1}\label{class_hornet_engine_1_1_input_1_1_mouse_a347a086f84e9d014544681701c294dd1}} 
+\index{HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}!MouseRelease@{MouseRelease}}
+\index{MouseRelease@{MouseRelease}!HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}}
+\doxysubsubsection{\texorpdfstring{MouseRelease}{MouseRelease}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a4e56f0bfa9e7a1161f94cb69c276943c}{Mouse\+Release\+Func}} Hornet\+Engine.\+Input.\+Mouse.\+Mouse\+Release}
+
+
+
+The mouse release event 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_mouse_a75fbf5daed2e05158ad1fef04d01acdd}\label{class_hornet_engine_1_1_input_1_1_mouse_a75fbf5daed2e05158ad1fef04d01acdd}} 
+\index{HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}!MouseScroll@{MouseScroll}}
+\index{MouseScroll@{MouseScroll}!HornetEngine.Input.Mouse@{HornetEngine.Input.Mouse}}
+\doxysubsubsection{\texorpdfstring{MouseScroll}{MouseScroll}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_mouse_a68b4c5c57fa2cebf4e0319f248cc5db9}{Mouse\+Scroll\+Func}} Hornet\+Engine.\+Input.\+Mouse.\+Mouse\+Scroll}
+
+
+
+The mouse scroll event 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Hornet\+Engine/\+Input/\mbox{\hyperlink{_mouse_8cs}{Mouse.\+cs}}\end{DoxyCompactItemize}

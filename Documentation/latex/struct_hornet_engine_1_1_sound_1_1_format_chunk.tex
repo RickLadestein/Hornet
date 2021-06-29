@@ -1,0 +1,150 @@
+\hypertarget{struct_hornet_engine_1_1_sound_1_1_format_chunk}{}\doxysection{Hornet\+Engine.\+Sound.\+Format\+Chunk Struct Reference}
+\label{struct_hornet_engine_1_1_sound_1_1_format_chunk}\index{HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}}
+
+
+Struct for storing Format Chunk data  
+
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_format_chunk}{Format\+Chunk}} \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_format_chunk_a1d969ef0f2b6357f62c37ec2a641c281}{Parse}} (Binary\+Reader reader)
+\begin{DoxyCompactList}\small\item\em Tries to parse a format chunk from given stream \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_format_chunk_ad3c8b0b1a0b071824efb3e3ecd2ca621}{chunk\+\_\+id}}
+\begin{DoxyCompactList}\small\item\em The id of this format chunk \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_format_chunk_a731d44076144db30d5a35c08e76ce3bd}{sub\+\_\+chunk\+\_\+size}}
+\begin{DoxyCompactList}\small\item\em The size of the format chunk \end{DoxyCompactList}\item 
+short \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_format_chunk_a4441eb68ed6c2556e9ef102fe895f83c}{audio\+\_\+format}}
+\begin{DoxyCompactList}\small\item\em The format the audio is stored in (wave) \end{DoxyCompactList}\item 
+short \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_format_chunk_ac7c1817eb4e0fb91e88f24c9888c3280}{num\+\_\+channels}}
+\begin{DoxyCompactList}\small\item\em The amount of channels \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_format_chunk_adeca20c3b012cc098f3432753ab37ce6}{sample\+\_\+rate}}
+\begin{DoxyCompactList}\small\item\em The sound sample rate in Hz \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_format_chunk_a1ad87e34495513f3cc9f9ef09a011c31}{byte\+\_\+rate}}
+\begin{DoxyCompactList}\small\item\em The sound byte rate Bytes/\+Second \end{DoxyCompactList}\item 
+short \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_format_chunk_ab7ffd5d953d797c21ee48b4f8c3148ce}{block\+\_\+align}}
+\item 
+short \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_format_chunk_af9fb40d3929899bd801be570adbc3df4}{bits\+\_\+per\+\_\+sample}}
+\begin{DoxyCompactList}\small\item\em The amount of bits per sound sample \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct for storing Format Chunk data 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_hornet_engine_1_1_sound_1_1_format_chunk_a1d969ef0f2b6357f62c37ec2a641c281}\label{struct_hornet_engine_1_1_sound_1_1_format_chunk_a1d969ef0f2b6357f62c37ec2a641c281}} 
+\index{HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}!Parse@{Parse}}
+\index{Parse@{Parse}!HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}}
+\doxysubsubsection{\texorpdfstring{Parse()}{Parse()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_format_chunk}{Format\+Chunk}} Hornet\+Engine.\+Sound.\+Format\+Chunk.\+Parse (\begin{DoxyParamCaption}\item[{Binary\+Reader}]{reader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Tries to parse a format chunk from given stream 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reader} & The binary reader to the opened audio file stream\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Filled {\ttfamily \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_format_chunk}{Format\+Chunk}}}
+\end{DoxyReturn}
+/// 
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_hornet_engine_1_1_sound_1_1_format_chunk_a4441eb68ed6c2556e9ef102fe895f83c}\label{struct_hornet_engine_1_1_sound_1_1_format_chunk_a4441eb68ed6c2556e9ef102fe895f83c}} 
+\index{HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}!audio\_format@{audio\_format}}
+\index{audio\_format@{audio\_format}!HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}}
+\doxysubsubsection{\texorpdfstring{audio\_format}{audio\_format}}
+{\footnotesize\ttfamily short Hornet\+Engine.\+Sound.\+Format\+Chunk.\+audio\+\_\+format}
+
+
+
+The format the audio is stored in (wave) 
+
+\mbox{\Hypertarget{struct_hornet_engine_1_1_sound_1_1_format_chunk_af9fb40d3929899bd801be570adbc3df4}\label{struct_hornet_engine_1_1_sound_1_1_format_chunk_af9fb40d3929899bd801be570adbc3df4}} 
+\index{HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}!bits\_per\_sample@{bits\_per\_sample}}
+\index{bits\_per\_sample@{bits\_per\_sample}!HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}}
+\doxysubsubsection{\texorpdfstring{bits\_per\_sample}{bits\_per\_sample}}
+{\footnotesize\ttfamily short Hornet\+Engine.\+Sound.\+Format\+Chunk.\+bits\+\_\+per\+\_\+sample}
+
+
+
+The amount of bits per sound sample 
+
+\mbox{\Hypertarget{struct_hornet_engine_1_1_sound_1_1_format_chunk_ab7ffd5d953d797c21ee48b4f8c3148ce}\label{struct_hornet_engine_1_1_sound_1_1_format_chunk_ab7ffd5d953d797c21ee48b4f8c3148ce}} 
+\index{HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}!block\_align@{block\_align}}
+\index{block\_align@{block\_align}!HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}}
+\doxysubsubsection{\texorpdfstring{block\_align}{block\_align}}
+{\footnotesize\ttfamily short Hornet\+Engine.\+Sound.\+Format\+Chunk.\+block\+\_\+align}
+
+
+
+
+
+\mbox{\Hypertarget{struct_hornet_engine_1_1_sound_1_1_format_chunk_a1ad87e34495513f3cc9f9ef09a011c31}\label{struct_hornet_engine_1_1_sound_1_1_format_chunk_a1ad87e34495513f3cc9f9ef09a011c31}} 
+\index{HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}!byte\_rate@{byte\_rate}}
+\index{byte\_rate@{byte\_rate}!HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}}
+\doxysubsubsection{\texorpdfstring{byte\_rate}{byte\_rate}}
+{\footnotesize\ttfamily int Hornet\+Engine.\+Sound.\+Format\+Chunk.\+byte\+\_\+rate}
+
+
+
+The sound byte rate Bytes/\+Second 
+
+\mbox{\Hypertarget{struct_hornet_engine_1_1_sound_1_1_format_chunk_ad3c8b0b1a0b071824efb3e3ecd2ca621}\label{struct_hornet_engine_1_1_sound_1_1_format_chunk_ad3c8b0b1a0b071824efb3e3ecd2ca621}} 
+\index{HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}!chunk\_id@{chunk\_id}}
+\index{chunk\_id@{chunk\_id}!HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}}
+\doxysubsubsection{\texorpdfstring{chunk\_id}{chunk\_id}}
+{\footnotesize\ttfamily string Hornet\+Engine.\+Sound.\+Format\+Chunk.\+chunk\+\_\+id}
+
+
+
+The id of this format chunk 
+
+\mbox{\Hypertarget{struct_hornet_engine_1_1_sound_1_1_format_chunk_ac7c1817eb4e0fb91e88f24c9888c3280}\label{struct_hornet_engine_1_1_sound_1_1_format_chunk_ac7c1817eb4e0fb91e88f24c9888c3280}} 
+\index{HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}!num\_channels@{num\_channels}}
+\index{num\_channels@{num\_channels}!HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}}
+\doxysubsubsection{\texorpdfstring{num\_channels}{num\_channels}}
+{\footnotesize\ttfamily short Hornet\+Engine.\+Sound.\+Format\+Chunk.\+num\+\_\+channels}
+
+
+
+The amount of channels 
+
+\mbox{\Hypertarget{struct_hornet_engine_1_1_sound_1_1_format_chunk_adeca20c3b012cc098f3432753ab37ce6}\label{struct_hornet_engine_1_1_sound_1_1_format_chunk_adeca20c3b012cc098f3432753ab37ce6}} 
+\index{HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}!sample\_rate@{sample\_rate}}
+\index{sample\_rate@{sample\_rate}!HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}}
+\doxysubsubsection{\texorpdfstring{sample\_rate}{sample\_rate}}
+{\footnotesize\ttfamily int Hornet\+Engine.\+Sound.\+Format\+Chunk.\+sample\+\_\+rate}
+
+
+
+The sound sample rate in Hz 
+
+\mbox{\Hypertarget{struct_hornet_engine_1_1_sound_1_1_format_chunk_a731d44076144db30d5a35c08e76ce3bd}\label{struct_hornet_engine_1_1_sound_1_1_format_chunk_a731d44076144db30d5a35c08e76ce3bd}} 
+\index{HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}!sub\_chunk\_size@{sub\_chunk\_size}}
+\index{sub\_chunk\_size@{sub\_chunk\_size}!HornetEngine.Sound.FormatChunk@{HornetEngine.Sound.FormatChunk}}
+\doxysubsubsection{\texorpdfstring{sub\_chunk\_size}{sub\_chunk\_size}}
+{\footnotesize\ttfamily int Hornet\+Engine.\+Sound.\+Format\+Chunk.\+sub\+\_\+chunk\+\_\+size}
+
+
+
+The size of the format chunk 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Hornet\+Engine/\+Sound/\mbox{\hyperlink{_sample_8cs}{Sample.\+cs}}\end{DoxyCompactItemize}

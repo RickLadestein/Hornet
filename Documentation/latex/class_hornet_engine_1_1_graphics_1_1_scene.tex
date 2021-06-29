@@ -1,0 +1,198 @@
+\hypertarget{class_hornet_engine_1_1_graphics_1_1_scene}{}\doxysection{Hornet\+Engine.\+Graphics.\+Scene Class Reference}
+\label{class_hornet_engine_1_1_graphics_1_1_scene}\index{HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene_a7969718ebae2f881c70361ceae8ecea1}{Reset}} ()
+\begin{DoxyCompactList}\small\item\em Resets and clears the scene to the starting setup \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene_abfe2ea9e52f191e098c269fe6a2219bd}{Find\+Entity\+By\+Id}} (String id)
+\begin{DoxyCompactList}\small\item\em Finds Entity in the scene that matches the anem \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} $>$ \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene_a1309d4b4cc33c1fe4ba8eaaba2b33a0b}{Find\+Entity}} (Predicate$<$ \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} $>$ match)
+\begin{DoxyCompactList}\small\item\em Finds all Entity\textquotesingle{}s in the scene that matches the predicate \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene_a00e54aaf3e4ae141259e84641ba6b571}{Add\+Entity}} (\mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} entity)
+\begin{DoxyCompactList}\small\item\em Adds an Entity to the scene \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene_adc068f6757f7e0dd2b629efffca70886}{Remove\+Entity}} (String name)
+\begin{DoxyCompactList}\small\item\em Removes Entity with specified name from the scene \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene_a89f4ea0d8d5f3d2a017d7fdecb843dcf}{Remove\+Entity}} (Predicate$<$ \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} $>$ match)
+\begin{DoxyCompactList}\small\item\em Removes Entities from the scene that matches the predicate \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene_a88379b91f8c9cbe03957a3e6e8b675f3}{Update\+Fixed}} ()
+\begin{DoxyCompactList}\small\item\em Updates the scene and all entities by calling fixed update \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene_aa5072549b153144ae91c00dba219e7b4}{Update\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em Updates the scene and all entities by calling update \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_window_a487b390c4098d3f5dfd19cf47508b98a}{Window.\+Window\+Refresh\+Func}} \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene_a858a714055a290d86f6225659d8743e5}{Get\+Refresh\+Func}} ()
+\begin{DoxyCompactList}\small\item\em A function which gets the refresh function \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene_a9e1680caf9840ee157750fed60ee3c5d}{Load\+Scene}} (string folder\+\_\+id, string scene\+\_\+file)
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene}{Scene}} \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene_a09b8a07fde70686f5057aca70be766c8}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The current instance of the \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene}{Scene}} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera}{Camera}} \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene_a7881b2f0d19a20a02a38cc306d67d611}{Primary\+Cam}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene}{Scene}}\textquotesingle{}s primary camera that renders to the screen \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_scene_a00e54aaf3e4ae141259e84641ba6b571}\label{class_hornet_engine_1_1_graphics_1_1_scene_a00e54aaf3e4ae141259e84641ba6b571}} 
+\index{HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}!AddEntity@{AddEntity}}
+\index{AddEntity@{AddEntity}!HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}}
+\doxysubsubsection{\texorpdfstring{AddEntity()}{AddEntity()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Scene.\+Add\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}}}]{entity }\end{DoxyParamCaption})}
+
+
+
+Adds an Entity to the scene 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The Entity to be added to the scene\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_scene_a1309d4b4cc33c1fe4ba8eaaba2b33a0b}\label{class_hornet_engine_1_1_graphics_1_1_scene_a1309d4b4cc33c1fe4ba8eaaba2b33a0b}} 
+\index{HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}!FindEntity@{FindEntity}}
+\index{FindEntity@{FindEntity}!HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}}
+\doxysubsubsection{\texorpdfstring{FindEntity()}{FindEntity()}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}}$>$ Hornet\+Engine.\+Graphics.\+Scene.\+Find\+Entity (\begin{DoxyParamCaption}\item[{Predicate$<$ \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} $>$}]{match }\end{DoxyParamCaption})}
+
+
+
+Finds all Entity\textquotesingle{}s in the scene that matches the predicate 
+
+
+\begin{DoxyParams}{Parameters}
+{\em match} & The conditions that the entity must match for retrieval\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_scene_abfe2ea9e52f191e098c269fe6a2219bd}\label{class_hornet_engine_1_1_graphics_1_1_scene_abfe2ea9e52f191e098c269fe6a2219bd}} 
+\index{HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}!FindEntityById@{FindEntityById}}
+\index{FindEntityById@{FindEntityById}!HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}}
+\doxysubsubsection{\texorpdfstring{FindEntityById()}{FindEntityById()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} Hornet\+Engine.\+Graphics.\+Scene.\+Find\+Entity\+By\+Id (\begin{DoxyParamCaption}\item[{String}]{id }\end{DoxyParamCaption})}
+
+
+
+Finds Entity in the scene that matches the anem 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_scene_a858a714055a290d86f6225659d8743e5}\label{class_hornet_engine_1_1_graphics_1_1_scene_a858a714055a290d86f6225659d8743e5}} 
+\index{HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}!GetRefreshFunc@{GetRefreshFunc}}
+\index{GetRefreshFunc@{GetRefreshFunc}!HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}}
+\doxysubsubsection{\texorpdfstring{GetRefreshFunc()}{GetRefreshFunc()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_window_a487b390c4098d3f5dfd19cf47508b98a}{Window.\+Window\+Refresh\+Func}} Hornet\+Engine.\+Graphics.\+Scene.\+Get\+Refresh\+Func (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function which gets the refresh function 
+
+\begin{DoxyReturn}{Returns}
+The refresh function of the window
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_scene_a9e1680caf9840ee157750fed60ee3c5d}\label{class_hornet_engine_1_1_graphics_1_1_scene_a9e1680caf9840ee157750fed60ee3c5d}} 
+\index{HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}!LoadScene@{LoadScene}}
+\index{LoadScene@{LoadScene}!HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}}
+\doxysubsubsection{\texorpdfstring{LoadScene()}{LoadScene()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Scene.\+Load\+Scene (\begin{DoxyParamCaption}\item[{string}]{folder\+\_\+id,  }\item[{string}]{scene\+\_\+file }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_scene_a89f4ea0d8d5f3d2a017d7fdecb843dcf}\label{class_hornet_engine_1_1_graphics_1_1_scene_a89f4ea0d8d5f3d2a017d7fdecb843dcf}} 
+\index{HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}!RemoveEntity@{RemoveEntity}}
+\index{RemoveEntity@{RemoveEntity}!HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}}
+\doxysubsubsection{\texorpdfstring{RemoveEntity()}{RemoveEntity()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Scene.\+Remove\+Entity (\begin{DoxyParamCaption}\item[{Predicate$<$ \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} $>$}]{match }\end{DoxyParamCaption})}
+
+
+
+Removes Entities from the scene that matches the predicate 
+
+
+\begin{DoxyParams}{Parameters}
+{\em match} & The conditions that the entity must match for removal\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_scene_adc068f6757f7e0dd2b629efffca70886}\label{class_hornet_engine_1_1_graphics_1_1_scene_adc068f6757f7e0dd2b629efffca70886}} 
+\index{HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}!RemoveEntity@{RemoveEntity}}
+\index{RemoveEntity@{RemoveEntity}!HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}}
+\doxysubsubsection{\texorpdfstring{RemoveEntity()}{RemoveEntity()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Scene.\+Remove\+Entity (\begin{DoxyParamCaption}\item[{String}]{name }\end{DoxyParamCaption})}
+
+
+
+Removes Entity with specified name from the scene 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The Entity name\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_scene_a7969718ebae2f881c70361ceae8ecea1}\label{class_hornet_engine_1_1_graphics_1_1_scene_a7969718ebae2f881c70361ceae8ecea1}} 
+\index{HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}!Reset@{Reset}}
+\index{Reset@{Reset}!HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}}
+\doxysubsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Scene.\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets and clears the scene to the starting setup 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_scene_a88379b91f8c9cbe03957a3e6e8b675f3}\label{class_hornet_engine_1_1_graphics_1_1_scene_a88379b91f8c9cbe03957a3e6e8b675f3}} 
+\index{HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}!UpdateFixed@{UpdateFixed}}
+\index{UpdateFixed@{UpdateFixed}!HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}}
+\doxysubsubsection{\texorpdfstring{UpdateFixed()}{UpdateFixed()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Scene.\+Update\+Fixed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates the scene and all entities by calling fixed update 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_scene_aa5072549b153144ae91c00dba219e7b4}\label{class_hornet_engine_1_1_graphics_1_1_scene_aa5072549b153144ae91c00dba219e7b4}} 
+\index{HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}!UpdateScene@{UpdateScene}}
+\index{UpdateScene@{UpdateScene}!HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}}
+\doxysubsubsection{\texorpdfstring{UpdateScene()}{UpdateScene()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Scene.\+Update\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates the scene and all entities by calling update 
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_scene_a09b8a07fde70686f5057aca70be766c8}\label{class_hornet_engine_1_1_graphics_1_1_scene_a09b8a07fde70686f5057aca70be766c8}} 
+\index{HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}!Instance@{Instance}}
+\index{Instance@{Instance}!HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene}{Scene}} Hornet\+Engine.\+Graphics.\+Scene.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
+
+
+
+The current instance of the \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene}{Scene}} 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_scene_a7881b2f0d19a20a02a38cc306d67d611}\label{class_hornet_engine_1_1_graphics_1_1_scene_a7881b2f0d19a20a02a38cc306d67d611}} 
+\index{HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}!PrimaryCam@{PrimaryCam}}
+\index{PrimaryCam@{PrimaryCam}!HornetEngine.Graphics.Scene@{HornetEngine.Graphics.Scene}}
+\doxysubsubsection{\texorpdfstring{PrimaryCam}{PrimaryCam}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera}{Camera}} Hornet\+Engine.\+Graphics.\+Scene.\+Primary\+Cam\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene}{Scene}}\textquotesingle{}s primary camera that renders to the screen 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Hornet\+Engine/\+Graphics/\mbox{\hyperlink{_scene_8cs}{Scene.\+cs}}\end{DoxyCompactItemize}

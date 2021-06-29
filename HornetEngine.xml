@@ -1,0 +1,2692 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HornetEngine</name>
+    </assembly>
+    <members>
+        <member name="M:HornetEngine.Config.#ctor">
+            <summary>
+            The constructor of the Config class
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Config.GetJsonRoot">
+            <summary>
+            A function which can be used to get the json root
+            </summary>
+            <returns>A JsonRoot object</returns>
+        </member>
+        <member name="M:HornetEngine.Config.GetJsonData">
+            <summary>
+            A function which can be used to get the json data
+            </summary>
+            <returns>A JsonData object</returns>
+        </member>
+        <member name="M:HornetEngine.Config.GetJsonRules">
+            <summary>
+            A function which can be used to get the json rules
+            </summary>
+            <returns>A List of JsonRule objects</returns>
+        </member>
+        <member name="P:HornetEngine.Config.Instance">
+            <summary>
+            A function to get the instance of the Config
+            The lock ensures that singleton is thread safe
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Ecs.Component.id">
+            <summary>
+            The component GUID that identifies the component
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Ecs.Component.parent">
+            <summary>
+            The entity this component is bound to
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.Component.#ctor">
+            <summary>
+            Creates a new instance of Component with default parameters
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.Component.Initialise">
+            <summary>
+            Initialises the component to default values after entity has aggregated the component 
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Ecs.AudioListenerComponent.Listener">
+            <summary>
+            The listener
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.AudioListenerComponent.#ctor">
+            <summary>
+            The constructor of the AudioListenerComponent
+            </summary>
+            <exception cref="T:System.Exception">Throws an Exception</exception>
+        </member>
+        <member name="M:HornetEngine.Ecs.AudioListenerComponent.Dispose">
+            <summary>
+            A function which can be used to dispose of the component
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Ecs.AudioListenerScript.audio_listener">
+            <summary>
+            An AudioListenerComponent used within the script
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.AudioListenerScript.Start">
+            <summary>
+            A function which can be used to start the audio listener
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.AudioListenerScript.Update">
+            <summary>
+            A function which can be used to update the audio listener
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.DeferredRenderComponent.#ctor">
+            <summary>
+            The constructor of the DeferredRenderComponent
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.DeferredRenderComponent.Render(HornetEngine.Graphics.Camera)">
+            <summary>
+            A function which can be used to render the target
+            </summary>
+            <param name="target">The camera used for the rendering</param>
+            <exception cref="T:System.Exception">Throws an Exception</exception>
+        </member>
+        <member name="M:HornetEngine.Ecs.ForewardRenderComponent.#ctor">
+            <summary>
+            The constructor of the ForewardRenderComponent
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.ForewardRenderComponent.Render(HornetEngine.Graphics.Camera)">
+            <summary>
+            A function which can be used to render the target
+            </summary>
+            <param name="target">The camera</param>
+            <exception cref="T:System.Exception">Throws an Exception</exception>
+        </member>
+        <member name="P:HornetEngine.Ecs.LineRenderComponent.Points">
+            <summary>
+            A list of points used within the LinneRenderComponent
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Ecs.LineRenderComponent.Base_Color">
+            <summary>
+            A vector4 which contains the base color of the line
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Ecs.LineRenderComponent.Line_width">
+            <summary>
+            A float which contains the width of the line
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.LineRenderComponent.#ctor">
+            <summary>
+            The constructor of the LineRenderComponent
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.LineRenderComponent.AddLine(GlmSharp.vec3,GlmSharp.vec3)">
+            <summary>
+            A functioin which can be used to add a line
+            </summary>
+            <param name="start">A vec3 which contains the start of the line</param>
+            <param name="end">A vec3 which contains the end of the line</param>
+        </member>
+        <member name="M:HornetEngine.Ecs.LineRenderComponent.ClearPoints">
+            <summary>
+            A function which can be used to clear the current points
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.LineRenderComponent.BuildBuffer">
+            <summary>
+            A function which can be used to build the buffer
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.LineRenderComponent.Render(HornetEngine.Graphics.Camera)">
+            <summary>
+            A function which can be used to render the target
+            </summary>
+            <param name="cam">The given camera</param>
+            <exception cref="T:System.Exception">Throws an Exception</exception>
+        </member>
+        <member name="P:HornetEngine.Ecs.MaterialComponent.Textures">
+            <summary>
+            The Textures of the object
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Ecs.MaterialComponent.Shader">
+            <summary>
+            The shader of the object
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Ecs.MaterialComponent.Material">
+            <summary>
+            The physical properties of a material
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.MaterialComponent.#ctor">
+            <summary>
+            The constructor of a MaterialComponent
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.MaterialComponent.#ctor(HornetEngine.Graphics.ShaderProgram)">
+            <summary>
+            The constructor of a MaterialComponent
+            </summary>
+            <param name="prg">The shaderprogram used for this component</param>
+            <exception cref="T:System.ArgumentNullException">Throws an ArgumentNullException</exception>
+        </member>
+        <member name="M:HornetEngine.Ecs.MaterialComponent.SetShaderFromId(System.String)">
+            <summary>
+            A function which can be used to set a shader
+            </summary>
+            <param name="matId">A string containing the ID of the shader</param>
+            <exception cref="T:HornetEngine.Util.Exceptions.MissingResourceException">Throws a MissingResourceException</exception>
+        </member>
+        <member name="M:HornetEngine.Ecs.MaterialComponent.SetTextureUnit(System.String,HornetEngine.Graphics.HTextureUnit)">
+            <summary>
+            A function which can be used to set a texture unit
+            </summary>
+            <param name="tex_identifier">A string containing the ID of the texture</param>
+            <param name="layer">The allocated texture unit within the GPU</param>
+            <exception cref="T:System.Exception">Throws an Exception</exception>
+        </member>
+        <member name="M:HornetEngine.Ecs.MaterialComponent.ClearTextureUnit(HornetEngine.Graphics.HTextureUnit)">
+            <summary>
+            A function which can be used to clear the given texture unit
+            </summary>
+            <param name="layer">The texture unit which should be cleared</param>
+        </member>
+        <member name="F:HornetEngine.Ecs.MeshComponent.Mesh">
+            <summary>
+            The mesh that the MeshComponent is bound to
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Ecs.MeshComponent.IsTransparent">
+            <summary>
+            A bool which indicates whether the mesh is transparent
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.MeshComponent.#ctor">
+            <summary>
+            Creates a new instance of MeshComponent with default parameters
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.MeshComponent.SetTargetMesh(System.String)">
+            <summary>
+            Retrieves a Mesh from the MeshResourceManager and sets it as the active Mesh in this component
+            </summary>
+            <param name="meshId">A string containing the ID of the mesh</param>
+            <exception cref="T:HornetEngine.Util.Exceptions.MissingResourceException">Throws a MissingResourceException</exception>
+        </member>
+        <member name="P:HornetEngine.Ecs.RadialLightComponent.Albedo">
+            <summary>
+            The default color
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Ecs.RadialLightComponent.Range">
+            <summary>
+            The range
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Ecs.RadialLightComponent.Intensity">
+            <summary>
+            The intensity
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.RadialLightComponent.SetAlbedoFromTemperature(System.UInt32)">
+            <summary>
+            Sets the Albedo color from color temperature
+            </summary>
+            <param name="color_temp">Color temperature in Kelvin</param>
+        </member>
+        <member name="F:HornetEngine.Ecs.SoundSourceComponent.ActiveSources">
+            <summary>
+            A list of active SoundSources
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.SoundSourceComponent.#ctor">
+            <summary>
+            The constructor of the SoundSourceComponent
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:HornetEngine.Ecs.SoundSourceComponent.PlaySoundEffect(HornetEngine.Sound.Sample,System.Single,System.Single)" -->
+        <member name="M:HornetEngine.Ecs.SoundSourceComponent.PlayMusic(HornetEngine.Sound.Sample,System.Single,System.Single)">
+            <summary>
+            A function which can be used to play music
+            </summary>
+            <param name="samp">The sample which should be played</param>
+            <param name="pitch">The pitch which should be used</param>
+            <param name="volume">The volume which should be used</param>
+            <exception cref="T:System.ArgumentNullException">Throws an ArgumentNullException</exception>
+        </member>
+        <member name="P:HornetEngine.Ecs.Entity.Scripts">
+            <summary>
+            The scripts that are bound to the entity
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Ecs.Entity.Id">
+            <summary>
+            The identifier of this Entity
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Ecs.Entity.Name">
+            <summary>
+            The custom name of this Entity
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Ecs.Entity.Transform">
+            <summary>
+            The current transform of this entity
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Ecs.Entity.Children">
+            <summary>
+            The children this entity has
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.Entity.#ctor">
+            <summary>
+            Creates a new instance of Entity with default parameters
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.Entity.#ctor(System.String)">
+            <summary>
+            Creates a new instance of Entity with custom name and default parameters
+            </summary>
+            <param name="name">The name that is to be assigned to the Entity</param>
+        </member>
+        <member name="M:HornetEngine.Ecs.Entity.AddComponent(HornetEngine.Ecs.Component)">
+            <summary>
+            Adds a component to this Entity
+            </summary>
+            <param name="c">The component to add</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:HornetEngine.Ecs.Entity.GetComponent``1">
+            <summary>
+            Retrieves the first found component that matches the search parameter.
+            </summary>
+            <typeparam name="T">The component that is to be found</typeparam>
+            <returns>Found component, if not found returns <c>null</c></returns>
+        </member>
+        <member name="M:HornetEngine.Ecs.Entity.GetComponents``1(System.Collections.Generic.List{``0}@)">
+            <summary>
+            Retrieves all components that match the search parameter
+            </summary>
+            <typeparam name="T">The type of component that is to be found</typeparam>
+            <param name="comps">A list where found c</param>
+        </member>
+        <member name="M:HornetEngine.Ecs.Entity.HasComponent``1">
+            <summary>
+            A function which checks whether the entity has components
+            </summary>
+            <typeparam name="T">The type of the component which should be checked</typeparam>
+            <returns>A boolean depending on the result</returns>
+        </member>
+        <member name="M:HornetEngine.Ecs.Entity.AddScript(HornetEngine.Ecs.MonoScript)">
+            <summary>
+            Adds a script to this Entity
+            </summary>
+            <param name="c">The script to add</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:HornetEngine.Ecs.Entity.GetScript``1">
+            <summary>
+            Retrieves the first found script that matches the search parameter.
+            </summary>
+            <typeparam name="T">The script that is to be found</typeparam>
+            <returns>Found script, if not found returns <c>null</c></returns>
+        </member>
+        <member name="M:HornetEngine.Ecs.Entity.GetScripts``1(System.Collections.Generic.List{``0}@)">
+            <summary>
+            Retrieves all scripts that match the search parameter
+            </summary>
+            <typeparam name="T">The type of script that is to be found</typeparam>
+            <param name="comps">A list where found scripts are stored</param>
+        </member>
+        <member name="M:HornetEngine.Ecs.Entity.HasScript``1">
+            <summary>
+            A function which checks whether the entity has a script
+            </summary>
+            <typeparam name="T">The type of the script which should be checked</typeparam>
+            <returns>A boolean depending on the result</returns>
+        </member>
+        <member name="F:HornetEngine.Ecs.MonoScript.entity">
+            <summary>
+            The entity within the MonoScript
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Ecs.MonoScript.start">
+            <summary>
+            A bool used to check whether the script has been run
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.MonoScript.#ctor">
+            <summary>
+            The constructor of the MonoScript
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.MonoScript.Start">
+            <summary>
+            Function that runs the first frame when this script was added to the entity
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.MonoScript.Update">
+            <summary>
+            Function that runs every frame update
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.MonoScript.FixedUpdate">
+            <summary>
+            Function that runs every update from the Fixed Update Thread
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Ecs.Transform.Position">
+            <summary>
+            The current Position
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Ecs.Transform.Rotation">
+            <summary>
+            The current Rotation in degrees
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Ecs.Transform.Orientation">
+            <summary>
+            The current orientation
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Ecs.Transform.Scale">
+            <summary>
+            The current Scale
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Ecs.Transform.ModelMat">
+            <summary>
+            The matrix that describes the orientation, scale and position
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Ecs.Transform.NormalMat">
+            <summary>
+            The matrix that describes the translation of the normal vector
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.Transform.Reset">
+            <summary>
+            Resets the transform rotation, position and scale to default values
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Ecs.Transform.SetOrientation(System.Single,System.Single,System.Single)">
+            <summary>
+            Set the current orientation
+            </summary>
+            <param name="roll">A float containing the roll of the orientation</param>
+            <param name="pitch">A float containing the pitch of the orientation</param>
+            <param name="yaw">A float containing the yaw of the orientation</param>
+        </member>
+        <member name="M:HornetEngine.Ecs.Transform.Rotate(GlmSharp.quat)">
+            <summary>
+            Rotate the object
+            </summary>
+            <param name="rotation_quat">The quat used for the rotation</param>
+        </member>
+        <member name="M:HornetEngine.Ecs.Transform.Rotate(GlmSharp.vec3,System.Single)">
+            <summary>
+            Rotate the object
+            </summary>
+            <param name="axis_angle">A vec3 which contains the axis angle over which the object should be rotated</param>
+            <param name="degrees">A float which contains the degrees of the rotation</param>
+        </member>
+        <member name="T:HornetEngine.Graphics.Buffers.DepthFunc">
+            <summary>
+            Enum describing depth buffer behaviour
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.Buffers.DepthFunc.ALWAYS">
+            <summary>
+            New depth values are always written in the depth buffer
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.Buffers.DepthFunc.NEVER">
+            <summary>
+            New depth values are never written in the depth buffer
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.Buffers.DepthFunc.LESS">
+            <summary>
+            New depth values are only written when less than the value in the depth buffer
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.Buffers.DepthFunc.EQUAL">
+            <summary>
+            New depth values are only written when equal than the value in the depth buffer
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.Buffers.DepthFunc.GREATER">
+            <summary>
+            New depth values are only written when greater than the value in the depth buffer
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.Buffers.DepthFunc.NOTEQUAL">
+            <summary>
+            New depth values are only written when not equal to the value in the depth buffer
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.Buffers.DepthFunc.LEQUAL">
+            <summary>
+            New depth values are only written when less or equal to the value in the depth buffer
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.Buffers.DepthFunc.GEQUAL">
+            <summary>
+            New depth values are only written when greater or equal to the value in the depth buffer
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Buffers.DepthBuffer.IsEnabled">
+            <summary>
+            Indication if depth buffer is enabled
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.DepthBuffer.Enable">
+            <summary>
+            Enables the Depth buffering feature
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.DepthBuffer.Disable">
+            <summary>
+            Disables the depth buffering feature
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.DepthBuffer.SetDepthCheckBehaviour(HornetEngine.Graphics.Buffers.DepthFunc)">
+            <summary>
+            Set the DepthCheckBehaviour
+            </summary>
+            <param name="func_enum">The DepthFunction</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.DepthBuffer.ClearDepthBuffer">
+            <summary>
+            Clears the depth buffer if enabled
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Buffers.FrameBuffer.Handle">
+            <summary>
+            The identifier that refers to the OpenGL FrameBuffer resource
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Buffers.FrameBuffer.RB_Handle">
+            <summary>
+            The identifier that refers to the FrameBuffer's RenderBuffer
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.FrameBuffer.#ctor(System.UInt32,System.UInt32)">
+            <summary>
+            Instantiates a new instance of FrameBuffer with specified screen width and height settings
+            </summary>
+            <param name="buffer_width">The buffer width</param>
+            <param name="buffer_height">The buffer height</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.FrameBuffer.ClearBuffers">
+            <summary>
+            Clears the Color and Depth Buffers inside the currently bound FrameBuffer
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.FrameBuffer.Bind">
+            <summary>
+            Binds the current FrameBuffer as RenderTarget
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.FrameBuffer.Unbind">
+            <summary>
+            Unbinds the current bound FrameBuffer and binds the default Front and Back buffer
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.FrameBuffer.AttachColorRenderTarget(Silk.NET.OpenGL.InternalFormat,Silk.NET.OpenGL.PixelFormat,Silk.NET.OpenGL.PixelType)">
+            <summary>
+            Attaches a color buffer rendertarget to the current framebuffer
+            </summary>
+            <param name="bits_per_channel">The amount of bits per channel enum</param>
+            <param name="channels">The amount of channels per pixel</param>
+            <param name="pixel_type">The type of value color values are stored into (byte, int, float, etc...)</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.FrameBuffer.AttachDepthBufferTarget">
+            <summary>
+            Attaches a depth buffer rendertarget to the current framebuffer
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.FrameBuffer.GetFrameBufferStatus">
+            <summary>
+            Retrieves the current framebuffer status
+            </summary>
+            <returns>empty if valid, a status if the framebuffer was invalid</returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.FrameBuffer.Dispose">
+            <summary>
+            Releases unmanaged GPU and OpenGL resources 
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Buffers.VertexBuffer.Error">
+            <summary>
+            The current error code
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Buffers.VertexBuffer.Handle">
+            <summary>
+            The handle to the VAO data buffer in the GPU
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Buffers.VertexBuffer.PrimitiveType">
+            <summary>
+            The type of primitives that make up the mesh
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Buffers.VertexBuffer.VertexCount">
+            <summary>
+            The amount of vertices in the VertexBuffer
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.VertexBuffer.#ctor">
+            <summary>
+            The constructor of the VertexBuffer
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.VertexBuffer.Bind">
+            <summary>
+            Bind the buffer
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.VertexBuffer.Unbind">
+            <summary>
+            Unbind the buffer
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.VertexBuffer.BufferData(HornetEngine.Graphics.AttributeStorage,HornetEngine.Graphics.Buffers.ElementType)">
+            <summary>
+            A function which can be used to initialize the buffer data
+            </summary>
+            <param name="attributes">The atrributes which should be bound</param>
+            <param name="ptype">The way the data should be interpreted by the GPU</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.VertexBuffer.SetPrimitiveType(HornetEngine.Graphics.Buffers.ElementType)">
+            <summary>
+            A function which sets the primitive type
+            </summary>
+            <param name="eltype"></param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.VertexBuffer.InitialiseBuffers">
+            <summary>
+            A function which initializes the buffers
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.VertexBuffer.DestroyBuffers">
+            <summary>
+            A function which destroys the buffers
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Buffers.VertexBuffer.Dispose">
+            <summary>
+            A function which disposes of the vertex buffers
+            </summary>
+        </member>
+        <member name="T:HornetEngine.Graphics.CameraViewSettings">
+            <summary>
+            Struct that describes the camera viewing properties like lens specification, fov and clip distance
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.CameraViewSettings.Lens_width">
+            <summary>
+            The width of the lens
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.CameraViewSettings.Lens_height">
+            <summary>
+            The height of the lens
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.CameraViewSettings.Fov">
+            <summary>
+            The field of view in degrees
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.CameraViewSettings.clip_min">
+            <summary>
+            The minimum distance in digital units at which renderable objects should be drawn
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.CameraViewSettings.clip_max">
+            <summary>
+            The minimum distance in digital units at which renderable objects should be drawn
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Camera.ViewSettings">
+            <summary>
+            The CameraViewSettings
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Camera.Position">
+            <summary>
+            The current position of the camera
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Camera.Orientation">
+            <summary>
+            Quaternion for describing the orientation of the camera; camera will always look at Z+ if orientation[0,0,0]
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Camera.Rotation">
+            <summary>
+            The current Rotation in degrees
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Camera.FrameBuffer">
+            <summary>
+            The framebuffer of the camera
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Camera.Foreward">
+            <summary>
+            The foreward view
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Camera.Right">
+            <summary>
+            The right view
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Camera.Up">
+            <summary>
+            The up view
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Camera.ProjectionMatrix">
+            <summary>
+            The projection matrix
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Camera.ViewMatrix">
+            <summary>
+            The view matrix
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Camera.Primary">
+            <summary>
+            The primary camera
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Camera.#ctor">
+            <summary>
+            The constructor of the camera
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Camera.RegisterScenePrimaryCamera(HornetEngine.Graphics.Scene)">
+            <summary>
+            A function which can be used to register the primary camera 
+            </summary>
+            <param name="scene">The scene from which the primary camera can be pulled</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Camera.SetOrientation(System.Single,System.Single,System.Single)">
+            <summary>
+            Sets the orientation
+            </summary>
+            <param name="roll">The roll used in the rotation</param>
+            <param name="pitch">The pitch used in the rotation</param>
+            <param name="yaw">The yaw used in the rotation</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Camera.Rotate(GlmSharp.quat)">
+            <summary>
+            Rotate the camera
+            </summary>
+            <param name="rotation_quat">The rotation quat used for the rotation</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Camera.Rotate(GlmSharp.vec3,System.Single)">
+            <summary>
+            Rotate the camera
+            </summary>
+            <param name="axis_angle">The axis over which the camera should be rotated</param>
+            <param name="degrees">The amount of degrees which the camera should be rotated</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Camera.UpdateViewMatrix">
+            <summary>
+            Update the view matrix
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Camera.UpdateProjectionMatrix">
+            <summary>
+            Update the projection matrix
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.MaterialDescriptor.Color_ambient">
+            <summary>
+            The ambient color
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.MaterialDescriptor.Color_diffuse">
+            <summary>
+            The diffuse color
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.MaterialDescriptor.Color_specular">
+            <summary>
+            The specular color
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.MaterialDescriptor.Opacity">
+            <summary>
+            The opacity
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.MaterialDescriptor.CutTexFilepath(System.String)">
+            <summary>
+            A function which can be used to modify string paths
+            </summary>
+            <param name="filepath">The given file path</param>
+            <returns>The modified file path</returns>
+        </member>
+        <member name="P:HornetEngine.Graphics.Mesh.Status">
+            <summary>
+            The status of the mesh
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Mesh.VertexBuffer">
+            <summary>
+            The vertex buffer
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Mesh.Material">
+            <summary>
+            The material
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Mesh.Attributes">
+            <summary>
+            The attributes
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Mesh.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Mesh.Error">
+            <summary>
+            The error message
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Mesh.#ctor(System.String)">
+            <summary>
+            The constructor of the mesg
+            </summary>
+            <param name="name">The name of the mesh</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Mesh.BuildVertexBuffer">
+            <summary>
+            A function which can be used to build the vertex buffers
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Mesh.ImportMesh(System.String,System.String,System.String)">
+            <summary>
+            A function which can be used to import a mesh
+            </summary>
+            <param name="name">The name of the mesh</param>
+            <param name="folder_id">The ID of the folder</param>
+            <param name="file">The name of the file</param>
+            <returns>A mesh</returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.Mesh.ImportMesh(Assimp.Mesh,Assimp.Material)">
+            <summary>
+            A function which can be used to import a mesh
+            </summary>
+            <param name="mesh">The mesh</param>
+            <param name="mat">The material</param>
+            <returns>A mesh</returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.Mesh.ImportMeshFromFile(System.String,System.String,Assimp.Mesh@,HornetEngine.Graphics.Material@)">
+            <summary>
+            A function which can import a mesh from a file
+            </summary>
+            <param name="folder_id">The ID of the folder</param>
+            <param name="file">The name of the file</param>
+            <param name="mesh">The mesg</param>
+            <param name="mat">The material</param>
+            <returns></returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.Mesh.ParseMeshData(HornetEngine.Graphics.Mesh,Assimp.Mesh)">
+            <summary>
+            A function which can parse the mesh data
+            </summary>
+            <param name="obj">The mesh object</param>
+            <param name="mesh">The mesh</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Mesh.Dispose">
+            <summary>
+            A function which can disppose of the attributes
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.NativeWindow.GL">
+            <summary>
+            The GL context
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.NativeWindow.GLFW">
+            <summary>
+            The GLFW context
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.NativeWindow.Title">
+            <summary>
+            The title of the window
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.NativeWindow.Size">
+            <summary>
+            The size of the window
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.NativeWindow.Pos">
+            <summary>
+            The position of the window
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.NativeWindow.SetTitle(System.String)">
+            <summary>
+            A function which can set the title of the window
+            </summary>
+            <param name="title">The given title</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.NativeWindow.SetSize(System.Int32,System.Int32)">
+            <summary>
+            A function which can set the size of the window
+            </summary>
+            <param name="width">The given width</param>
+            <param name="height">The given height</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.NativeWindow.SetPosition(System.UInt32,System.UInt32)">
+            <summary>
+            A function which can set the position of the screen
+            </summary>
+            <param name="x_pos">The x position</param>
+            <param name="y_pos">The y position</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.NativeWindow.GetAliveTime">
+            <summary>
+            A function which checks how long the window has been running
+            </summary>
+            <returns>A double containing the time</returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.NativeWindow.ShouldClose">
+            <summary>
+            A function which checks whether the window should be closed
+            </summary>
+            <returns>A boolean depending on the result</returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.NativeWindow.SetDrawArea(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            A function which sets the draw area of the window
+            </summary>
+            <param name="x">The x position</param>
+            <param name="y">The y position</param>
+            <param name="width">The width</param>
+            <param name="height">The height</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.NativeWindow.Dispose">
+            <summary>
+            A function which can be used to dispose the current window
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Renderer.Instance">
+            <summary>
+            The instance of the renderer
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Renderer.RenderEntity(HornetEngine.Graphics.Camera,HornetEngine.Ecs.Entity)">
+            <summary>
+            A function which renders the entity
+            </summary>
+            <param name="cam">The given camera</param>
+            <param name="entity">The given entity</param>
+        </member>
+        <member name="P:HornetEngine.Graphics.Scene.Instance">
+            <summary>
+            The current instance of the Scene
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Scene.PrimaryCam">
+            <summary>
+            The Scene's primary camera that renders to the screen
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Scene.Reset">
+            <summary>
+            Resets and clears the scene to the starting setup
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Scene.FindEntityById(System.String)">
+            <summary>
+            Finds Entity in the scene that matches the anem
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.Scene.FindEntity(System.Predicate{HornetEngine.Ecs.Entity})">
+            <summary>
+            Finds all Entity's in the scene that matches the predicate
+            </summary>
+            <param name="match">The conditions that the entity must match for retrieval</param>
+            <returns></returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.Scene.AddEntity(HornetEngine.Ecs.Entity)">
+            <summary>
+            Adds an Entity to the scene
+            </summary>
+            <param name="entity">The Entity to be added to the scene</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:HornetEngine.Graphics.Scene.RemoveEntity(System.String)">
+            <summary>
+            Removes Entity with specified name from the scene
+            </summary>
+            <param name="name">The Entity name</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Scene.RemoveEntity(System.Predicate{HornetEngine.Ecs.Entity})">
+            <summary>
+            Removes Entities from the scene that matches the predicate
+            </summary>
+            <param name="match">The conditions that the entity must match for removal</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Scene.UpdateFixed">
+            <summary>
+            Updates the scene and all entities by calling fixed update
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Scene.UpdateScene">
+            <summary>
+            Updates the scene and all entities by calling update
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Scene.GetRefreshFunc">
+            <summary>
+            A function which gets the refresh function
+            </summary>
+            <returns>The refresh function of the window</returns>
+        </member>
+        <member name="T:HornetEngine.Graphics.ShaderProgramStatus">
+            <summary>
+            Enum indicating the status of a ShaderProgram
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.ShaderProgramStatus.UNINITIALISED">
+            <summary>
+            ShaderProgram is unitialised and cannot be used
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.ShaderProgramStatus.AQUIRING_HANDLE">
+            <summary>
+            ShaderProgram is aquiring GPU ShaderProgram handle
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.ShaderProgramStatus.LINKING">
+            <summary>
+            ShaderProgram is linking Shaders
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.ShaderProgramStatus.READY">
+            <summary>
+            ShaderProgram is ready to use
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.ShaderProgram.Handle">
+            <summary>
+            The internal GPU handle for the ShaderProgram
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.ShaderProgram.Status">
+            <summary>
+            The current status of the ShaderProgram
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.ShaderProgram.#ctor(HornetEngine.Graphics.VertexShader,HornetEngine.Graphics.FragmentShader)">
+            <summary>
+            Creates a new instance of ShaderProgram with vertex and fragment shader
+            </summary>
+            <param name="vertex">Vertex shader program</param>
+            <param name="fragment">Fragment shader program</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.ShaderProgram.#ctor(HornetEngine.Graphics.VertexShader,HornetEngine.Graphics.GeometryShader,HornetEngine.Graphics.FragmentShader)">
+            <summary>
+            Creates a new instance of ShaderProgram with vertex, geometry and fragment shader
+            </summary>
+            <param name="vertex">Vertex shader program</param>
+            <param name="geometry">Geometry shader program</param>
+            <param name="fragment">Fragment shader program</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.ShaderProgram.Bind">
+            <summary>
+            Binds the ShaderProgram as the currently active program in the GPU.
+            There can only be a single program bound to the GPU 
+            so this call switches the active target.
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.ShaderProgram.UnbindAll">
+            <summary>
+            Unbinds all shader programs from the GPU
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.ShaderProgram.GetProgramInfoLog">
+            <summary>
+            Retrieves the current info log of the ShaderProgram 
+            that indicates information such as errors and warnings during linking
+            </summary>
+            <returns>String containing the current shader info log</returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.ShaderProgram.SetUniform(System.String,System.Boolean)">
+            <summary>
+            Sets a shader specific global variable in the GPU
+            </summary>
+            <param name="location">The uniform name in the shader program</param>
+            <param name="value">Boolean value</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.ShaderProgram.SetUniform(System.String,System.Int32)">
+            <summary>
+            Sets a shader specific global variable in the GPU
+            </summary>
+            <param name="location">The uniform name in the shader program</param>
+            <param name="value">Integer value</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.ShaderProgram.SetUniform(System.String,System.UInt32)">
+            <summary>
+            Sets a shader specific global variable in the GPU
+            </summary>
+            <param name="location">The uniform name in the shader program</param>
+            <param name="value">Unsigned Integer value</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.ShaderProgram.SetUniform(System.String,System.Single)">
+            <summary>
+            Sets a shader specific global variable in the GPU
+            </summary>
+            <param name="location">The uniform name in the shader program</param>
+            <param name="value">Float value</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.ShaderProgram.SetUniform(System.String,System.Double)">
+            <summary>
+            Sets a shader specific global variable in the GPU
+            </summary>
+            <param name="location">The uniform name in the shader program</param>
+            <param name="value">Double value</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.ShaderProgram.SetUniform(System.String,System.Numerics.Vector2)">
+            <summary>
+            Sets a shader specific global variable in the GPU
+            </summary>
+            <param name="location">The uniform name in the shader program</param>
+            <param name="vec">Vector2 value</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.ShaderProgram.SetUniform(System.String,System.Numerics.Vector3)">
+            <summary>
+            Sets a shader specific global variable in the GPU
+            </summary>
+            <param name="location">The uniform name in the shader program</param>
+            <param name="vec">Vector3 value</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.ShaderProgram.SetUniform(System.String,System.Numerics.Vector4)">
+            <summary>
+            Sets a shader specific global variable in the GPU
+            </summary>
+            <param name="location">The uniform name in the shader program</param>
+            <param name="vec">Vector4 value</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.ShaderProgram.SetUniform(System.String,System.Numerics.Matrix4x4)">
+            <summary>
+            Sets a shader specific global variable in the GPU
+            </summary>
+            <param name="location">The uniform name in the shader program</param>
+            <param name="matrix">Matrix4 value</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.ShaderProgram.SetUniform(System.String,GlmSharp.mat4)">
+            <summary>
+            Sets a shader specific global variable in the GPU
+            </summary>
+            <param name="location">The uniform name in the shader program</param>
+            <param name="matrix">Matrix4 value</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.ShaderProgram.SetUniform(System.String,GlmSharp.mat3)">
+            <summary>
+            Sets a shader specific global variable in the GPU
+            </summary>
+            <param name="location">The uniform name in the shader program</param>
+            <param name="matrix">Matrix3 value</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.ShaderProgram.Dispose">
+            <summary>
+            Deletes this ShaderProgram from the GPU unmanaged resources
+            </summary>
+        </member>
+        <member name="T:HornetEngine.Graphics.ShaderStatus">
+            <summary>
+            Enum representing the status of a Shader
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.ShaderStatus.UNINITIALISED">
+            <summary>
+            Shader is uninitialised an cannot be used
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.ShaderStatus.AQUIRING_HANDLE">
+            <summary>
+            Shader is aquiring a GPU program handle
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.ShaderStatus.IMPORTING_SOURCE_CODE">
+            <summary>
+            Shader is importing source code from file
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.ShaderStatus.COMPILING">
+            <summary>
+            Shader is compiling the source code
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.ShaderStatus.READY">
+            <summary>
+            Shader is ready to use
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Shader.Handle">
+            <summary>
+            The shader internal program handle
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Shader.Type">
+            <summary>
+            The type of shader [VERTEX, GEOMETRY, FRAGMENT...]
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Shader.Error">
+            <summary>
+            The error string containing errors and warnings of the Shader during compile time
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Shader.Status">
+            <summary>
+            Indication of the current shader program status
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Shader.#ctor(Silk.NET.OpenGL.ShaderType,System.String,System.String)">
+            <summary>
+            Constructs a new instance of Shader with specified parameters
+            </summary>
+            <param name="type">The type of shader [Vertex, Geometry, Fragment...]</param>
+            <param name="sourcefile">The path to the shader source code</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Shader.GetInfoLog">
+            <summary>
+            Retrieves the current info log of the shader 
+            that indicates information such as errors and warnings during shader compile time
+            </summary>
+            <returns>String containing the current shader info log</returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.Shader.CompileShader(System.String)">
+            <summary>
+            Compiles the source code and links it to the shader
+            </summary>
+            <param name="src">The Shader source code</param>
+            <returns>Boolean indicating compile status; <c>true</c> if success | <c>false</c> if error</returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.Shader.ReadFromFile(System.String)">
+            <summary>
+            Tries to read shaderprogram source code from a file
+            </summary>
+            <param name="file">The absolute path to the shader file</param>
+            <returns>String containing the shader source code</returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.Shader.Dispose">
+            <summary>
+            Deletes this Shader from the GPU unmanaged resources
+            </summary>
+        </member>
+        <member name="T:HornetEngine.Graphics.VertexShader">
+            <summary>
+            Class representing a Vertex Shader
+            </summary>
+        </member>
+        <member name="T:HornetEngine.Graphics.GeometryShader">
+            <summary>
+            Class representing a Geometry Shader
+            </summary>
+        </member>
+        <member name="T:HornetEngine.Graphics.FragmentShader">
+            <summary>
+            Class representing a Fragment Shader
+            </summary>
+        </member>
+        <member name="T:HornetEngine.Graphics.TextureWrapSetting">
+            <summary>
+            Enum specifying the texture wrapping settings
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.TextureWrapSetting.REPEAT">
+            <summary>
+            Use repeat for outside mode of bounds texture mapping
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.TextureWrapSetting.MIRRORED_REPEAT">
+            <summary>
+            Use mirrored repeat mode for outside of bounds texture mapping
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.TextureWrapSetting.EDGE_CLAMP">
+            <summary>
+            Use edge clamp mode for outside of bounds texture mapping
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.TextureWrapSetting.BORDER_CLAMP">
+            <summary>
+            Use border clamp mode for outside of bounds texture mapping
+            </summary>
+        </member>
+        <member name="T:HornetEngine.Graphics.MinMagSetting">
+            <summary>
+            Enum specifying the mini/magnification setting
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.MinMagSetting.NEAREST">
+            <summary>
+            Use nearest neighbour pixel filtering for mini/magnification 
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.MinMagSetting.LINEAR">
+            <summary>
+            Use linear pixel filtering for mini/magnification 
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.TextureStatus.UNINITIALISED">
+            <summary>
+            Texture is unitialised and cannot be used yet
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.TextureStatus.AQUIRING_HANDLE">
+            <summary>
+            Texture is aquiring an OpenGL texture handle
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.TextureStatus.IMPORTING_IMAGE">
+            <summary>
+            Texture is importing image
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.TextureStatus.LOADING_IMAGE">
+            <summary>
+            Texture is loading image in the GPU
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.TextureStatus.READY">
+            <summary>
+            Texture is ready
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Texture.Handle">
+            <summary>
+            The handle of the texture
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Texture.Status">
+            <summary>
+            The status of the etxture
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Texture.Error">
+            <summary>
+            The error string
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Texture.Wrap">
+            <summary>
+            The wrap settings
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Texture.Filter">
+            <summary>
+            The min mag filter
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Texture.#ctor(System.String,System.String,System.Boolean)">
+            <summary>
+            The constructor of the texture
+            </summary>
+            <param name="dir_id">The folder ID</param>
+            <param name="imfile">The name of the file</param>
+            <param name="mipmap">A bool used for the mipmap initialization</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Texture.#ctor(System.UInt32,System.UInt32)">
+            <summary>
+            The constructor of a texture
+            </summary>
+            <param name="width">The width of thhe texture</param>
+            <param name="height">The height of the texture</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Texture.#ctor(System.UInt32,System.UInt32,Silk.NET.OpenGL.InternalFormat,Silk.NET.OpenGL.PixelFormat,Silk.NET.OpenGL.PixelType)">
+            <summary>
+            The constructor of a Texture
+            </summary>
+            <param name="width">The width of the texture</param>
+            <param name="height">The height of a texture</param>
+            <param name="bits_per_channel">The bits per channel</param>
+            <param name="channels">The channels of the texture</param>
+            <param name="pixel_type">The pixeltype of the texture</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Texture.SetFilterMode(HornetEngine.Graphics.MinMagSetting)">
+            <summary>
+            A function which sets a filter mode
+            </summary>
+            <param name="filter">The filter which should be set</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Texture.SetWrapMode(HornetEngine.Graphics.TextureWrapSetting)">
+            <summary>
+            A function which sets a wrap mode
+            </summary>
+            <param name="wrap">The wrap settings which should be set</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.Texture.Bind">
+            <summary>
+            A function which binds the texture
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Texture.Unbind">
+            <summary>
+            A function which unbinds the texture
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Texture.Dispose">
+            <summary>
+            A function that disposes the texture
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.MultiTexture.MAX_TEXTURE_LAYERS">
+            <summary>
+            The maximum amount of texture layers
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.MultiTexture.current_bound">
+            <summary>
+            The currently bound textures
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Graphics.MultiTexture.textures">
+            <summary>
+            An arraylist of textures
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.MultiTexture.#ctor">
+            <summary>
+            The constructor of the MultiTexture
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.MultiTexture.Bind">
+            <summary>
+            A function which binds the current multi textures
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.MultiTexture.Unbind">
+            <summary>
+            A function which unbinds the current multi textures
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.MultiTexture.SetTextureUnit(HornetEngine.Graphics.Texture,HornetEngine.Graphics.HTextureUnit)">
+            <summary>
+            A function which sets a texture unit
+            </summary>
+            <param name="tex">The texture unit to set</param>
+            <param name="layer">The allocated location for the GPU</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.MultiTexture.ClearTextureUnit(HornetEngine.Graphics.HTextureUnit)">
+            <summary>
+            A function that clears the texture unit
+            </summary>
+            <param name="layer">The allocated space by the GPU</param>
+        </member>
+        <member name="P:HornetEngine.Graphics.Window.Mouse">
+            <summary>
+            The mouse within the window
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Window.Keyboard">
+            <summary>
+            The keyboard within the window
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Window.Touch_panel">
+            <summary>
+            The touch panel within the window
+            </summary>
+        </member>
+        <member name="T:HornetEngine.Graphics.Window.WindowRefreshFunc">
+            <summary>
+            The refresh function of the window
+            </summary>
+        </member>
+        <member name="T:HornetEngine.Graphics.Window.WindowFixedUpdateFunc">
+            <summary>
+            The fixed update function of the window
+            </summary>
+        </member>
+        <member name="T:HornetEngine.Graphics.Window.WindowMoveFunc">
+            <summary>
+            The move function of the window
+            </summary>
+            <param name="newpos">The new position</param>
+        </member>
+        <member name="T:HornetEngine.Graphics.Window.WindowResizeFunc">
+            <summary>
+            The resize function of the window
+            </summary>
+            <param name="newsize">The new size</param>
+        </member>
+        <member name="T:HornetEngine.Graphics.Window.WindowFocusFunc">
+            <summary>
+            The focus function of the window
+            </summary>
+            <param name="focussed">A bool which shows whether the window is focused</param>
+        </member>
+        <member name="T:HornetEngine.Graphics.Window.WindowCloseFunc">
+            <summary>
+            The close function of the window
+            </summary>
+        </member>
+        <member name="E:HornetEngine.Graphics.Window.Redraw">
+            <summary>
+            The redraw event
+            </summary>
+        </member>
+        <member name="E:HornetEngine.Graphics.Window.Move">
+            <summary>
+            The move event
+            </summary>
+        </member>
+        <member name="E:HornetEngine.Graphics.Window.Resize">
+            <summary>
+            The resize event
+            </summary>
+        </member>
+        <member name="E:HornetEngine.Graphics.Window.Focus">
+            <summary>
+            The focus event
+            </summary>
+        </member>
+        <member name="E:HornetEngine.Graphics.Window.Close">
+            <summary>
+            The close event
+            </summary>
+        </member>
+        <member name="E:HornetEngine.Graphics.Window.FixedUpdate">
+            <summary>
+            The fixed update event
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Window.#ctor">
+            <summary>
+            Instantiates a new window object with base parameters
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Window.Open(System.String,System.Int32,System.Int32,HornetEngine.Graphics.WindowMode)">
+            <summary>
+            Opens a new application window on the current thread with specified title and size parameters
+            </summary>
+            <param name="title">The title of the application window</param>
+            <param name="width">The width of the application window in pixels</param>
+            <param name="height">The height of the application window in pixels</param>
+            <param name="fullscreen">Fullscreen specifier, false: undecorated window, true: decorated window</param>
+            <returns>Window creation succes status, false: window creation failed, true: window creation succesfull</returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.Window.Run">
+            <summary>
+            Start the application window refresh loop and processes
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Window.SetFixedUpdateFrequency(System.Single)">
+            <summary>
+            Sets the FixedUpdate frequency of the FixedUpdate thread
+            </summary>
+            <param name="newfreq">The new frequency in Hz</param>
+        </member>
+        <member name="P:HornetEngine.Graphics.Attribute.byte_data">
+            <summary>
+            Attribute data that is stored within is Attribute
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Attribute.Name">
+            <summary>
+            The name of the Attribute
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Attribute.Base_type">
+            <summary>
+            The type of the attribute
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Attribute.Components">
+            <summary>
+            The components of the attribute
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.Attribute.Base_type_size">
+            <summary>
+            The size of the base type
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.Attribute.GetDatapointCount">
+            <summary>
+            Gets the amount of datapoints stored in the internal data buffer.
+            </summary>
+            <returns>The amount of datapoints stored in the internal data buffer</returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.Attribute.ValidateDataIntegrity">
+            <summary>
+            Checks if the amount of data in the buffer 
+            </summary>
+            <returns>True if all data is valid, False if there was no data found or data does not match component count</returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.Attribute.ClearData">
+            <summary>
+            A function which clears the attribute data
+            </summary>
+        </member>
+        <member name="T:HornetEngine.Graphics.AttributeStorage">
+            <summary>
+            Storage class for Attributes, stores attributes FiFo
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.AttributeStorage.#ctor">
+            <summary>
+            Creates a new instance of AttributeStorage with default parameters
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Graphics.AttributeStorage.Item(System.Int32)">
+            <summary>
+            Retrieves an item on specified index from storage
+            </summary>
+            <param name="index">The index of the item in storage</param>
+            <returns>Attribute on the index in the storage</returns>
+        </member>
+        <member name="P:HornetEngine.Graphics.AttributeStorage.Count">
+            <summary>
+            The amount of items inside the storage
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.AttributeStorage.GetTotalByteCount">
+            <summary>
+            Gets the total byte size of all the data that is stored in all attributes
+            </summary>
+            <returns>Total byte size of all data in attributes</returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.AttributeStorage.ValidateDataAlignment">
+            <summary>
+            Checks if the data stored in each attribute has the same amount of datapoints
+            </summary>
+            <returns>True if the data is aligned, False if not</returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.AttributeStorage.GetAttribute(System.String)">
+            <summary>
+            Gets an attribute with specified name from the storage
+            </summary>
+            <param name="name">The name of the attribute that needs to be retrieved</param>
+            <returns>Stored attribute if found, null if not found</returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.AttributeStorage.AddAttribute(HornetEngine.Graphics.Attribute)">
+            <summary>
+            Adds an Attribute to the storage
+            </summary>
+            <param name="at">The Attribute to add to the storage</param>
+            <returns>True if added, False if there was already an Attribute with that name</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:HornetEngine.Graphics.AttributeStorage.RemoveAttribute(System.String)">
+            <summary>
+            Removes an Attribute from the storage
+            </summary>
+            <param name="name">The name of the Attribute that needs to be removed</param>
+            <returns>True if an attribute was deleted, False if no attribute was deleted</returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.AttributeStorage.ClearAttributes">
+            <summary>
+            Clears the Attribute storage
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Graphics.AttributeStorage.GetEnumerator">
+            <summary>
+            A function which getts the attribute's enumerator
+            </summary>
+            <returns>The enumerator</returns>
+        </member>
+        <member name="M:HornetEngine.Graphics.DoubleAttribute.#ctor(System.String,System.UInt32)">
+            <summary>
+            The constructor of the DoubleAttribute
+            </summary>
+            <param name="name">The name of the attribute</param>
+            <param name="comps">The components of the attribute</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.DoubleAttribute.AddData(System.Double)">
+            <summary>
+            A function which can be used to add data to the attribute
+            </summary>
+            <param name="data">The data which should be added</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.DoubleAttribute.AddData(OpenTK.Mathematics.Vector2d)">
+            <summary>
+            A function which can be used to add data to the attribute
+            </summary>
+            <param name="data">The data which should be added</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.DoubleAttribute.AddData(OpenTK.Mathematics.Vector3d)">
+            <summary>
+            A function which can be used to add data to the attribute
+            </summary>
+            <param name="data">The data which should be added</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.DoubleAttribute.AddData(OpenTK.Mathematics.Vector4d)">
+            <summary>
+            A function which can be used to add data to the attribute
+            </summary>
+            <param name="data">The data which should be added</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.FloatAttribute.#ctor(System.String,System.UInt32)">
+            <summary>
+            The constructor of the FloatAttribute
+            </summary>
+            <param name="name">The name of the attribute</param>
+            <param name="comps">The components of the attribute</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.FloatAttribute.AddData(System.Single)">
+            <summary>
+            A function which can be used to add data to the attribute
+            </summary>
+            <param name="data">The data which should be added</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.FloatAttribute.AddData(OpenTK.Mathematics.Vector2)">
+            <summary>
+            A function which can be used to add data to the attribute
+            </summary>
+            <param name="data">The data which should be added</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.IntAttribute.#ctor(System.String,System.UInt32)">
+            <summary>
+            The constructor of the Intattribute
+            </summary>
+            <param name="name">The name of the attribute</param>
+            <param name="comps">The components of the attribute</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.IntAttribute.AddData(System.Int32)">
+            <summary>
+            A function which can be used to add data to the attribute
+            </summary>
+            <param name="data">The data which should be added</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.IntAttribute.AddData(OpenTK.Mathematics.Vector2i)">
+            <summary>
+            A function which can be used to add data to the attribute
+            </summary>
+            <param name="data">The data which should be added</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.IntAttribute.AddData(OpenTK.Mathematics.Vector3i)">
+            <summary>
+            A function which can be used to add data to the attribute
+            </summary>
+            <param name="data">The data which should be added</param>
+        </member>
+        <member name="M:HornetEngine.Graphics.IntAttribute.AddData(OpenTK.Mathematics.Vector4i)">
+            <summary>
+            A function which can be used to add data to the attribute
+            </summary>
+            <param name="data">The data which should be added</param>
+        </member>
+        <member name="T:HornetEngine.Input.Keyboard.KeyPressFunc">
+            <summary>
+            The key press function
+            </summary>
+            <param name="key">The keys which were pressed</param>
+        </member>
+        <member name="T:HornetEngine.Input.Keyboard.KeyReleaseFunc">
+            <summary>
+            The key release function
+            </summary>
+            <param name="key">The keys which were released</param>
+        </member>
+        <member name="T:HornetEngine.Input.Keyboard.KeyRepeatFunc">
+            <summary>
+            The key repeat function
+            </summary>
+            <param name="key">The keys which were held down</param>
+        </member>
+        <member name="T:HornetEngine.Input.Keyboard.KeyTypeFunc">
+            <summary>
+            The key type function
+            </summary>
+            <param name="identifier">The identifier of the key</param>
+        </member>
+        <member name="E:HornetEngine.Input.Keyboard.KeyPress">
+            <summary>
+            The key press event
+            </summary>
+        </member>
+        <member name="E:HornetEngine.Input.Keyboard.KeyRelease">
+            <summary>
+            The key release event
+            </summary>
+        </member>
+        <member name="E:HornetEngine.Input.Keyboard.KeyRepeat">
+            <summary>
+            The key repeat event
+            </summary>
+        </member>
+        <member name="E:HornetEngine.Input.Keyboard.KeyType">
+            <summary>
+            The key type event
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Input.Keyboard.#ctor(Silk.NET.GLFW.WindowHandle*)">
+            <summary>
+            The constructor of the Keyboard class
+            </summary>
+            <param name="w_handle">The window to which the keyboard class should be bound.</param>
+        </member>
+        <member name="M:HornetEngine.Input.Keyboard.GetPressedButtons">
+            <summary>
+            Gets all the pressed buttons
+            </summary>
+            <returns>Array filled with the currently pressed buttons</returns>
+        </member>
+        <member name="M:HornetEngine.Input.Keyboard.IsKeyDown(Silk.NET.GLFW.Keys)">
+            <summary>
+            Checks if the requested key is currently pressed
+            </summary>
+            <param name="key">The key that needs to be checked</param>
+            <returns>true if the specified key was down, false if not</returns>
+        </member>
+        <member name="M:HornetEngine.Input.Keyboard.ChangeMode(HornetEngine.Input.KeyboardMode)">
+            <summary>
+            A function which can be used to change the keyboard's mode.
+            </summary>
+            <param name="newMode">The new mode which should be used.</param>
+        </member>
+        <member name="M:HornetEngine.Input.Keyboard.OnKeyAction(Silk.NET.GLFW.WindowHandle*,Silk.NET.GLFW.Keys,System.Int32,Silk.NET.GLFW.InputAction,Silk.NET.GLFW.KeyModifiers)">
+            <summary>
+            A function which will be called when a key has been pressed/released.
+            </summary>
+            <param name="window">The window in which the key has been pressed/released.</param>
+            <param name="key">The key which has been used.</param>
+            <param name="scanCode">The physical code which the keyboard passes to Windows.</param>
+            <param name="action">A variable which holds whether the key has been pressed or released.</param>
+            <param name="mods">Modifiers for the keys, such as shift/control etc.</param>
+        </member>
+        <member name="M:HornetEngine.Input.Keyboard.OnKeyChar(Silk.NET.GLFW.WindowHandle*,System.UInt32)">
+            <summary>
+            A function which will be called when a key has been typed.
+            </summary>
+            <param name="window"></param>
+            <param name="codepoint"></param>
+        </member>
+        <member name="M:HornetEngine.Input.Keyboard.HandleReleasedKey(Silk.NET.GLFW.Keys)">
+            <summary>
+            A function which will handle a released key.
+            </summary>
+            <param name="releasedKey">The key which has been released.</param>
+        </member>
+        <member name="M:HornetEngine.Input.Keyboard.HandlePressedKey(Silk.NET.GLFW.Keys)">
+            <summary>
+            A function which will handle a pressed key.
+            </summary>
+            <param name="pressedKey">The key which has been pressed.</param>
+        </member>
+        <member name="M:HornetEngine.Input.Keyboard.HandleRepeatKey(Silk.NET.GLFW.Keys)">
+            <summary>
+            A function which will handle a pressed key.
+            </summary>
+            <param name="pressedKey">The key which has been pressed.</param>
+        </member>
+        <member name="M:HornetEngine.Input.Keyboard.AddKey(Silk.NET.GLFW.Keys)">
+            <summary>
+            A function which can be used to add a key to the pressed keys arrays
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:HornetEngine.Input.Keyboard.RemoveKey(Silk.NET.GLFW.Keys)">
+            <summary>
+            A function which can be used to remove a key from the pressed keys array
+            </summary>
+            <param name="key">The key which should be removed.</param>
+        </member>
+        <member name="F:HornetEngine.Input.Mouse.MAX_PRESSED_BUTTONS">
+            <summary>
+            The maximum amount of buttons which can be pressed
+            </summary>
+        </member>
+        <member name="T:HornetEngine.Input.Mouse.MousePressFunc">
+            <summary>
+            The mouse press function
+            </summary>
+            <param name="button">The mouse button which has been pressed</param>
+        </member>
+        <member name="T:HornetEngine.Input.Mouse.MouseReleaseFunc">
+            <summary>
+            The mouse release function
+            </summary>
+            <param name="button">The mouse button which has been released</param>
+        </member>
+        <member name="T:HornetEngine.Input.Mouse.MouseScrollFunc">
+            <summary>
+            The mouse scroll function
+            </summary>
+            <param name="xoffset">The x offset</param>
+            <param name="yoffset">The y offset</param>
+        </member>
+        <member name="T:HornetEngine.Input.Mouse.MouseMoveFunc">
+            <summary>
+            The mouse move function
+            </summary>
+            <param name="xpos">The new x pos</param>
+            <param name="ypos">The new y pos</param>
+            <param name="deltaX">The difference between the x positions</param>
+            <param name="deltaY">The difference between the y positions</param>
+        </member>
+        <member name="E:HornetEngine.Input.Mouse.MousePress">
+            <summary>
+            The mouse press event
+            </summary>
+        </member>
+        <member name="E:HornetEngine.Input.Mouse.MouseRelease">
+            <summary>
+            The mouse release event
+            </summary>
+        </member>
+        <member name="E:HornetEngine.Input.Mouse.MouseScroll">
+            <summary>
+            The mouse scroll event
+            </summary>
+        </member>
+        <member name="E:HornetEngine.Input.Mouse.MouseMove">
+            <summary>
+            The mouse move event
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Input.Mouse.#ctor(Silk.NET.GLFW.WindowHandle*)">
+            <summary>
+            The constructor of the Mouse class
+            </summary>
+            <param name="w_handle">The handle of the window</param>
+        </member>
+        <member name="M:HornetEngine.Input.Mouse.IsButtonDown(HornetEngine.Input.MouseButtons)">
+            <summary>
+            Checks if the specified mouse button is down
+            </summary>
+            <param name="button">The button to be checked against</param>
+            <returns>true if mousebutton was down, false if not</returns>
+        </member>
+        <member name="M:HornetEngine.Input.Mouse.GetPressedButtons">
+            <summary>
+            Gets all the currently pressed mouse buttons
+            </summary>
+            <returns>Array with all currently pressed mouse buttons</returns>
+        </member>
+        <member name="M:HornetEngine.Input.Mouse.GetMode">
+            <summary>
+            A function which will return the current mode of the mouse
+            </summary>
+            <returns>A MouseMode, depending on the current mode.</returns>
+        </member>
+        <member name="M:HornetEngine.Input.Mouse.SetMode(HornetEngine.Input.MouseMode)">
+            <summary>
+            A function which can be used to switch the mouse's mode
+            </summary>
+            <param name="mode">The button which has been pressed</param>
+        </member>
+        <member name="M:HornetEngine.Input.Mouse.SetRawInputMode(System.Boolean)">
+            <summary>
+            Suggests to the window to use the raw mouse motion or not
+            </summary>
+            <param name="state">true == raw mouse motion, false == windows normalised mouse motion</param>
+        </member>
+        <member name="M:HornetEngine.Input.Mouse.OnMouseScroll(Silk.NET.GLFW.WindowHandle*,System.Double,System.Double)">
+            <summary>
+            A function which will be called when the user scrolls
+            </summary>
+            <param name="w_handle">The handle of the window</param>
+            <param name="xoffset">The amount scrolled on the x-axis</param>
+            <param name="yoffset">The amount scrolled on the y-axis</param>
+        </member>
+        <member name="M:HornetEngine.Input.Mouse.OnMouseMoved(Silk.NET.GLFW.WindowHandle*,System.Double,System.Double)">
+            <summary>
+            A function which will be called when the mouse moves.
+            </summary>
+            <param name="w_handle">The handle of the window</param>
+            <param name="xpos">The new position on the x-axis</param>
+            <param name="ypos">The new position on the y-axis</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:HornetEngine.Input.Mouse.OnMousePressed(Silk.NET.GLFW.WindowHandle*,Silk.NET.GLFW.MouseButton,Silk.NET.GLFW.InputAction,Silk.NET.GLFW.KeyModifiers)" -->
+        <member name="M:HornetEngine.Input.Mouse.AddMouseButton(HornetEngine.Input.MouseButtons)">
+            <summary>
+            A function which can be used to register a pressed button
+            </summary>
+            <param name="button">The button which has been pressed</param>
+        </member>
+        <member name="M:HornetEngine.Input.Mouse.RemoveMouseButton(HornetEngine.Input.MouseButtons)">
+            <summary>
+            A function which can be used to deregister a button
+            </summary>
+            <param name="button">The button which should be deregistered</param>
+        </member>
+        <member name="T:HornetEngine.Input.TouchPoint">
+            <summary>
+            Structure containing data about a TouchPoint on the screen
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Input.TouchPoint.xpos">
+            <summary>
+            The TouchPoint X position
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Input.TouchPoint.ypos">
+            <summary>
+            The TouchPoint Y position
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Input.TouchPoint.contact_width">
+            <summary>
+            The TouchPoint contact area width in pixels
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Input.TouchPoint.contact_height">
+            <summary>
+            The TouchPoint contact area height in pixel
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Input.TouchPoint.virt_id">
+            <summary>
+            The TouchPoint virtual id
+            </summary>
+        </member>
+        <member name="T:HornetEngine.Input.TouchPanel">
+            <summary>
+            Class that defines behaviour and events for catching and passing TouchEvents
+            </summary>
+        </member>
+        <member name="T:HornetEngine.Input.TouchPanel.TouchPointMoveFunc">
+            <summary>
+            The touch move function
+            </summary>
+            <param name="position">The new position</param>
+            <param name="delta">The difference between the new and the old position</param>
+            <param name="size">The size of the touch points</param>
+            <param name="id">The ID of the touch point</param>
+        </member>
+        <member name="T:HornetEngine.Input.TouchPanel.TouchPointPressFunc">
+            <summary>
+            The touch press function
+            </summary>
+            <param name="position">The position of the touch point</param>
+            <param name="size">The size of the touch point</param>
+            <param name="id">The ID of the touch point</param>
+        </member>
+        <member name="T:HornetEngine.Input.TouchPanel.TouchPointReleaseFunc">
+            <summary>
+            The touch release function
+            </summary>
+            <param name="position">The position of the touch point</param>
+            <param name="size">The size of the touch point</param>
+            <param name="id">The ID of the touch point</param>
+        </member>
+        <member name="E:HornetEngine.Input.TouchPanel.TouchMove">
+            <summary>
+            Event queue for listening to Touch Move events
+            </summary>
+        </member>
+        <member name="E:HornetEngine.Input.TouchPanel.TouchPress">
+            <summary>
+            Event queue for listening to Touch Press events
+            </summary>
+        </member>
+        <member name="E:HornetEngine.Input.TouchPanel.TouchRelease">
+            <summary>
+            Event queue for listening to Touch Release events
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Input.TouchPanel.#ctor(HornetEngine.Util.Drivers.TouchDriver)">
+            <summary>
+            Instantiates a new instance of TouchPanel that hooks into the touch driver event bus
+            </summary>
+            <param name="drv">The TouchDriver instance</param>
+        </member>
+        <member name="M:HornetEngine.Input.TouchPanel.GetTouchPoints">
+            <summary>
+            Gets a list of all the currently active touch points on the screen
+            </summary>
+            <returns>A list of all the active touch points on the screen</returns>
+        </member>
+        <member name="M:HornetEngine.Input.TouchPanel.OnTouchEvent(System.Numerics.Vector2,System.Numerics.Vector2,System.UInt32,System.UInt32)">
+            <summary>
+            Internal interface function for catching touch events from the touch driver
+            </summary>
+            <param name="position">The position of the touch point</param>
+            <param name="size">The size of the touch point in pixels</param>
+            <param name="id">The id of the touch point</param>
+            <param name="flags">The special flags that identifies the event type</param>
+        </member>
+        <member name="M:HornetEngine.Input.Touch_Recognition.TouchManager.#ctor(HornetEngine.Input.TouchPanel)">
+            <summary>
+            The constructor of the TouchManager
+            </summary>
+            <param name="panel">The touchpanel</param>
+        </member>
+        <member name="M:HornetEngine.Input.Touch_Recognition.TouchManager.InitializeTouchObjects(System.Collections.Generic.List{HornetEngine.Input.TouchPoint})">
+            <summary>
+            A function which will initialize all the touchobjects.
+            </summary>
+            <param name="touchPoints">A list of all the touchpoints</param>
+        </member>
+        <member name="M:HornetEngine.Input.Touch_Recognition.TouchManager.SizeCheck(System.Collections.Generic.List{HornetEngine.Input.TouchPoint})">
+            <summary>
+            A function which will check which touchpoint is the largest.
+            </summary>
+            <param name="touchPoints">A list of touchpoints in a random order.</param>
+            <returns>A list of touchpoints, where the first entry is the touchpoint with the largest surface area.</returns>
+        </member>
+        <member name="M:HornetEngine.Input.Touch_Recognition.TouchManager.Refresh">
+            <summary>
+            A function which ensures that all the TouchPoints will be refreshed each frame.
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Input.Touch_Recognition.TouchObject.touch_points">
+            <summary>
+            The touchpoints of the touch object
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Input.Touch_Recognition.TouchObject.type">
+            <summary>
+            The type of the touch object
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Input.Touch_Recognition.TouchObject.configuration">
+            <summary>
+            The configuration of the program
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Input.Touch_Recognition.TouchObject.#ctor(System.Numerics.Vector2[])">
+            <summary>
+            The constructor of a touch object.
+            </summary>
+            <param name="touchpoints">A list of touchpoints, where the first point will always be the FWD</param>
+        </member>
+        <member name="M:HornetEngine.Input.Touch_Recognition.TouchObject.getTouchPoints">
+            <summary>
+            A function which can be called to get the object's touchpoints
+            </summary>
+            <returns>A list of Vector2.</returns>
+        </member>
+        <member name="M:HornetEngine.Input.Touch_Recognition.TouchObject.Move(System.Numerics.Vector2[])">
+            <summary>
+            A function which can be used to move the touch object to a new location.
+            The first Vector2 should always be the FWD point.
+            </summary>
+            <param name="newPos">An arraylist of touchpoints of the new location</param>
+        </member>
+        <member name="M:HornetEngine.Input.Touch_Recognition.TouchObject.InitializeObject">
+            <summary>
+            A function which will initialize the touch object
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Input.Touch_Recognition.TouchObject.CheckType(System.Double)">
+            <summary>
+            A function which will assign a type to a touch object
+            </summary>
+            <param name="angle">The angle between the touch points</param>
+        </member>
+        <member name="M:HornetEngine.Input.Touch_Recognition.TouchObject.AngleBetween(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2)">
+            <summary>
+            A function which will calculate the angles between the touchpoints
+            </summary>
+            <param name="fwd">A vector to the FWD touchpoint which can be used for rotation</param>
+            <param name="vector1">A vector to one of the side touchpoints</param>
+            <param name="vector2">A vector to one of the side touchpoints</param>
+            <returns>A double which contains the angle between the points</returns>
+        </member>
+        <member name="T:HornetEngine.Sound.Listener">
+            <summary>
+            The SoundManager class can be used to manage the user's details within the application.
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Sound.Listener.#ctor">
+            <summary>
+            The constructor of the listener class
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Sound.Listener.SetPosition(System.Numerics.Vector3)">
+            <summary>
+            A function which will allow the user to change their own position
+            </summary>
+            <param name="pos">A vector with 3 elements, containing the X, Y and Z coords of the user.</param>
+        </member>
+        <member name="M:HornetEngine.Sound.Listener.SetPosition(GlmSharp.vec3)">
+            <summary>
+            A function which can be used to set a new position
+            </summary>
+            <param name="pos">A vec3 containing the new position</param>
+        </member>
+        <member name="M:HornetEngine.Sound.Listener.SetLookingDir(System.Numerics.Vector3)">
+            <summary>
+            A function which will allow the user to change their looking direction
+            </summary>
+            <param name="dir">A vector with 3 elements, containing the X, Y and Z coords of the direction the user is looking at.</param>
+        </member>
+        <member name="M:HornetEngine.Sound.Listener.SetLookingDir(GlmSharp.vec3)">
+            <summary>
+            A function which can be used to set the looking direction
+            </summary>
+            <param name="dir">A vec3 containing the new looking direction</param>
+        </member>
+        <member name="M:HornetEngine.Sound.Listener.setUpDir(System.Numerics.Vector3)">
+            <summary>
+            A function which will allow the user to change their up direction
+            </summary>
+            <param name="upv">A vector with 3 elements, containing the X, Y and Z coords of the up vector</param>
+        </member>
+        <member name="M:HornetEngine.Sound.Listener.setGlobalVol(System.Single)">
+            <summary>
+            A function which will allow the user to change the global volume
+            </summary>
+            <param name="gvol">A float which contains the global volume</param>
+        </member>
+        <member name="M:HornetEngine.Sound.Listener.getPosition">
+            <summary>
+            A function which will return the user's position
+            </summary>
+            <returns>A Vector3 containing the user's X, Y and Z coords.</returns>
+        </member>
+        <member name="M:HornetEngine.Sound.Listener.getLookingDir">
+            <summary>
+            A function which will return the user's looking direction
+            </summary>
+            <returns>A Vector3 containing the user's looking direction X, Y and Z coords.</returns>
+        </member>
+        <member name="M:HornetEngine.Sound.Listener.getUpDir">
+            <summary>
+            A function which will return the user's up direction
+            </summary>
+            <returns>A Vector3 containing the user's up direction X, Y and Z coords.</returns>
+        </member>
+        <member name="M:HornetEngine.Sound.Listener.getGlobalVolume">
+            <summary>
+            A function which will return the global volume
+            </summary>
+            <returns>A flooat containing the global volume.</returns>
+        </member>
+        <member name="P:HornetEngine.Sound.Listener.Instance">
+            <summary>
+            A method to get the instance of the Listener.
+            The lock ensures that the singleton is thread-safe.
+            </summary>
+        </member>
+        <member name="T:HornetEngine.Sound.Sample">
+            <summary>
+            A Sample class, which will be used to hold the data of Sound Samples.
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Sound.Sample.#ctor(System.String)">
+            <summary>
+            The constructor of the Sound Sample
+            </summary>
+            <param name="givenFileLocation">A string which contains the path to the file which should be played.</param>
+        </member>
+        <member name="M:HornetEngine.Sound.Sample.#ctor(System.String,System.String)">
+            <summary>
+            The constructor of the Sound Sample
+            </summary>
+            <param name="folder_id">The folder ID</param>
+            <param name="file">The file name</param>
+            <exception cref="T:System.ArgumentException">Throws an ArgumentException</exception>
+        </member>
+        <member name="T:HornetEngine.Sound.DescriptorChunk">
+            <summary>
+            Struct for storing Chunk Descriptor data
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Sound.DescriptorChunk.signature">
+            <summary>
+            The chunk signature string
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Sound.DescriptorChunk.chunk_size">
+            <summary>
+            The size of the Chunk Descriptor
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Sound.DescriptorChunk.format">
+            <summary>
+            The format of the File
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Sound.DescriptorChunk.Parse(System.IO.BinaryReader)">
+            <summary>
+            Tries to parse a chunk descriptor from given stream
+            </summary>
+            <param name="reader">The binary reader to the opened audio file stream</param>
+            <returns>Filled <c>DescriptorChunk</c></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:HornetEngine.Sound.FormatChunk">
+            <summary>
+            Struct for storing Format Chunk data
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Sound.FormatChunk.chunk_id">
+            <summary>
+            The id of this format chunk
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Sound.FormatChunk.sub_chunk_size">
+            <summary>
+            The size of the format chunk
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Sound.FormatChunk.audio_format">
+            <summary>
+            The format the audio is stored in (wave)
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Sound.FormatChunk.num_channels">
+            <summary>
+            The amount of channels
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Sound.FormatChunk.sample_rate">
+            <summary>
+            The sound sample rate in Hz
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Sound.FormatChunk.byte_rate">
+            <summary>
+            The sound byte rate Bytes/Second
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Sound.FormatChunk.block_align">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Sound.FormatChunk.bits_per_sample">
+            <summary>
+            The amount of bits per sound sample
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Sound.FormatChunk.Parse(System.IO.BinaryReader)">
+            <summary>
+            Tries to parse a format chunk from given stream
+            </summary>
+            <param name="reader">The binary reader to the opened audio file stream</param>
+            <returns>Filled <c>FormatChunk</c></returns>
+            /// <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:HornetEngine.Sound.DataChunk">
+            <summary>
+            Struct for storing Audio data
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Sound.DataChunk.chunk_id">
+            <summary>
+            The ID of the data stored in this chunk
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Sound.DataChunk.chunk_size">
+            <summary>
+            The total size of the data contained in this chunk
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Sound.DataChunk.data">
+            <summary>
+            The raw audio data
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Sound.DataChunk.Parse(System.IO.BinaryReader)">
+            <summary>
+            Tries to parse a data chunk from given stream
+            </summary>
+            <param name="reader">The binary reader to the opened audio file stream</param>
+            <returns>Filled <c>DataChunk</c></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:HornetEngine.Sound.SoundSource">
+            <summary>
+            The abstract class SoundSource will be used to pass around a shared source.
+            
+            This ensures that the source wont have to be re-created and deleted with every sound sample.
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Sound.SoundSource.#ctor(System.Boolean)">
+            <summary>
+            The constructor of the Sound Source
+            </summary>
+            <param name="looping">A value containing true/false depending on whether the sound should loop.</param>
+        </member>
+        <member name="M:HornetEngine.Sound.SoundSource.PlaySoundEffect(HornetEngine.Sound.Sample)">
+            <summary>
+            A function which will play a sound effect
+            </summary>
+            <param name="s">The sample which should be played</param>
+            <exception cref="T:System.ArgumentNullException">Throws an ArgumentNullException</exception>
+        </member>
+        <member name="M:HornetEngine.Sound.SoundSource.GetState">
+            <summary>
+            A function which gets the current ALSourceState
+            </summary>
+            <returns>Returns the current state</returns>
+        </member>
+        <member name="M:HornetEngine.Sound.SoundSource.Pause">
+            <summary>
+            A function which can be used to pause a sound
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Sound.SoundSource.Stop">
+            <summary>
+            A function which can be used to stop a sound
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Sound.SoundSource.SetPitch(System.Single)">
+            <summary>
+            A function which can be used to set the pitch of the source
+            </summary>
+            <param name="newPitch">The new value which should be used for the pitch.</param>
+        </member>
+        <member name="M:HornetEngine.Sound.SoundSource.SetVolume(System.Single)">
+            <summary>
+            A function which can be used to set the volume of the source
+            </summary>
+            <param name="newVolume">The new value which should be used for the volume.</param>
+        </member>
+        <member name="M:HornetEngine.Sound.SoundSource.SetPosition(GlmSharp.vec3)">
+            <summary>
+            A function which can be used to set the position of the sound source
+            </summary>
+            <param name="world_pos">A vec3 containing the new position</param>
+        </member>
+        <member name="M:HornetEngine.Sound.SoundSource.SetVelocity(GlmSharp.vec3)">
+            <summary>
+            A function which can be used to set the velocity
+            </summary>
+            <param name="velocity">A vec3 containing the new velocity</param>
+        </member>
+        <member name="M:HornetEngine.Util.DirectoryManager.RegisterResourceDir(System.String,System.String,System.Boolean)">
+            <summary>
+            A function which registers a resource directory
+            </summary>
+            <param name="identifier">The ID of the directory</param>
+            <param name="a_path">The path to the directory</param>
+            <param name="overwrite">A bool containing whether this should be overwritten</param>
+            <returns></returns>
+        </member>
+        <member name="M:HornetEngine.Util.DirectoryManager.DeleteResourceDir(System.String)">
+            <summary>
+            A function which can delete a resource directory
+            </summary>
+            <param name="identifier">The ID of the resource directory</param>
+            <returns></returns>
+        </member>
+        <member name="M:HornetEngine.Util.DirectoryManager.GetResourceDir(System.String)">
+            <summary>
+            A function which obtains a resource directory
+            </summary>
+            <param name="identifier">The ID of the resource directory</param>
+            <returns>Returnss a path to the resource directory</returns>
+        </member>
+        <member name="M:HornetEngine.Util.DirectoryManager.ConcatDirFile(System.String,System.String)">
+            <summary>
+            A function which concats a string to a file
+            </summary>
+            <param name="dir_path">The path to the directory</param>
+            <param name="file">The path to the file</param>
+            <returns>Returns a concatted string to the file</returns>
+        </member>
+        <member name="M:HornetEngine.Util.Drivers.ITouchEventListener.OnTouchEvent(System.Numerics.Vector2,System.Numerics.Vector2,System.UInt32,System.UInt32)">
+            <summary>
+            The touch event
+            </summary>
+            <param name="position">The position of the touch point</param>
+            <param name="size">The size of the touch point</param>
+            <param name="id">The ID of the touch point</param>
+            <param name="flags">The flags of the touch point</param>
+        </member>
+        <member name="M:HornetEngine.Util.Drivers.TouchDriver.GetInstance">
+            <summary>
+            A function which gets TouchDriver instance
+            </summary>
+            <returns>The TouchDriver instance</returns>
+        </member>
+        <member name="M:HornetEngine.Util.Drivers.TouchDriver.Initialise(Silk.NET.GLFW.GlfwNativeWindow@)">
+            <summary>
+            A function which initializes the TouchDriver
+            </summary>
+            <param name="wnd">A reference to the GLFW window</param>
+        </member>
+        <member name="M:HornetEngine.Util.Drivers.TouchDriver.SetEventListener(HornetEngine.Util.Drivers.ITouchEventListener)">
+            <summary>
+            A function which sets an event listener
+            </summary>
+            <param name="lst">The listener which should be set</param>
+            <exception cref="T:System.ArgumentNullException">Throws an ArgumentNullException</exception>
+        </member>
+        <member name="M:HornetEngine.Util.Drivers.TouchDriver.Dispose">
+            <summary>
+            A function which disposes of the TouchDriver
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Util.Exceptions.AttributeDatapointException.#ctor">
+            <summary>
+            An AttributeDatapointException exception class
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Util.Exceptions.ContextInitException.#ctor(System.Object,System.String)">
+            <summary>
+            A ContextInitException exception class
+            </summary>
+        </member>
+        <member name="T:HornetEngine.Util.Exceptions.ContextException">
+            <summary>
+            A ContextException exception class
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Util.Exceptions.MissingResourceException.#ctor(System.String)">
+            <summary>
+            A MissingResourceException exception class
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Util.Exceptions.NativeWindowException.#ctor(System.String)">
+            <summary>
+            A NativeWindowException exception class
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Util.Exceptions.NativeWindowCreationException.#ctor(System.String)">
+            <summary>
+            A NativeWindowCreationException exception class
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Util.ImageResource.image">
+            <summary>
+            An image
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Util.ImageResource.width">
+            <summary>
+            The width and height of an image
+            </summary>
+        </member>
+        <member name="F:HornetEngine.Util.ImageResource.height">
+            <summary>
+            The width and height of an image
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Util.ImageResource.#ctor(SixLabors.ImageSharp.Image{SixLabors.ImageSharp.PixelFormats.Rgba32})">
+            <summary>
+            The constructor of an image
+            </summary>
+            <param name="im">The given image</param>
+        </member>
+        <member name="M:HornetEngine.Util.ImageResource.Load(System.String,System.Boolean)">
+            <summary>
+            A function which loads an image
+            </summary>
+            <param name="path">The path of the image</param>
+            <param name="flip">A boolean which contains whether the image should be flipped</param>
+            <returns></returns>
+        </member>
+        <member name="M:HornetEngine.Util.ImageResource.Dispose">
+            <summary>
+            A function which diposes of an image
+            </summary>
+        </member>
+        <member name="T:HornetEngine.Util.ResourceManager`1">
+            <summary>
+            Manager base class for managing and storing resources
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Util.ResourceManager`1.#ctor">
+            <summary>
+            Instantiates a new instance of ResourceManager with default attributes
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Util.ResourceManager`1.HasResource(System.String)">
+            <summary>
+            Checks if the collection contains a resource with given identifier
+            </summary>
+            <param name="identifier">The resource identifier</param>
+            <returns></returns>
+        </member>
+        <member name="M:HornetEngine.Util.ResourceManager`1.AddResource(System.String,`0)">
+            <summary>
+            Adds a new resource with matching identifier to the collection
+            </summary>
+            <param name="identifier">The identifier for the resource</param>
+            <param name="resource">The resource</param>
+            <returns>true if resource was added, false if resource already existed under that specific identifier</returns>
+        </member>
+        <member name="M:HornetEngine.Util.ResourceManager`1.GetResource(System.String)">
+            <summary>
+            Gets a resource at specified identifier
+            </summary>
+            <param name="identifier">The resource identifier string</param>
+            <returns>Resource if found, returns null if not found</returns>
+        </member>
+        <member name="M:HornetEngine.Util.ResourceManager`1.SetResource(System.String,`0)">
+            <summary>
+            Sets a the resource at specified identifier if the collection already contains the identifier
+            </summary>
+            <param name="identifier">The resource identifier string</param>
+            <param name="resource">The resource to be set at identifier</param>
+            <returns>true if resource was set, false if the identifier is foreign to the collection</returns>
+        </member>
+        <member name="M:HornetEngine.Util.ResourceManager`1.DeleteResource(System.String)">
+            <summary>
+            Deletes resource with specified identifier from the collection
+            </summary>
+            <param name="identifier">The resource identifier string</param>
+            <returns>true if resource was deleted, false if the resource was not found within the list</returns>
+        </member>
+        <member name="T:HornetEngine.Util.MeshResourceManager">
+            <summary>
+            Manager class for managing and storing Mesh resources
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Util.MeshResourceManager.Instance">
+            <summary>
+            The current instance of MeshResourceManager
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Util.MeshResourceManager.AddResource(System.String,HornetEngine.Graphics.Mesh)">
+            <summary>
+            Adds Mesh resource to the manager
+            </summary>
+            <param name="identifier">The identifier the Mesh is stored under</param>
+            <param name="resource">The resource to be managed and stored</param>
+        </member>
+        <member name="M:HornetEngine.Util.MeshResourceManager.ImportResource(System.String,System.String,System.String)">
+            <summary>
+            Tries to import a Mesh resource
+            </summary>
+            <param name="identifier">The identifier that the mesh is stored under</param>
+            <param name="folder_id">The folder id of the folder containing the mesh</param>
+            <param name="object_file">The mesh resource file</param>
+        </member>
+        <member name="T:HornetEngine.Util.ShaderResourceManager">
+            <summary>
+            Manager class for managing and storing Shader resources
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Util.ShaderResourceManager.Instance">
+            <summary>
+            The current instance of ShaderResourceManager
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Util.ShaderResourceManager.ImportResource(System.String,System.String,System.String,System.String)">
+            <summary>
+            Tries to import a Shader resource
+            </summary>
+            <param name="identifier">The identifier that the shader program is stored under</param>
+            <param name="folder_id">The folder id of the folder containing the shaders</param>
+            <param name="vert_file">The vertex shader file</param>
+            <param name="frag_file">The fragment shader file</param>
+        </member>
+        <member name="M:HornetEngine.Util.ShaderResourceManager.ImportResource(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Tries to import a Shader resource
+            </summary>
+            <param name="identifier">The identifier that the shader program is stored under</param>
+            <param name="folder_id">The folder id of the folder containing the shaders</param>
+            <param name="vert_file">The vertex shader file</param>
+            <param name="geo_file">The geometry shader file</param>
+            <param name="frag_file">The fragment shader file</param>
+        </member>
+        <member name="T:HornetEngine.Util.TextureResourceManager">
+            <summary>
+            Manager class for managing and storing Texture resources
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Util.TextureResourceManager.Instance">
+            <summary>
+            The current instance of TextureResourceManager
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Util.TextureResourceManager.ImportResource(System.String,System.String,System.String)">
+            <summary>
+            Tries to import a Texture resource
+            </summary>
+            <param name="identifier">The identifier that the texture is stored under</param>
+            <param name="folder_id">The folder id of the folder containing the texture image</param>
+            <param name="tex_file">The texture image file</param>
+        </member>
+        <member name="T:HornetEngine.Util.SoundResourceManager">
+            <summary>
+            Manager class for managing and storing Sound resources
+            </summary>
+        </member>
+        <member name="P:HornetEngine.Util.SoundResourceManager.Instance">
+            <summary>
+            The current instance of TextureResourceManager
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Util.SoundResourceManager.#ctor">
+            <summary>
+            Instantiates a new instance of SoundResourceManager with default attributes
+            </summary>
+        </member>
+        <member name="M:HornetEngine.Util.SoundResourceManager.ImportResource(System.String,System.String,System.String)">
+            <summary>
+            Tries to import a sound resource
+            </summary>
+            <param name="identifier">The identifier that the sound sample is stored under</param>
+            <param name="folder_id">The folder id of the folder containing the sound sample</param>
+            <param name="sound_file">The sound file</param>
+        </member>
+        <member name="P:HornetEngine.Util.Time.FrameDelta">
+            <summary>
+            The frame delta 
+            </summary>
+        </member>
+    </members>
+</doc>

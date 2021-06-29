@@ -1,0 +1,146 @@
+\hypertarget{class_hornet_engine_1_1_util_1_1_resource_manager}{}\doxysection{Hornet\+Engine.\+Util.\+Resource\+Manager$<$ T $>$ Class Template Reference}
+\label{class_hornet_engine_1_1_util_1_1_resource_manager}\index{HornetEngine.Util.ResourceManager$<$ T $>$@{HornetEngine.Util.ResourceManager$<$ T $>$}}
+
+
+Manager base class for managing and storing resources  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_resource_manager_a80c967d72ff20ab1c9caf7a4851f0a61}{Resource\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Instantiates a new instance of \mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_resource_manager}{Resource\+Manager}} with default attributes \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_resource_manager_a016c09aa9f024f918c127ee901127255}{Has\+Resource}} (string identifier)
+\begin{DoxyCompactList}\small\item\em Checks if the collection contains a resource with given identifier \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_resource_manager_a596fe43772df1109c053efa62e66339a}{Add\+Resource}} (String identifier, T resource)
+\begin{DoxyCompactList}\small\item\em Adds a new resource with matching identifier to the collection \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_resource_manager_a7925b5369a24cbeca7857b6838aea16c}{Get\+Resource}} (String identifier)
+\begin{DoxyCompactList}\small\item\em Gets a resource at specified identifier \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_resource_manager_a9b826a48eb3f4c79cbc497e9531ba218}{Set\+Resource}} (String identifier, T resource)
+\begin{DoxyCompactList}\small\item\em Sets a the resource at specified identifier if the collection already contains the identifier \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_resource_manager_ab5d55ceb09e54a3338943df388cba8d7}{Delete\+Resource}} (String identifier)
+\begin{DoxyCompactList}\small\item\em Deletes resource with specified identifier from the collection \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manager base class for managing and storing resources 
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_util_1_1_resource_manager_a80c967d72ff20ab1c9caf7a4851f0a61}\label{class_hornet_engine_1_1_util_1_1_resource_manager_a80c967d72ff20ab1c9caf7a4851f0a61}} 
+\index{HornetEngine.Util.ResourceManager$<$ T $>$@{HornetEngine.Util.ResourceManager$<$ T $>$}!ResourceManager@{ResourceManager}}
+\index{ResourceManager@{ResourceManager}!HornetEngine.Util.ResourceManager$<$ T $>$@{HornetEngine.Util.ResourceManager$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ResourceManager()}{ResourceManager()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_resource_manager}{Hornet\+Engine.\+Util.\+Resource\+Manager}}$<$ T $>$.\mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_resource_manager}{Resource\+Manager}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Instantiates a new instance of \mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_resource_manager}{Resource\+Manager}} with default attributes 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_util_1_1_resource_manager_a596fe43772df1109c053efa62e66339a}\label{class_hornet_engine_1_1_util_1_1_resource_manager_a596fe43772df1109c053efa62e66339a}} 
+\index{HornetEngine.Util.ResourceManager$<$ T $>$@{HornetEngine.Util.ResourceManager$<$ T $>$}!AddResource@{AddResource}}
+\index{AddResource@{AddResource}!HornetEngine.Util.ResourceManager$<$ T $>$@{HornetEngine.Util.ResourceManager$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{AddResource()}{AddResource()}}
+{\footnotesize\ttfamily bool \mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_resource_manager}{Hornet\+Engine.\+Util.\+Resource\+Manager}}$<$ T $>$.Add\+Resource (\begin{DoxyParamCaption}\item[{String}]{identifier,  }\item[{T}]{resource }\end{DoxyParamCaption})}
+
+
+
+Adds a new resource with matching identifier to the collection 
+
+
+\begin{DoxyParams}{Parameters}
+{\em identifier} & The identifier for the resource\\
+\hline
+{\em resource} & The resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if resource was added, false if resource already existed under that specific identifier
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hornet_engine_1_1_util_1_1_resource_manager_ab5d55ceb09e54a3338943df388cba8d7}\label{class_hornet_engine_1_1_util_1_1_resource_manager_ab5d55ceb09e54a3338943df388cba8d7}} 
+\index{HornetEngine.Util.ResourceManager$<$ T $>$@{HornetEngine.Util.ResourceManager$<$ T $>$}!DeleteResource@{DeleteResource}}
+\index{DeleteResource@{DeleteResource}!HornetEngine.Util.ResourceManager$<$ T $>$@{HornetEngine.Util.ResourceManager$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{DeleteResource()}{DeleteResource()}}
+{\footnotesize\ttfamily bool \mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_resource_manager}{Hornet\+Engine.\+Util.\+Resource\+Manager}}$<$ T $>$.Delete\+Resource (\begin{DoxyParamCaption}\item[{String}]{identifier }\end{DoxyParamCaption})}
+
+
+
+Deletes resource with specified identifier from the collection 
+
+
+\begin{DoxyParams}{Parameters}
+{\em identifier} & The resource identifier string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if resource was deleted, false if the resource was not found within the list
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hornet_engine_1_1_util_1_1_resource_manager_a7925b5369a24cbeca7857b6838aea16c}\label{class_hornet_engine_1_1_util_1_1_resource_manager_a7925b5369a24cbeca7857b6838aea16c}} 
+\index{HornetEngine.Util.ResourceManager$<$ T $>$@{HornetEngine.Util.ResourceManager$<$ T $>$}!GetResource@{GetResource}}
+\index{GetResource@{GetResource}!HornetEngine.Util.ResourceManager$<$ T $>$@{HornetEngine.Util.ResourceManager$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{GetResource()}{GetResource()}}
+{\footnotesize\ttfamily T \mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_resource_manager}{Hornet\+Engine.\+Util.\+Resource\+Manager}}$<$ T $>$.Get\+Resource (\begin{DoxyParamCaption}\item[{String}]{identifier }\end{DoxyParamCaption})}
+
+
+
+Gets a resource at specified identifier 
+
+
+\begin{DoxyParams}{Parameters}
+{\em identifier} & The resource identifier string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Resource if found, returns null if not found
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hornet_engine_1_1_util_1_1_resource_manager_a016c09aa9f024f918c127ee901127255}\label{class_hornet_engine_1_1_util_1_1_resource_manager_a016c09aa9f024f918c127ee901127255}} 
+\index{HornetEngine.Util.ResourceManager$<$ T $>$@{HornetEngine.Util.ResourceManager$<$ T $>$}!HasResource@{HasResource}}
+\index{HasResource@{HasResource}!HornetEngine.Util.ResourceManager$<$ T $>$@{HornetEngine.Util.ResourceManager$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{HasResource()}{HasResource()}}
+{\footnotesize\ttfamily bool \mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_resource_manager}{Hornet\+Engine.\+Util.\+Resource\+Manager}}$<$ T $>$.Has\+Resource (\begin{DoxyParamCaption}\item[{string}]{identifier }\end{DoxyParamCaption})}
+
+
+
+Checks if the collection contains a resource with given identifier 
+
+
+\begin{DoxyParams}{Parameters}
+{\em identifier} & The resource identifier\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hornet_engine_1_1_util_1_1_resource_manager_a9b826a48eb3f4c79cbc497e9531ba218}\label{class_hornet_engine_1_1_util_1_1_resource_manager_a9b826a48eb3f4c79cbc497e9531ba218}} 
+\index{HornetEngine.Util.ResourceManager$<$ T $>$@{HornetEngine.Util.ResourceManager$<$ T $>$}!SetResource@{SetResource}}
+\index{SetResource@{SetResource}!HornetEngine.Util.ResourceManager$<$ T $>$@{HornetEngine.Util.ResourceManager$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{SetResource()}{SetResource()}}
+{\footnotesize\ttfamily bool \mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_resource_manager}{Hornet\+Engine.\+Util.\+Resource\+Manager}}$<$ T $>$.Set\+Resource (\begin{DoxyParamCaption}\item[{String}]{identifier,  }\item[{T}]{resource }\end{DoxyParamCaption})}
+
+
+
+Sets a the resource at specified identifier if the collection already contains the identifier 
+
+
+\begin{DoxyParams}{Parameters}
+{\em identifier} & The resource identifier string\\
+\hline
+{\em resource} & The resource to be set at identifier\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if resource was set, false if the identifier is foreign to the collection
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Hornet\+Engine/\+Util/\mbox{\hyperlink{_resource_manager_8cs}{Resource\+Manager.\+cs}}\end{DoxyCompactItemize}

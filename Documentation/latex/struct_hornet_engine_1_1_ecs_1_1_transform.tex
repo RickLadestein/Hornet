@@ -1,0 +1,174 @@
+\hypertarget{struct_hornet_engine_1_1_ecs_1_1_transform}{}\doxysection{Hornet\+Engine.\+Ecs.\+Transform Struct Reference}
+\label{struct_hornet_engine_1_1_ecs_1_1_transform}\index{HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{struct_hornet_engine_1_1_ecs_1_1_transform_a4870d5bb9412cf20a4c16e49edad8c37}{Reset}} ()
+\begin{DoxyCompactList}\small\item\em Resets the transform rotation, position and scale to default values \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_hornet_engine_1_1_ecs_1_1_transform_ae314226e5ca70e3cc1f4249fa8871bc0}{Set\+Orientation}} (float roll, float pitch, float yaw)
+\begin{DoxyCompactList}\small\item\em Set the current orientation \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_hornet_engine_1_1_ecs_1_1_transform_a58b8a171a177271d11595abc434498bd}{Rotate}} (quat rotation\+\_\+quat)
+\begin{DoxyCompactList}\small\item\em Rotate the object \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_hornet_engine_1_1_ecs_1_1_transform_af9067cb90612da3ab26933fd34cd73c1}{Rotate}} (vec3 axis\+\_\+angle, float degrees)
+\begin{DoxyCompactList}\small\item\em Rotate the object \end{DoxyCompactList}\item 
+override string \mbox{\hyperlink{struct_hornet_engine_1_1_ecs_1_1_transform_a04951c46fb24bc572621068ced79bbc5}{To\+String}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vec3 \mbox{\hyperlink{struct_hornet_engine_1_1_ecs_1_1_transform_a10eb3eb2b1064c1bc07bca7f9b353e27}{Position}}
+\begin{DoxyCompactList}\small\item\em The current Position \end{DoxyCompactList}\item 
+quat \mbox{\hyperlink{struct_hornet_engine_1_1_ecs_1_1_transform_ad34e512a075541a816d48ca2a2b35748}{Orientation}}
+\begin{DoxyCompactList}\small\item\em The current orientation \end{DoxyCompactList}\item 
+vec3 \mbox{\hyperlink{struct_hornet_engine_1_1_ecs_1_1_transform_a9781b86c51bb14a472cb15869fca7e3c}{Scale}}
+\begin{DoxyCompactList}\small\item\em The current Scale \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+vec3 \mbox{\hyperlink{struct_hornet_engine_1_1_ecs_1_1_transform_ad777d5eaa4019ae6bc763aba60df9040}{Rotation}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The current Rotation in degrees \end{DoxyCompactList}\item 
+mat4 \mbox{\hyperlink{struct_hornet_engine_1_1_ecs_1_1_transform_a0a925c7f8713a4b023e8a34b1079ccdc}{Model\+Mat}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The matrix that describes the orientation, scale and position \end{DoxyCompactList}\item 
+mat3 \mbox{\hyperlink{struct_hornet_engine_1_1_ecs_1_1_transform_a40cee02c428c11816353d76c45769291}{Normal\+Mat}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The matrix that describes the translation of the normal vector \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_hornet_engine_1_1_ecs_1_1_transform_a4870d5bb9412cf20a4c16e49edad8c37}\label{struct_hornet_engine_1_1_ecs_1_1_transform_a4870d5bb9412cf20a4c16e49edad8c37}} 
+\index{HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}!Reset@{Reset}}
+\index{Reset@{Reset}!HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}}
+\doxysubsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Ecs.\+Transform.\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the transform rotation, position and scale to default values 
+
+\mbox{\Hypertarget{struct_hornet_engine_1_1_ecs_1_1_transform_a58b8a171a177271d11595abc434498bd}\label{struct_hornet_engine_1_1_ecs_1_1_transform_a58b8a171a177271d11595abc434498bd}} 
+\index{HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}!Rotate@{Rotate}}
+\index{Rotate@{Rotate}!HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}}
+\doxysubsubsection{\texorpdfstring{Rotate()}{Rotate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Ecs.\+Transform.\+Rotate (\begin{DoxyParamCaption}\item[{quat}]{rotation\+\_\+quat }\end{DoxyParamCaption})}
+
+
+
+Rotate the object 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rotation\+\_\+quat} & The quat used for the rotation\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_hornet_engine_1_1_ecs_1_1_transform_af9067cb90612da3ab26933fd34cd73c1}\label{struct_hornet_engine_1_1_ecs_1_1_transform_af9067cb90612da3ab26933fd34cd73c1}} 
+\index{HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}!Rotate@{Rotate}}
+\index{Rotate@{Rotate}!HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}}
+\doxysubsubsection{\texorpdfstring{Rotate()}{Rotate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Ecs.\+Transform.\+Rotate (\begin{DoxyParamCaption}\item[{vec3}]{axis\+\_\+angle,  }\item[{float}]{degrees }\end{DoxyParamCaption})}
+
+
+
+Rotate the object 
+
+
+\begin{DoxyParams}{Parameters}
+{\em axis\+\_\+angle} & A vec3 which contains the axis angle over which the object should be rotated\\
+\hline
+{\em degrees} & A float which contains the degrees of the rotation\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_hornet_engine_1_1_ecs_1_1_transform_ae314226e5ca70e3cc1f4249fa8871bc0}\label{struct_hornet_engine_1_1_ecs_1_1_transform_ae314226e5ca70e3cc1f4249fa8871bc0}} 
+\index{HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}!SetOrientation@{SetOrientation}}
+\index{SetOrientation@{SetOrientation}!HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}}
+\doxysubsubsection{\texorpdfstring{SetOrientation()}{SetOrientation()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Ecs.\+Transform.\+Set\+Orientation (\begin{DoxyParamCaption}\item[{float}]{roll,  }\item[{float}]{pitch,  }\item[{float}]{yaw }\end{DoxyParamCaption})}
+
+
+
+Set the current orientation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em roll} & A float containing the roll of the orientation\\
+\hline
+{\em pitch} & A float containing the pitch of the orientation\\
+\hline
+{\em yaw} & A float containing the yaw of the orientation\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_hornet_engine_1_1_ecs_1_1_transform_a04951c46fb24bc572621068ced79bbc5}\label{struct_hornet_engine_1_1_ecs_1_1_transform_a04951c46fb24bc572621068ced79bbc5}} 
+\index{HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}!ToString@{ToString}}
+\index{ToString@{ToString}!HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}}
+\doxysubsubsection{\texorpdfstring{ToString()}{ToString()}}
+{\footnotesize\ttfamily override string Hornet\+Engine.\+Ecs.\+Transform.\+To\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_hornet_engine_1_1_ecs_1_1_transform_ad34e512a075541a816d48ca2a2b35748}\label{struct_hornet_engine_1_1_ecs_1_1_transform_ad34e512a075541a816d48ca2a2b35748}} 
+\index{HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}!Orientation@{Orientation}}
+\index{Orientation@{Orientation}!HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}}
+\doxysubsubsection{\texorpdfstring{Orientation}{Orientation}}
+{\footnotesize\ttfamily quat Hornet\+Engine.\+Ecs.\+Transform.\+Orientation}
+
+
+
+The current orientation 
+
+\mbox{\Hypertarget{struct_hornet_engine_1_1_ecs_1_1_transform_a10eb3eb2b1064c1bc07bca7f9b353e27}\label{struct_hornet_engine_1_1_ecs_1_1_transform_a10eb3eb2b1064c1bc07bca7f9b353e27}} 
+\index{HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}!Position@{Position}}
+\index{Position@{Position}!HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}}
+\doxysubsubsection{\texorpdfstring{Position}{Position}}
+{\footnotesize\ttfamily vec3 Hornet\+Engine.\+Ecs.\+Transform.\+Position}
+
+
+
+The current Position 
+
+\mbox{\Hypertarget{struct_hornet_engine_1_1_ecs_1_1_transform_a9781b86c51bb14a472cb15869fca7e3c}\label{struct_hornet_engine_1_1_ecs_1_1_transform_a9781b86c51bb14a472cb15869fca7e3c}} 
+\index{HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}!Scale@{Scale}}
+\index{Scale@{Scale}!HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}}
+\doxysubsubsection{\texorpdfstring{Scale}{Scale}}
+{\footnotesize\ttfamily vec3 Hornet\+Engine.\+Ecs.\+Transform.\+Scale}
+
+
+
+The current Scale 
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{struct_hornet_engine_1_1_ecs_1_1_transform_a0a925c7f8713a4b023e8a34b1079ccdc}\label{struct_hornet_engine_1_1_ecs_1_1_transform_a0a925c7f8713a4b023e8a34b1079ccdc}} 
+\index{HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}!ModelMat@{ModelMat}}
+\index{ModelMat@{ModelMat}!HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}}
+\doxysubsubsection{\texorpdfstring{ModelMat}{ModelMat}}
+{\footnotesize\ttfamily mat4 Hornet\+Engine.\+Ecs.\+Transform.\+Model\+Mat\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The matrix that describes the orientation, scale and position 
+
+\mbox{\Hypertarget{struct_hornet_engine_1_1_ecs_1_1_transform_a40cee02c428c11816353d76c45769291}\label{struct_hornet_engine_1_1_ecs_1_1_transform_a40cee02c428c11816353d76c45769291}} 
+\index{HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}!NormalMat@{NormalMat}}
+\index{NormalMat@{NormalMat}!HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}}
+\doxysubsubsection{\texorpdfstring{NormalMat}{NormalMat}}
+{\footnotesize\ttfamily mat3 Hornet\+Engine.\+Ecs.\+Transform.\+Normal\+Mat\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The matrix that describes the translation of the normal vector 
+
+\mbox{\Hypertarget{struct_hornet_engine_1_1_ecs_1_1_transform_ad777d5eaa4019ae6bc763aba60df9040}\label{struct_hornet_engine_1_1_ecs_1_1_transform_ad777d5eaa4019ae6bc763aba60df9040}} 
+\index{HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}!Rotation@{Rotation}}
+\index{Rotation@{Rotation}!HornetEngine.Ecs.Transform@{HornetEngine.Ecs.Transform}}
+\doxysubsubsection{\texorpdfstring{Rotation}{Rotation}}
+{\footnotesize\ttfamily vec3 Hornet\+Engine.\+Ecs.\+Transform.\+Rotation\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The current Rotation in degrees 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Hornet\+Engine/\+Ecs/\mbox{\hyperlink{_transform_8cs}{Transform.\+cs}}\end{DoxyCompactItemize}

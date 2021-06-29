@@ -1,0 +1,364 @@
+\hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program}{}\doxysection{Hornet\+Engine.\+Graphics.\+Shader\+Program Class Reference}
+\label{class_hornet_engine_1_1_graphics_1_1_shader_program}\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+Inheritance diagram for Hornet\+Engine.\+Graphics.\+Shader\+Program\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_hornet_engine_1_1_graphics_1_1_shader_program}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_ae5c7d52fd84043b8fc0c05b2e802a629}{Shader\+Program}} (\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_vertex_shader}{Vertex\+Shader}} vertex, \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_fragment_shader}{Fragment\+Shader}} fragment)
+\begin{DoxyCompactList}\small\item\em Creates a new instance of \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}} with vertex and fragment shader \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_a40b57a83ae01362b570077d706fc8a69}{Shader\+Program}} (\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_vertex_shader}{Vertex\+Shader}} vertex, \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_geometry_shader}{Geometry\+Shader}} geometry, \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_fragment_shader}{Fragment\+Shader}} fragment)
+\begin{DoxyCompactList}\small\item\em Creates a new instance of \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}} with vertex, geometry and fragment shader \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_a1c201e7c5a84da7127f99c760cc43c50}{Bind}} ()
+\begin{DoxyCompactList}\small\item\em Binds the \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}} as the currently active program in the GPU. There can only be a single program bound to the GPU so this call switches the active target. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_a6d33bae0f0ed8dfc3eb585e75e2e5fba}{Set\+Uniform}} (string location, bool value)
+\begin{DoxyCompactList}\small\item\em Sets a shader specific global variable in the GPU \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_af8731aaefe6eb371907386805e12b4ee}{Set\+Uniform}} (string location, int value)
+\begin{DoxyCompactList}\small\item\em Sets a shader specific global variable in the GPU \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_af9b722b68ac6ef386480bd2d65ec649a}{Set\+Uniform}} (string location, uint value)
+\begin{DoxyCompactList}\small\item\em Sets a shader specific global variable in the GPU \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_ae164222e02004502c1c64ec3fcb26951}{Set\+Uniform}} (string location, float value)
+\begin{DoxyCompactList}\small\item\em Sets a shader specific global variable in the GPU \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_aeb6d7e37b891098119712bd4d5acd859}{Set\+Uniform}} (string location, double value)
+\begin{DoxyCompactList}\small\item\em Sets a shader specific global variable in the GPU \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_a54fb5f1eb33c1ececb79c146541adec7}{Set\+Uniform}} (string location, Vector2 vec)
+\begin{DoxyCompactList}\small\item\em Sets a shader specific global variable in the GPU \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_a65828697c8a2f8d4106c4a4492e239e5}{Set\+Uniform}} (string location, Glm\+Sharp.\+vec2 vec)
+\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_a611b7667019a80e74a087c218b45ddbf}{Set\+Uniform}} (string location, Vector3 vec)
+\begin{DoxyCompactList}\small\item\em Sets a shader specific global variable in the GPU \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_a9e879573a500858508fa1b20942147eb}{Set\+Uniform}} (string location, Glm\+Sharp.\+vec3 vec)
+\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_a517fdfd57f88fc55d626f0e0062a8b06}{Set\+Uniform}} (string location, Vector4 vec)
+\begin{DoxyCompactList}\small\item\em Sets a shader specific global variable in the GPU \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_a17fab11c5d6a0b3193cb544ec3388278}{Set\+Uniform}} (string location, Glm\+Sharp.\+vec4 vec)
+\item 
+unsafe void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_acbbe4fa7ba49504b207f728d91b7d5e6}{Set\+Uniform}} (string location, Matrix4x4 matrix)
+\begin{DoxyCompactList}\small\item\em Sets a shader specific global variable in the GPU \end{DoxyCompactList}\item 
+unsafe void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_a02fc94bea3fd514f41a41bf05b0f70d6}{Set\+Uniform}} (string location, Glm\+Sharp.\+mat4 matrix)
+\begin{DoxyCompactList}\small\item\em Sets a shader specific global variable in the GPU \end{DoxyCompactList}\item 
+unsafe void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_a4308df92e281797551da4c31bd870aef}{Set\+Uniform}} (string location, Glm\+Sharp.\+mat3 matrix)
+\begin{DoxyCompactList}\small\item\em Sets a shader specific global variable in the GPU \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_a12879da74b093ef0417ef5c1e71647e5}{Dispose}} ()
+\begin{DoxyCompactList}\small\item\em Deletes this \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}} from the GPU unmanaged resources \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_a48ead08e4fbb56f18d2a2de7666e9543}{Unbind\+All}} ()
+\begin{DoxyCompactList}\small\item\em Unbinds all shader programs from the GPU \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+uint \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_a2d0edd978c011b434b9c07601be397be}{Handle}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The internal GPU handle for the \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_af414e8a0ef14e07d168a1e346f9e405c}{Shader\+Program\+Status}} \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program_ac2f4ef7fb79755d197296a3ea367bbea}{Status}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The current status of the \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_ae5c7d52fd84043b8fc0c05b2e802a629}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_ae5c7d52fd84043b8fc0c05b2e802a629}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!ShaderProgram@{ShaderProgram}}
+\index{ShaderProgram@{ShaderProgram}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{ShaderProgram()}{ShaderProgram()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Shader\+Program (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_vertex_shader}{Vertex\+Shader}}}]{vertex,  }\item[{\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_fragment_shader}{Fragment\+Shader}}}]{fragment }\end{DoxyParamCaption})}
+
+
+
+Creates a new instance of \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}} with vertex and fragment shader 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex} & Vertex shader program\\
+\hline
+{\em fragment} & Fragment shader program\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_a40b57a83ae01362b570077d706fc8a69}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_a40b57a83ae01362b570077d706fc8a69}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!ShaderProgram@{ShaderProgram}}
+\index{ShaderProgram@{ShaderProgram}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{ShaderProgram()}{ShaderProgram()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Shader\+Program (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_vertex_shader}{Vertex\+Shader}}}]{vertex,  }\item[{\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_geometry_shader}{Geometry\+Shader}}}]{geometry,  }\item[{\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_fragment_shader}{Fragment\+Shader}}}]{fragment }\end{DoxyParamCaption})}
+
+
+
+Creates a new instance of \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}} with vertex, geometry and fragment shader 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex} & Vertex shader program\\
+\hline
+{\em geometry} & Geometry shader program\\
+\hline
+{\em fragment} & Fragment shader program\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_a1c201e7c5a84da7127f99c760cc43c50}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_a1c201e7c5a84da7127f99c760cc43c50}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!Bind@{Bind}}
+\index{Bind@{Bind}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{Bind()}{Bind()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Bind (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Binds the \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}} as the currently active program in the GPU. There can only be a single program bound to the GPU so this call switches the active target. 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_a12879da74b093ef0417ef5c1e71647e5}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_a12879da74b093ef0417ef5c1e71647e5}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!Dispose@{Dispose}}
+\index{Dispose@{Dispose}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{Dispose()}{Dispose()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Dispose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Deletes this \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}} from the GPU unmanaged resources 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_a6d33bae0f0ed8dfc3eb585e75e2e5fba}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_a6d33bae0f0ed8dfc3eb585e75e2e5fba}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!SetUniform@{SetUniform}}
+\index{SetUniform@{SetUniform}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{SetUniform()}{SetUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [1/14]}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Set\+Uniform (\begin{DoxyParamCaption}\item[{string}]{location,  }\item[{bool}]{value }\end{DoxyParamCaption})}
+
+
+
+Sets a shader specific global variable in the GPU 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & The uniform name in the shader program\\
+\hline
+{\em value} & Boolean value\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_aeb6d7e37b891098119712bd4d5acd859}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_aeb6d7e37b891098119712bd4d5acd859}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!SetUniform@{SetUniform}}
+\index{SetUniform@{SetUniform}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{SetUniform()}{SetUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [2/14]}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Set\+Uniform (\begin{DoxyParamCaption}\item[{string}]{location,  }\item[{double}]{value }\end{DoxyParamCaption})}
+
+
+
+Sets a shader specific global variable in the GPU 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & The uniform name in the shader program\\
+\hline
+{\em value} & Double value\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_ae164222e02004502c1c64ec3fcb26951}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_ae164222e02004502c1c64ec3fcb26951}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!SetUniform@{SetUniform}}
+\index{SetUniform@{SetUniform}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{SetUniform()}{SetUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [3/14]}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Set\+Uniform (\begin{DoxyParamCaption}\item[{string}]{location,  }\item[{float}]{value }\end{DoxyParamCaption})}
+
+
+
+Sets a shader specific global variable in the GPU 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & The uniform name in the shader program\\
+\hline
+{\em value} & Float value\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_a4308df92e281797551da4c31bd870aef}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_a4308df92e281797551da4c31bd870aef}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!SetUniform@{SetUniform}}
+\index{SetUniform@{SetUniform}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{SetUniform()}{SetUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [4/14]}}
+{\footnotesize\ttfamily unsafe void Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Set\+Uniform (\begin{DoxyParamCaption}\item[{string}]{location,  }\item[{Glm\+Sharp.\+mat3}]{matrix }\end{DoxyParamCaption})}
+
+
+
+Sets a shader specific global variable in the GPU 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & The uniform name in the shader program\\
+\hline
+{\em matrix} & Matrix3 value\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_a02fc94bea3fd514f41a41bf05b0f70d6}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_a02fc94bea3fd514f41a41bf05b0f70d6}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!SetUniform@{SetUniform}}
+\index{SetUniform@{SetUniform}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{SetUniform()}{SetUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [5/14]}}
+{\footnotesize\ttfamily unsafe void Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Set\+Uniform (\begin{DoxyParamCaption}\item[{string}]{location,  }\item[{Glm\+Sharp.\+mat4}]{matrix }\end{DoxyParamCaption})}
+
+
+
+Sets a shader specific global variable in the GPU 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & The uniform name in the shader program\\
+\hline
+{\em matrix} & Matrix4 value\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_a65828697c8a2f8d4106c4a4492e239e5}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_a65828697c8a2f8d4106c4a4492e239e5}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!SetUniform@{SetUniform}}
+\index{SetUniform@{SetUniform}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{SetUniform()}{SetUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [6/14]}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Set\+Uniform (\begin{DoxyParamCaption}\item[{string}]{location,  }\item[{Glm\+Sharp.\+vec2}]{vec }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_a9e879573a500858508fa1b20942147eb}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_a9e879573a500858508fa1b20942147eb}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!SetUniform@{SetUniform}}
+\index{SetUniform@{SetUniform}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{SetUniform()}{SetUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [7/14]}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Set\+Uniform (\begin{DoxyParamCaption}\item[{string}]{location,  }\item[{Glm\+Sharp.\+vec3}]{vec }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_a17fab11c5d6a0b3193cb544ec3388278}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_a17fab11c5d6a0b3193cb544ec3388278}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!SetUniform@{SetUniform}}
+\index{SetUniform@{SetUniform}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{SetUniform()}{SetUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [8/14]}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Set\+Uniform (\begin{DoxyParamCaption}\item[{string}]{location,  }\item[{Glm\+Sharp.\+vec4}]{vec }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_af8731aaefe6eb371907386805e12b4ee}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_af8731aaefe6eb371907386805e12b4ee}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!SetUniform@{SetUniform}}
+\index{SetUniform@{SetUniform}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{SetUniform()}{SetUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [9/14]}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Set\+Uniform (\begin{DoxyParamCaption}\item[{string}]{location,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Sets a shader specific global variable in the GPU 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & The uniform name in the shader program\\
+\hline
+{\em value} & Integer value\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_acbbe4fa7ba49504b207f728d91b7d5e6}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_acbbe4fa7ba49504b207f728d91b7d5e6}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!SetUniform@{SetUniform}}
+\index{SetUniform@{SetUniform}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{SetUniform()}{SetUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [10/14]}}
+{\footnotesize\ttfamily unsafe void Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Set\+Uniform (\begin{DoxyParamCaption}\item[{string}]{location,  }\item[{Matrix4x4}]{matrix }\end{DoxyParamCaption})}
+
+
+
+Sets a shader specific global variable in the GPU 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & The uniform name in the shader program\\
+\hline
+{\em matrix} & Matrix4 value\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_af9b722b68ac6ef386480bd2d65ec649a}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_af9b722b68ac6ef386480bd2d65ec649a}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!SetUniform@{SetUniform}}
+\index{SetUniform@{SetUniform}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{SetUniform()}{SetUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [11/14]}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Set\+Uniform (\begin{DoxyParamCaption}\item[{string}]{location,  }\item[{uint}]{value }\end{DoxyParamCaption})}
+
+
+
+Sets a shader specific global variable in the GPU 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & The uniform name in the shader program\\
+\hline
+{\em value} & Unsigned Integer value\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_a54fb5f1eb33c1ececb79c146541adec7}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_a54fb5f1eb33c1ececb79c146541adec7}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!SetUniform@{SetUniform}}
+\index{SetUniform@{SetUniform}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{SetUniform()}{SetUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [12/14]}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Set\+Uniform (\begin{DoxyParamCaption}\item[{string}]{location,  }\item[{Vector2}]{vec }\end{DoxyParamCaption})}
+
+
+
+Sets a shader specific global variable in the GPU 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & The uniform name in the shader program\\
+\hline
+{\em vec} & Vector2 value\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_a611b7667019a80e74a087c218b45ddbf}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_a611b7667019a80e74a087c218b45ddbf}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!SetUniform@{SetUniform}}
+\index{SetUniform@{SetUniform}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{SetUniform()}{SetUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [13/14]}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Set\+Uniform (\begin{DoxyParamCaption}\item[{string}]{location,  }\item[{Vector3}]{vec }\end{DoxyParamCaption})}
+
+
+
+Sets a shader specific global variable in the GPU 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & The uniform name in the shader program\\
+\hline
+{\em vec} & Vector3 value\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_a517fdfd57f88fc55d626f0e0062a8b06}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_a517fdfd57f88fc55d626f0e0062a8b06}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!SetUniform@{SetUniform}}
+\index{SetUniform@{SetUniform}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{SetUniform()}{SetUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [14/14]}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Set\+Uniform (\begin{DoxyParamCaption}\item[{string}]{location,  }\item[{Vector4}]{vec }\end{DoxyParamCaption})}
+
+
+
+Sets a shader specific global variable in the GPU 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & The uniform name in the shader program\\
+\hline
+{\em vec} & Vector4 value\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_a48ead08e4fbb56f18d2a2de7666e9543}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_a48ead08e4fbb56f18d2a2de7666e9543}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!UnbindAll@{UnbindAll}}
+\index{UnbindAll@{UnbindAll}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{UnbindAll()}{UnbindAll()}}
+{\footnotesize\ttfamily static void Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Unbind\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Unbinds all shader programs from the GPU 
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_a2d0edd978c011b434b9c07601be397be}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_a2d0edd978c011b434b9c07601be397be}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!Handle@{Handle}}
+\index{Handle@{Handle}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{Handle}{Handle}}
+{\footnotesize\ttfamily uint Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Handle\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The internal GPU handle for the \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}} 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_shader_program_ac2f4ef7fb79755d197296a3ea367bbea}\label{class_hornet_engine_1_1_graphics_1_1_shader_program_ac2f4ef7fb79755d197296a3ea367bbea}} 
+\index{HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}!Status@{Status}}
+\index{Status@{Status}!HornetEngine.Graphics.ShaderProgram@{HornetEngine.Graphics.ShaderProgram}}
+\doxysubsubsection{\texorpdfstring{Status}{Status}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_af414e8a0ef14e07d168a1e346f9e405c}{Shader\+Program\+Status}} Hornet\+Engine.\+Graphics.\+Shader\+Program.\+Status\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The current status of the \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}} 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Hornet\+Engine/\+Graphics/\mbox{\hyperlink{_shader_program_8cs}{Shader\+Program.\+cs}}\end{DoxyCompactItemize}

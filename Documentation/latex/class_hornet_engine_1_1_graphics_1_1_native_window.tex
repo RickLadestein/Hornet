@@ -1,0 +1,353 @@
+\hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window}{}\doxysection{Hornet\+Engine.\+Graphics.\+Native\+Window Class Reference}
+\label{class_hornet_engine_1_1_graphics_1_1_native_window}\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+Inheritance diagram for Hornet\+Engine.\+Graphics.\+Native\+Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_hornet_engine_1_1_graphics_1_1_native_window}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsafe void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_ac93f0136530b9cfac69878defea4b3ab}{Set\+Title}} (String title)
+\begin{DoxyCompactList}\small\item\em A function which can set the title of the window \end{DoxyCompactList}\item 
+unsafe void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_af93355645bfcae57915923a326a299bb}{Set\+Size}} (int width, int height)
+\begin{DoxyCompactList}\small\item\em A function which can set the size of the window \end{DoxyCompactList}\item 
+unsafe void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a4c9795505e30296122ef55c1935fed28}{Set\+Position}} (uint x\+\_\+pos, uint y\+\_\+pos)
+\begin{DoxyCompactList}\small\item\em A function which can set the position of the screen \end{DoxyCompactList}\item 
+unsafe double \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a4c94fdbeed629f6fe9cf7d6fc2f71ace}{Get\+Alive\+Time}} ()
+\begin{DoxyCompactList}\small\item\em A function which checks how long the window has been running \end{DoxyCompactList}\item 
+unsafe bool \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a2732d36eadeb5bf1226247722b5ab6b4}{Should\+Close}} ()
+\begin{DoxyCompactList}\small\item\em A function which checks whether the window should be closed \end{DoxyCompactList}\item 
+unsafe void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a58ef51f200d38ecb25c3854a0ca0e9c5}{Set\+Draw\+Area}} (uint x, uint y, uint width, uint height)
+\begin{DoxyCompactList}\small\item\em A function which sets the draw area of the window \end{DoxyCompactList}\item 
+unsafe void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a89f8f0a177ebe36439ef2b5565a9febe}{Dispose}} ()
+\begin{DoxyCompactList}\small\item\em A function which can be used to dispose the current window \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a60fe4895c8007ae09949d17e6b5395f6}{Native\+Window}} ()
+\item 
+unsafe void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_afd8fa0ab79de05f40e7d5ec5577ddbca}{Swap\+Buffers}} ()
+\item 
+unsafe void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a97e13e3ed75e48127ec207f7e1521b95}{Clear\+Buffer}} (Clear\+Buffer\+Mask mask)
+\item 
+unsafe void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a14a07ab118b6c92a96631bf7c8d73efe}{Poll\+Events}} ()
+\item 
+abstract void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a0ba78e8605c58fde8935dc094308d62d}{On\+Window\+Size\+Changed}} (int width, int height)
+\item 
+abstract void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a507ba8aaef0db28d8b20112e54e02f40}{On\+Window\+Pos\+Changed}} (int x, int y)
+\item 
+abstract void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a84f317cd0b3b578ff995c83ffebdc2c5}{On\+Window\+Focus\+Changed}} (bool isfocus)
+\item 
+abstract void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a21bb8dd17834ceac6a089ab663e38fd8}{On\+Window\+Close\+Requested}} ()
+\item 
+abstract void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a0548f07ad413e9ed52ee46863b934a3b}{On\+Window\+Iconify}} (bool iconified)
+\item 
+abstract void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_ada47dcc71c95d6a4d023f4791774150c}{On\+Window\+Maximize}} (bool maximized)
+\item 
+unsafe bool \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_ab9f6de52a111adff27210ebd96f2ebc5}{Create\+Window\+Handle}} (int width, int height, string title, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_a17955071d92d14f87abead6c953af378}{Window\+Mode}} mode)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsafe Window\+Handle $\ast$ \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a41c827d8921a63c66e78b591edab649d}{w\+\_\+handle}}
+\item 
+unsafe Glfw\+Native\+Window \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a50378c9d15a738e8c1766f7a824b2438}{n\+\_\+window}}
+\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_drivers_1_1_touch_driver}{Touch\+Driver}} \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a4903aacac21bff3d8a8251313c6bf5c1}{touch\+\_\+driver}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+static GL \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a628afecba7c16109891236dbb922e86b}{GL}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The GL context \end{DoxyCompactList}\item 
+static Glfw \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a6f1abf4851d4fc3a5bfd628973014665}{GLFW}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The GLFW context \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a0e750f3c9c1f8cc873f906c14ae6c280}{Title}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The title of the window \end{DoxyCompactList}\item 
+vec2 \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a6673b3c4ef3181bf908a487311feff55}{Size}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The size of the window \end{DoxyCompactList}\item 
+vec2 \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window_a07e48bdac06011eff2b86b33921a867e}{Pos}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The position of the window \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a60fe4895c8007ae09949d17e6b5395f6}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a60fe4895c8007ae09949d17e6b5395f6}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!NativeWindow@{NativeWindow}}
+\index{NativeWindow@{NativeWindow}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{NativeWindow()}{NativeWindow()}}
+{\footnotesize\ttfamily Hornet\+Engine.\+Graphics.\+Native\+Window.\+Native\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a97e13e3ed75e48127ec207f7e1521b95}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a97e13e3ed75e48127ec207f7e1521b95}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!ClearBuffer@{ClearBuffer}}
+\index{ClearBuffer@{ClearBuffer}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{ClearBuffer()}{ClearBuffer()}}
+{\footnotesize\ttfamily unsafe void Hornet\+Engine.\+Graphics.\+Native\+Window.\+Clear\+Buffer (\begin{DoxyParamCaption}\item[{Clear\+Buffer\+Mask}]{mask }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_ab9f6de52a111adff27210ebd96f2ebc5}\label{class_hornet_engine_1_1_graphics_1_1_native_window_ab9f6de52a111adff27210ebd96f2ebc5}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!CreateWindowHandle@{CreateWindowHandle}}
+\index{CreateWindowHandle@{CreateWindowHandle}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{CreateWindowHandle()}{CreateWindowHandle()}}
+{\footnotesize\ttfamily unsafe bool Hornet\+Engine.\+Graphics.\+Native\+Window.\+Create\+Window\+Handle (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height,  }\item[{string}]{title,  }\item[{\mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_a17955071d92d14f87abead6c953af378}{Window\+Mode}}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a89f8f0a177ebe36439ef2b5565a9febe}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a89f8f0a177ebe36439ef2b5565a9febe}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!Dispose@{Dispose}}
+\index{Dispose@{Dispose}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{Dispose()}{Dispose()}}
+{\footnotesize\ttfamily unsafe void Hornet\+Engine.\+Graphics.\+Native\+Window.\+Dispose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function which can be used to dispose the current window 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a4c94fdbeed629f6fe9cf7d6fc2f71ace}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a4c94fdbeed629f6fe9cf7d6fc2f71ace}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!GetAliveTime@{GetAliveTime}}
+\index{GetAliveTime@{GetAliveTime}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{GetAliveTime()}{GetAliveTime()}}
+{\footnotesize\ttfamily unsafe double Hornet\+Engine.\+Graphics.\+Native\+Window.\+Get\+Alive\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function which checks how long the window has been running 
+
+\begin{DoxyReturn}{Returns}
+A double containing the time
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a21bb8dd17834ceac6a089ab663e38fd8}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a21bb8dd17834ceac6a089ab663e38fd8}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!OnWindowCloseRequested@{OnWindowCloseRequested}}
+\index{OnWindowCloseRequested@{OnWindowCloseRequested}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{OnWindowCloseRequested()}{OnWindowCloseRequested()}}
+{\footnotesize\ttfamily abstract void Hornet\+Engine.\+Graphics.\+Native\+Window.\+On\+Window\+Close\+Requested (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_window_a8e7a922991f4f415de47ad04fb7102a9}{Hornet\+Engine.\+Graphics.\+Window}}.
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a84f317cd0b3b578ff995c83ffebdc2c5}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a84f317cd0b3b578ff995c83ffebdc2c5}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!OnWindowFocusChanged@{OnWindowFocusChanged}}
+\index{OnWindowFocusChanged@{OnWindowFocusChanged}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{OnWindowFocusChanged()}{OnWindowFocusChanged()}}
+{\footnotesize\ttfamily abstract void Hornet\+Engine.\+Graphics.\+Native\+Window.\+On\+Window\+Focus\+Changed (\begin{DoxyParamCaption}\item[{bool}]{isfocus }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_window_a9dc91401d89a216b72933a040e595609}{Hornet\+Engine.\+Graphics.\+Window}}.
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a0548f07ad413e9ed52ee46863b934a3b}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a0548f07ad413e9ed52ee46863b934a3b}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!OnWindowIconify@{OnWindowIconify}}
+\index{OnWindowIconify@{OnWindowIconify}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{OnWindowIconify()}{OnWindowIconify()}}
+{\footnotesize\ttfamily abstract void Hornet\+Engine.\+Graphics.\+Native\+Window.\+On\+Window\+Iconify (\begin{DoxyParamCaption}\item[{bool}]{iconified }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_window_ac9f65c9ba0190ed646f71430a5bb9217}{Hornet\+Engine.\+Graphics.\+Window}}.
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_ada47dcc71c95d6a4d023f4791774150c}\label{class_hornet_engine_1_1_graphics_1_1_native_window_ada47dcc71c95d6a4d023f4791774150c}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!OnWindowMaximize@{OnWindowMaximize}}
+\index{OnWindowMaximize@{OnWindowMaximize}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{OnWindowMaximize()}{OnWindowMaximize()}}
+{\footnotesize\ttfamily abstract void Hornet\+Engine.\+Graphics.\+Native\+Window.\+On\+Window\+Maximize (\begin{DoxyParamCaption}\item[{bool}]{maximized }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_window_ad3711830c713d6bec7e4580ed633a4cc}{Hornet\+Engine.\+Graphics.\+Window}}.
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a507ba8aaef0db28d8b20112e54e02f40}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a507ba8aaef0db28d8b20112e54e02f40}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!OnWindowPosChanged@{OnWindowPosChanged}}
+\index{OnWindowPosChanged@{OnWindowPosChanged}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{OnWindowPosChanged()}{OnWindowPosChanged()}}
+{\footnotesize\ttfamily abstract void Hornet\+Engine.\+Graphics.\+Native\+Window.\+On\+Window\+Pos\+Changed (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_window_af42473906d94365a0563e21ffcf97283}{Hornet\+Engine.\+Graphics.\+Window}}.
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a0ba78e8605c58fde8935dc094308d62d}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a0ba78e8605c58fde8935dc094308d62d}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!OnWindowSizeChanged@{OnWindowSizeChanged}}
+\index{OnWindowSizeChanged@{OnWindowSizeChanged}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{OnWindowSizeChanged()}{OnWindowSizeChanged()}}
+{\footnotesize\ttfamily abstract void Hornet\+Engine.\+Graphics.\+Native\+Window.\+On\+Window\+Size\+Changed (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_window_a137304dd68ef352a78e68e7c30b9649a}{Hornet\+Engine.\+Graphics.\+Window}}.
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a14a07ab118b6c92a96631bf7c8d73efe}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a14a07ab118b6c92a96631bf7c8d73efe}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!PollEvents@{PollEvents}}
+\index{PollEvents@{PollEvents}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{PollEvents()}{PollEvents()}}
+{\footnotesize\ttfamily unsafe void Hornet\+Engine.\+Graphics.\+Native\+Window.\+Poll\+Events (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a58ef51f200d38ecb25c3854a0ca0e9c5}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a58ef51f200d38ecb25c3854a0ca0e9c5}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!SetDrawArea@{SetDrawArea}}
+\index{SetDrawArea@{SetDrawArea}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{SetDrawArea()}{SetDrawArea()}}
+{\footnotesize\ttfamily unsafe void Hornet\+Engine.\+Graphics.\+Native\+Window.\+Set\+Draw\+Area (\begin{DoxyParamCaption}\item[{uint}]{x,  }\item[{uint}]{y,  }\item[{uint}]{width,  }\item[{uint}]{height }\end{DoxyParamCaption})}
+
+
+
+A function which sets the draw area of the window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x position\\
+\hline
+{\em y} & The y position\\
+\hline
+{\em width} & The width\\
+\hline
+{\em height} & The height\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a4c9795505e30296122ef55c1935fed28}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a4c9795505e30296122ef55c1935fed28}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{SetPosition()}{SetPosition()}}
+{\footnotesize\ttfamily unsafe void Hornet\+Engine.\+Graphics.\+Native\+Window.\+Set\+Position (\begin{DoxyParamCaption}\item[{uint}]{x\+\_\+pos,  }\item[{uint}]{y\+\_\+pos }\end{DoxyParamCaption})}
+
+
+
+A function which can set the position of the screen 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\+\_\+pos} & The x position\\
+\hline
+{\em y\+\_\+pos} & The y position\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_af93355645bfcae57915923a326a299bb}\label{class_hornet_engine_1_1_graphics_1_1_native_window_af93355645bfcae57915923a326a299bb}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!SetSize@{SetSize}}
+\index{SetSize@{SetSize}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{SetSize()}{SetSize()}}
+{\footnotesize\ttfamily unsafe void Hornet\+Engine.\+Graphics.\+Native\+Window.\+Set\+Size (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+A function which can set the size of the window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & The given width\\
+\hline
+{\em height} & The given height\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_ac93f0136530b9cfac69878defea4b3ab}\label{class_hornet_engine_1_1_graphics_1_1_native_window_ac93f0136530b9cfac69878defea4b3ab}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!SetTitle@{SetTitle}}
+\index{SetTitle@{SetTitle}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{SetTitle()}{SetTitle()}}
+{\footnotesize\ttfamily unsafe void Hornet\+Engine.\+Graphics.\+Native\+Window.\+Set\+Title (\begin{DoxyParamCaption}\item[{String}]{title }\end{DoxyParamCaption})}
+
+
+
+A function which can set the title of the window 
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & The given title\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a2732d36eadeb5bf1226247722b5ab6b4}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a2732d36eadeb5bf1226247722b5ab6b4}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!ShouldClose@{ShouldClose}}
+\index{ShouldClose@{ShouldClose}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{ShouldClose()}{ShouldClose()}}
+{\footnotesize\ttfamily unsafe bool Hornet\+Engine.\+Graphics.\+Native\+Window.\+Should\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function which checks whether the window should be closed 
+
+\begin{DoxyReturn}{Returns}
+A boolean depending on the result
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_afd8fa0ab79de05f40e7d5ec5577ddbca}\label{class_hornet_engine_1_1_graphics_1_1_native_window_afd8fa0ab79de05f40e7d5ec5577ddbca}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!SwapBuffers@{SwapBuffers}}
+\index{SwapBuffers@{SwapBuffers}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{SwapBuffers()}{SwapBuffers()}}
+{\footnotesize\ttfamily unsafe void Hornet\+Engine.\+Graphics.\+Native\+Window.\+Swap\+Buffers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a50378c9d15a738e8c1766f7a824b2438}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a50378c9d15a738e8c1766f7a824b2438}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!n\_window@{n\_window}}
+\index{n\_window@{n\_window}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{n\_window}{n\_window}}
+{\footnotesize\ttfamily unsafe Glfw\+Native\+Window Hornet\+Engine.\+Graphics.\+Native\+Window.\+n\+\_\+window\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a4903aacac21bff3d8a8251313c6bf5c1}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a4903aacac21bff3d8a8251313c6bf5c1}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!touch\_driver@{touch\_driver}}
+\index{touch\_driver@{touch\_driver}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{touch\_driver}{touch\_driver}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_drivers_1_1_touch_driver}{Touch\+Driver}} Hornet\+Engine.\+Graphics.\+Native\+Window.\+touch\+\_\+driver\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a41c827d8921a63c66e78b591edab649d}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a41c827d8921a63c66e78b591edab649d}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!w\_handle@{w\_handle}}
+\index{w\_handle@{w\_handle}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{w\_handle}{w\_handle}}
+{\footnotesize\ttfamily unsafe Window\+Handle$\ast$ Hornet\+Engine.\+Graphics.\+Native\+Window.\+w\+\_\+handle\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a628afecba7c16109891236dbb922e86b}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a628afecba7c16109891236dbb922e86b}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!GL@{GL}}
+\index{GL@{GL}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{GL}{GL}}
+{\footnotesize\ttfamily GL Hornet\+Engine.\+Graphics.\+Native\+Window.\+GL\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
+
+
+
+The GL context 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a6f1abf4851d4fc3a5bfd628973014665}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a6f1abf4851d4fc3a5bfd628973014665}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!GLFW@{GLFW}}
+\index{GLFW@{GLFW}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{GLFW}{GLFW}}
+{\footnotesize\ttfamily Glfw Hornet\+Engine.\+Graphics.\+Native\+Window.\+GLFW\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
+
+
+
+The GLFW context 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a07e48bdac06011eff2b86b33921a867e}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a07e48bdac06011eff2b86b33921a867e}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!Pos@{Pos}}
+\index{Pos@{Pos}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{Pos}{Pos}}
+{\footnotesize\ttfamily vec2 Hornet\+Engine.\+Graphics.\+Native\+Window.\+Pos\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The position of the window 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a6673b3c4ef3181bf908a487311feff55}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a6673b3c4ef3181bf908a487311feff55}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!Size@{Size}}
+\index{Size@{Size}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{Size}{Size}}
+{\footnotesize\ttfamily vec2 Hornet\+Engine.\+Graphics.\+Native\+Window.\+Size\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The size of the window 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_native_window_a0e750f3c9c1f8cc873f906c14ae6c280}\label{class_hornet_engine_1_1_graphics_1_1_native_window_a0e750f3c9c1f8cc873f906c14ae6c280}} 
+\index{HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}!Title@{Title}}
+\index{Title@{Title}!HornetEngine.Graphics.NativeWindow@{HornetEngine.Graphics.NativeWindow}}
+\doxysubsubsection{\texorpdfstring{Title}{Title}}
+{\footnotesize\ttfamily String Hornet\+Engine.\+Graphics.\+Native\+Window.\+Title\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The title of the window 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Hornet\+Engine/\+Graphics/\mbox{\hyperlink{_native_window_8cs}{Native\+Window.\+cs}}\end{DoxyCompactItemize}

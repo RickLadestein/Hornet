@@ -1,0 +1,221 @@
+\hypertarget{class_hornet_engine_1_1_input_1_1_keyboard}{}\doxysection{Hornet\+Engine.\+Input.\+Keyboard Class Reference}
+\label{class_hornet_engine_1_1_input_1_1_keyboard}\index{HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+delegate void \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_ab15e8eaed62de1037bd5a6cb007a5edb}{Key\+Press\+Func}} (Keys key)
+\begin{DoxyCompactList}\small\item\em The key press function \end{DoxyCompactList}\item 
+delegate void \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_a0cb7c829aa40bcd9effbc96d70ce38e4}{Key\+Release\+Func}} (Keys key)
+\begin{DoxyCompactList}\small\item\em The key release function \end{DoxyCompactList}\item 
+delegate void \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_aac68224e9d3149a6f6702e371843a566}{Key\+Repeat\+Func}} (Keys key)
+\begin{DoxyCompactList}\small\item\em The key repeat function \end{DoxyCompactList}\item 
+delegate void \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_a2044efa3527772578cbbab708a776dde}{Key\+Type\+Func}} (uint identifier)
+\begin{DoxyCompactList}\small\item\em The key type function \end{DoxyCompactList}\item 
+unsafe \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_ae3990d07c51f2a30ad14451436b96801}{Keyboard}} (Window\+Handle $\ast$w\+\_\+handle)
+\begin{DoxyCompactList}\small\item\em The constructor of the \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard}{Keyboard}} class \end{DoxyCompactList}\item 
+Silk.\+NET.\+GLFW.\+Keys\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_af31532e965b7c78a295a4a77e528c090}{Get\+Pressed\+Buttons}} ()
+\begin{DoxyCompactList}\small\item\em Gets all the pressed buttons \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_a58bc4512cf02391c2337cedb5bf5631a}{Is\+Key\+Down}} (Silk.\+NET.\+GLFW.\+Keys key)
+\begin{DoxyCompactList}\small\item\em Checks if the requested key is currently pressed \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_ade02bf091460323858303c89b4ee1d62}{Change\+Mode}} (\mbox{\hyperlink{namespace_hornet_engine_1_1_input_a97e12401eb8acdd1cc376996432cf7a0}{Keyboard\+Mode}} new\+Mode)
+\begin{DoxyCompactList}\small\item\em A function which can be used to change the keyboard\textquotesingle{}s mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static readonly int \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_a13b7e7557e60c64567b29dd20d5ea396}{MAX\+\_\+\+PRESSED\+\_\+\+BUTTONS}} = 5
+\end{DoxyCompactItemize}
+\doxysubsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_ab15e8eaed62de1037bd5a6cb007a5edb}{Key\+Press\+Func}} \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_a55d64fbc2752724408827fb41ef902e8}{Key\+Press}}
+\begin{DoxyCompactList}\small\item\em The key press event \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_a0cb7c829aa40bcd9effbc96d70ce38e4}{Key\+Release\+Func}} \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_a75700290fc65c53007c4f2a55028cbf4}{Key\+Release}}
+\begin{DoxyCompactList}\small\item\em The key release event \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_aac68224e9d3149a6f6702e371843a566}{Key\+Repeat\+Func}} \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_aaf79d9d377c5176dedbc8654663c8fb6}{Key\+Repeat}}
+\begin{DoxyCompactList}\small\item\em The key repeat event \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_a2044efa3527772578cbbab708a776dde}{Key\+Type\+Func}} \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_ac9e506995047971f6334c58c94820bf5}{Key\+Type}}
+\begin{DoxyCompactList}\small\item\em The key type event \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_keyboard_ae3990d07c51f2a30ad14451436b96801}\label{class_hornet_engine_1_1_input_1_1_keyboard_ae3990d07c51f2a30ad14451436b96801}} 
+\index{HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}!Keyboard@{Keyboard}}
+\index{Keyboard@{Keyboard}!HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}}
+\doxysubsubsection{\texorpdfstring{Keyboard()}{Keyboard()}}
+{\footnotesize\ttfamily unsafe Hornet\+Engine.\+Input.\+Keyboard.\+Keyboard (\begin{DoxyParamCaption}\item[{Window\+Handle $\ast$}]{w\+\_\+handle }\end{DoxyParamCaption})}
+
+
+
+The constructor of the \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard}{Keyboard}} class 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w\+\_\+handle} & The window to which the keyboard class should be bound.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_keyboard_ade02bf091460323858303c89b4ee1d62}\label{class_hornet_engine_1_1_input_1_1_keyboard_ade02bf091460323858303c89b4ee1d62}} 
+\index{HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}!ChangeMode@{ChangeMode}}
+\index{ChangeMode@{ChangeMode}!HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}}
+\doxysubsubsection{\texorpdfstring{ChangeMode()}{ChangeMode()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Input.\+Keyboard.\+Change\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_hornet_engine_1_1_input_a97e12401eb8acdd1cc376996432cf7a0}{Keyboard\+Mode}}}]{new\+Mode }\end{DoxyParamCaption})}
+
+
+
+A function which can be used to change the keyboard\textquotesingle{}s mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Mode} & The new mode which should be used.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_keyboard_af31532e965b7c78a295a4a77e528c090}\label{class_hornet_engine_1_1_input_1_1_keyboard_af31532e965b7c78a295a4a77e528c090}} 
+\index{HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}!GetPressedButtons@{GetPressedButtons}}
+\index{GetPressedButtons@{GetPressedButtons}!HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}}
+\doxysubsubsection{\texorpdfstring{GetPressedButtons()}{GetPressedButtons()}}
+{\footnotesize\ttfamily Silk.\+NET.\+GLFW.\+Keys \mbox{[}$\,$\mbox{]} Hornet\+Engine.\+Input.\+Keyboard.\+Get\+Pressed\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets all the pressed buttons 
+
+\begin{DoxyReturn}{Returns}
+Array filled with the currently pressed buttons
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_keyboard_a58bc4512cf02391c2337cedb5bf5631a}\label{class_hornet_engine_1_1_input_1_1_keyboard_a58bc4512cf02391c2337cedb5bf5631a}} 
+\index{HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}!IsKeyDown@{IsKeyDown}}
+\index{IsKeyDown@{IsKeyDown}!HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}}
+\doxysubsubsection{\texorpdfstring{IsKeyDown()}{IsKeyDown()}}
+{\footnotesize\ttfamily bool Hornet\+Engine.\+Input.\+Keyboard.\+Is\+Key\+Down (\begin{DoxyParamCaption}\item[{Silk.\+NET.\+GLFW.\+Keys}]{key }\end{DoxyParamCaption})}
+
+
+
+Checks if the requested key is currently pressed 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key that needs to be checked\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the specified key was down, false if not
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_keyboard_ab15e8eaed62de1037bd5a6cb007a5edb}\label{class_hornet_engine_1_1_input_1_1_keyboard_ab15e8eaed62de1037bd5a6cb007a5edb}} 
+\index{HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}!KeyPressFunc@{KeyPressFunc}}
+\index{KeyPressFunc@{KeyPressFunc}!HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}}
+\doxysubsubsection{\texorpdfstring{KeyPressFunc()}{KeyPressFunc()}}
+{\footnotesize\ttfamily delegate void Hornet\+Engine.\+Input.\+Keyboard.\+Key\+Press\+Func (\begin{DoxyParamCaption}\item[{Keys}]{key }\end{DoxyParamCaption})}
+
+
+
+The key press function 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The keys which were pressed\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_keyboard_a0cb7c829aa40bcd9effbc96d70ce38e4}\label{class_hornet_engine_1_1_input_1_1_keyboard_a0cb7c829aa40bcd9effbc96d70ce38e4}} 
+\index{HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}!KeyReleaseFunc@{KeyReleaseFunc}}
+\index{KeyReleaseFunc@{KeyReleaseFunc}!HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}}
+\doxysubsubsection{\texorpdfstring{KeyReleaseFunc()}{KeyReleaseFunc()}}
+{\footnotesize\ttfamily delegate void Hornet\+Engine.\+Input.\+Keyboard.\+Key\+Release\+Func (\begin{DoxyParamCaption}\item[{Keys}]{key }\end{DoxyParamCaption})}
+
+
+
+The key release function 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The keys which were released\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_keyboard_aac68224e9d3149a6f6702e371843a566}\label{class_hornet_engine_1_1_input_1_1_keyboard_aac68224e9d3149a6f6702e371843a566}} 
+\index{HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}!KeyRepeatFunc@{KeyRepeatFunc}}
+\index{KeyRepeatFunc@{KeyRepeatFunc}!HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}}
+\doxysubsubsection{\texorpdfstring{KeyRepeatFunc()}{KeyRepeatFunc()}}
+{\footnotesize\ttfamily delegate void Hornet\+Engine.\+Input.\+Keyboard.\+Key\+Repeat\+Func (\begin{DoxyParamCaption}\item[{Keys}]{key }\end{DoxyParamCaption})}
+
+
+
+The key repeat function 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The keys which were held down\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_keyboard_a2044efa3527772578cbbab708a776dde}\label{class_hornet_engine_1_1_input_1_1_keyboard_a2044efa3527772578cbbab708a776dde}} 
+\index{HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}!KeyTypeFunc@{KeyTypeFunc}}
+\index{KeyTypeFunc@{KeyTypeFunc}!HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}}
+\doxysubsubsection{\texorpdfstring{KeyTypeFunc()}{KeyTypeFunc()}}
+{\footnotesize\ttfamily delegate void Hornet\+Engine.\+Input.\+Keyboard.\+Key\+Type\+Func (\begin{DoxyParamCaption}\item[{uint}]{identifier }\end{DoxyParamCaption})}
+
+
+
+The key type function 
+
+
+\begin{DoxyParams}{Parameters}
+{\em identifier} & The identifier of the key\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_keyboard_a13b7e7557e60c64567b29dd20d5ea396}\label{class_hornet_engine_1_1_input_1_1_keyboard_a13b7e7557e60c64567b29dd20d5ea396}} 
+\index{HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}!MAX\_PRESSED\_BUTTONS@{MAX\_PRESSED\_BUTTONS}}
+\index{MAX\_PRESSED\_BUTTONS@{MAX\_PRESSED\_BUTTONS}!HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}}
+\doxysubsubsection{\texorpdfstring{MAX\_PRESSED\_BUTTONS}{MAX\_PRESSED\_BUTTONS}}
+{\footnotesize\ttfamily readonly int Hornet\+Engine.\+Input.\+Keyboard.\+MAX\+\_\+\+PRESSED\+\_\+\+BUTTONS = 5\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxysubsection{Event Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_keyboard_a55d64fbc2752724408827fb41ef902e8}\label{class_hornet_engine_1_1_input_1_1_keyboard_a55d64fbc2752724408827fb41ef902e8}} 
+\index{HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}!KeyPress@{KeyPress}}
+\index{KeyPress@{KeyPress}!HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}}
+\doxysubsubsection{\texorpdfstring{KeyPress}{KeyPress}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_ab15e8eaed62de1037bd5a6cb007a5edb}{Key\+Press\+Func}} Hornet\+Engine.\+Input.\+Keyboard.\+Key\+Press}
+
+
+
+The key press event 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_keyboard_a75700290fc65c53007c4f2a55028cbf4}\label{class_hornet_engine_1_1_input_1_1_keyboard_a75700290fc65c53007c4f2a55028cbf4}} 
+\index{HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}!KeyRelease@{KeyRelease}}
+\index{KeyRelease@{KeyRelease}!HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}}
+\doxysubsubsection{\texorpdfstring{KeyRelease}{KeyRelease}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_a0cb7c829aa40bcd9effbc96d70ce38e4}{Key\+Release\+Func}} Hornet\+Engine.\+Input.\+Keyboard.\+Key\+Release}
+
+
+
+The key release event 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_keyboard_aaf79d9d377c5176dedbc8654663c8fb6}\label{class_hornet_engine_1_1_input_1_1_keyboard_aaf79d9d377c5176dedbc8654663c8fb6}} 
+\index{HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}!KeyRepeat@{KeyRepeat}}
+\index{KeyRepeat@{KeyRepeat}!HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}}
+\doxysubsubsection{\texorpdfstring{KeyRepeat}{KeyRepeat}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_aac68224e9d3149a6f6702e371843a566}{Key\+Repeat\+Func}} Hornet\+Engine.\+Input.\+Keyboard.\+Key\+Repeat}
+
+
+
+The key repeat event 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_keyboard_ac9e506995047971f6334c58c94820bf5}\label{class_hornet_engine_1_1_input_1_1_keyboard_ac9e506995047971f6334c58c94820bf5}} 
+\index{HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}!KeyType@{KeyType}}
+\index{KeyType@{KeyType}!HornetEngine.Input.Keyboard@{HornetEngine.Input.Keyboard}}
+\doxysubsubsection{\texorpdfstring{KeyType}{KeyType}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_keyboard_a2044efa3527772578cbbab708a776dde}{Key\+Type\+Func}} Hornet\+Engine.\+Input.\+Keyboard.\+Key\+Type}
+
+
+
+The key type event 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Hornet\+Engine/\+Input/\mbox{\hyperlink{_keyboard_8cs}{Keyboard.\+cs}}\end{DoxyCompactItemize}

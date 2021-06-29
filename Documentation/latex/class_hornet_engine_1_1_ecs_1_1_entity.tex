@@ -1,0 +1,309 @@
+\hypertarget{class_hornet_engine_1_1_ecs_1_1_entity}{}\doxysection{Hornet\+Engine.\+Ecs.\+Entity Class Reference}
+\label{class_hornet_engine_1_1_ecs_1_1_entity}\index{HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity_ad90b0669d1c9eebb5c2b5b93cc157a10}{Entity}} ()
+\begin{DoxyCompactList}\small\item\em Creates a new instance of \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} with default parameters \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity_af37cab268b8aaf7f6b18b90f5b35e992}{Entity}} (String name)
+\begin{DoxyCompactList}\small\item\em Creates a new instance of \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} with custom name and default parameters \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity_a452a40172dbe081212446d9446d3ec53}{Add\+Component}} (\mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_component}{Component}} c)
+\begin{DoxyCompactList}\small\item\em Adds a component to this \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity_ac72b833f9c1690a86f67b4fc54e1839c}{Get\+Component$<$ T $>$}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the first found component that matches the search parameter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity_a726fd84971df1da5451137237e449938}{Get\+Components$<$ T $>$}} (ref List$<$ T $>$ comps)
+\begin{DoxyCompactList}\small\item\em Retrieves all components that match the search parameter \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity_a75b3b8849ed2cc7ab9762526e1bf7b1b}{Has\+Component$<$ T $>$}} ()
+\begin{DoxyCompactList}\small\item\em A function which checks whether the entity has components \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity_aae27be5860756b1c8cd00b2760ddf106}{Add\+Script}} (\mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_mono_script}{Mono\+Script}} c)
+\begin{DoxyCompactList}\small\item\em Adds a script to this \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity_aacb49df0baf50e43d288fc9707ef588d}{Get\+Script$<$ T $>$}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the first found script that matches the search parameter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity_ac1dbb81cbd8d96b75837606fca2f324d}{Get\+Scripts$<$ T $>$}} (ref List$<$ T $>$ comps)
+\begin{DoxyCompactList}\small\item\em Retrieves all scripts that match the search parameter \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity_a6a8938a457d2937a9dcad3e78037d5c8}{Has\+Script$<$ T $>$}} ()
+\begin{DoxyCompactList}\small\item\em A function which checks whether the entity has a script \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_hornet_engine_1_1_ecs_1_1_transform}{Transform}} \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity_a4c6360caa7c11e074f7b3e552d00a6f5}{Transform}}
+\begin{DoxyCompactList}\small\item\em The current transform of this entity \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_mono_script}{Mono\+Script}} $>$ \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity_a68e235c0a280691bf7ba6bae5aacc249}{Scripts}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The scripts that are bound to the entity \end{DoxyCompactList}\item 
+Guid \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity_a4bc87bed8ca458b3710e98e80b1e9073}{Id}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The identifier of this \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity_aa3be19defddb8bee37a915cbbc541a3a}{Name}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The custom name of this \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} $>$ \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity_ac777ef6b5ac30799bef2d4c598c6478a}{Children}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The children this entity has \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_entity_ad90b0669d1c9eebb5c2b5b93cc157a10}\label{class_hornet_engine_1_1_ecs_1_1_entity_ad90b0669d1c9eebb5c2b5b93cc157a10}} 
+\index{HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Hornet\+Engine.\+Ecs.\+Entity.\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a new instance of \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} with default parameters 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_entity_af37cab268b8aaf7f6b18b90f5b35e992}\label{class_hornet_engine_1_1_ecs_1_1_entity_af37cab268b8aaf7f6b18b90f5b35e992}} 
+\index{HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Hornet\+Engine.\+Ecs.\+Entity.\+Entity (\begin{DoxyParamCaption}\item[{String}]{name }\end{DoxyParamCaption})}
+
+
+
+Creates a new instance of \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} with custom name and default parameters 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name that is to be assigned to the \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}}\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_entity_a452a40172dbe081212446d9446d3ec53}\label{class_hornet_engine_1_1_ecs_1_1_entity_a452a40172dbe081212446d9446d3ec53}} 
+\index{HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}!AddComponent@{AddComponent}}
+\index{AddComponent@{AddComponent}!HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}}
+\doxysubsubsection{\texorpdfstring{AddComponent()}{AddComponent()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Ecs.\+Entity.\+Add\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_component}{Component}}}]{c }\end{DoxyParamCaption})}
+
+
+
+Adds a component to this \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & The component to add\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_entity_aae27be5860756b1c8cd00b2760ddf106}\label{class_hornet_engine_1_1_ecs_1_1_entity_aae27be5860756b1c8cd00b2760ddf106}} 
+\index{HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}!AddScript@{AddScript}}
+\index{AddScript@{AddScript}!HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}}
+\doxysubsubsection{\texorpdfstring{AddScript()}{AddScript()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Ecs.\+Entity.\+Add\+Script (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_mono_script}{Mono\+Script}}}]{c }\end{DoxyParamCaption})}
+
+
+
+Adds a script to this \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & The script to add\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_entity_ac72b833f9c1690a86f67b4fc54e1839c}\label{class_hornet_engine_1_1_ecs_1_1_entity_ac72b833f9c1690a86f67b4fc54e1839c}} 
+\index{HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}!GetComponent$<$ T $>$@{GetComponent$<$ T $>$}}
+\index{GetComponent$<$ T $>$@{GetComponent$<$ T $>$}!HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}}
+\doxysubsubsection{\texorpdfstring{GetComponent$<$ T $>$()}{GetComponent< T >()}}
+{\footnotesize\ttfamily T Hornet\+Engine.\+Ecs.\+Entity.\+Get\+Component$<$ T $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves the first found component that matches the search parameter. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The component that is to be found\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Found component, if not found returns {\ttfamily null}
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Component}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_entity_a726fd84971df1da5451137237e449938}\label{class_hornet_engine_1_1_ecs_1_1_entity_a726fd84971df1da5451137237e449938}} 
+\index{HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}!GetComponents$<$ T $>$@{GetComponents$<$ T $>$}}
+\index{GetComponents$<$ T $>$@{GetComponents$<$ T $>$}!HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}}
+\doxysubsubsection{\texorpdfstring{GetComponents$<$ T $>$()}{GetComponents< T >()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Ecs.\+Entity.\+Get\+Components$<$ T $>$ (\begin{DoxyParamCaption}\item[{ref List$<$ T $>$}]{comps }\end{DoxyParamCaption})}
+
+
+
+Retrieves all components that match the search parameter 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of component that is to be found\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em comps} & A list where found c\\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Component}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_entity_aacb49df0baf50e43d288fc9707ef588d}\label{class_hornet_engine_1_1_ecs_1_1_entity_aacb49df0baf50e43d288fc9707ef588d}} 
+\index{HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}!GetScript$<$ T $>$@{GetScript$<$ T $>$}}
+\index{GetScript$<$ T $>$@{GetScript$<$ T $>$}!HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}}
+\doxysubsubsection{\texorpdfstring{GetScript$<$ T $>$()}{GetScript< T >()}}
+{\footnotesize\ttfamily T Hornet\+Engine.\+Ecs.\+Entity.\+Get\+Script$<$ T $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves the first found script that matches the search parameter. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The script that is to be found\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Found script, if not found returns {\ttfamily null}
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Mono\+Script}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_entity_ac1dbb81cbd8d96b75837606fca2f324d}\label{class_hornet_engine_1_1_ecs_1_1_entity_ac1dbb81cbd8d96b75837606fca2f324d}} 
+\index{HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}!GetScripts$<$ T $>$@{GetScripts$<$ T $>$}}
+\index{GetScripts$<$ T $>$@{GetScripts$<$ T $>$}!HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}}
+\doxysubsubsection{\texorpdfstring{GetScripts$<$ T $>$()}{GetScripts< T >()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Ecs.\+Entity.\+Get\+Scripts$<$ T $>$ (\begin{DoxyParamCaption}\item[{ref List$<$ T $>$}]{comps }\end{DoxyParamCaption})}
+
+
+
+Retrieves all scripts that match the search parameter 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of script that is to be found\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em comps} & A list where found scripts are stored\\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Mono\+Script}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_entity_a75b3b8849ed2cc7ab9762526e1bf7b1b}\label{class_hornet_engine_1_1_ecs_1_1_entity_a75b3b8849ed2cc7ab9762526e1bf7b1b}} 
+\index{HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}!HasComponent$<$ T $>$@{HasComponent$<$ T $>$}}
+\index{HasComponent$<$ T $>$@{HasComponent$<$ T $>$}!HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}}
+\doxysubsubsection{\texorpdfstring{HasComponent$<$ T $>$()}{HasComponent< T >()}}
+{\footnotesize\ttfamily bool Hornet\+Engine.\+Ecs.\+Entity.\+Has\+Component$<$ T $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function which checks whether the entity has components 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the component which should be checked\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+A boolean depending on the result
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Component}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_entity_a6a8938a457d2937a9dcad3e78037d5c8}\label{class_hornet_engine_1_1_ecs_1_1_entity_a6a8938a457d2937a9dcad3e78037d5c8}} 
+\index{HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}!HasScript$<$ T $>$@{HasScript$<$ T $>$}}
+\index{HasScript$<$ T $>$@{HasScript$<$ T $>$}!HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}}
+\doxysubsubsection{\texorpdfstring{HasScript$<$ T $>$()}{HasScript< T >()}}
+{\footnotesize\ttfamily bool Hornet\+Engine.\+Ecs.\+Entity.\+Has\+Script$<$ T $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function which checks whether the entity has a script 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the script which should be checked\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+A boolean depending on the result
+\end{DoxyReturn}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Mono\+Script}]\end{description}
+\end{Desc}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_entity_a4c6360caa7c11e074f7b3e552d00a6f5}\label{class_hornet_engine_1_1_ecs_1_1_entity_a4c6360caa7c11e074f7b3e552d00a6f5}} 
+\index{HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}!Transform@{Transform}}
+\index{Transform@{Transform}!HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}}
+\doxysubsubsection{\texorpdfstring{Transform}{Transform}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_hornet_engine_1_1_ecs_1_1_transform}{Transform}} Hornet\+Engine.\+Ecs.\+Entity.\+Transform}
+
+
+
+The current transform of this entity 
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_entity_ac777ef6b5ac30799bef2d4c598c6478a}\label{class_hornet_engine_1_1_ecs_1_1_entity_ac777ef6b5ac30799bef2d4c598c6478a}} 
+\index{HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}!Children@{Children}}
+\index{Children@{Children}!HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}}
+\doxysubsubsection{\texorpdfstring{Children}{Children}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}}$>$ Hornet\+Engine.\+Ecs.\+Entity.\+Children\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The children this entity has 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_entity_a4bc87bed8ca458b3710e98e80b1e9073}\label{class_hornet_engine_1_1_ecs_1_1_entity_a4bc87bed8ca458b3710e98e80b1e9073}} 
+\index{HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}!Id@{Id}}
+\index{Id@{Id}!HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}}
+\doxysubsubsection{\texorpdfstring{Id}{Id}}
+{\footnotesize\ttfamily Guid Hornet\+Engine.\+Ecs.\+Entity.\+Id\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The identifier of this \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_entity_aa3be19defddb8bee37a915cbbc541a3a}\label{class_hornet_engine_1_1_ecs_1_1_entity_aa3be19defddb8bee37a915cbbc541a3a}} 
+\index{HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}!Name@{Name}}
+\index{Name@{Name}!HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}}
+\doxysubsubsection{\texorpdfstring{Name}{Name}}
+{\footnotesize\ttfamily String Hornet\+Engine.\+Ecs.\+Entity.\+Name\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The custom name of this \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_entity}{Entity}} 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_entity_a68e235c0a280691bf7ba6bae5aacc249}\label{class_hornet_engine_1_1_ecs_1_1_entity_a68e235c0a280691bf7ba6bae5aacc249}} 
+\index{HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}!Scripts@{Scripts}}
+\index{Scripts@{Scripts}!HornetEngine.Ecs.Entity@{HornetEngine.Ecs.Entity}}
+\doxysubsubsection{\texorpdfstring{Scripts}{Scripts}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_mono_script}{Mono\+Script}}$>$ Hornet\+Engine.\+Ecs.\+Entity.\+Scripts\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The scripts that are bound to the entity 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Hornet\+Engine/\+Ecs/\mbox{\hyperlink{_entity_8cs}{Entity.\+cs}}\end{DoxyCompactItemize}

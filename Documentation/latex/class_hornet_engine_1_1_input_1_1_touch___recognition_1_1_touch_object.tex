@@ -1,0 +1,107 @@
+\hypertarget{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object}{}\doxysection{Hornet\+Engine.\+Input.\+Touch\+\_\+\+Recognition.\+Touch\+Object Class Reference}
+\label{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object}\index{HornetEngine.Input.Touch\_Recognition.TouchObject@{HornetEngine.Input.Touch\_Recognition.TouchObject}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object_a728b13446f388eafb570911f9871fd45}{Touch\+Object}} (Vector2\mbox{[}$\,$\mbox{]} touchpoints)
+\begin{DoxyCompactList}\small\item\em The constructor of a touch object. \end{DoxyCompactList}\item 
+Vector2\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object_a7c4a4268af7648b35e8176c65abba29d}{get\+Touch\+Points}} ()
+\begin{DoxyCompactList}\small\item\em A function which can be called to get the object\textquotesingle{}s touchpoints \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object_a816d96b0a7111bf56a90e174523eb8a6}{Move}} (Vector2\mbox{[}$\,$\mbox{]} new\+Pos)
+\begin{DoxyCompactList}\small\item\em A function which can be used to move the touch object to a new location. The first Vector2 should always be the FWD point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Vector2\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object_a490fe7f130b0bf505333523839267f5b}{touch\+\_\+points}} = new Vector2\mbox{[}3\mbox{]}
+\begin{DoxyCompactList}\small\item\em The touchpoints of the touch object \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_hornet_engine_1_1_input_1_1_touch___recognition_a52b91fa42a7a44fbb992679c387facb6}{Touch\+Point\+Type}} \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object_ac0cf6d69911c8b0cda578f5825f4d9a8}{type}}
+\begin{DoxyCompactList}\small\item\em The type of the touch object \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_config}{Config}} \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object_a963fb38e03d6eb3fb88c6ad8161bdac7}{configuration}} = \mbox{\hyperlink{class_hornet_engine_1_1_config_ac3d0eed4bfaec737143fca50f91f0854}{Config.\+Instance}}
+\begin{DoxyCompactList}\small\item\em The configuration of the program \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object_a728b13446f388eafb570911f9871fd45}\label{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object_a728b13446f388eafb570911f9871fd45}} 
+\index{HornetEngine.Input.Touch\_Recognition.TouchObject@{HornetEngine.Input.Touch\_Recognition.TouchObject}!TouchObject@{TouchObject}}
+\index{TouchObject@{TouchObject}!HornetEngine.Input.Touch\_Recognition.TouchObject@{HornetEngine.Input.Touch\_Recognition.TouchObject}}
+\doxysubsubsection{\texorpdfstring{TouchObject()}{TouchObject()}}
+{\footnotesize\ttfamily Hornet\+Engine.\+Input.\+Touch\+\_\+\+Recognition.\+Touch\+Object.\+Touch\+Object (\begin{DoxyParamCaption}\item[{Vector2\mbox{[}$\,$\mbox{]}}]{touchpoints }\end{DoxyParamCaption})}
+
+
+
+The constructor of a touch object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em touchpoints} & A list of touchpoints, where the first point will always be the FWD\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object_a7c4a4268af7648b35e8176c65abba29d}\label{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object_a7c4a4268af7648b35e8176c65abba29d}} 
+\index{HornetEngine.Input.Touch\_Recognition.TouchObject@{HornetEngine.Input.Touch\_Recognition.TouchObject}!getTouchPoints@{getTouchPoints}}
+\index{getTouchPoints@{getTouchPoints}!HornetEngine.Input.Touch\_Recognition.TouchObject@{HornetEngine.Input.Touch\_Recognition.TouchObject}}
+\doxysubsubsection{\texorpdfstring{getTouchPoints()}{getTouchPoints()}}
+{\footnotesize\ttfamily Vector2 \mbox{[}$\,$\mbox{]} Hornet\+Engine.\+Input.\+Touch\+\_\+\+Recognition.\+Touch\+Object.\+get\+Touch\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function which can be called to get the object\textquotesingle{}s touchpoints 
+
+\begin{DoxyReturn}{Returns}
+A list of Vector2.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object_a816d96b0a7111bf56a90e174523eb8a6}\label{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object_a816d96b0a7111bf56a90e174523eb8a6}} 
+\index{HornetEngine.Input.Touch\_Recognition.TouchObject@{HornetEngine.Input.Touch\_Recognition.TouchObject}!Move@{Move}}
+\index{Move@{Move}!HornetEngine.Input.Touch\_Recognition.TouchObject@{HornetEngine.Input.Touch\_Recognition.TouchObject}}
+\doxysubsubsection{\texorpdfstring{Move()}{Move()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Input.\+Touch\+\_\+\+Recognition.\+Touch\+Object.\+Move (\begin{DoxyParamCaption}\item[{Vector2\mbox{[}$\,$\mbox{]}}]{new\+Pos }\end{DoxyParamCaption})}
+
+
+
+A function which can be used to move the touch object to a new location. The first Vector2 should always be the FWD point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Pos} & An arraylist of touchpoints of the new location\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object_a963fb38e03d6eb3fb88c6ad8161bdac7}\label{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object_a963fb38e03d6eb3fb88c6ad8161bdac7}} 
+\index{HornetEngine.Input.Touch\_Recognition.TouchObject@{HornetEngine.Input.Touch\_Recognition.TouchObject}!configuration@{configuration}}
+\index{configuration@{configuration}!HornetEngine.Input.Touch\_Recognition.TouchObject@{HornetEngine.Input.Touch\_Recognition.TouchObject}}
+\doxysubsubsection{\texorpdfstring{configuration}{configuration}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_config}{Config}} Hornet\+Engine.\+Input.\+Touch\+\_\+\+Recognition.\+Touch\+Object.\+configuration = \mbox{\hyperlink{class_hornet_engine_1_1_config_ac3d0eed4bfaec737143fca50f91f0854}{Config.\+Instance}}}
+
+
+
+The configuration of the program 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object_a490fe7f130b0bf505333523839267f5b}\label{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object_a490fe7f130b0bf505333523839267f5b}} 
+\index{HornetEngine.Input.Touch\_Recognition.TouchObject@{HornetEngine.Input.Touch\_Recognition.TouchObject}!touch\_points@{touch\_points}}
+\index{touch\_points@{touch\_points}!HornetEngine.Input.Touch\_Recognition.TouchObject@{HornetEngine.Input.Touch\_Recognition.TouchObject}}
+\doxysubsubsection{\texorpdfstring{touch\_points}{touch\_points}}
+{\footnotesize\ttfamily Vector2 \mbox{[}$\,$\mbox{]} Hornet\+Engine.\+Input.\+Touch\+\_\+\+Recognition.\+Touch\+Object.\+touch\+\_\+points = new Vector2\mbox{[}3\mbox{]}}
+
+
+
+The touchpoints of the touch object 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object_ac0cf6d69911c8b0cda578f5825f4d9a8}\label{class_hornet_engine_1_1_input_1_1_touch___recognition_1_1_touch_object_ac0cf6d69911c8b0cda578f5825f4d9a8}} 
+\index{HornetEngine.Input.Touch\_Recognition.TouchObject@{HornetEngine.Input.Touch\_Recognition.TouchObject}!type@{type}}
+\index{type@{type}!HornetEngine.Input.Touch\_Recognition.TouchObject@{HornetEngine.Input.Touch\_Recognition.TouchObject}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_hornet_engine_1_1_input_1_1_touch___recognition_a52b91fa42a7a44fbb992679c387facb6}{Touch\+Point\+Type}} Hornet\+Engine.\+Input.\+Touch\+\_\+\+Recognition.\+Touch\+Object.\+type}
+
+
+
+The type of the touch object 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Hornet\+Engine/\+Input/\+Touch\+\_\+\+Recognition/\mbox{\hyperlink{_touch_object_8cs}{Touch\+Object.\+cs}}\end{DoxyCompactItemize}

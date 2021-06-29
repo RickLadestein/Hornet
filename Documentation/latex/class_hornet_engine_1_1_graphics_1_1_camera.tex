@@ -1,0 +1,291 @@
+\hypertarget{class_hornet_engine_1_1_graphics_1_1_camera}{}\doxysection{Hornet\+Engine.\+Graphics.\+Camera Class Reference}
+\label{class_hornet_engine_1_1_graphics_1_1_camera}\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_a69bcf46f42fe25147fd49c74916ddc34}{Camera}} ()
+\begin{DoxyCompactList}\small\item\em The constructor of the camera \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_a5879c20c5ef20985eb94bbeaee5bc4e3}{Set\+Orientation}} (float roll, float pitch, float yaw)
+\begin{DoxyCompactList}\small\item\em Sets the orientation \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_a92a40f80220f45b1c73207ca18220808}{Rotate}} (quat rotation\+\_\+quat)
+\begin{DoxyCompactList}\small\item\em Rotate the camera \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_a86319c872078331d5e8e2ceeaacfe03e}{Rotate}} (vec3 axis\+\_\+angle, float degrees)
+\begin{DoxyCompactList}\small\item\em Rotate the camera \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_a577868777cb2884f31d36ea576693acc}{Update\+View\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em Update the view matrix \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_aa371e5772e3ad5ea5137e6eeb29e827b}{Update\+Projection\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em Update the projection matrix \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_ada51cbd144e8e704fb5b926afa485936}{Register\+Scene\+Primary\+Camera}} (\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene}{Scene}} scene)
+\begin{DoxyCompactList}\small\item\em A function which can be used to register the primary camera \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_hornet_engine_1_1_graphics_1_1_camera_view_settings}{Camera\+View\+Settings}} \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_a726e526b0489c90812dcc99091bcfecc}{View\+Settings}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{struct_hornet_engine_1_1_graphics_1_1_camera_view_settings}{Camera\+View\+Settings}} \end{DoxyCompactList}\item 
+vec3 \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_ab19f82f233ed7021c614d406f7582cbb}{Position}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The current position of the camera \end{DoxyCompactList}\item 
+quat \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_ad925b61df408ee29159d41ddeba2934d}{Orientation}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Quaternion for describing the orientation of the camera; camera will always look at Z+ if orientation\mbox{[}0,0,0\mbox{]} \end{DoxyCompactList}\item 
+vec3 \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_ad3409e0bdd8b390cc9a1dc35f45521c0}{Rotation}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The current Rotation in degrees \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer}{Frame\+Buffer}} \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_a32b5ba8c2265b28ae9d14b8645a4f63f}{Frame\+Buffer}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The framebuffer of the camera \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_mesh_component}{Mesh\+Component}} \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_a1f265991a19b51f5a26543cdc80b33f9}{Render\+\_\+plane}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_material_component}{Material\+Component}} \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_a6a82d21a129a93449d28cb94e2ab0263}{Material}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+vec3 \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_a1316ea56f1c7f3f645db1866ddce2e05}{Foreward}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The foreward view \end{DoxyCompactList}\item 
+vec3 \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_a2b95140266fdb4549ccf385a805cc4b8}{Right}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The right view \end{DoxyCompactList}\item 
+vec3 \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_aafaa5458a0329858a37689d9f55981a0}{Up}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The up view \end{DoxyCompactList}\item 
+vec3 \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_a2027c135500d5b5b00610ca078e8e96b}{Target}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+mat4 \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_af93684c981b4f9a93592bd75424c1df1}{Projection\+Matrix}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The projection matrix \end{DoxyCompactList}\item 
+mat4 \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_a0e155c0042d94c7b14ac787d4368cf26}{View\+Matrix}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The view matrix \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera}{Camera}} \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera_ad8c311b1acf755c4260e828865c36e13}{Primary}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The primary camera \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_a69bcf46f42fe25147fd49c74916ddc34}\label{class_hornet_engine_1_1_graphics_1_1_camera_a69bcf46f42fe25147fd49c74916ddc34}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{Camera()}{Camera()}}
+{\footnotesize\ttfamily Hornet\+Engine.\+Graphics.\+Camera.\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The constructor of the camera 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_ada51cbd144e8e704fb5b926afa485936}\label{class_hornet_engine_1_1_graphics_1_1_camera_ada51cbd144e8e704fb5b926afa485936}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!RegisterScenePrimaryCamera@{RegisterScenePrimaryCamera}}
+\index{RegisterScenePrimaryCamera@{RegisterScenePrimaryCamera}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{RegisterScenePrimaryCamera()}{RegisterScenePrimaryCamera()}}
+{\footnotesize\ttfamily static void Hornet\+Engine.\+Graphics.\+Camera.\+Register\+Scene\+Primary\+Camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene}{Scene}}}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A function which can be used to register the primary camera 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & The scene from which the primary camera can be pulled\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_a92a40f80220f45b1c73207ca18220808}\label{class_hornet_engine_1_1_graphics_1_1_camera_a92a40f80220f45b1c73207ca18220808}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!Rotate@{Rotate}}
+\index{Rotate@{Rotate}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{Rotate()}{Rotate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Camera.\+Rotate (\begin{DoxyParamCaption}\item[{quat}]{rotation\+\_\+quat }\end{DoxyParamCaption})}
+
+
+
+Rotate the camera 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rotation\+\_\+quat} & The rotation quat used for the rotation\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_a86319c872078331d5e8e2ceeaacfe03e}\label{class_hornet_engine_1_1_graphics_1_1_camera_a86319c872078331d5e8e2ceeaacfe03e}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!Rotate@{Rotate}}
+\index{Rotate@{Rotate}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{Rotate()}{Rotate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Camera.\+Rotate (\begin{DoxyParamCaption}\item[{vec3}]{axis\+\_\+angle,  }\item[{float}]{degrees }\end{DoxyParamCaption})}
+
+
+
+Rotate the camera 
+
+
+\begin{DoxyParams}{Parameters}
+{\em axis\+\_\+angle} & The axis over which the camera should be rotated\\
+\hline
+{\em degrees} & The amount of degrees which the camera should be rotated\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_a5879c20c5ef20985eb94bbeaee5bc4e3}\label{class_hornet_engine_1_1_graphics_1_1_camera_a5879c20c5ef20985eb94bbeaee5bc4e3}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!SetOrientation@{SetOrientation}}
+\index{SetOrientation@{SetOrientation}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{SetOrientation()}{SetOrientation()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Camera.\+Set\+Orientation (\begin{DoxyParamCaption}\item[{float}]{roll,  }\item[{float}]{pitch,  }\item[{float}]{yaw }\end{DoxyParamCaption})}
+
+
+
+Sets the orientation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em roll} & The roll used in the rotation\\
+\hline
+{\em pitch} & The pitch used in the rotation\\
+\hline
+{\em yaw} & The yaw used in the rotation\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_aa371e5772e3ad5ea5137e6eeb29e827b}\label{class_hornet_engine_1_1_graphics_1_1_camera_aa371e5772e3ad5ea5137e6eeb29e827b}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!UpdateProjectionMatrix@{UpdateProjectionMatrix}}
+\index{UpdateProjectionMatrix@{UpdateProjectionMatrix}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{UpdateProjectionMatrix()}{UpdateProjectionMatrix()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Camera.\+Update\+Projection\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Update the projection matrix 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_a577868777cb2884f31d36ea576693acc}\label{class_hornet_engine_1_1_graphics_1_1_camera_a577868777cb2884f31d36ea576693acc}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!UpdateViewMatrix@{UpdateViewMatrix}}
+\index{UpdateViewMatrix@{UpdateViewMatrix}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{UpdateViewMatrix()}{UpdateViewMatrix()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Camera.\+Update\+View\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Update the view matrix 
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_a1316ea56f1c7f3f645db1866ddce2e05}\label{class_hornet_engine_1_1_graphics_1_1_camera_a1316ea56f1c7f3f645db1866ddce2e05}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!Foreward@{Foreward}}
+\index{Foreward@{Foreward}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{Foreward}{Foreward}}
+{\footnotesize\ttfamily vec3 Hornet\+Engine.\+Graphics.\+Camera.\+Foreward\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The foreward view 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_a32b5ba8c2265b28ae9d14b8645a4f63f}\label{class_hornet_engine_1_1_graphics_1_1_camera_a32b5ba8c2265b28ae9d14b8645a4f63f}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!FrameBuffer@{FrameBuffer}}
+\index{FrameBuffer@{FrameBuffer}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{FrameBuffer}{FrameBuffer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer}{Frame\+Buffer}} Hornet\+Engine.\+Graphics.\+Camera.\+Frame\+Buffer\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The framebuffer of the camera 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_a6a82d21a129a93449d28cb94e2ab0263}\label{class_hornet_engine_1_1_graphics_1_1_camera_a6a82d21a129a93449d28cb94e2ab0263}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!Material@{Material}}
+\index{Material@{Material}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{Material}{Material}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_material_component}{Material\+Component}} Hornet\+Engine.\+Graphics.\+Camera.\+Material\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_ad925b61df408ee29159d41ddeba2934d}\label{class_hornet_engine_1_1_graphics_1_1_camera_ad925b61df408ee29159d41ddeba2934d}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!Orientation@{Orientation}}
+\index{Orientation@{Orientation}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{Orientation}{Orientation}}
+{\footnotesize\ttfamily quat Hornet\+Engine.\+Graphics.\+Camera.\+Orientation\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Quaternion for describing the orientation of the camera; camera will always look at Z+ if orientation\mbox{[}0,0,0\mbox{]} 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_ab19f82f233ed7021c614d406f7582cbb}\label{class_hornet_engine_1_1_graphics_1_1_camera_ab19f82f233ed7021c614d406f7582cbb}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!Position@{Position}}
+\index{Position@{Position}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{Position}{Position}}
+{\footnotesize\ttfamily vec3 Hornet\+Engine.\+Graphics.\+Camera.\+Position\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The current position of the camera 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_ad8c311b1acf755c4260e828865c36e13}\label{class_hornet_engine_1_1_graphics_1_1_camera_ad8c311b1acf755c4260e828865c36e13}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!Primary@{Primary}}
+\index{Primary@{Primary}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{Primary}{Primary}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera}{Camera}} Hornet\+Engine.\+Graphics.\+Camera.\+Primary\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
+
+
+
+The primary camera 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_af93684c981b4f9a93592bd75424c1df1}\label{class_hornet_engine_1_1_graphics_1_1_camera_af93684c981b4f9a93592bd75424c1df1}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!ProjectionMatrix@{ProjectionMatrix}}
+\index{ProjectionMatrix@{ProjectionMatrix}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{ProjectionMatrix}{ProjectionMatrix}}
+{\footnotesize\ttfamily mat4 Hornet\+Engine.\+Graphics.\+Camera.\+Projection\+Matrix\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The projection matrix 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_a1f265991a19b51f5a26543cdc80b33f9}\label{class_hornet_engine_1_1_graphics_1_1_camera_a1f265991a19b51f5a26543cdc80b33f9}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!Render\_plane@{Render\_plane}}
+\index{Render\_plane@{Render\_plane}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{Render\_plane}{Render\_plane}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_mesh_component}{Mesh\+Component}} Hornet\+Engine.\+Graphics.\+Camera.\+Render\+\_\+plane\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_a2b95140266fdb4549ccf385a805cc4b8}\label{class_hornet_engine_1_1_graphics_1_1_camera_a2b95140266fdb4549ccf385a805cc4b8}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!Right@{Right}}
+\index{Right@{Right}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{Right}{Right}}
+{\footnotesize\ttfamily vec3 Hornet\+Engine.\+Graphics.\+Camera.\+Right\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The right view 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_ad3409e0bdd8b390cc9a1dc35f45521c0}\label{class_hornet_engine_1_1_graphics_1_1_camera_ad3409e0bdd8b390cc9a1dc35f45521c0}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!Rotation@{Rotation}}
+\index{Rotation@{Rotation}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{Rotation}{Rotation}}
+{\footnotesize\ttfamily vec3 Hornet\+Engine.\+Graphics.\+Camera.\+Rotation\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The current Rotation in degrees 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_a2027c135500d5b5b00610ca078e8e96b}\label{class_hornet_engine_1_1_graphics_1_1_camera_a2027c135500d5b5b00610ca078e8e96b}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!Target@{Target}}
+\index{Target@{Target}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{Target}{Target}}
+{\footnotesize\ttfamily vec3 Hornet\+Engine.\+Graphics.\+Camera.\+Target\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_aafaa5458a0329858a37689d9f55981a0}\label{class_hornet_engine_1_1_graphics_1_1_camera_aafaa5458a0329858a37689d9f55981a0}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!Up@{Up}}
+\index{Up@{Up}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{Up}{Up}}
+{\footnotesize\ttfamily vec3 Hornet\+Engine.\+Graphics.\+Camera.\+Up\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The up view 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_a0e155c0042d94c7b14ac787d4368cf26}\label{class_hornet_engine_1_1_graphics_1_1_camera_a0e155c0042d94c7b14ac787d4368cf26}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!ViewMatrix@{ViewMatrix}}
+\index{ViewMatrix@{ViewMatrix}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{ViewMatrix}{ViewMatrix}}
+{\footnotesize\ttfamily mat4 Hornet\+Engine.\+Graphics.\+Camera.\+View\+Matrix\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The view matrix 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_camera_a726e526b0489c90812dcc99091bcfecc}\label{class_hornet_engine_1_1_graphics_1_1_camera_a726e526b0489c90812dcc99091bcfecc}} 
+\index{HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}!ViewSettings@{ViewSettings}}
+\index{ViewSettings@{ViewSettings}!HornetEngine.Graphics.Camera@{HornetEngine.Graphics.Camera}}
+\doxysubsubsection{\texorpdfstring{ViewSettings}{ViewSettings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_hornet_engine_1_1_graphics_1_1_camera_view_settings}{Camera\+View\+Settings}} Hornet\+Engine.\+Graphics.\+Camera.\+View\+Settings\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The \mbox{\hyperlink{struct_hornet_engine_1_1_graphics_1_1_camera_view_settings}{Camera\+View\+Settings}} 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Hornet\+Engine/\+Graphics/\mbox{\hyperlink{_camera_8cs}{Camera.\+cs}}\end{DoxyCompactItemize}

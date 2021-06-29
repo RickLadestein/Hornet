@@ -1,0 +1,172 @@
+\hypertarget{class_hornet_engine_1_1_sound_1_1_sound_source}{}\doxysection{Hornet\+Engine.\+Sound.\+Sound\+Source Class Reference}
+\label{class_hornet_engine_1_1_sound_1_1_sound_source}\index{HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}}
+
+
+The abstract class \mbox{\hyperlink{class_hornet_engine_1_1_sound_1_1_sound_source}{Sound\+Source}} will be used to pass around a shared source.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_sound_1_1_sound_source_a9f7f14653a2ed6b45fe15202a08f2c0f}{Sound\+Source}} (bool looping)
+\begin{DoxyCompactList}\small\item\em The constructor of the \mbox{\hyperlink{namespace_hornet_engine_1_1_sound}{Sound}} Source \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_sound_1_1_sound_source_add2487a77c358047a2fc2fd2f9515a46}{Play\+Sound\+Effect}} (\mbox{\hyperlink{class_hornet_engine_1_1_sound_1_1_sample}{Sample}} s)
+\begin{DoxyCompactList}\small\item\em A function which will play a sound effect \end{DoxyCompactList}\item 
+ALSource\+State \mbox{\hyperlink{class_hornet_engine_1_1_sound_1_1_sound_source_a628a7da342992804cab3eb482bd3e20f}{Get\+State}} ()
+\begin{DoxyCompactList}\small\item\em A function which gets the current ALSource\+State \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_sound_1_1_sound_source_ae6d18e81aa2d571a8b2783dfb35d223d}{Pause}} ()
+\begin{DoxyCompactList}\small\item\em A function which can be used to pause a sound \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_sound_1_1_sound_source_aae8ad59dbb93ee898f99d83fc534dc16}{Stop}} ()
+\begin{DoxyCompactList}\small\item\em A function which can be used to stop a sound \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_sound_1_1_sound_source_a3c51d5e1184ea54963f96191d48fc4ad}{Set\+Pitch}} (float new\+Pitch)
+\begin{DoxyCompactList}\small\item\em A function which can be used to set the pitch of the source \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_sound_1_1_sound_source_af85df68ce5bd0ad89dbfb5f274d87b23}{Set\+Volume}} (float new\+Volume)
+\begin{DoxyCompactList}\small\item\em A function which can be used to set the volume of the source \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_sound_1_1_sound_source_a2387daa86e8872fabbfffdbc8a512a22}{Set\+Position}} (Glm\+Sharp.\+vec3 world\+\_\+pos)
+\begin{DoxyCompactList}\small\item\em A function which can be used to set the position of the sound source \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_sound_1_1_sound_source_a62b0a4786eeadc424e7e71a100983bf2}{Set\+Velocity}} (Glm\+Sharp.\+vec3 velocity)
+\begin{DoxyCompactList}\small\item\em A function which can be used to set the velocity \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The abstract class \mbox{\hyperlink{class_hornet_engine_1_1_sound_1_1_sound_source}{Sound\+Source}} will be used to pass around a shared source. 
+
+This ensures that the source wont have to be re-\/created and deleted with every sound sample.
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_sound_1_1_sound_source_a9f7f14653a2ed6b45fe15202a08f2c0f}\label{class_hornet_engine_1_1_sound_1_1_sound_source_a9f7f14653a2ed6b45fe15202a08f2c0f}} 
+\index{HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}!SoundSource@{SoundSource}}
+\index{SoundSource@{SoundSource}!HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}}
+\doxysubsubsection{\texorpdfstring{SoundSource()}{SoundSource()}}
+{\footnotesize\ttfamily Hornet\+Engine.\+Sound.\+Sound\+Source.\+Sound\+Source (\begin{DoxyParamCaption}\item[{bool}]{looping }\end{DoxyParamCaption})}
+
+
+
+The constructor of the \mbox{\hyperlink{namespace_hornet_engine_1_1_sound}{Sound}} Source 
+
+
+\begin{DoxyParams}{Parameters}
+{\em looping} & A value containing true/false depending on whether the sound should loop.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_sound_1_1_sound_source_a628a7da342992804cab3eb482bd3e20f}\label{class_hornet_engine_1_1_sound_1_1_sound_source_a628a7da342992804cab3eb482bd3e20f}} 
+\index{HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}!GetState@{GetState}}
+\index{GetState@{GetState}!HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}}
+\doxysubsubsection{\texorpdfstring{GetState()}{GetState()}}
+{\footnotesize\ttfamily ALSource\+State Hornet\+Engine.\+Sound.\+Sound\+Source.\+Get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function which gets the current ALSource\+State 
+
+\begin{DoxyReturn}{Returns}
+Returns the current state
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hornet_engine_1_1_sound_1_1_sound_source_ae6d18e81aa2d571a8b2783dfb35d223d}\label{class_hornet_engine_1_1_sound_1_1_sound_source_ae6d18e81aa2d571a8b2783dfb35d223d}} 
+\index{HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}!Pause@{Pause}}
+\index{Pause@{Pause}!HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}}
+\doxysubsubsection{\texorpdfstring{Pause()}{Pause()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Sound.\+Sound\+Source.\+Pause (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function which can be used to pause a sound 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_sound_1_1_sound_source_add2487a77c358047a2fc2fd2f9515a46}\label{class_hornet_engine_1_1_sound_1_1_sound_source_add2487a77c358047a2fc2fd2f9515a46}} 
+\index{HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}!PlaySoundEffect@{PlaySoundEffect}}
+\index{PlaySoundEffect@{PlaySoundEffect}!HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}}
+\doxysubsubsection{\texorpdfstring{PlaySoundEffect()}{PlaySoundEffect()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Sound.\+Sound\+Source.\+Play\+Sound\+Effect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_hornet_engine_1_1_sound_1_1_sample}{Sample}}}]{s }\end{DoxyParamCaption})}
+
+
+
+A function which will play a sound effect 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The sample which should be played\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Null\+Exception} & Throws an Argument\+Null\+Exception\\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_hornet_engine_1_1_sound_1_1_sound_source_a3c51d5e1184ea54963f96191d48fc4ad}\label{class_hornet_engine_1_1_sound_1_1_sound_source_a3c51d5e1184ea54963f96191d48fc4ad}} 
+\index{HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}!SetPitch@{SetPitch}}
+\index{SetPitch@{SetPitch}!HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}}
+\doxysubsubsection{\texorpdfstring{SetPitch()}{SetPitch()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Sound.\+Sound\+Source.\+Set\+Pitch (\begin{DoxyParamCaption}\item[{float}]{new\+Pitch }\end{DoxyParamCaption})}
+
+
+
+A function which can be used to set the pitch of the source 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Pitch} & The new value which should be used for the pitch.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_sound_1_1_sound_source_a2387daa86e8872fabbfffdbc8a512a22}\label{class_hornet_engine_1_1_sound_1_1_sound_source_a2387daa86e8872fabbfffdbc8a512a22}} 
+\index{HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}}
+\doxysubsubsection{\texorpdfstring{SetPosition()}{SetPosition()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Sound.\+Sound\+Source.\+Set\+Position (\begin{DoxyParamCaption}\item[{Glm\+Sharp.\+vec3}]{world\+\_\+pos }\end{DoxyParamCaption})}
+
+
+
+A function which can be used to set the position of the sound source 
+
+
+\begin{DoxyParams}{Parameters}
+{\em world\+\_\+pos} & A vec3 containing the new position\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_sound_1_1_sound_source_a62b0a4786eeadc424e7e71a100983bf2}\label{class_hornet_engine_1_1_sound_1_1_sound_source_a62b0a4786eeadc424e7e71a100983bf2}} 
+\index{HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}!SetVelocity@{SetVelocity}}
+\index{SetVelocity@{SetVelocity}!HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}}
+\doxysubsubsection{\texorpdfstring{SetVelocity()}{SetVelocity()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Sound.\+Sound\+Source.\+Set\+Velocity (\begin{DoxyParamCaption}\item[{Glm\+Sharp.\+vec3}]{velocity }\end{DoxyParamCaption})}
+
+
+
+A function which can be used to set the velocity 
+
+
+\begin{DoxyParams}{Parameters}
+{\em velocity} & A vec3 containing the new velocity\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_sound_1_1_sound_source_af85df68ce5bd0ad89dbfb5f274d87b23}\label{class_hornet_engine_1_1_sound_1_1_sound_source_af85df68ce5bd0ad89dbfb5f274d87b23}} 
+\index{HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}!SetVolume@{SetVolume}}
+\index{SetVolume@{SetVolume}!HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}}
+\doxysubsubsection{\texorpdfstring{SetVolume()}{SetVolume()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Sound.\+Sound\+Source.\+Set\+Volume (\begin{DoxyParamCaption}\item[{float}]{new\+Volume }\end{DoxyParamCaption})}
+
+
+
+A function which can be used to set the volume of the source 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Volume} & The new value which should be used for the volume.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_sound_1_1_sound_source_aae8ad59dbb93ee898f99d83fc534dc16}\label{class_hornet_engine_1_1_sound_1_1_sound_source_aae8ad59dbb93ee898f99d83fc534dc16}} 
+\index{HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}!Stop@{Stop}}
+\index{Stop@{Stop}!HornetEngine.Sound.SoundSource@{HornetEngine.Sound.SoundSource}}
+\doxysubsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Sound.\+Sound\+Source.\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function which can be used to stop a sound 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Hornet\+Engine/\+Sound/\mbox{\hyperlink{_sound_source_8cs}{Sound\+Source.\+cs}}\end{DoxyCompactItemize}

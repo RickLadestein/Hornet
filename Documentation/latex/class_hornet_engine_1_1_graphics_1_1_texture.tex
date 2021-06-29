@@ -1,0 +1,223 @@
+\hypertarget{class_hornet_engine_1_1_graphics_1_1_texture}{}\doxysection{Hornet\+Engine.\+Graphics.\+Texture Class Reference}
+\label{class_hornet_engine_1_1_graphics_1_1_texture}\index{HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}}
+Inheritance diagram for Hornet\+Engine.\+Graphics.\+Texture\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_hornet_engine_1_1_graphics_1_1_texture}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture_aa3604a777ca2b62e835fe3e19832eab5}{Texture}} (String dir\+\_\+id, String imfile, bool mipmap)
+\begin{DoxyCompactList}\small\item\em The constructor of the texture \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture_ae645fde2d6696274c0ba89bc36caa045}{Texture}} (uint width, uint height)
+\begin{DoxyCompactList}\small\item\em The constructor of a texture \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture_a6594b2a6407d03593c61b6b02d57207b}{Texture}} (uint width, uint height, Internal\+Format bits\+\_\+per\+\_\+channel, Pixel\+Format channels, Pixel\+Type pixel\+\_\+type)
+\begin{DoxyCompactList}\small\item\em The constructor of a \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture}{Texture}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture_a7bb5b26d207ace546608661d6bd85ad7}{Set\+Filter\+Mode}} (\mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_a3123866b07d7971b72ad0153147ef863}{Min\+Mag\+Setting}} filter)
+\begin{DoxyCompactList}\small\item\em A function which sets a filter mode \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture_a4d71f1845e7c7964420f38dc54b83252}{Set\+Wrap\+Mode}} (\mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7}{Texture\+Wrap\+Setting}} wrap)
+\begin{DoxyCompactList}\small\item\em A function which sets a wrap mode \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture_aab6e0eddf342d65ab1f703b4f2c51fac}{Bind}} ()
+\begin{DoxyCompactList}\small\item\em A function which binds the texture \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture_a9dd0087a143f964d6591cb72384127ea}{Unbind}} ()
+\begin{DoxyCompactList}\small\item\em A function which unbinds the texture \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture_acfe74b1ea79d0c4cfbd955be99a474ed}{Dispose}} ()
+\begin{DoxyCompactList}\small\item\em A function that disposes the texture \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+uint \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture_aab0b4ef51a1ebd201ee79acb9b37b18e}{Handle}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The handle of the texture \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8}{Texture\+Status}} \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture_aa456927bb5061e0d52cb3320f397ccf0}{Status}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The status of the etxture \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture_aff50486d0393e277205df8e106dc6b21}{Error}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The error string \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7}{Texture\+Wrap\+Setting}} \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture_a882314bdb10c1b5486492bd2ad4e19e9}{Wrap}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The wrap settings \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_a3123866b07d7971b72ad0153147ef863}{Min\+Mag\+Setting}} \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture_aeda8097c0ab9ed7bbf9b092bf39f5cea}{Filter}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The min mag filter \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_texture_aa3604a777ca2b62e835fe3e19832eab5}\label{class_hornet_engine_1_1_graphics_1_1_texture_aa3604a777ca2b62e835fe3e19832eab5}} 
+\index{HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}!Texture@{Texture}}
+\index{Texture@{Texture}!HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}}
+\doxysubsubsection{\texorpdfstring{Texture()}{Texture()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Hornet\+Engine.\+Graphics.\+Texture.\+Texture (\begin{DoxyParamCaption}\item[{String}]{dir\+\_\+id,  }\item[{String}]{imfile,  }\item[{bool}]{mipmap }\end{DoxyParamCaption})}
+
+
+
+The constructor of the texture 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir\+\_\+id} & The folder ID\\
+\hline
+{\em imfile} & The name of the file\\
+\hline
+{\em mipmap} & A bool used for the mipmap initialization\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_texture_ae645fde2d6696274c0ba89bc36caa045}\label{class_hornet_engine_1_1_graphics_1_1_texture_ae645fde2d6696274c0ba89bc36caa045}} 
+\index{HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}!Texture@{Texture}}
+\index{Texture@{Texture}!HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}}
+\doxysubsubsection{\texorpdfstring{Texture()}{Texture()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Hornet\+Engine.\+Graphics.\+Texture.\+Texture (\begin{DoxyParamCaption}\item[{uint}]{width,  }\item[{uint}]{height }\end{DoxyParamCaption})}
+
+
+
+The constructor of a texture 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & The width of thhe texture\\
+\hline
+{\em height} & The height of the texture\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_texture_a6594b2a6407d03593c61b6b02d57207b}\label{class_hornet_engine_1_1_graphics_1_1_texture_a6594b2a6407d03593c61b6b02d57207b}} 
+\index{HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}!Texture@{Texture}}
+\index{Texture@{Texture}!HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}}
+\doxysubsubsection{\texorpdfstring{Texture()}{Texture()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Hornet\+Engine.\+Graphics.\+Texture.\+Texture (\begin{DoxyParamCaption}\item[{uint}]{width,  }\item[{uint}]{height,  }\item[{Internal\+Format}]{bits\+\_\+per\+\_\+channel,  }\item[{Pixel\+Format}]{channels,  }\item[{Pixel\+Type}]{pixel\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+The constructor of a \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture}{Texture}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & The width of the texture\\
+\hline
+{\em height} & The height of a texture\\
+\hline
+{\em bits\+\_\+per\+\_\+channel} & The bits per channel\\
+\hline
+{\em channels} & The channels of the texture\\
+\hline
+{\em pixel\+\_\+type} & The pixeltype of the texture\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_texture_aab6e0eddf342d65ab1f703b4f2c51fac}\label{class_hornet_engine_1_1_graphics_1_1_texture_aab6e0eddf342d65ab1f703b4f2c51fac}} 
+\index{HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}!Bind@{Bind}}
+\index{Bind@{Bind}!HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}}
+\doxysubsubsection{\texorpdfstring{Bind()}{Bind()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Texture.\+Bind (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function which binds the texture 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_texture_acfe74b1ea79d0c4cfbd955be99a474ed}\label{class_hornet_engine_1_1_graphics_1_1_texture_acfe74b1ea79d0c4cfbd955be99a474ed}} 
+\index{HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}!Dispose@{Dispose}}
+\index{Dispose@{Dispose}!HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}}
+\doxysubsubsection{\texorpdfstring{Dispose()}{Dispose()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Texture.\+Dispose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function that disposes the texture 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_texture_a7bb5b26d207ace546608661d6bd85ad7}\label{class_hornet_engine_1_1_graphics_1_1_texture_a7bb5b26d207ace546608661d6bd85ad7}} 
+\index{HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}!SetFilterMode@{SetFilterMode}}
+\index{SetFilterMode@{SetFilterMode}!HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}}
+\doxysubsubsection{\texorpdfstring{SetFilterMode()}{SetFilterMode()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Texture.\+Set\+Filter\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_a3123866b07d7971b72ad0153147ef863}{Min\+Mag\+Setting}}}]{filter }\end{DoxyParamCaption})}
+
+
+
+A function which sets a filter mode 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filter} & The filter which should be set\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_texture_a4d71f1845e7c7964420f38dc54b83252}\label{class_hornet_engine_1_1_graphics_1_1_texture_a4d71f1845e7c7964420f38dc54b83252}} 
+\index{HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}!SetWrapMode@{SetWrapMode}}
+\index{SetWrapMode@{SetWrapMode}!HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}}
+\doxysubsubsection{\texorpdfstring{SetWrapMode()}{SetWrapMode()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Texture.\+Set\+Wrap\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7}{Texture\+Wrap\+Setting}}}]{wrap }\end{DoxyParamCaption})}
+
+
+
+A function which sets a wrap mode 
+
+
+\begin{DoxyParams}{Parameters}
+{\em wrap} & The wrap settings which should be set\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_texture_a9dd0087a143f964d6591cb72384127ea}\label{class_hornet_engine_1_1_graphics_1_1_texture_a9dd0087a143f964d6591cb72384127ea}} 
+\index{HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}!Unbind@{Unbind}}
+\index{Unbind@{Unbind}!HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}}
+\doxysubsubsection{\texorpdfstring{Unbind()}{Unbind()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Texture.\+Unbind (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function which unbinds the texture 
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_texture_aff50486d0393e277205df8e106dc6b21}\label{class_hornet_engine_1_1_graphics_1_1_texture_aff50486d0393e277205df8e106dc6b21}} 
+\index{HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}!Error@{Error}}
+\index{Error@{Error}!HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}}
+\doxysubsubsection{\texorpdfstring{Error}{Error}}
+{\footnotesize\ttfamily String Hornet\+Engine.\+Graphics.\+Texture.\+Error\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The error string 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_texture_aeda8097c0ab9ed7bbf9b092bf39f5cea}\label{class_hornet_engine_1_1_graphics_1_1_texture_aeda8097c0ab9ed7bbf9b092bf39f5cea}} 
+\index{HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}!Filter@{Filter}}
+\index{Filter@{Filter}!HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}}
+\doxysubsubsection{\texorpdfstring{Filter}{Filter}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_a3123866b07d7971b72ad0153147ef863}{Min\+Mag\+Setting}} Hornet\+Engine.\+Graphics.\+Texture.\+Filter\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The min mag filter 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_texture_aab0b4ef51a1ebd201ee79acb9b37b18e}\label{class_hornet_engine_1_1_graphics_1_1_texture_aab0b4ef51a1ebd201ee79acb9b37b18e}} 
+\index{HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}!Handle@{Handle}}
+\index{Handle@{Handle}!HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}}
+\doxysubsubsection{\texorpdfstring{Handle}{Handle}}
+{\footnotesize\ttfamily uint Hornet\+Engine.\+Graphics.\+Texture.\+Handle\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The handle of the texture 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_texture_aa456927bb5061e0d52cb3320f397ccf0}\label{class_hornet_engine_1_1_graphics_1_1_texture_aa456927bb5061e0d52cb3320f397ccf0}} 
+\index{HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}!Status@{Status}}
+\index{Status@{Status}!HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}}
+\doxysubsubsection{\texorpdfstring{Status}{Status}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8}{Texture\+Status}} Hornet\+Engine.\+Graphics.\+Texture.\+Status\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The status of the etxture 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_texture_a882314bdb10c1b5486492bd2ad4e19e9}\label{class_hornet_engine_1_1_graphics_1_1_texture_a882314bdb10c1b5486492bd2ad4e19e9}} 
+\index{HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}!Wrap@{Wrap}}
+\index{Wrap@{Wrap}!HornetEngine.Graphics.Texture@{HornetEngine.Graphics.Texture}}
+\doxysubsubsection{\texorpdfstring{Wrap}{Wrap}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7}{Texture\+Wrap\+Setting}} Hornet\+Engine.\+Graphics.\+Texture.\+Wrap\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The wrap settings 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Hornet\+Engine/\+Graphics/\mbox{\hyperlink{_texture_8cs}{Texture.\+cs}}\end{DoxyCompactItemize}

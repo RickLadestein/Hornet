@@ -1,0 +1,194 @@
+\hypertarget{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer}{}\doxysection{Hornet\+Engine.\+Graphics.\+Buffers.\+Frame\+Buffer Class Reference}
+\label{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer}\index{HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}}
+Inheritance diagram for Hornet\+Engine.\+Graphics.\+Buffers.\+Frame\+Buffer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_ae1d10330504345fa7adf2d63e2d06b78}{Frame\+Buffer}} (uint buffer\+\_\+width, uint buffer\+\_\+height)
+\begin{DoxyCompactList}\small\item\em Instantiates a new instance of \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer}{Frame\+Buffer}} with specified screen width and height settings \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_a706eb7fb58810f83da10b28d226777fe}{Clear\+Buffers}} ()
+\begin{DoxyCompactList}\small\item\em Clears the Color and Depth \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_1_1_buffers}{Buffers}} inside the currently bound \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer}{Frame\+Buffer}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_a3d45e9675ca39a291e56d6d0b4ecb463}{Bind}} ()
+\begin{DoxyCompactList}\small\item\em Binds the current \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer}{Frame\+Buffer}} as Render\+Target \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_ac5edc41e02ebe743d1440cab4ca3500a}{Attach\+Color\+Render\+Target}} (Internal\+Format bits\+\_\+per\+\_\+channel, Pixel\+Format channels, Pixel\+Type pixel\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Attaches a color buffer rendertarget to the current framebuffer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_a15442a9b496c43b79f7443c5a14de4a8}{Attach\+Depth\+Buffer\+Target}} ()
+\begin{DoxyCompactList}\small\item\em Attaches a depth buffer rendertarget to the current framebuffer \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_acdd9361e84f3acfd76966367dd294322}{Get\+Frame\+Buffer\+Status}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the current framebuffer status \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_a3d21ce7a1e44d70de0a893c28016ab81}{Dispose}} ()
+\begin{DoxyCompactList}\small\item\em Releases unmanaged GPU and Open\+GL resources \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_ad77f41094f4ad511296521e8c3e691a0}{Unbind}} ()
+\begin{DoxyCompactList}\small\item\em Unbinds the current bound \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer}{Frame\+Buffer}} and binds the default Front and Back buffer \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+uint \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_a21716d44494c51a2b8fde22fafd55e5d}{Handle}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The identifier that refers to the Open\+GL \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer}{Frame\+Buffer}} resource \end{DoxyCompactList}\item 
+uint \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_ae8f05bc9509fbdfc5d14ce1328866efb}{RB\+\_\+\+Handle}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em The identifier that refers to the \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer}{Frame\+Buffer}}\textquotesingle{}s Render\+Buffer \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_multi_texture}{Multi\+Texture}} \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_ab4e3c6182b5811a0323cbfaf3f870b63}{Textures}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+uint \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_ad351343791ffcbca3f3d8b8b020af1fb}{Width}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+uint \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_a33b1f359315e33ba7cfdb387678c13d8}{Height}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_ae1d10330504345fa7adf2d63e2d06b78}\label{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_ae1d10330504345fa7adf2d63e2d06b78}} 
+\index{HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}!FrameBuffer@{FrameBuffer}}
+\index{FrameBuffer@{FrameBuffer}!HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}}
+\doxysubsubsection{\texorpdfstring{FrameBuffer()}{FrameBuffer()}}
+{\footnotesize\ttfamily Hornet\+Engine.\+Graphics.\+Buffers.\+Frame\+Buffer.\+Frame\+Buffer (\begin{DoxyParamCaption}\item[{uint}]{buffer\+\_\+width,  }\item[{uint}]{buffer\+\_\+height }\end{DoxyParamCaption})}
+
+
+
+Instantiates a new instance of \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer}{Frame\+Buffer}} with specified screen width and height settings 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer\+\_\+width} & The buffer width\\
+\hline
+{\em buffer\+\_\+height} & The buffer height\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_ac5edc41e02ebe743d1440cab4ca3500a}\label{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_ac5edc41e02ebe743d1440cab4ca3500a}} 
+\index{HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}!AttachColorRenderTarget@{AttachColorRenderTarget}}
+\index{AttachColorRenderTarget@{AttachColorRenderTarget}!HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}}
+\doxysubsubsection{\texorpdfstring{AttachColorRenderTarget()}{AttachColorRenderTarget()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Buffers.\+Frame\+Buffer.\+Attach\+Color\+Render\+Target (\begin{DoxyParamCaption}\item[{Internal\+Format}]{bits\+\_\+per\+\_\+channel,  }\item[{Pixel\+Format}]{channels,  }\item[{Pixel\+Type}]{pixel\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+Attaches a color buffer rendertarget to the current framebuffer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bits\+\_\+per\+\_\+channel} & The amount of bits per channel enum\\
+\hline
+{\em channels} & The amount of channels per pixel\\
+\hline
+{\em pixel\+\_\+type} & The type of value color values are stored into (byte, int, float, etc...)\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_a15442a9b496c43b79f7443c5a14de4a8}\label{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_a15442a9b496c43b79f7443c5a14de4a8}} 
+\index{HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}!AttachDepthBufferTarget@{AttachDepthBufferTarget}}
+\index{AttachDepthBufferTarget@{AttachDepthBufferTarget}!HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}}
+\doxysubsubsection{\texorpdfstring{AttachDepthBufferTarget()}{AttachDepthBufferTarget()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Buffers.\+Frame\+Buffer.\+Attach\+Depth\+Buffer\+Target (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Attaches a depth buffer rendertarget to the current framebuffer 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_a3d45e9675ca39a291e56d6d0b4ecb463}\label{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_a3d45e9675ca39a291e56d6d0b4ecb463}} 
+\index{HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}!Bind@{Bind}}
+\index{Bind@{Bind}!HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}}
+\doxysubsubsection{\texorpdfstring{Bind()}{Bind()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Buffers.\+Frame\+Buffer.\+Bind (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Binds the current \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer}{Frame\+Buffer}} as Render\+Target 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_a706eb7fb58810f83da10b28d226777fe}\label{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_a706eb7fb58810f83da10b28d226777fe}} 
+\index{HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}!ClearBuffers@{ClearBuffers}}
+\index{ClearBuffers@{ClearBuffers}!HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}}
+\doxysubsubsection{\texorpdfstring{ClearBuffers()}{ClearBuffers()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Buffers.\+Frame\+Buffer.\+Clear\+Buffers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clears the Color and Depth \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_1_1_buffers}{Buffers}} inside the currently bound \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer}{Frame\+Buffer}} 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_a3d21ce7a1e44d70de0a893c28016ab81}\label{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_a3d21ce7a1e44d70de0a893c28016ab81}} 
+\index{HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}!Dispose@{Dispose}}
+\index{Dispose@{Dispose}!HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}}
+\doxysubsubsection{\texorpdfstring{Dispose()}{Dispose()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Graphics.\+Buffers.\+Frame\+Buffer.\+Dispose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Releases unmanaged GPU and Open\+GL resources 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_acdd9361e84f3acfd76966367dd294322}\label{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_acdd9361e84f3acfd76966367dd294322}} 
+\index{HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}!GetFrameBufferStatus@{GetFrameBufferStatus}}
+\index{GetFrameBufferStatus@{GetFrameBufferStatus}!HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}}
+\doxysubsubsection{\texorpdfstring{GetFrameBufferStatus()}{GetFrameBufferStatus()}}
+{\footnotesize\ttfamily String Hornet\+Engine.\+Graphics.\+Buffers.\+Frame\+Buffer.\+Get\+Frame\+Buffer\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves the current framebuffer status 
+
+\begin{DoxyReturn}{Returns}
+empty if valid, a status if the framebuffer was invalid
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_ad77f41094f4ad511296521e8c3e691a0}\label{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_ad77f41094f4ad511296521e8c3e691a0}} 
+\index{HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}!Unbind@{Unbind}}
+\index{Unbind@{Unbind}!HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}}
+\doxysubsubsection{\texorpdfstring{Unbind()}{Unbind()}}
+{\footnotesize\ttfamily static void Hornet\+Engine.\+Graphics.\+Buffers.\+Frame\+Buffer.\+Unbind (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Unbinds the current bound \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer}{Frame\+Buffer}} and binds the default Front and Back buffer 
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_a21716d44494c51a2b8fde22fafd55e5d}\label{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_a21716d44494c51a2b8fde22fafd55e5d}} 
+\index{HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}!Handle@{Handle}}
+\index{Handle@{Handle}!HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}}
+\doxysubsubsection{\texorpdfstring{Handle}{Handle}}
+{\footnotesize\ttfamily uint Hornet\+Engine.\+Graphics.\+Buffers.\+Frame\+Buffer.\+Handle\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The identifier that refers to the Open\+GL \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer}{Frame\+Buffer}} resource 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_a33b1f359315e33ba7cfdb387678c13d8}\label{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_a33b1f359315e33ba7cfdb387678c13d8}} 
+\index{HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}!Height@{Height}}
+\index{Height@{Height}!HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}}
+\doxysubsubsection{\texorpdfstring{Height}{Height}}
+{\footnotesize\ttfamily uint Hornet\+Engine.\+Graphics.\+Buffers.\+Frame\+Buffer.\+Height\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_ae8f05bc9509fbdfc5d14ce1328866efb}\label{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_ae8f05bc9509fbdfc5d14ce1328866efb}} 
+\index{HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}!RB\_Handle@{RB\_Handle}}
+\index{RB\_Handle@{RB\_Handle}!HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}}
+\doxysubsubsection{\texorpdfstring{RB\_Handle}{RB\_Handle}}
+{\footnotesize\ttfamily uint Hornet\+Engine.\+Graphics.\+Buffers.\+Frame\+Buffer.\+RB\+\_\+\+Handle\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The identifier that refers to the \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer}{Frame\+Buffer}}\textquotesingle{}s Render\+Buffer 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_ab4e3c6182b5811a0323cbfaf3f870b63}\label{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_ab4e3c6182b5811a0323cbfaf3f870b63}} 
+\index{HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}!Textures@{Textures}}
+\index{Textures@{Textures}!HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}}
+\doxysubsubsection{\texorpdfstring{Textures}{Textures}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_multi_texture}{Multi\+Texture}} Hornet\+Engine.\+Graphics.\+Buffers.\+Frame\+Buffer.\+Textures\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_ad351343791ffcbca3f3d8b8b020af1fb}\label{class_hornet_engine_1_1_graphics_1_1_buffers_1_1_frame_buffer_ad351343791ffcbca3f3d8b8b020af1fb}} 
+\index{HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}!Width@{Width}}
+\index{Width@{Width}!HornetEngine.Graphics.Buffers.FrameBuffer@{HornetEngine.Graphics.Buffers.FrameBuffer}}
+\doxysubsubsection{\texorpdfstring{Width}{Width}}
+{\footnotesize\ttfamily uint Hornet\+Engine.\+Graphics.\+Buffers.\+Frame\+Buffer.\+Width\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Hornet\+Engine/\+Graphics/\+Buffers/\mbox{\hyperlink{_frame_buffer_8cs}{Frame\+Buffer.\+cs}}\end{DoxyCompactItemize}

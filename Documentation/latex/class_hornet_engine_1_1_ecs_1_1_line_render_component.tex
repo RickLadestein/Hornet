@@ -1,0 +1,153 @@
+\hypertarget{class_hornet_engine_1_1_ecs_1_1_line_render_component}{}\doxysection{Hornet\+Engine.\+Ecs.\+Line\+Render\+Component Class Reference}
+\label{class_hornet_engine_1_1_ecs_1_1_line_render_component}\index{HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}}
+Inheritance diagram for Hornet\+Engine.\+Ecs.\+Line\+Render\+Component\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_hornet_engine_1_1_ecs_1_1_line_render_component}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_line_render_component_ab4ed124ddc2403e6c70f808230b3f27f}{Line\+Render\+Component}} ()
+\begin{DoxyCompactList}\small\item\em The constructor of the \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_line_render_component}{Line\+Render\+Component}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_line_render_component_a07b253c5c45f49daed1f5b8bde107301}{Add\+Line}} (vec3 start, vec3 end)
+\begin{DoxyCompactList}\small\item\em A functioin which can be used to add a line \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_line_render_component_aed097191dd03f83ab6d8def18b4e7a9c}{Clear\+Points}} ()
+\begin{DoxyCompactList}\small\item\em A function which can be used to clear the current points \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_line_render_component_a30f3e0671e5c9c0a88f8da8d6f74f20f}{Build\+Buffer}} ()
+\begin{DoxyCompactList}\small\item\em A function which can be used to build the buffer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_line_render_component_a1068e24c47844d70bac7cae6aa23f80c}{Render}} (\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera}{Camera}} cam)
+\begin{DoxyCompactList}\small\item\em A function which can be used to render the target \end{DoxyCompactList}\item 
+override string \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_line_render_component_aa38156fbb3a974548c1767712fd29ef8}{To\+String}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ vec3 $>$ \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_line_render_component_a98060ca46c5bbf72ce371adfb46b1a50}{Points}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em A list of points used within the Linne\+Render\+Component \end{DoxyCompactList}\item 
+vec4 \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_line_render_component_a14085ad3ff12855af54d739826314106}{Base\+\_\+\+Color}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em A vector4 which contains the base color of the line \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_line_render_component_a922fc7760308d57b44f177e23fa82105}{Line\+\_\+width}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em A float which contains the width of the line \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_line_render_component_ab4ed124ddc2403e6c70f808230b3f27f}\label{class_hornet_engine_1_1_ecs_1_1_line_render_component_ab4ed124ddc2403e6c70f808230b3f27f}} 
+\index{HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}!LineRenderComponent@{LineRenderComponent}}
+\index{LineRenderComponent@{LineRenderComponent}!HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}}
+\doxysubsubsection{\texorpdfstring{LineRenderComponent()}{LineRenderComponent()}}
+{\footnotesize\ttfamily Hornet\+Engine.\+Ecs.\+Line\+Render\+Component.\+Line\+Render\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The constructor of the \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_line_render_component}{Line\+Render\+Component}} 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_line_render_component_a07b253c5c45f49daed1f5b8bde107301}\label{class_hornet_engine_1_1_ecs_1_1_line_render_component_a07b253c5c45f49daed1f5b8bde107301}} 
+\index{HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}!AddLine@{AddLine}}
+\index{AddLine@{AddLine}!HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}}
+\doxysubsubsection{\texorpdfstring{AddLine()}{AddLine()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Ecs.\+Line\+Render\+Component.\+Add\+Line (\begin{DoxyParamCaption}\item[{vec3}]{start,  }\item[{vec3}]{end }\end{DoxyParamCaption})}
+
+
+
+A functioin which can be used to add a line 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & A vec3 which contains the start of the line\\
+\hline
+{\em end} & A vec3 which contains the end of the line\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_line_render_component_a30f3e0671e5c9c0a88f8da8d6f74f20f}\label{class_hornet_engine_1_1_ecs_1_1_line_render_component_a30f3e0671e5c9c0a88f8da8d6f74f20f}} 
+\index{HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}!BuildBuffer@{BuildBuffer}}
+\index{BuildBuffer@{BuildBuffer}!HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}}
+\doxysubsubsection{\texorpdfstring{BuildBuffer()}{BuildBuffer()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Ecs.\+Line\+Render\+Component.\+Build\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function which can be used to build the buffer 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_line_render_component_aed097191dd03f83ab6d8def18b4e7a9c}\label{class_hornet_engine_1_1_ecs_1_1_line_render_component_aed097191dd03f83ab6d8def18b4e7a9c}} 
+\index{HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}!ClearPoints@{ClearPoints}}
+\index{ClearPoints@{ClearPoints}!HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}}
+\doxysubsubsection{\texorpdfstring{ClearPoints()}{ClearPoints()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Ecs.\+Line\+Render\+Component.\+Clear\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A function which can be used to clear the current points 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_line_render_component_a1068e24c47844d70bac7cae6aa23f80c}\label{class_hornet_engine_1_1_ecs_1_1_line_render_component_a1068e24c47844d70bac7cae6aa23f80c}} 
+\index{HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}!Render@{Render}}
+\index{Render@{Render}!HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Ecs.\+Line\+Render\+Component.\+Render (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera}{Camera}}}]{cam }\end{DoxyParamCaption})}
+
+
+
+A function which can be used to render the target 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cam} & The given camera\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & Throws an Exception\\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_line_render_component_aa38156fbb3a974548c1767712fd29ef8}\label{class_hornet_engine_1_1_ecs_1_1_line_render_component_aa38156fbb3a974548c1767712fd29ef8}} 
+\index{HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}!ToString@{ToString}}
+\index{ToString@{ToString}!HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}}
+\doxysubsubsection{\texorpdfstring{ToString()}{ToString()}}
+{\footnotesize\ttfamily override string Hornet\+Engine.\+Ecs.\+Line\+Render\+Component.\+To\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_hornet_engine_1_1_ecs_1_1_component_afc17d753922164ba8c06f4f675640d88}{Hornet\+Engine.\+Ecs.\+Component}}.
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_line_render_component_a14085ad3ff12855af54d739826314106}\label{class_hornet_engine_1_1_ecs_1_1_line_render_component_a14085ad3ff12855af54d739826314106}} 
+\index{HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}!Base\_Color@{Base\_Color}}
+\index{Base\_Color@{Base\_Color}!HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}}
+\doxysubsubsection{\texorpdfstring{Base\_Color}{Base\_Color}}
+{\footnotesize\ttfamily vec4 Hornet\+Engine.\+Ecs.\+Line\+Render\+Component.\+Base\+\_\+\+Color\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+A vector4 which contains the base color of the line 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_line_render_component_a922fc7760308d57b44f177e23fa82105}\label{class_hornet_engine_1_1_ecs_1_1_line_render_component_a922fc7760308d57b44f177e23fa82105}} 
+\index{HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}!Line\_width@{Line\_width}}
+\index{Line\_width@{Line\_width}!HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}}
+\doxysubsubsection{\texorpdfstring{Line\_width}{Line\_width}}
+{\footnotesize\ttfamily float Hornet\+Engine.\+Ecs.\+Line\+Render\+Component.\+Line\+\_\+width\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+A float which contains the width of the line 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_ecs_1_1_line_render_component_a98060ca46c5bbf72ce371adfb46b1a50}\label{class_hornet_engine_1_1_ecs_1_1_line_render_component_a98060ca46c5bbf72ce371adfb46b1a50}} 
+\index{HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}!Points@{Points}}
+\index{Points@{Points}!HornetEngine.Ecs.LineRenderComponent@{HornetEngine.Ecs.LineRenderComponent}}
+\doxysubsubsection{\texorpdfstring{Points}{Points}}
+{\footnotesize\ttfamily List$<$vec3$>$ Hornet\+Engine.\+Ecs.\+Line\+Render\+Component.\+Points\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+A list of points used within the Linne\+Render\+Component 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Hornet\+Engine/\+Ecs/\+Comps/\mbox{\hyperlink{_line_render_component_8cs}{Line\+Render\+Component.\+cs}}\end{DoxyCompactItemize}

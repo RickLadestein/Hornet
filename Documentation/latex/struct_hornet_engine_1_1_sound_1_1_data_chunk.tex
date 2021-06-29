@@ -1,0 +1,90 @@
+\hypertarget{struct_hornet_engine_1_1_sound_1_1_data_chunk}{}\doxysection{Hornet\+Engine.\+Sound.\+Data\+Chunk Struct Reference}
+\label{struct_hornet_engine_1_1_sound_1_1_data_chunk}\index{HornetEngine.Sound.DataChunk@{HornetEngine.Sound.DataChunk}}
+
+
+Struct for storing Audio data  
+
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_data_chunk}{Data\+Chunk}} \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_data_chunk_a048ff4605d93c3583379135f01a33704}{Parse}} (Binary\+Reader reader)
+\begin{DoxyCompactList}\small\item\em Tries to parse a data chunk from given stream \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_data_chunk_a9cdd990ccf9acbb501381c6f3185c3bc}{chunk\+\_\+id}}
+\begin{DoxyCompactList}\small\item\em The ID of the data stored in this chunk \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_data_chunk_a31ea588f46d4610fdf2c7eb1500bd0b3}{chunk\+\_\+size}}
+\begin{DoxyCompactList}\small\item\em The total size of the data contained in this chunk \end{DoxyCompactList}\item 
+byte\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_data_chunk_aa30f4844cfb94ef194a3de8710a5750c}{data}}
+\begin{DoxyCompactList}\small\item\em The raw audio data \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct for storing Audio data 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_hornet_engine_1_1_sound_1_1_data_chunk_a048ff4605d93c3583379135f01a33704}\label{struct_hornet_engine_1_1_sound_1_1_data_chunk_a048ff4605d93c3583379135f01a33704}} 
+\index{HornetEngine.Sound.DataChunk@{HornetEngine.Sound.DataChunk}!Parse@{Parse}}
+\index{Parse@{Parse}!HornetEngine.Sound.DataChunk@{HornetEngine.Sound.DataChunk}}
+\doxysubsubsection{\texorpdfstring{Parse()}{Parse()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_data_chunk}{Data\+Chunk}} Hornet\+Engine.\+Sound.\+Data\+Chunk.\+Parse (\begin{DoxyParamCaption}\item[{Binary\+Reader}]{reader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Tries to parse a data chunk from given stream 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reader} & The binary reader to the opened audio file stream\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Filled {\ttfamily \mbox{\hyperlink{struct_hornet_engine_1_1_sound_1_1_data_chunk}{Data\+Chunk}}}
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_hornet_engine_1_1_sound_1_1_data_chunk_a9cdd990ccf9acbb501381c6f3185c3bc}\label{struct_hornet_engine_1_1_sound_1_1_data_chunk_a9cdd990ccf9acbb501381c6f3185c3bc}} 
+\index{HornetEngine.Sound.DataChunk@{HornetEngine.Sound.DataChunk}!chunk\_id@{chunk\_id}}
+\index{chunk\_id@{chunk\_id}!HornetEngine.Sound.DataChunk@{HornetEngine.Sound.DataChunk}}
+\doxysubsubsection{\texorpdfstring{chunk\_id}{chunk\_id}}
+{\footnotesize\ttfamily string Hornet\+Engine.\+Sound.\+Data\+Chunk.\+chunk\+\_\+id}
+
+
+
+The ID of the data stored in this chunk 
+
+\mbox{\Hypertarget{struct_hornet_engine_1_1_sound_1_1_data_chunk_a31ea588f46d4610fdf2c7eb1500bd0b3}\label{struct_hornet_engine_1_1_sound_1_1_data_chunk_a31ea588f46d4610fdf2c7eb1500bd0b3}} 
+\index{HornetEngine.Sound.DataChunk@{HornetEngine.Sound.DataChunk}!chunk\_size@{chunk\_size}}
+\index{chunk\_size@{chunk\_size}!HornetEngine.Sound.DataChunk@{HornetEngine.Sound.DataChunk}}
+\doxysubsubsection{\texorpdfstring{chunk\_size}{chunk\_size}}
+{\footnotesize\ttfamily int Hornet\+Engine.\+Sound.\+Data\+Chunk.\+chunk\+\_\+size}
+
+
+
+The total size of the data contained in this chunk 
+
+\mbox{\Hypertarget{struct_hornet_engine_1_1_sound_1_1_data_chunk_aa30f4844cfb94ef194a3de8710a5750c}\label{struct_hornet_engine_1_1_sound_1_1_data_chunk_aa30f4844cfb94ef194a3de8710a5750c}} 
+\index{HornetEngine.Sound.DataChunk@{HornetEngine.Sound.DataChunk}!data@{data}}
+\index{data@{data}!HornetEngine.Sound.DataChunk@{HornetEngine.Sound.DataChunk}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily byte \mbox{[}$\,$\mbox{]} Hornet\+Engine.\+Sound.\+Data\+Chunk.\+data}
+
+
+
+The raw audio data 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Hornet\+Engine/\+Sound/\mbox{\hyperlink{_sample_8cs}{Sample.\+cs}}\end{DoxyCompactItemize}

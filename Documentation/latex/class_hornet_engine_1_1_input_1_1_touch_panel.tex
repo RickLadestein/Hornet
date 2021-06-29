@@ -1,0 +1,194 @@
+\hypertarget{class_hornet_engine_1_1_input_1_1_touch_panel}{}\doxysection{Hornet\+Engine.\+Input.\+Touch\+Panel Class Reference}
+\label{class_hornet_engine_1_1_input_1_1_touch_panel}\index{HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}}
+
+
+Class that defines behaviour and events for catching and passing Touch\+Events  
+
+
+Inheritance diagram for Hornet\+Engine.\+Input.\+Touch\+Panel\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_hornet_engine_1_1_input_1_1_touch_panel}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+delegate void \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch_panel_aa6c607acfb86934a89267233994333ec}{Touch\+Point\+Move\+Func}} (Vector2 position, Vector2 delta, Vector2 size, uint id)
+\begin{DoxyCompactList}\small\item\em The touch move function \end{DoxyCompactList}\item 
+delegate void \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch_panel_a27ed7d65eb21c33ac91ed55e50da197d}{Touch\+Point\+Press\+Func}} (Vector2 position, Vector2 size, uint id)
+\begin{DoxyCompactList}\small\item\em The touch press function \end{DoxyCompactList}\item 
+delegate void \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch_panel_a5b900033f6e9254235f0b9d7ed02b537}{Touch\+Point\+Release\+Func}} (Vector2 position, Vector2 size, uint id)
+\begin{DoxyCompactList}\small\item\em The touch release function \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch_panel_aec528a156177ae73bad5a87621a060a1}{Touch\+Panel}} (\mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_drivers_1_1_touch_driver}{Touch\+Driver}} drv)
+\begin{DoxyCompactList}\small\item\em Instantiates a new instance of \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch_panel}{Touch\+Panel}} that hooks into the touch driver event bus \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{struct_hornet_engine_1_1_input_1_1_touch_point}{Touch\+Point}} $>$ \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch_panel_a2c92df935defe4a6167d6d75c079d3d4}{Get\+Touch\+Points}} ()
+\begin{DoxyCompactList}\small\item\em Gets a list of all the currently active touch points on the screen \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch_panel_a7fd0c9928cac99b5baa76441cb6747b8}{On\+Touch\+Event}} (Vector2 position, Vector2 size, uint id, uint flags)
+\begin{DoxyCompactList}\small\item\em Internal interface function for catching touch events from the touch driver \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch_panel_aa6c607acfb86934a89267233994333ec}{Touch\+Point\+Move\+Func}} \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch_panel_a3dd62d356b4eeb532117cbe8fc1e3f62}{Touch\+Move}}
+\begin{DoxyCompactList}\small\item\em Event queue for listening to Touch Move events \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch_panel_a27ed7d65eb21c33ac91ed55e50da197d}{Touch\+Point\+Press\+Func}} \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch_panel_a72415676aba9a5fe52304fd6f48cf265}{Touch\+Press}}
+\begin{DoxyCompactList}\small\item\em Event queue for listening to Touch Press events \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch_panel_a5b900033f6e9254235f0b9d7ed02b537}{Touch\+Point\+Release\+Func}} \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch_panel_a2a59d2c3df6f372d8f831af3228ed076}{Touch\+Release}}
+\begin{DoxyCompactList}\small\item\em Event queue for listening to Touch Release events \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that defines behaviour and events for catching and passing Touch\+Events 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_touch_panel_aec528a156177ae73bad5a87621a060a1}\label{class_hornet_engine_1_1_input_1_1_touch_panel_aec528a156177ae73bad5a87621a060a1}} 
+\index{HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}!TouchPanel@{TouchPanel}}
+\index{TouchPanel@{TouchPanel}!HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}}
+\doxysubsubsection{\texorpdfstring{TouchPanel()}{TouchPanel()}}
+{\footnotesize\ttfamily Hornet\+Engine.\+Input.\+Touch\+Panel.\+Touch\+Panel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_hornet_engine_1_1_util_1_1_drivers_1_1_touch_driver}{Touch\+Driver}}}]{drv }\end{DoxyParamCaption})}
+
+
+
+Instantiates a new instance of \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch_panel}{Touch\+Panel}} that hooks into the touch driver event bus 
+
+
+\begin{DoxyParams}{Parameters}
+{\em drv} & The Touch\+Driver instance\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_touch_panel_a2c92df935defe4a6167d6d75c079d3d4}\label{class_hornet_engine_1_1_input_1_1_touch_panel_a2c92df935defe4a6167d6d75c079d3d4}} 
+\index{HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}!GetTouchPoints@{GetTouchPoints}}
+\index{GetTouchPoints@{GetTouchPoints}!HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}}
+\doxysubsubsection{\texorpdfstring{GetTouchPoints()}{GetTouchPoints()}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{struct_hornet_engine_1_1_input_1_1_touch_point}{Touch\+Point}}$>$ Hornet\+Engine.\+Input.\+Touch\+Panel.\+Get\+Touch\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets a list of all the currently active touch points on the screen 
+
+\begin{DoxyReturn}{Returns}
+A list of all the active touch points on the screen
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_touch_panel_a7fd0c9928cac99b5baa76441cb6747b8}\label{class_hornet_engine_1_1_input_1_1_touch_panel_a7fd0c9928cac99b5baa76441cb6747b8}} 
+\index{HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}!OnTouchEvent@{OnTouchEvent}}
+\index{OnTouchEvent@{OnTouchEvent}!HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}}
+\doxysubsubsection{\texorpdfstring{OnTouchEvent()}{OnTouchEvent()}}
+{\footnotesize\ttfamily void Hornet\+Engine.\+Input.\+Touch\+Panel.\+On\+Touch\+Event (\begin{DoxyParamCaption}\item[{Vector2}]{position,  }\item[{Vector2}]{size,  }\item[{uint}]{id,  }\item[{uint}]{flags }\end{DoxyParamCaption})}
+
+
+
+Internal interface function for catching touch events from the touch driver 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the touch point\\
+\hline
+{\em size} & The size of the touch point in pixels\\
+\hline
+{\em id} & The id of the touch point\\
+\hline
+{\em flags} & The special flags that identifies the event type\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_touch_panel_aa6c607acfb86934a89267233994333ec}\label{class_hornet_engine_1_1_input_1_1_touch_panel_aa6c607acfb86934a89267233994333ec}} 
+\index{HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}!TouchPointMoveFunc@{TouchPointMoveFunc}}
+\index{TouchPointMoveFunc@{TouchPointMoveFunc}!HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}}
+\doxysubsubsection{\texorpdfstring{TouchPointMoveFunc()}{TouchPointMoveFunc()}}
+{\footnotesize\ttfamily delegate void Hornet\+Engine.\+Input.\+Touch\+Panel.\+Touch\+Point\+Move\+Func (\begin{DoxyParamCaption}\item[{Vector2}]{position,  }\item[{Vector2}]{delta,  }\item[{Vector2}]{size,  }\item[{uint}]{id }\end{DoxyParamCaption})}
+
+
+
+The touch move function 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The new position\\
+\hline
+{\em delta} & The difference between the new and the old position\\
+\hline
+{\em size} & The size of the touch points\\
+\hline
+{\em id} & The ID of the touch point\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_touch_panel_a27ed7d65eb21c33ac91ed55e50da197d}\label{class_hornet_engine_1_1_input_1_1_touch_panel_a27ed7d65eb21c33ac91ed55e50da197d}} 
+\index{HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}!TouchPointPressFunc@{TouchPointPressFunc}}
+\index{TouchPointPressFunc@{TouchPointPressFunc}!HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}}
+\doxysubsubsection{\texorpdfstring{TouchPointPressFunc()}{TouchPointPressFunc()}}
+{\footnotesize\ttfamily delegate void Hornet\+Engine.\+Input.\+Touch\+Panel.\+Touch\+Point\+Press\+Func (\begin{DoxyParamCaption}\item[{Vector2}]{position,  }\item[{Vector2}]{size,  }\item[{uint}]{id }\end{DoxyParamCaption})}
+
+
+
+The touch press function 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the touch point\\
+\hline
+{\em size} & The size of the touch point\\
+\hline
+{\em id} & The ID of the touch point\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_touch_panel_a5b900033f6e9254235f0b9d7ed02b537}\label{class_hornet_engine_1_1_input_1_1_touch_panel_a5b900033f6e9254235f0b9d7ed02b537}} 
+\index{HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}!TouchPointReleaseFunc@{TouchPointReleaseFunc}}
+\index{TouchPointReleaseFunc@{TouchPointReleaseFunc}!HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}}
+\doxysubsubsection{\texorpdfstring{TouchPointReleaseFunc()}{TouchPointReleaseFunc()}}
+{\footnotesize\ttfamily delegate void Hornet\+Engine.\+Input.\+Touch\+Panel.\+Touch\+Point\+Release\+Func (\begin{DoxyParamCaption}\item[{Vector2}]{position,  }\item[{Vector2}]{size,  }\item[{uint}]{id }\end{DoxyParamCaption})}
+
+
+
+The touch release function 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the touch point\\
+\hline
+{\em size} & The size of the touch point\\
+\hline
+{\em id} & The ID of the touch point\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Event Documentation}
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_touch_panel_a3dd62d356b4eeb532117cbe8fc1e3f62}\label{class_hornet_engine_1_1_input_1_1_touch_panel_a3dd62d356b4eeb532117cbe8fc1e3f62}} 
+\index{HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}!TouchMove@{TouchMove}}
+\index{TouchMove@{TouchMove}!HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}}
+\doxysubsubsection{\texorpdfstring{TouchMove}{TouchMove}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch_panel_aa6c607acfb86934a89267233994333ec}{Touch\+Point\+Move\+Func}} Hornet\+Engine.\+Input.\+Touch\+Panel.\+Touch\+Move}
+
+
+
+Event queue for listening to Touch Move events 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_touch_panel_a72415676aba9a5fe52304fd6f48cf265}\label{class_hornet_engine_1_1_input_1_1_touch_panel_a72415676aba9a5fe52304fd6f48cf265}} 
+\index{HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}!TouchPress@{TouchPress}}
+\index{TouchPress@{TouchPress}!HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}}
+\doxysubsubsection{\texorpdfstring{TouchPress}{TouchPress}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch_panel_a27ed7d65eb21c33ac91ed55e50da197d}{Touch\+Point\+Press\+Func}} Hornet\+Engine.\+Input.\+Touch\+Panel.\+Touch\+Press}
+
+
+
+Event queue for listening to Touch Press events 
+
+\mbox{\Hypertarget{class_hornet_engine_1_1_input_1_1_touch_panel_a2a59d2c3df6f372d8f831af3228ed076}\label{class_hornet_engine_1_1_input_1_1_touch_panel_a2a59d2c3df6f372d8f831af3228ed076}} 
+\index{HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}!TouchRelease@{TouchRelease}}
+\index{TouchRelease@{TouchRelease}!HornetEngine.Input.TouchPanel@{HornetEngine.Input.TouchPanel}}
+\doxysubsubsection{\texorpdfstring{TouchRelease}{TouchRelease}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_hornet_engine_1_1_input_1_1_touch_panel_a5b900033f6e9254235f0b9d7ed02b537}{Touch\+Point\+Release\+Func}} Hornet\+Engine.\+Input.\+Touch\+Panel.\+Touch\+Release}
+
+
+
+Event queue for listening to Touch Release events 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Hornet\+Engine/\+Input/\mbox{\hyperlink{_touch_panel_8cs}{Touch\+Panel.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,367 @@
+\hypertarget{namespace_hornet_engine_1_1_graphics}{}\doxysection{Hornet\+Engine.\+Graphics Namespace Reference}
+\label{namespace_hornet_engine_1_1_graphics}\index{HornetEngine.Graphics@{HornetEngine.Graphics}}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_1_1_buffers}{Buffers}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_hornet_engine_1_1_graphics_1_1_camera_view_settings}{Camera\+View\+Settings}}
+\begin{DoxyCompactList}\small\item\em Struct that describes the camera viewing properties like lens specification, fov and clip distance \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_camera}{Camera}}
+\item 
+struct \mbox{\hyperlink{struct_hornet_engine_1_1_graphics_1_1_material_descriptor}{Material\+Descriptor}}
+\item 
+class \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_mesh}{Mesh}}
+\item 
+struct \mbox{\hyperlink{struct_hornet_engine_1_1_graphics_1_1_material}{Material}}
+\item 
+class \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_native_window}{Native\+Window}}
+\item 
+class \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_renderer}{Renderer}}
+\item 
+class \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_scene}{Scene}}
+\item 
+class \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}}
+\item 
+class \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader}{Shader}}
+\item 
+class \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_vertex_shader}{Vertex\+Shader}}
+\begin{DoxyCompactList}\small\item\em Class representing a Vertex \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader}{Shader}} \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_geometry_shader}{Geometry\+Shader}}
+\begin{DoxyCompactList}\small\item\em Class representing a Geometry \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader}{Shader}} \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_fragment_shader}{Fragment\+Shader}}
+\begin{DoxyCompactList}\small\item\em Class representing a Fragment \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader}{Shader}} \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture}{Texture}}
+\item 
+class \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_multi_texture}{Multi\+Texture}}
+\item 
+class \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_window}{Window}}
+\item 
+class \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_attribute}{Attribute}}
+\item 
+class \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_attribute_storage}{Attribute\+Storage}}
+\begin{DoxyCompactList}\small\item\em Storage class for Attributes, stores attributes Fi\+Fo \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_double_attribute}{Double\+Attribute}}
+\item 
+class \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_float_attribute}{Float\+Attribute}}
+\item 
+class \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_int_attribute}{Int\+Attribute}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792b}{Mesh\+Status}} \{ \newline
+\mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792baccc0377a8afbf50e7094f5c23a8af223}{INVALID}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792bae605638650f16a72767bbb0bc9668edf}{IMPORTING\+\_\+\+DATA}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792ba31879ebb802726fba9f4494b32c5824b}{PARSING\+\_\+\+DATA}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792ba6b7771ac4749f8cec34f7db2a877ebe9}{CREATING\+\_\+\+BUFFER}}
+, \newline
+\mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792ba2baa69eafc7204f3bd8648eba580c489}{READY}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_af414e8a0ef14e07d168a1e346f9e405c}{Shader\+Program\+Status}} \{ \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_af414e8a0ef14e07d168a1e346f9e405ca034100353265e344701d054b597a2770}{UNINITIALISED}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_af414e8a0ef14e07d168a1e346f9e405ca762b1d82c037e9a5e8b6c1fb61867499}{AQUIRING\+\_\+\+HANDLE}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_af414e8a0ef14e07d168a1e346f9e405ca54df1aeeb2d6ecc5e7cda11ba34b6ca6}{LINKING}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_af414e8a0ef14e07d168a1e346f9e405ca2baa69eafc7204f3bd8648eba580c489}{READY}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum indicating the status of a Shader\+Program \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cad}{Shader\+Status}} \{ \newline
+\mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cada034100353265e344701d054b597a2770}{UNINITIALISED}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cada762b1d82c037e9a5e8b6c1fb61867499}{AQUIRING\+\_\+\+HANDLE}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cada383675afb2ce552b871b87624f950f02}{IMPORTING\+\_\+\+SOURCE\+\_\+\+CODE}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cada44964eba7dd1c03671aaa00c3107bd8f}{COMPILING}}
+, \newline
+\mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cada2baa69eafc7204f3bd8648eba580c489}{READY}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum representing the status of a Shader \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7}{Texture\+Wrap\+Setting}} \{ \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7a5be68175be14dfaa080165456c2e9555}{REPEAT}} = GLEnum.\+Repeat
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7acf6164235e7bfffb5c4c7c4b685f660a}{MIRRORED\+\_\+\+REPEAT}} = GLEnum.\+Mirrored\+Repeat
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7ab80c0868d7eabc21de4f2810bf3a7ec4}{EDGE\+\_\+\+CLAMP}} = GLEnum.\+Clamp\+To\+Edge
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7a02a0692f237a0bd7f39d7b7d87762510}{BORDER\+\_\+\+CLAMP}} = GLEnum.\+Clamp\+To\+Border
+ \}
+\begin{DoxyCompactList}\small\item\em Enum specifying the texture wrapping settings \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_a3123866b07d7971b72ad0153147ef863}{Min\+Mag\+Setting}} \{ \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_a3123866b07d7971b72ad0153147ef863aad135772d7cf93dd0ccf9d2474b34e6a}{NEAREST}} = GLEnum.\+Nearest
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_a3123866b07d7971b72ad0153147ef863aaac544aacc3615aada24897a215f5046}{LINEAR}} = GLEnum.\+Linear
+ \}
+\begin{DoxyCompactList}\small\item\em Enum specifying the mini/magnification setting \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15b}{HTexture\+Unit}} \+: uint \{ \newline
+\mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15ba46bf071c591baa9d38e16f1d74d31b44}{Unit\+\_\+0}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15ba91f110520566cba3cb980ca76aa7a869}{Unit\+\_\+1}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15ba1b24db4d9acd9b7026cf76a52c674959}{Unit\+\_\+2}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15bae531c63674beda5c4e8fe782a1303057}{Unit\+\_\+3}}
+, \newline
+\mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15ba5b0d4511b940dd797e8644493aceed88}{Unit\+\_\+4}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15ba535cfb055ee3197b83f8a33e86093df6}{Unit\+\_\+5}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15baa24484c619d75c7917644512edf871bd}{Unit\+\_\+6}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15bae18d6898084f4069ab58c879ea18594e}{Unit\+\_\+7}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8}{Texture\+Status}} \{ \newline
+\mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8a034100353265e344701d054b597a2770}{UNINITIALISED}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8a762b1d82c037e9a5e8b6c1fb61867499}{AQUIRING\+\_\+\+HANDLE}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8ad747b42673300e13350ba6df168c6a22}{IMPORTING\+\_\+\+IMAGE}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8aaa89881e4cf31f50b7c34e752777db32}{LOADING\+\_\+\+IMAGE}}
+, \newline
+\mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8a2baa69eafc7204f3bd8648eba580c489}{READY}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_a17955071d92d14f87abead6c953af378}{Window\+Mode}} \{ \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_a17955071d92d14f87abead6c953af378adaa43822b2c6abbb5d4eaf867ff6e4a4}{WINDOWED}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_a17955071d92d14f87abead6c953af378ab89c3d897b196ffff1537331bc659a97}{FULLSCREEN}}
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_a17955071d92d14f87abead6c953af378abac83b23bbc4b0e9ee65976e0e3b0e25}{WINDOWED\+\_\+\+FULLSCREEN}}
+ \}
+\item 
+enum class \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_afc0c598088954e2108c380b7fafd34f4}{Attribute\+Type}} \{ \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_afc0c598088954e2108c380b7fafd34f4a53f93baa3057821107c750323892fa92}{INT}} = Silk.\+NET.\+Open\+GL.\+GLEnum.\+Int
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_afc0c598088954e2108c380b7fafd34f4ae738c26bf4ce1037fa81b039a915cbf6}{FLOAT}} = Silk.\+NET.\+Open\+GL.\+GLEnum.\+Float
+, \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_afc0c598088954e2108c380b7fafd34f4afd3e4ece78a7d422280d5ed379482229}{DOUBLE}} = Silk.\+NET.\+Open\+GL.\+GLEnum.\+Double
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_afc0c598088954e2108c380b7fafd34f4}\label{namespace_hornet_engine_1_1_graphics_afc0c598088954e2108c380b7fafd34f4}} 
+\index{HornetEngine.Graphics@{HornetEngine.Graphics}!AttributeType@{AttributeType}}
+\index{AttributeType@{AttributeType}!HornetEngine.Graphics@{HornetEngine.Graphics}}
+\doxysubsubsection{\texorpdfstring{AttributeType}{AttributeType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_afc0c598088954e2108c380b7fafd34f4}{Hornet\+Engine.\+Graphics.\+Attribute\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INT@{INT}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!INT@{INT}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_afc0c598088954e2108c380b7fafd34f4a53f93baa3057821107c750323892fa92}\label{namespace_hornet_engine_1_1_graphics_afc0c598088954e2108c380b7fafd34f4a53f93baa3057821107c750323892fa92}} 
+INT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FLOAT@{FLOAT}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!FLOAT@{FLOAT}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_afc0c598088954e2108c380b7fafd34f4ae738c26bf4ce1037fa81b039a915cbf6}\label{namespace_hornet_engine_1_1_graphics_afc0c598088954e2108c380b7fafd34f4ae738c26bf4ce1037fa81b039a915cbf6}} 
+FLOAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DOUBLE@{DOUBLE}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!DOUBLE@{DOUBLE}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_afc0c598088954e2108c380b7fafd34f4afd3e4ece78a7d422280d5ed379482229}\label{namespace_hornet_engine_1_1_graphics_afc0c598088954e2108c380b7fafd34f4afd3e4ece78a7d422280d5ed379482229}} 
+DOUBLE&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15b}\label{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15b}} 
+\index{HornetEngine.Graphics@{HornetEngine.Graphics}!HTextureUnit@{HTextureUnit}}
+\index{HTextureUnit@{HTextureUnit}!HornetEngine.Graphics@{HornetEngine.Graphics}}
+\doxysubsubsection{\texorpdfstring{HTextureUnit}{HTextureUnit}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15b}{Hornet\+Engine.\+Graphics.\+HTexture\+Unit}} \+: uint\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Unit\_0@{Unit\_0}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!Unit\_0@{Unit\_0}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15ba46bf071c591baa9d38e16f1d74d31b44}\label{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15ba46bf071c591baa9d38e16f1d74d31b44}} 
+Unit\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Unit\_1@{Unit\_1}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!Unit\_1@{Unit\_1}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15ba91f110520566cba3cb980ca76aa7a869}\label{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15ba91f110520566cba3cb980ca76aa7a869}} 
+Unit\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Unit\_2@{Unit\_2}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!Unit\_2@{Unit\_2}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15ba1b24db4d9acd9b7026cf76a52c674959}\label{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15ba1b24db4d9acd9b7026cf76a52c674959}} 
+Unit\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Unit\_3@{Unit\_3}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!Unit\_3@{Unit\_3}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15bae531c63674beda5c4e8fe782a1303057}\label{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15bae531c63674beda5c4e8fe782a1303057}} 
+Unit\+\_\+3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Unit\_4@{Unit\_4}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!Unit\_4@{Unit\_4}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15ba5b0d4511b940dd797e8644493aceed88}\label{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15ba5b0d4511b940dd797e8644493aceed88}} 
+Unit\+\_\+4&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Unit\_5@{Unit\_5}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!Unit\_5@{Unit\_5}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15ba535cfb055ee3197b83f8a33e86093df6}\label{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15ba535cfb055ee3197b83f8a33e86093df6}} 
+Unit\+\_\+5&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Unit\_6@{Unit\_6}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!Unit\_6@{Unit\_6}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15baa24484c619d75c7917644512edf871bd}\label{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15baa24484c619d75c7917644512edf871bd}} 
+Unit\+\_\+6&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Unit\_7@{Unit\_7}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!Unit\_7@{Unit\_7}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15bae18d6898084f4069ab58c879ea18594e}\label{namespace_hornet_engine_1_1_graphics_ab9d246e7dd6574838081912bfed2e15bae18d6898084f4069ab58c879ea18594e}} 
+Unit\+\_\+7&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792b}\label{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792b}} 
+\index{HornetEngine.Graphics@{HornetEngine.Graphics}!MeshStatus@{MeshStatus}}
+\index{MeshStatus@{MeshStatus}!HornetEngine.Graphics@{HornetEngine.Graphics}}
+\doxysubsubsection{\texorpdfstring{MeshStatus}{MeshStatus}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792b}{Hornet\+Engine.\+Graphics.\+Mesh\+Status}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INVALID@{INVALID}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!INVALID@{INVALID}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792baccc0377a8afbf50e7094f5c23a8af223}\label{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792baccc0377a8afbf50e7094f5c23a8af223}} 
+INVALID&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IMPORTING\_DATA@{IMPORTING\_DATA}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!IMPORTING\_DATA@{IMPORTING\_DATA}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792bae605638650f16a72767bbb0bc9668edf}\label{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792bae605638650f16a72767bbb0bc9668edf}} 
+IMPORTING\+\_\+\+DATA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PARSING\_DATA@{PARSING\_DATA}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!PARSING\_DATA@{PARSING\_DATA}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792ba31879ebb802726fba9f4494b32c5824b}\label{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792ba31879ebb802726fba9f4494b32c5824b}} 
+PARSING\+\_\+\+DATA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CREATING\_BUFFER@{CREATING\_BUFFER}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!CREATING\_BUFFER@{CREATING\_BUFFER}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792ba6b7771ac4749f8cec34f7db2a877ebe9}\label{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792ba6b7771ac4749f8cec34f7db2a877ebe9}} 
+CREATING\+\_\+\+BUFFER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{READY@{READY}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!READY@{READY}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792ba2baa69eafc7204f3bd8648eba580c489}\label{namespace_hornet_engine_1_1_graphics_abfb4b5ff600608ccc2c20b749f7a792ba2baa69eafc7204f3bd8648eba580c489}} 
+READY&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_a3123866b07d7971b72ad0153147ef863}\label{namespace_hornet_engine_1_1_graphics_a3123866b07d7971b72ad0153147ef863}} 
+\index{HornetEngine.Graphics@{HornetEngine.Graphics}!MinMagSetting@{MinMagSetting}}
+\index{MinMagSetting@{MinMagSetting}!HornetEngine.Graphics@{HornetEngine.Graphics}}
+\doxysubsubsection{\texorpdfstring{MinMagSetting}{MinMagSetting}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_a3123866b07d7971b72ad0153147ef863}{Hornet\+Engine.\+Graphics.\+Min\+Mag\+Setting}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enum specifying the mini/magnification setting 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NEAREST@{NEAREST}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!NEAREST@{NEAREST}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_a3123866b07d7971b72ad0153147ef863aad135772d7cf93dd0ccf9d2474b34e6a}\label{namespace_hornet_engine_1_1_graphics_a3123866b07d7971b72ad0153147ef863aad135772d7cf93dd0ccf9d2474b34e6a}} 
+NEAREST&Use nearest neighbour pixel filtering for mini/magnification \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINEAR@{LINEAR}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!LINEAR@{LINEAR}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_a3123866b07d7971b72ad0153147ef863aaac544aacc3615aada24897a215f5046}\label{namespace_hornet_engine_1_1_graphics_a3123866b07d7971b72ad0153147ef863aaac544aacc3615aada24897a215f5046}} 
+LINEAR&Use linear pixel filtering for mini/magnification \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_af414e8a0ef14e07d168a1e346f9e405c}\label{namespace_hornet_engine_1_1_graphics_af414e8a0ef14e07d168a1e346f9e405c}} 
+\index{HornetEngine.Graphics@{HornetEngine.Graphics}!ShaderProgramStatus@{ShaderProgramStatus}}
+\index{ShaderProgramStatus@{ShaderProgramStatus}!HornetEngine.Graphics@{HornetEngine.Graphics}}
+\doxysubsubsection{\texorpdfstring{ShaderProgramStatus}{ShaderProgramStatus}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_af414e8a0ef14e07d168a1e346f9e405c}{Hornet\+Engine.\+Graphics.\+Shader\+Program\+Status}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enum indicating the status of a \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}} 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNINITIALISED@{UNINITIALISED}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!UNINITIALISED@{UNINITIALISED}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_af414e8a0ef14e07d168a1e346f9e405ca034100353265e344701d054b597a2770}\label{namespace_hornet_engine_1_1_graphics_af414e8a0ef14e07d168a1e346f9e405ca034100353265e344701d054b597a2770}} 
+UNINITIALISED&\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}} is unitialised and cannot be used \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AQUIRING\_HANDLE@{AQUIRING\_HANDLE}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!AQUIRING\_HANDLE@{AQUIRING\_HANDLE}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_af414e8a0ef14e07d168a1e346f9e405ca762b1d82c037e9a5e8b6c1fb61867499}\label{namespace_hornet_engine_1_1_graphics_af414e8a0ef14e07d168a1e346f9e405ca762b1d82c037e9a5e8b6c1fb61867499}} 
+AQUIRING\+\_\+\+HANDLE&\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}} is aquiring GPU \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}} handle \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINKING@{LINKING}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!LINKING@{LINKING}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_af414e8a0ef14e07d168a1e346f9e405ca54df1aeeb2d6ecc5e7cda11ba34b6ca6}\label{namespace_hornet_engine_1_1_graphics_af414e8a0ef14e07d168a1e346f9e405ca54df1aeeb2d6ecc5e7cda11ba34b6ca6}} 
+LINKING&\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}} is linking Shaders \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{READY@{READY}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!READY@{READY}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_af414e8a0ef14e07d168a1e346f9e405ca2baa69eafc7204f3bd8648eba580c489}\label{namespace_hornet_engine_1_1_graphics_af414e8a0ef14e07d168a1e346f9e405ca2baa69eafc7204f3bd8648eba580c489}} 
+READY&\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader_program}{Shader\+Program}} is ready to use \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cad}\label{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cad}} 
+\index{HornetEngine.Graphics@{HornetEngine.Graphics}!ShaderStatus@{ShaderStatus}}
+\index{ShaderStatus@{ShaderStatus}!HornetEngine.Graphics@{HornetEngine.Graphics}}
+\doxysubsubsection{\texorpdfstring{ShaderStatus}{ShaderStatus}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cad}{Hornet\+Engine.\+Graphics.\+Shader\+Status}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enum representing the status of a \mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader}{Shader}} 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNINITIALISED@{UNINITIALISED}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!UNINITIALISED@{UNINITIALISED}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cada034100353265e344701d054b597a2770}\label{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cada034100353265e344701d054b597a2770}} 
+UNINITIALISED&\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader}{Shader}} is uninitialised an cannot be used \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AQUIRING\_HANDLE@{AQUIRING\_HANDLE}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!AQUIRING\_HANDLE@{AQUIRING\_HANDLE}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cada762b1d82c037e9a5e8b6c1fb61867499}\label{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cada762b1d82c037e9a5e8b6c1fb61867499}} 
+AQUIRING\+\_\+\+HANDLE&\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader}{Shader}} is aquiring a GPU program handle \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IMPORTING\_SOURCE\_CODE@{IMPORTING\_SOURCE\_CODE}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!IMPORTING\_SOURCE\_CODE@{IMPORTING\_SOURCE\_CODE}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cada383675afb2ce552b871b87624f950f02}\label{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cada383675afb2ce552b871b87624f950f02}} 
+IMPORTING\+\_\+\+SOURCE\+\_\+\+CODE&\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader}{Shader}} is importing source code from file \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COMPILING@{COMPILING}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!COMPILING@{COMPILING}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cada44964eba7dd1c03671aaa00c3107bd8f}\label{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cada44964eba7dd1c03671aaa00c3107bd8f}} 
+COMPILING&\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader}{Shader}} is compiling the source code \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{READY@{READY}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!READY@{READY}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cada2baa69eafc7204f3bd8648eba580c489}\label{namespace_hornet_engine_1_1_graphics_ab879f83ee005bc6d4acf09531a629cada2baa69eafc7204f3bd8648eba580c489}} 
+READY&\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_shader}{Shader}} is ready to use \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8}\label{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8}} 
+\index{HornetEngine.Graphics@{HornetEngine.Graphics}!TextureStatus@{TextureStatus}}
+\index{TextureStatus@{TextureStatus}!HornetEngine.Graphics@{HornetEngine.Graphics}}
+\doxysubsubsection{\texorpdfstring{TextureStatus}{TextureStatus}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8}{Hornet\+Engine.\+Graphics.\+Texture\+Status}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNINITIALISED@{UNINITIALISED}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!UNINITIALISED@{UNINITIALISED}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8a034100353265e344701d054b597a2770}\label{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8a034100353265e344701d054b597a2770}} 
+UNINITIALISED&\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture}{Texture}} is unitialised and cannot be used yet \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AQUIRING\_HANDLE@{AQUIRING\_HANDLE}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!AQUIRING\_HANDLE@{AQUIRING\_HANDLE}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8a762b1d82c037e9a5e8b6c1fb61867499}\label{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8a762b1d82c037e9a5e8b6c1fb61867499}} 
+AQUIRING\+\_\+\+HANDLE&\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture}{Texture}} is aquiring an Open\+GL texture handle \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IMPORTING\_IMAGE@{IMPORTING\_IMAGE}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!IMPORTING\_IMAGE@{IMPORTING\_IMAGE}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8ad747b42673300e13350ba6df168c6a22}\label{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8ad747b42673300e13350ba6df168c6a22}} 
+IMPORTING\+\_\+\+IMAGE&\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture}{Texture}} is importing image \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOADING\_IMAGE@{LOADING\_IMAGE}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!LOADING\_IMAGE@{LOADING\_IMAGE}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8aaa89881e4cf31f50b7c34e752777db32}\label{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8aaa89881e4cf31f50b7c34e752777db32}} 
+LOADING\+\_\+\+IMAGE&\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture}{Texture}} is loading image in the GPU \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{READY@{READY}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!READY@{READY}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8a2baa69eafc7204f3bd8648eba580c489}\label{namespace_hornet_engine_1_1_graphics_aac63b6484ba3c7308f12ea421867caa8a2baa69eafc7204f3bd8648eba580c489}} 
+READY&\mbox{\hyperlink{class_hornet_engine_1_1_graphics_1_1_texture}{Texture}} is ready \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7}\label{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7}} 
+\index{HornetEngine.Graphics@{HornetEngine.Graphics}!TextureWrapSetting@{TextureWrapSetting}}
+\index{TextureWrapSetting@{TextureWrapSetting}!HornetEngine.Graphics@{HornetEngine.Graphics}}
+\doxysubsubsection{\texorpdfstring{TextureWrapSetting}{TextureWrapSetting}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7}{Hornet\+Engine.\+Graphics.\+Texture\+Wrap\+Setting}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enum specifying the texture wrapping settings 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{REPEAT@{REPEAT}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!REPEAT@{REPEAT}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7a5be68175be14dfaa080165456c2e9555}\label{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7a5be68175be14dfaa080165456c2e9555}} 
+REPEAT&Use repeat for outside mode of bounds texture mapping \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MIRRORED\_REPEAT@{MIRRORED\_REPEAT}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!MIRRORED\_REPEAT@{MIRRORED\_REPEAT}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7acf6164235e7bfffb5c4c7c4b685f660a}\label{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7acf6164235e7bfffb5c4c7c4b685f660a}} 
+MIRRORED\+\_\+\+REPEAT&Use mirrored repeat mode for outside of bounds texture mapping \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EDGE\_CLAMP@{EDGE\_CLAMP}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!EDGE\_CLAMP@{EDGE\_CLAMP}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7ab80c0868d7eabc21de4f2810bf3a7ec4}\label{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7ab80c0868d7eabc21de4f2810bf3a7ec4}} 
+EDGE\+\_\+\+CLAMP&Use edge clamp mode for outside of bounds texture mapping \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BORDER\_CLAMP@{BORDER\_CLAMP}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!BORDER\_CLAMP@{BORDER\_CLAMP}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7a02a0692f237a0bd7f39d7b7d87762510}\label{namespace_hornet_engine_1_1_graphics_aa7039c5b2390ce608261c9436f9d69c7a02a0692f237a0bd7f39d7b7d87762510}} 
+BORDER\+\_\+\+CLAMP&Use border clamp mode for outside of bounds texture mapping \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_a17955071d92d14f87abead6c953af378}\label{namespace_hornet_engine_1_1_graphics_a17955071d92d14f87abead6c953af378}} 
+\index{HornetEngine.Graphics@{HornetEngine.Graphics}!WindowMode@{WindowMode}}
+\index{WindowMode@{WindowMode}!HornetEngine.Graphics@{HornetEngine.Graphics}}
+\doxysubsubsection{\texorpdfstring{WindowMode}{WindowMode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_hornet_engine_1_1_graphics_a17955071d92d14f87abead6c953af378}{Hornet\+Engine.\+Graphics.\+Window\+Mode}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WINDOWED@{WINDOWED}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!WINDOWED@{WINDOWED}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_a17955071d92d14f87abead6c953af378adaa43822b2c6abbb5d4eaf867ff6e4a4}\label{namespace_hornet_engine_1_1_graphics_a17955071d92d14f87abead6c953af378adaa43822b2c6abbb5d4eaf867ff6e4a4}} 
+WINDOWED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FULLSCREEN@{FULLSCREEN}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!FULLSCREEN@{FULLSCREEN}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_a17955071d92d14f87abead6c953af378ab89c3d897b196ffff1537331bc659a97}\label{namespace_hornet_engine_1_1_graphics_a17955071d92d14f87abead6c953af378ab89c3d897b196ffff1537331bc659a97}} 
+FULLSCREEN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WINDOWED\_FULLSCREEN@{WINDOWED\_FULLSCREEN}!HornetEngine.Graphics@{HornetEngine.Graphics}}\index{HornetEngine.Graphics@{HornetEngine.Graphics}!WINDOWED\_FULLSCREEN@{WINDOWED\_FULLSCREEN}}}\mbox{\Hypertarget{namespace_hornet_engine_1_1_graphics_a17955071d92d14f87abead6c953af378abac83b23bbc4b0e9ee65976e0e3b0e25}\label{namespace_hornet_engine_1_1_graphics_a17955071d92d14f87abead6c953af378abac83b23bbc4b0e9ee65976e0e3b0e25}} 
+WINDOWED\+\_\+\+FULLSCREEN&\\
+\hline
+
+\end{DoxyEnumFields}
