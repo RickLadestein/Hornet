@@ -62,9 +62,31 @@ namespace HornetEngine.Ecs
             }
         }
 
-        public static void RenderOnCamPlane()
+        public static void RenderOnCamPlane(Camera cam)
         {
+            MaterialComponent matcomp = cam.Material;
+            MeshComponent meshcomp = cam.Render_plane;
 
+            ShaderProgram sh = matcomp.Shader;
+            sh.Bind();
+
+            cam.FrameBuffer.Textures.Bind();
+            for (int i = 0; i < cam.FrameBuffer.Textures.textures.Length; i++)
+            {
+                if (cam.FrameBuffer.Textures.textures[i] != null)
+                {
+                    matcomp.Shader.SetUniform($"texture_{i}", i);
+                }
+            }
+
+            VertexBuffer vbuf = meshcomp.Mesh.VertexBuffer;
+            vbuf.Bind();
+            sh.SetUniform("time", (float)NativeWindow.GLFW.GetTime());
+
+            NativeWindow.GL.DrawArrays((GLEnum)vbuf.PrimitiveType, 0, vbuf.VertexCount);
+            vbuf.Unbind();
+            ShaderProgram.UnbindAll();
+            cam.FrameBuffer.Textures.Unbind();
         }
         public override string ToString()
         {

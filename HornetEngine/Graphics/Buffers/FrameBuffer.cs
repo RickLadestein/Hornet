@@ -21,8 +21,8 @@ namespace HornetEngine.Graphics.Buffers
 
         private List<Texture> render_targets;
         private List<GLEnum> color_attachments;
-        private uint width;
-        private uint height;
+        public uint Width { get; private set; }
+        public uint Height { get; private set; }
         private uint current_attachment;
         private bool has_depth_buffer;
 
@@ -34,8 +34,8 @@ namespace HornetEngine.Graphics.Buffers
         /// <param name="buffer_height">The buffer height</param>
         public FrameBuffer(uint buffer_width, uint buffer_height)
         {
-            this.width = buffer_width;
-            this.height = buffer_height;
+            this.Width = buffer_width;
+            this.Height = buffer_height;
             this.current_attachment = 0;
             this.Handle = NativeWindow.GL.GenFramebuffer();
             this.Textures = new MultiTexture();
@@ -85,7 +85,7 @@ namespace HornetEngine.Graphics.Buffers
         public void AttachColorRenderTarget(InternalFormat bits_per_channel, PixelFormat channels, PixelType pixel_type)
         {
             NativeWindow.GL.BindFramebuffer(GLEnum.Framebuffer,this.Handle);
-            Texture tex = new Texture(this.width, this.height, bits_per_channel, channels, pixel_type);
+            Texture tex = new Texture(this.Width, this.Height, bits_per_channel, channels, pixel_type);
             tex.Bind();
             tex.SetFilterMode(MinMagSetting.NEAREST);
             tex.SetWrapMode(TextureWrapSetting.BORDER_CLAMP);
@@ -120,13 +120,13 @@ namespace HornetEngine.Graphics.Buffers
         {
             if (!this.has_depth_buffer)
             {
+                this.has_depth_buffer = true;
                 this.RB_Handle = NativeWindow.GL.GenRenderbuffer();
                 this.Bind();
-                NativeWindow.GL.RenderbufferStorage(RenderbufferTarget.Renderbuffer, InternalFormat.DepthComponent, this.width, this.height);
+                NativeWindow.GL.RenderbufferStorage(RenderbufferTarget.Renderbuffer, InternalFormat.DepthComponent, this.Width, this.Height);
                 NativeWindow.GL.FramebufferRenderbuffer(FramebufferTarget.Framebuffer, FramebufferAttachment.DepthAttachment, RenderbufferTarget.Renderbuffer, this.RB_Handle);
 
                 FrameBuffer.Unbind();
-                this.has_depth_buffer = true;
             } else
             {
                 throw new Exception("Cannot add DepthBuffer target to framebuffer: framebuffer already has DepthBuffer target");

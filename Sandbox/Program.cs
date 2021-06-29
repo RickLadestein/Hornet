@@ -30,7 +30,7 @@ namespace Sandbox
             DirectoryManager.RegisterResourceDir("models", "resources\\models");
             DirectoryManager.RegisterResourceDir("samples", "resources\\samples");
 
-            SoundManager mgr = SoundManager.Instance;
+            SoundResourceManager mgr = SoundResourceManager.Instance;
 
             w.Open("Test", 1920, 1080, WindowMode.WINDOWED);
             w.Title = "Helloworld";
@@ -81,18 +81,11 @@ namespace Sandbox
         #region MANUAL_RESOURCE
         private static void DoManualResourceAquisition()
         {
-            VertexShader dvsh = new VertexShader("shaders", "line_default.vert");
-            FragmentShader dfsh = new FragmentShader("shaders", "line_default.frag");
-            ShaderProgram dprog = new ShaderProgram(dvsh, dfsh);
-            ShaderResourceManager.Instance.AddResource("default_line", dprog);
+            
 
-            VertexShader vsh = new VertexShader("shaders", "default.vert");
-            FragmentShader fsh = new FragmentShader("shaders", "default.frag");
-            ShaderProgram prog = new ShaderProgram(vsh, fsh);
-            ShaderResourceManager.Instance.AddResource("default", prog);
+            TextureResourceManager.Instance.ImportResource("default", "textures", "laminate1.png");
 
-            ShaderProgram prog1 = new ShaderProgram(new VertexShader("shaders", "deferred_pre.vert"), new FragmentShader("shaders", "deferred_pre.frag"));
-            ShaderResourceManager.Instance.AddResource("deferred_pre", prog1);
+            SoundResourceManager.Instance.ImportResource("bonk", "samples", "menu.wav");
 
             Config config = Config.Instance;
             SoundManager manager = SoundManager.Instance;

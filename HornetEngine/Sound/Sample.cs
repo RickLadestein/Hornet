@@ -259,9 +259,10 @@ namespace HornetEngine.Sound
             DataChunk output = new DataChunk
             {
                 chunk_id = data_id,
-                chunk_size = reader.ReadInt32(),
-                data = reader.ReadBytes((int)(reader.BaseStream.Length - reader.BaseStream.Position))
+                chunk_size = reader.ReadInt32()
+                //data = reader.ReadBytes((int)(reader.BaseStream.Length - reader.BaseStream.Position))
             };
+            output.data = reader.ReadBytes(output.chunk_size);
             return output;
         }
     }

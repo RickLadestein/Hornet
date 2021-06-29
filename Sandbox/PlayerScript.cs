@@ -72,7 +72,7 @@ namespace Sandbox
         private void PlaySound()
         {
             Entity found = Scene.Instance.FindEntityById("line");
-            Sample sample = SoundManager.Instance.GetResource("bonk");
+            Sample sample = HornetEngine.Util.SoundResourceManager.Instance.GetResource("bonk");
             if (found != null && sample != null)
             {
                 SoundSourceComponent ssc = found.GetComponent<SoundSourceComponent>();
