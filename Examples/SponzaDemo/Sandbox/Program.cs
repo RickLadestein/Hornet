@@ -26,6 +26,9 @@ namespace Sandbox
             SoundResourceManager mgr = SoundResourceManager.Instance;
 
             w.Open("Sponza", 1920, 1080, WindowMode.WINDOWED);
+            NativeWindow.GL.Disable(Silk.NET.OpenGL.GLEnum.Blend);
+            TextureResourceManager.Instance.ImportResource("default", "textures", "laminate1.png");
+            Scene.Instance.LoadScene("models", "sponza.obj");
 
             player = new Entity("Player");
             PlayerScript pscr = new PlayerScript
@@ -38,8 +41,7 @@ namespace Sandbox
             player.AddComponent(new AudioListenerComponent());
             Scene.Instance.AddEntity(player);
 
-            TextureResourceManager.Instance.ImportResource("default", "textures", "laminate1.png");
-            Scene.Instance.LoadScene("models", "sponza.obj");
+            
             w.Run();
         }
     }
