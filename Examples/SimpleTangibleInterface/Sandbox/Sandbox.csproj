@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GlmSharp" Version="0.9.8" />
+    <PackageReference Include="Silk.NET.Core" Version="2.5.0" />
+    <PackageReference Include="Silk.NET.GLFW" Version="2.5.0" />
+    <PackageReference Include="Silk.NET.OpenGL" Version="2.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="HornetEngine">
+      <HintPath>..\..\..\HornetEngine\bin\Debug\netcoreapp3.1\HornetEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
