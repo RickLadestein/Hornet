@@ -52,13 +52,10 @@ namespace HornetEngine.Graphics
         /// </summary>
         private void Initialize()
         {
-            Texture tex = new Texture("textures", "black.png", false);
-            TextureResourceManager.Instance.AddResource("black", tex);
-
-            PrimaryCam.FrameBuffer.AttachColorRenderTarget(Silk.NET.OpenGL.InternalFormat.Rgb16f, Silk.NET.OpenGL.PixelFormat.Rgb, Silk.NET.OpenGL.PixelType.Float);
-            PrimaryCam.FrameBuffer.AttachColorRenderTarget(Silk.NET.OpenGL.InternalFormat.Rgb16f, Silk.NET.OpenGL.PixelFormat.Rgb, Silk.NET.OpenGL.PixelType.Float);
-            PrimaryCam.FrameBuffer.AttachColorRenderTarget(Silk.NET.OpenGL.InternalFormat.Rgba, Silk.NET.OpenGL.PixelFormat.Rgba, Silk.NET.OpenGL.PixelType.UnsignedByte);
-            PrimaryCam.FrameBuffer.AttachDepthBufferTarget();
+            TextureResourceManager.Instance.ImportResource("black", "textures", "black.png");
+            ShaderResourceManager.Instance.ImportResource("default_line", "shaders", "line_default.vert", "line_default.frag");
+            ShaderResourceManager.Instance.ImportResource("default", "shaders", "default.vert", "default.frag");
+            ShaderResourceManager.Instance.ImportResource("deferred_pre", "shaders", "deferred_pre.vert", "deferred_pre.frag");
 
 
             PrimaryCam.ViewSettings = new CameraViewSettings()
@@ -272,7 +269,7 @@ namespace HornetEngine.Graphics
         public void LoadScene(string folder_id, string scene_file)
         {
             scene_content.Clear();
-            string error = this.ImportSceneFromFile(folder_id, scene_file, out Assimp.Scene s);
+            string error = DirectoryManager.ImportSceneFromFile(folder_id, scene_file, out Assimp.Scene s);
 
             if(error != string.Empty)
             {
@@ -311,15 +308,7 @@ namespace HornetEngine.Graphics
                 {
                     if(!TextureResourceManager.Instance.HasResource(matcomp.Material.Ambient_map))
                     {
-                        Texture tex1 = new Texture("textures", matcomp.Material.Ambient_map, false);
-                        if (tex1.Error != string.Empty)
-                        {
-                            Console.WriteLine($"Texture loading for {matcomp.Material.Ambient_map} failed");
-                        }
-                        else
-                        {
-                            TextureResourceManager.Instance.AddResource(matcomp.Material.Ambient_map, tex1);
-                        }
+                        TextureResourceManager.Instance.ImportResource(matcomp.Material.Ambient_map, "textures", matcomp.Material.Ambient_map);
                     }
                     matcomp.SetTextureUnit(matcomp.Material.Ambient_map, HTextureUnit.Unit_0);
                 }
@@ -332,15 +321,7 @@ namespace HornetEngine.Graphics
                 {
                     if (!TextureResourceManager.Instance.HasResource(matcomp.Material.Normal_map))
                     {
-                        Texture tex2 = new Texture("textures", matcomp.Material.Normal_map, false);
-                        if (tex2.Error != string.Empty)
-                        {
-                            Console.WriteLine($"Texture loading for {matcomp.Material.Normal_map} failed");
-                        }
-                        else
-                        {
-                            TextureResourceManager.Instance.AddResource(matcomp.Material.Normal_map, tex2);
-                        }
+                        TextureResourceManager.Instance.ImportResource(matcomp.Material.Normal_map, "textures", matcomp.Material.Normal_map);
                     }
                     matcomp.SetTextureUnit(matcomp.Material.Normal_map, HTextureUnit.Unit_1);
                 }
@@ -353,57 +334,16 @@ namespace HornetEngine.Graphics
                 {
                     if (!TextureResourceManager.Instance.HasResource(matcomp.Material.Specular_map))
                     {
-                        Texture tex3 = new Texture("textures", matcomp.Material.Specular_map, false);
-                        if (tex3.Error != string.Empty)
-                        {
-                            Console.WriteLine($"Texture loading for {matcomp.Material.Specular_map} failed");
-                        }
-                        else
-                        {
-                            TextureResourceManager.Instance.AddResource(matcomp.Material.Specular_map, tex3);
-                        }
+                        TextureResourceManager.Instance.ImportResource(matcomp.Material.Specular_map, "textures", matcomp.Material.Specular_map);
                     }
                     matcomp.SetTextureUnit(matcomp.Material.Specular_map, HTextureUnit.Unit_2);
-                } else
+                } 
+                else
                 {
                     matcomp.SetTextureUnit("black", HTextureUnit.Unit_2);
                 }
             }
 
         }
-
-        private String ImportSceneFromFile(String folder_id, String file, out Assimp.Scene scene)
-        {
-            string dir = DirectoryManager.GetResourceDir(folder_id);
-            if (dir == String.Empty)
-            {
-                scene = null;
-                return $"Directory with id [{folder_id}] was not found in DirectoryManager";
-            }
-
-            string path = DirectoryManager.ConcatDirFile(dir, file);
-
-            try
-            {
-                Assimp.AssimpContext ac = new Assimp.AssimpContext();
-                ac.SetConfig(new Assimp.Configs.NormalSmoothingAngleConfig(66.0f));
-                Assimp.Scene s = ac.ImportFile(path, Assimp.PostProcessSteps.Triangulate | Assimp.PostProcessSteps.GenerateNormals);
-
-                if (s.MeshCount == 0)
-                {
-                    scene = null;
-                    return "No meshes were found in the file";
-                }
-                scene = s;
-                return String.Empty;
-            }
-            catch (Exception ex)
-            {
-                scene = null;
-                return ex.Message;
-            }
-        }
-
-
     }
 }

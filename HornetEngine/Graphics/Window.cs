@@ -45,6 +45,7 @@ namespace HornetEngine.Graphics
         /// Instantiates a new window object with base parameters
         /// </summary>
         public Window(): base() {
+            DirectoryManager.InitResourceDir();
             start_time = 0.0d;
             end_time = 0.0d;
             last_frame_time = 0.0f;

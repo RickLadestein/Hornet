@@ -97,6 +97,10 @@ namespace HornetEngine.Graphics
         private void InitCamRenderPlane()
         {
             this.FrameBuffer = new FrameBuffer((uint)this.ViewSettings.Lens_width, (uint)this.ViewSettings.Lens_height);
+            FrameBuffer.AttachColorRenderTarget(Silk.NET.OpenGL.InternalFormat.Rgb16f, Silk.NET.OpenGL.PixelFormat.Rgb, Silk.NET.OpenGL.PixelType.Float);
+            FrameBuffer.AttachColorRenderTarget(Silk.NET.OpenGL.InternalFormat.Rgb16f, Silk.NET.OpenGL.PixelFormat.Rgb, Silk.NET.OpenGL.PixelType.Float);
+            FrameBuffer.AttachColorRenderTarget(Silk.NET.OpenGL.InternalFormat.Rgba, Silk.NET.OpenGL.PixelFormat.Rgba, Silk.NET.OpenGL.PixelType.UnsignedByte);
+            FrameBuffer.AttachDepthBufferTarget();
             if (!MeshResourceManager.Instance.HasResource("camplane"))
             {
                 Mesh m = new Mesh("camplane");
