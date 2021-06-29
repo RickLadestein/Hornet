@@ -49,7 +49,7 @@ namespace HornetEngine.Graphics.Buffers
         public void ClearBuffers()
         {
             NativeWindow.GL.Clear((int)GLEnum.ColorBufferBit);
-            if(has_depth_buffer)
+            if (has_depth_buffer)
             {
                 NativeWindow.GL.Clear((int)GLEnum.DepthBufferBit);
             }
@@ -61,7 +61,7 @@ namespace HornetEngine.Graphics.Buffers
         public void Bind()
         {
             NativeWindow.GL.BindFramebuffer(FramebufferTarget.Framebuffer, Handle);
-            if(this.has_depth_buffer)
+            if (this.has_depth_buffer)
             {
                 NativeWindow.GL.BindRenderbuffer(RenderbufferTarget.Renderbuffer, RB_Handle);
             }
@@ -84,7 +84,7 @@ namespace HornetEngine.Graphics.Buffers
         /// <param name="pixel_type">The type of value color values are stored into (byte, int, float, etc...)</param>
         public void AttachColorRenderTarget(InternalFormat bits_per_channel, PixelFormat channels, PixelType pixel_type)
         {
-            NativeWindow.GL.BindFramebuffer(GLEnum.Framebuffer,this.Handle);
+            NativeWindow.GL.BindFramebuffer(GLEnum.Framebuffer, this.Handle);
             Texture tex = new Texture(this.Width, this.Height, bits_per_channel, channels, pixel_type);
             tex.Bind();
             tex.SetFilterMode(MinMagSetting.NEAREST);
@@ -127,7 +127,8 @@ namespace HornetEngine.Graphics.Buffers
                 NativeWindow.GL.FramebufferRenderbuffer(FramebufferTarget.Framebuffer, FramebufferAttachment.DepthAttachment, RenderbufferTarget.Renderbuffer, this.RB_Handle);
 
                 FrameBuffer.Unbind();
-            } else
+            }
+            else
             {
                 throw new Exception("Cannot add DepthBuffer target to framebuffer: framebuffer already has DepthBuffer target");
             }
@@ -142,7 +143,7 @@ namespace HornetEngine.Graphics.Buffers
             this.Bind();
             string output = string.Empty;
             GLEnum status = NativeWindow.GL.CheckFramebufferStatus(FramebufferTarget.Framebuffer);
-            if(status != GLEnum.FramebufferComplete)
+            if (status != GLEnum.FramebufferComplete)
             {
                 output = $"Framebuffer is not complete: {status}";
             }
@@ -166,7 +167,7 @@ namespace HornetEngine.Graphics.Buffers
                 NativeWindow.GL.DeleteFramebuffer(this.Handle);
             }
 
-            foreach(Texture tex in render_targets)
+            foreach (Texture tex in render_targets)
             {
                 tex.Dispose();
             }

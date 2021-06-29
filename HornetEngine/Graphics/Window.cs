@@ -139,8 +139,8 @@ namespace HornetEngine.Graphics
             this.Redraw += Scene.Instance.GetRefreshFunc();
 
             //init default opengl behaviour
-            //NativeWindow.GL.Enable(GLEnum.CullFace);
-            //NativeWindow.GL.CullFace(CullFaceMode.Back);
+            NativeWindow.GL.Enable(GLEnum.CullFace);
+            NativeWindow.GL.CullFace(CullFaceMode.Back);
             NativeWindow.GL.Enable(GLEnum.DepthTest);
             NativeWindow.GL.Enable(GLEnum.Blend);
             NativeWindow.GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
