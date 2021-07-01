@@ -22,7 +22,7 @@ A static project reference is required to implement this framework into your pro
 7. Make sure you have the NuGet libraries and correct version installed as shown in the image below
 
 ### external libraries
-![alt text](https://github.com/RickLadestein/Hornet/blob/main/ImportLibs.PNG "Logo Title Text 1")
+![alt text](https://github.com/RickLadestein/Hornet/blob/main/RepoImages/ImportLibs.PNG "Logo Title Text 1")
 
 
 ## Credits
