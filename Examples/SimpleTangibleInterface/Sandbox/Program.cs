@@ -15,8 +15,6 @@ namespace Sandbox
     class Program
     {
         public static Window w = new Window();
-        public static Entity line_entity;
-        public static Entity player;
 
         static void Main()
         {
@@ -37,17 +35,7 @@ namespace Sandbox
 
             DoManualResourceAquisition();
 
-            //player = new Entity("Player");
-            //PlayerScript pscr = new PlayerScript
-            //{
-            //    mouse = w.Mouse,
-            //    keyboard = w.Keyboard
-            //};
-            //player.AddScript(pscr);
-
-            //player.AddComponent(new AudioListenerComponent());
-            //Scene.Instance.AddEntity(player);
-
+            NativeWindow.GL.Disable(Silk.NET.OpenGL.EnableCap.CullFace);
 
             Entity henk = new Entity("plane");
             HenkScript hs = new HenkScript();
