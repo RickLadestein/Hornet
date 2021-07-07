@@ -319,26 +319,26 @@ namespace HornetEngine.Graphics
 
         private void RedrawFunc()
         {
-            PrimaryCam.FrameBuffer.Bind();
-            NativeWindow.GL.Clear((int)Silk.NET.OpenGL.GLEnum.ColorBufferBit);
-            NativeWindow.GL.Clear((int)Silk.NET.OpenGL.GLEnum.DepthBufferBit);
-            foreach (Entity en in deferred_objects)
-            {
-                if (en.HasComponent<MeshComponent>())
-                {
-                    MeshRenderComponent fwc = en.GetComponent<MeshRenderComponent>();
-                    fwc.Render(Camera.Primary);
-                }
-            }
-
-            Buffers.FrameBuffer.Unbind();
-            MeshRenderComponent.RenderOnCamPlane(this.PrimaryCam);
-
-            PrimaryCam.FrameBuffer.Bind();
-            NativeWindow.GL.BlitFramebuffer(0, 0, (int)PrimaryCam.FrameBuffer.Width, (int)PrimaryCam.FrameBuffer.Height,
-                0, 0, (int)PrimaryCam.FrameBuffer.Width, (int)PrimaryCam.FrameBuffer.Height,
-                (uint)Silk.NET.OpenGL.ClearBufferMask.DepthBufferBit, Silk.NET.OpenGL.BlitFramebufferFilter.Nearest);
-            Buffers.FrameBuffer.Unbind();
+            //PrimaryCam.FrameBuffer.Bind();
+            //NativeWindow.GL.Clear((int)Silk.NET.OpenGL.GLEnum.ColorBufferBit);
+            //NativeWindow.GL.Clear((int)Silk.NET.OpenGL.GLEnum.DepthBufferBit);
+            //foreach (Entity en in deferred_objects)
+            //{
+            //    if (en.HasComponent<MeshComponent>())
+            //    {
+            //        MeshRenderComponent fwc = en.GetComponent<MeshRenderComponent>();
+            //        fwc.Render(Camera.Primary);
+            //    }
+            //}
+            //
+            //Buffers.FrameBuffer.Unbind();
+            //MeshRenderComponent.RenderOnCamPlane(this.PrimaryCam);
+            //
+            //PrimaryCam.FrameBuffer.Bind();
+            //NativeWindow.GL.BlitFramebuffer(0, 0, (int)PrimaryCam.FrameBuffer.Width, (int)PrimaryCam.FrameBuffer.Height,
+            //    0, 0, (int)PrimaryCam.FrameBuffer.Width, (int)PrimaryCam.FrameBuffer.Height,
+            //    (uint)Silk.NET.OpenGL.ClearBufferMask.DepthBufferBit, Silk.NET.OpenGL.BlitFramebufferFilter.Nearest);
+            //Buffers.FrameBuffer.Unbind();
             foreach (Entity en in foreward_objects)
             {
                 if (en.HasComponent<MeshComponent>())

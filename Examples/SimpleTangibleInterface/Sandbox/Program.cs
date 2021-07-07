@@ -30,8 +30,8 @@ namespace Sandbox
 
             SoundResourceManager mgr = SoundResourceManager.Instance;
 
-            w.Open("Test", 1920, 1080, WindowMode.WINDOWED);
-            w.Title = "Helloworld";
+            //w.Open("Test", 3840,2180, WindowMode.WINDOWED);
+            w.Open("Simple Tangible Interface", 1920, 1080, WindowMode.WINDOWED);
 
             DoManualResourceAquisition();
 

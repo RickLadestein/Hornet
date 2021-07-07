@@ -251,9 +251,10 @@ namespace HornetEngine.Sound
 
             //Read until data block is reached
             string data_id = "";
-            while(!data_id.Equals("data"))
+            while(!data_id.Contains("data"))
             {
-                data_id = new string(reader.ReadChars(4));
+                char[] buff = reader.ReadChars(1);
+                data_id += new string(buff);
             }
 
             DataChunk output = new DataChunk

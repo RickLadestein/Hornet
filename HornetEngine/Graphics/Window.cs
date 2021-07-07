@@ -164,7 +164,7 @@ namespace HornetEngine.Graphics
                 start_time = this.GetAliveTime();
                 this.PollEvents();
                 this.ClearBuffer(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-
+                TouchManager.Instance.Refresh();
                 
                 Scene.Instance.UpdateScene();
                 this.Redraw?.Invoke();

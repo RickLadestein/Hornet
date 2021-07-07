@@ -2116,6 +2116,11 @@
             The type of the touch object
             </summary>
         </member>
+        <member name="F:HornetEngine.Input.Touch_Recognition.TouchObject.internal_angle">
+            <summary>
+            The internal angle between touch points
+            </summary>
+        </member>
         <member name="F:HornetEngine.Input.Touch_Recognition.TouchObject.configuration">
             <summary>
             The configuration of the program

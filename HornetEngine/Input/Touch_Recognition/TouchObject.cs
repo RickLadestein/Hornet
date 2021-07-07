@@ -58,7 +58,7 @@ namespace HornetEngine.Input.Touch_Recognition
 
         public override string ToString()
         {
-            return $"{this.type}";
+            return $"TouchObject: \n\t{this.type} \n\t{this.internal_angle}";
         }
 
         /// <summary>
@@ -88,21 +88,23 @@ namespace HornetEngine.Input.Touch_Recognition
             // Assign the invalid type if the angle does not fit the chart
             if (angle < 48 || angle > 80)
             {
-                Console.WriteLine("Invalid object");
                 type = TouchPointType.INVALID;
-            }
-
-            // Loop through the given json rules
-            foreach(JsonRule rule in configuration.GetJsonRules())
+            } else
             {
-                // Check whether the current rule applies to the current anglle
-                if(angle > rule.min_angle && angle < rule.max_angle)
+                // Loop through the given json rules
+                foreach (JsonRule rule in configuration.GetJsonRules())
                 {
-                    // Assign the type and break out of the loop
-                    type = (TouchPointType) rule.bound_type;
-                    break;
+                    // Check whether the current rule applies to the current anglle
+                    if (angle > rule.min_angle && angle < rule.max_angle)
+                    {
+                        // Assign the type and break out of the loop
+                        type = (TouchPointType)rule.bound_type;
+                        break;
+                    }
                 }
             }
+
+            
         }
 
         /*            /|\
