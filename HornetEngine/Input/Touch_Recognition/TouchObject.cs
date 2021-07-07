@@ -18,6 +18,11 @@ namespace HornetEngine.Input.Touch_Recognition
         public TouchPointType type;
 
         /// <summary>
+        /// The internal angle between touch points
+        /// </summary>
+        public double internal_angle;
+
+        /// <summary>
         /// The configuration of the program
         /// </summary>
         public Config configuration = Config.Instance;
@@ -68,7 +73,8 @@ namespace HornetEngine.Input.Touch_Recognition
 
             // Obtain the angle between the points
             double angle = AngleBetween(fwd_point, point1, point2);
-
+            this.internal_angle = angle;
+            
             // Assign the type based on the angle
             CheckType(angle);
         }
