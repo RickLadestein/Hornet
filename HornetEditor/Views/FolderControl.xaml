@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="HornetEditor.Views.FolderControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HornetEditor.Views"
+             xmlns:controls="clr-namespace:HornetEditor.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="480" d:DesignWidth="1920">
+    <Grid x:Name="ContentGrid" Margin="5,5,5,5">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.9*"></ColumnDefinition>
+            <ColumnDefinition Width="0.10*"></ColumnDefinition>
+            <ColumnDefinition Width="8*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Viewbox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" HorizontalAlignment="Left">
+            <Label Background="Transparent" Foreground="AntiqueWhite">Folders</Label>
+        </Viewbox>
+
+        <Rectangle Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Width="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="Black" />
+
+        <Viewbox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" HorizontalAlignment="Left">
+            <Label Background="Transparent" Foreground="AntiqueWhite">Files</Label>
+        </Viewbox>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <WrapPanel Name="FilesPanel"> </WrapPanel>
+        </ScrollViewer>
+    </Grid>
+
+</UserControl>
